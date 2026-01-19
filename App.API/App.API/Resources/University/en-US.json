@@ -1,0 +1,6 @@
+{
+  "NotFound": "University does not exist",
+  "InvalidPermissions": "You do not have the required permissions to perform this action",
+  "InvalidId": "The provided university ID is invalid",
+  "DuplicatedName": "A university with this name already exists"
+}

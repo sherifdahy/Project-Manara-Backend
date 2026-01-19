@@ -1,0 +1,10 @@
+﻿{
+  "PasswordRegex": "Password should be at least 8 digits and should contains Lowercase, NonAlphanumeric and Uppercase",
+  "DuplicatedPermissions": "You cannot add Duplicated Permissions for the same Role",
+  "InvalidCredentials": "Invalid UserName Or Password",
+  "DisabledUser": "Your account has been disabled. Please contact your administrator",
+  "LockedUser": "Your account has been locked. Please contact your administrator",
+  "DuplicatedEmail": "This email address is already registered",
+  "InvalidToken": "The authentication token is invalid or has expired",
+  "InvalidCode": "The verification code is invalid or has expired"
+}

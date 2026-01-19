@@ -1,0 +1,163 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Manaraa-University-Management-System\\App.Backend\\App.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\manaraa-university-management-system\\app.backend\\app.api\\app.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\manaraa-university-management-system\\app.backend\\app.api\\app.api\\app.api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\app.api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|f:\\manaraa-university-management-system\\app.backend\\app.infrastructure\\presistance\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\manaraa-university-management-system\\app.backend\\app.application\\responses\\faculties\\facultyresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\manaraa-university-management-system\\app.backend\\app.application\\responses\\universities\\universitydetailresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\manaraa-university-management-system\\app.backend\\app.application\\handlers\\queries\\universities\\getuniversityqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\manaraa-university-management-system\\app.backend\\app.application\\handlers\\queries\\faculties\\getfacultycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\manaraa-university-management-system\\app.backend\\app.application\\handlers\\queries\\roles\\getrolebyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\manaraa-university-management-system\\app.backend\\app.application\\handlers\\queries\\roles\\getallrolequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "F:\\Manaraa-University-Management-System\\App.Backend\\App.API\\App.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "App.API\\Properties\\launchSettings.json",
+              "ToolTip": "F:\\Manaraa-University-Management-System\\App.Backend\\App.API\\App.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "App.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-19T18:16:16.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.API",
+              "DocumentMoniker": "F:\\Manaraa-University-Management-System\\App.Backend\\App.API\\App.API\\App.API.csproj",
+              "RelativeDocumentMoniker": "App.API\\App.API.csproj",
+              "ToolTip": "F:\\Manaraa-University-Management-System\\App.Backend\\App.API\\App.API\\App.API.csproj",
+              "RelativeToolTip": "App.API\\App.API.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-19T18:16:09.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FacultyResponse.cs",
+              "DocumentMoniker": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Responses\\Faculties\\FacultyResponse.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Responses\\Faculties\\FacultyResponse.cs",
+              "ToolTip": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Responses\\Faculties\\FacultyResponse.cs",
+              "RelativeToolTip": "..\\App.Application\\Responses\\Faculties\\FacultyResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-27T16:08:44.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UniversityDetailResponse.cs",
+              "DocumentMoniker": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Responses\\Universities\\UniversityDetailResponse.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Responses\\Universities\\UniversityDetailResponse.cs",
+              "ToolTip": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Responses\\Universities\\UniversityDetailResponse.cs",
+              "RelativeToolTip": "..\\App.Application\\Responses\\Universities\\UniversityDetailResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-27T16:08:04.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
+              "ToolTip": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
+              "ViewState": "AgIAANQAAAAAAAAAAAAmwOMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-27T16:04:38.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GetAllRoleQueryHandler.cs",
+              "DocumentMoniker": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Handlers\\Queries\\Roles\\GetAllRoleQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Roles\\GetAllRoleQueryHandler.cs",
+              "ToolTip": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Handlers\\Queries\\Roles\\GetAllRoleQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Roles\\GetAllRoleQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T07:52:18.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GetRoleByIdQueryHandler.cs",
+              "DocumentMoniker": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
+              "ToolTip": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T19:02:04.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetFacultyCommandHandler.cs",
+              "DocumentMoniker": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Handlers\\Queries\\Faculties\\GetFacultyCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Faculties\\GetFacultyCommandHandler.cs",
+              "ToolTip": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Handlers\\Queries\\Faculties\\GetFacultyCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Faculties\\GetFacultyCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T16:50:06.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetUniversityQueryHandler.cs",
+              "DocumentMoniker": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Handlers\\Queries\\Universities\\GetUniversityQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Universities\\GetUniversityQueryHandler.cs",
+              "ToolTip": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Application\\Handlers\\Queries\\Universities\\GetUniversityQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Universities\\GetUniversityQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T13:17:50.795Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
