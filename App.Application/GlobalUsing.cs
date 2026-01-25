@@ -16,5 +16,5 @@ global using Microsoft.AspNetCore.WebUtilities;
 global using Microsoft.EntityFrameworkCore;
 global using App.Application.Commands.Universities;
 global using App.Application.Responses.Universities;
-global using App.Core.Entities.University;
+global using App.Core.Entities.Universities;
 global using SA.Accountring.Core.Entities.Interfaces;

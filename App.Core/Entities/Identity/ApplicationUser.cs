@@ -1,5 +1,6 @@
-﻿namespace App.Core.Entities.Identity;
-using App.Core.Entities.University;
+﻿using App.Core.Entities.Universities;
+
+namespace App.Core.Entities.Identity;
 public class ApplicationUser : IdentityUser<int>
 {
     public string FirstName { get; set; } = string.Empty;

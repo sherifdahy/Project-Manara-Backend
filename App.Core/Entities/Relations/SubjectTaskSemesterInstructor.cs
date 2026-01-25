@@ -1,4 +1,6 @@
-﻿namespace MappingOfManaraaProject.Entities.Relations;
+﻿using App.Core.Entities.Universities;
+
+namespace MappingOfManaraaProject.Entities.Relations;
 
 public class SubjectTaskSemesterInstructor
 {

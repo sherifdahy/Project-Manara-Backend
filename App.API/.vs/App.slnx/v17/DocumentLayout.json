@@ -1,12 +1,108 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\Manaraa-University-Management-System\\App.Backend\\App.API\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260125194940_UserPermissionOverride.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.infrastructure\\presistance\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.core\\entities\\relations\\userpermissionoverride.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.core\\entities\\relations\\configurations\\userpermissionoverrideconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.core\\entities\\identity\\applicationroleclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260125194940_UserPermissionOverride.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260125194940_UserPermissionOverride.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Migrations\\20260125194940_UserPermissionOverride.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260125194940_UserPermissionOverride.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Migrations\\20260125194940_UserPermissionOverride.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T19:49:40.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserPermissionOverrideConfiguration.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Entities\\Relations\\Configurations\\UserPermissionOverrideConfiguration.cs",
+              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Relations\\Configurations\\UserPermissionOverrideConfiguration.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Entities\\Relations\\Configurations\\UserPermissionOverrideConfiguration.cs",
+              "RelativeToolTip": "..\\App.Core\\Entities\\Relations\\Configurations\\UserPermissionOverrideConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T19:36:19.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserPermissionOverride.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Entities\\Relations\\UserPermissionOverride.cs",
+              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Relations\\UserPermissionOverride.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Entities\\Relations\\UserPermissionOverride.cs",
+              "RelativeToolTip": "..\\App.Core\\Entities\\Relations\\UserPermissionOverride.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T19:31:51.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Presistance\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Presistance\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAACsAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T19:16:39.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationRoleClaim.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Entities\\Identity\\ApplicationRoleClaim.cs",
+              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Identity\\ApplicationRoleClaim.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Entities\\Identity\\ApplicationRoleClaim.cs",
+              "RelativeToolTip": "..\\App.Core\\Entities\\Identity\\ApplicationRoleClaim.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T19:16:05.073Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

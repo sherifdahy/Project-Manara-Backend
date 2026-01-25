@@ -1,4 +1,5 @@
 ﻿using App.Core.Entities.Teaching;
+using App.Core.Entities.Universities;
 
 namespace MappingOfManaraaProject.Entities.Relations;
 

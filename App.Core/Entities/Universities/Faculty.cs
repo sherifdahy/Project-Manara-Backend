@@ -1,6 +1,6 @@
 ﻿using App.Core.Entities.Identity;
 
-namespace App.Core.Entities.University;
+namespace App.Core.Entities.Universities;
 public class Faculty
 {
     public int Id { get; set; }

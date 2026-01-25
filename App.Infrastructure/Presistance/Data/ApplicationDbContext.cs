@@ -1,12 +1,7 @@
-﻿using App.Core.Entities;
-using App.Core.Entities.Identity;
-using App.Core.Entities.Personnel;
-using App.Core.Entities.University;
+﻿using App.Core.Entities.Personnel;
+using App.Core.Entities.Relations;
+using App.Core.Entities.Universities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Infrastructure.Presistance.Data;
 
@@ -29,6 +24,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
     public DbSet<Program> Programs { get; set; }
     public DbSet<Subject> Subjects { get; set; }
     public DbSet<Student> Students { get; set; }
+    public DbSet<UserPermissionOverride> UserPermissionOverrides { get; set; }
 
     #endregion
 
@@ -43,6 +39,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
         .Property(u => u.IsDisabled)
         .HasColumnName("IsDisabled")
         .HasDefaultValue(false);
+
+        builder.Entity<UserPermissionOverride>()
+            .HasKey(u => new { u.ApplicationUserId, u.RoleClaimId });
 
         builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 

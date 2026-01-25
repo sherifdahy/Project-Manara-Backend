@@ -1,4 +1,4 @@
-﻿using App.Core.Entities.University;
+﻿using App.Core.Entities.Universities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace App.Infrastructure.Presistance.EntitiesConfiguration;

@@ -1,4 +1,4 @@
-﻿namespace App.Core.Entities.University;
+﻿namespace App.Core.Entities.Universities;
 public class Department
 {
     public int Id { get; set; }

@@ -1,5 +1,4 @@
 ﻿using App.Core.Entities.Personnel;
-using App.Core.Entities.University;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace App.Infrastructure.Presistance.EntitiesConfiguration;

@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "W60kLCl/34E=",
+  "dgSpecHash": "DhEW20aRNvI=",
   "success": true,
-  "projectFilePath": "F:\\Manaraa-University-Management-System\\App.Backend\\App.Core\\App.Core.csproj",
+  "projectFilePath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\App.Core.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\shrif\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\10.0.0\\microsoft.aspnetcore.identity.entityframeworkcore.10.0.0.nupkg.sha512",
-    "C:\\Users\\shrif\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.0\\microsoft.entityframeworkcore.10.0.0.nupkg.sha512",
-    "C:\\Users\\shrif\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.0\\microsoft.entityframeworkcore.abstractions.10.0.0.nupkg.sha512",
-    "C:\\Users\\shrif\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.0\\microsoft.entityframeworkcore.analyzers.10.0.0.nupkg.sha512",
-    "C:\\Users\\shrif\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.0\\microsoft.entityframeworkcore.relational.10.0.0.nupkg.sha512"
+    "C:\\Users\\omarz\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\10.0.0\\microsoft.aspnetcore.identity.entityframeworkcore.10.0.0.nupkg.sha512",
+    "C:\\Users\\omarz\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.0\\microsoft.entityframeworkcore.10.0.0.nupkg.sha512",
+    "C:\\Users\\omarz\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.0\\microsoft.entityframeworkcore.abstractions.10.0.0.nupkg.sha512",
+    "C:\\Users\\omarz\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.0\\microsoft.entityframeworkcore.analyzers.10.0.0.nupkg.sha512",
+    "C:\\Users\\omarz\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.0\\microsoft.entityframeworkcore.relational.10.0.0.nupkg.sha512"
   ],
   "logs": []
 }

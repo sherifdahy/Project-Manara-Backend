@@ -1,6 +1,5 @@
-﻿using App.Core.Entities;
-using App.Core.Entities.Interfaces;
-using App.Core.Entities.University;
+﻿using App.Core.Entities.Interfaces;
+using App.Core.Entities.Universities;
 using Microsoft.EntityFrameworkCore.Storage;
 using SA.Accountring.Core.Entities.Interfaces;
 

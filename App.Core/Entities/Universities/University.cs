@@ -1,6 +1,6 @@
 ﻿using App.Core.Entities.Identity;
 
-namespace App.Core.Entities.University;
+namespace App.Core.Entities.Universities;
 public class University
 {
     public int Id { get; set; }
@@ -12,4 +12,5 @@ public class University
     public bool IsDeleted { get; set; }
     public ICollection<Faculty> Faculties { get; set; } = new HashSet<Faculty>();
     public ICollection<ApplicationUser> Users { get; set; } = new HashSet<ApplicationUser>();
+    public ICollection<ApplicationRole> Roles { get; set; } = new HashSet<ApplicationRole>();
 }
