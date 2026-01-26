@@ -21,8 +21,8 @@ public  class AuthenticationErrors
     public Error DisabledUser => 
         new Error("User.DisabledUser", _localizer[AuthenticationLocalizationKeys.DisabledUser, LocalizationFolderNames.Authentication], StatusCodes.Status400BadRequest);
 
-    //public   Error EmailNotConfirmed => 
-    //    new Error("User.EmailNotConfirmed", _localizer[LocalizationKeyNames.EmailNotConfirmed, LocalizationFolderNames.Authentication], StatusCodes.Status401Unauthorized);
+    public   Error EmailNotConfirmed => 
+        new Error("User.EmailNotConfirmed", _localizer[AuthenticationLocalizationKeys.EmailNotConfirmed, LocalizationFolderNames.Authentication], StatusCodes.Status401Unauthorized);
 
     public   Error LockedUser => 
         new Error("User.LockedUser", _localizer[AuthenticationLocalizationKeys.LockedUser, LocalizationFolderNames.Authentication], StatusCodes.Status400BadRequest);

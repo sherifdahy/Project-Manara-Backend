@@ -16,7 +16,11 @@ public class RefreshTokenCommandHandler(IJwtProvider jwtProvider
         if (userId is null)
             return Result.Failure<AuthenticationResponse>(_errors.InvalidToken);
 
-        var user = await _userManager.FindByIdAsync(userId);
+        var user = _userManager.Users
+            .Include(w => w.RefreshTokens)
+            .Include(s => s.PermissionOverrides)
+            .ThenInclude(po => po.RoleClaim)
+            .FirstOrDefault(x => x.Id == int.Parse( userId));
 
         if (user is null)
             return Result.Failure<AuthenticationResponse>(_errors.InvalidToken);

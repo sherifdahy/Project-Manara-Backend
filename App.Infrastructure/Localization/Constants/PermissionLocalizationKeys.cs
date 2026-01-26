@@ -9,4 +9,6 @@ public class PermissionLocalizationKeys
     public static readonly string NotFound = nameof(NotFound);
 
     public static readonly string InvalidPermissions = nameof(InvalidPermissions);
+
+    public static readonly string InvalidType = nameof(InvalidType);
 }

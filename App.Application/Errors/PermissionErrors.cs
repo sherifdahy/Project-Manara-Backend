@@ -20,5 +20,8 @@ public class PermissionErrors
     public Error InvalidPermissions
        => new Error("Permission.InvalidPermissions", _localizer[PermissionLocalizationKeys.InvalidPermissions, LocalizationFolderNames.Permission], StatusCodes.Status404NotFound);
 
-    
+
+    public Error InvalidType
+       => new Error("Permission.InvalidType", _localizer[PermissionLocalizationKeys.InvalidType, LocalizationFolderNames.Permission], StatusCodes.Status404NotFound);
+
 }

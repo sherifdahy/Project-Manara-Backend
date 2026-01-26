@@ -758,6 +758,18 @@
           "name": {
             "type": "string"
           },
+          "universityId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "roleType": {
+            "$ref": "#/components/schemas/RoleType"
+          },
           "permissions": {
             "type": "array",
             "items": {
@@ -857,6 +869,9 @@
             "type": "string"
           }
         }
+      },
+      "RoleType": {
+        "type": "integer"
       },
       "UpdateFacultyCommand": {
         "type": "object",
