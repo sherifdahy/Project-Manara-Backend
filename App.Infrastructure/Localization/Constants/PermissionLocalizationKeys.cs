@@ -11,4 +11,6 @@ public class PermissionLocalizationKeys
     public static readonly string InvalidPermissions = nameof(InvalidPermissions);
 
     public static readonly string InvalidType = nameof(InvalidType);
+
+    public static readonly string DuplicatedPermissionForUser = nameof(DuplicatedPermissionForUser);
 }

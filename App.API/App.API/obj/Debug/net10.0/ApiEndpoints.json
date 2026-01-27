@@ -240,6 +240,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.Roles.RolesController",
+    "Method": "AssignRoleToUser",
+    "RelativePath": "api/Roles/assign-permission-user",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "App.Application.Commands.Roles.AssignPermissionToUserCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Universities.UniversitiesController",
     "Method": "GetAll",
     "RelativePath": "api/Universities",

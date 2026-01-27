@@ -24,4 +24,6 @@ public class PermissionErrors
     public Error InvalidType
        => new Error("Permission.InvalidType", _localizer[PermissionLocalizationKeys.InvalidType, LocalizationFolderNames.Permission], StatusCodes.Status404NotFound);
 
+    public Error DuplicatedPermissionForUser
+       => new Error("Permission.DuplicatedPermissionForUser", _localizer[PermissionLocalizationKeys.DuplicatedPermissionForUser, LocalizationFolderNames.Permission], StatusCodes.Status409Conflict);
 }

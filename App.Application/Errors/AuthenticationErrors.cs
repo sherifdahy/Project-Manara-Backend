@@ -35,4 +35,7 @@ public  class AuthenticationErrors
 
     public   Error InvalidCode => 
         new Error("User.InvalidCode", _localizer[AuthenticationLocalizationKeys.InvalidCode, LocalizationFolderNames.Authentication], StatusCodes.Status400BadRequest);
+
+     public   Error NotFound => 
+        new Error("User.NotFound", _localizer[AuthenticationLocalizationKeys.NotFound, LocalizationFolderNames.Authentication], StatusCodes.Status400BadRequest);
 }

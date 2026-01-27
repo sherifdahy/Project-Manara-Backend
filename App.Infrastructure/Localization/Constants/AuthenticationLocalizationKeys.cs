@@ -19,4 +19,6 @@ public static class AuthenticationLocalizationKeys
     public static readonly string InvalidToken = nameof(InvalidToken);
 
     public static readonly string InvalidCode = nameof(InvalidCode);
+
+    public static readonly string NotFound = nameof(NotFound);
 }

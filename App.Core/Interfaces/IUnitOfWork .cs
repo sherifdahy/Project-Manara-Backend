@@ -1,6 +1,7 @@
 ﻿using App.Core.Entities;
 using App.Core.Entities.Identity;
 using App.Core.Entities.Interfaces;
+using App.Core.Entities.Relations;
 using App.Core.Entities.Universities;
 using Microsoft.EntityFrameworkCore.Storage;
 
@@ -12,6 +13,7 @@ public interface IUnitOfWork : IDisposable
     public IRepository<IdentityRoleClaim<int>> RoleClaims { get; }
     public IRepository<ApplicationUser> Users { get; }
     public IRepository<IdentityUserRole<int>> UserRoles { get; }
+    public IRepository<UserPermissionOverride> UserPermissionOverrides { get; }
 
     // bussiness logic
     public IRepository<University> Universities { get; }
