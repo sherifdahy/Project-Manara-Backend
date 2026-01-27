@@ -5,12 +5,19 @@ namespace App.Application.Handlers.Commands.Authentications;
 
 public class RegisterCommandHandler(UserManager<ApplicationUser> userManager,
     IJwtProvider jwtProvider
-    ,IAuthenticationService authenticationService,AuthenticationErrors errors) : IRequestHandler<RegisterCommand, Result<AuthenticationResponse>>
+    ,IAuthenticationService authenticationService
+    ,AuthenticationErrors errors
+    ,IUnitOfWork unitOfWork
+    ,UniversityErrors universityErrors
+    ,FacultyErrors facultyErrors) : IRequestHandler<RegisterCommand, Result<AuthenticationResponse>>
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IJwtProvider _jwtProvider = jwtProvider;
     private readonly IAuthenticationService _authenticationService = authenticationService;
     private readonly AuthenticationErrors _errors = errors;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly UniversityErrors _universityErrors = universityErrors;
+    private readonly FacultyErrors _facultyErrors = facultyErrors;
 
     public async Task<Result<AuthenticationResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
@@ -18,6 +25,12 @@ public class RegisterCommandHandler(UserManager<ApplicationUser> userManager,
 
         if (emailIsExists)
             return Result.Failure<AuthenticationResponse>(_errors.DuplicatedEmail);
+
+        if (!(_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId)))
+            return Result.Failure<AuthenticationResponse>(_universityErrors.InvalidId);
+
+        if (!(_unitOfWork.Fauclties.IsExist(x => (x.Id == request.FacultyId) &&(x.UniversityId==request.UniversityId )) || request.FacultyId is null))
+            return Result.Failure<AuthenticationResponse>(_facultyErrors.InvalidId);
 
         var user = request.Adapt<ApplicationUser>();
 

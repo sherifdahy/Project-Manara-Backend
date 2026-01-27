@@ -23,4 +23,7 @@ public  class FacultyErrors
     public   Error DuplicatedName =>
             new("Faculty.DuplicatedName", _localizer[FacultyLocalizationKeys.DuplicatedName, LocalizationFolderNames.Faculty], StatusCodes.Status409Conflict);
 
+    public Error NotRelatedToUniversity =>
+           new("Faculty.NotRelatedToUniversity", _localizer[FacultyLocalizationKeys.NotRelatedToUniversity, LocalizationFolderNames.Faculty], StatusCodes.Status409Conflict);
+
 }

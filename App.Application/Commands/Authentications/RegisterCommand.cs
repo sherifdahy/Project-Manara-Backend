@@ -14,4 +14,6 @@ public record RegisterCommand  : IRequest<Result<AuthenticationResponse>>
     public string Password { get; set; } = string.Empty;
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
+    public int? UniversityId { get; set; } 
+    public int? FacultyId { get; set; } 
 }

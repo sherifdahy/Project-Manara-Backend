@@ -9,4 +9,6 @@ public static class FacultyLocalizationKeys
     public static readonly string InvalidId = nameof(InvalidId);
 
     public static readonly string DuplicatedName = nameof(DuplicatedName);
+
+    public static readonly string NotRelatedToUniversity = nameof(NotRelatedToUniversity);
 }

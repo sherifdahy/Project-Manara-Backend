@@ -1,3 +1,4 @@
 {
-  "InvalidPermissions": "Some permissions you provided are not recognized by the system."
+  "InvalidPermissions": "Some permissions you provided are not recognized by the system.",
+  "InvalidType": "The Type Is OutSide the Range"
 }
