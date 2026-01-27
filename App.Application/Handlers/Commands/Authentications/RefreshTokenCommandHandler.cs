@@ -47,7 +47,7 @@ public class RefreshTokenCommandHandler(IJwtProvider jwtProvider
         await _userManager.UpdateAsync(user);
 
         var response = new AuthenticationResponse(user.Id, user.Email, user.FirstName, user.LastName
-            , newToken, newExpiresIn, newRefreshToken, newRefreshTokenExpiration,user.UniversityId,user.FacultyId);
+            , newToken, newExpiresIn, newRefreshToken, newRefreshTokenExpiration);
 
         return Result.Success<AuthenticationResponse>(response);
 

@@ -3,31 +3,19 @@
   "WorkspaceRootPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\authentications\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\commands\\authentications\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\authentications\\refreshtokencommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\errors\\facultyerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\commands\\authentications\\refreshtokencommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\commands\\authentications\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\responses\\authentications\\authenticationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\authentications\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\authentications\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.infrastructure\\presistance\\entitiesconfiguration\\userroleconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\responses\\authentications\\authenticationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.infrastructure\\authentications\\jwtprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,19 +25,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FacultyErrors.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Errors\\FacultyErrors.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Errors\\FacultyErrors.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Errors\\FacultyErrors.cs",
-              "RelativeToolTip": "..\\App.Application\\Errors\\FacultyErrors.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAzwBoAAABqAAAAAAAAAA==",
+              "Title": "AuthenticationResponse.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Responses\\Authentications\\AuthenticationResponse.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Responses\\Authentications\\AuthenticationResponse.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Responses\\Authentications\\AuthenticationResponse.cs",
+              "RelativeToolTip": "..\\App.Application\\Responses\\Authentications\\AuthenticationResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T12:55:07.724Z",
+              "WhenOpened": "2026-01-27T13:46:04.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "JwtProvider.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Authentications\\JwtProvider.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Authentications\\JwtProvider.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Authentications\\JwtProvider.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Authentications\\JwtProvider.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAIwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T13:33:35.247Z",
               "EditorCaption": ""
             },
             {
@@ -62,106 +63,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "RegisterCommandHandler.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Authentications\\RegisterCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Authentications\\RegisterCommandHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Authentications\\RegisterCommandHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Authentications\\RegisterCommandHandler.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCgAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAIwDYAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T12:20:41.546Z",
+              "WhenOpened": "2026-01-27T13:33:10.794Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RegisterCommand.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Authentications\\RegisterCommand.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Commands\\Authentications\\RegisterCommand.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Authentications\\RegisterCommand.cs",
-              "RelativeToolTip": "..\\App.Application\\Commands\\Authentications\\RegisterCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T12:20:39.653Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "RefreshTokenCommandHandler.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Authentications\\RefreshTokenCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Authentications\\RefreshTokenCommandHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Authentications\\RefreshTokenCommandHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Authentications\\RefreshTokenCommandHandler.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAnwDMAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAIwDEAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T12:20:28.418Z",
+              "WhenOpened": "2026-01-27T13:33:09.78Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RefreshTokenCommand.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Authentications\\RefreshTokenCommand.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Commands\\Authentications\\RefreshTokenCommand.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Authentications\\RefreshTokenCommand.cs",
-              "RelativeToolTip": "..\\App.Application\\Commands\\Authentications\\RefreshTokenCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T12:20:21.359Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LoginCommand.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Authentications\\LoginCommand.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Commands\\Authentications\\LoginCommand.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Authentications\\LoginCommand.cs",
-              "RelativeToolTip": "..\\App.Application\\Commands\\Authentications\\LoginCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T12:20:13.843Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AuthenticationResponse.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Responses\\Authentications\\AuthenticationResponse.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Responses\\Authentications\\AuthenticationResponse.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Responses\\Authentications\\AuthenticationResponse.cs",
-              "RelativeToolTip": "..\\App.Application\\Responses\\Authentications\\AuthenticationResponse.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAuwAYAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T12:20:08.789Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "LoginCommandHandler.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Authentications\\LoginCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Authentications\\LoginCommandHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Authentications\\LoginCommandHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Authentications\\LoginCommandHandler.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAnwDIAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAIwDAAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T12:15:18.728Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UserRoleConfiguration.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\UserRoleConfiguration.cs",
-              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\UserRoleConfiguration.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\UserRoleConfiguration.cs",
-              "RelativeToolTip": "..\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\UserRoleConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T12:15:02.884Z",
+              "WhenOpened": "2026-01-27T13:33:07.729Z",
               "EditorCaption": ""
             }
           ]

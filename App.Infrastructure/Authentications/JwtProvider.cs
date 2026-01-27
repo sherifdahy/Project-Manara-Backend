@@ -15,15 +15,27 @@ public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
     public (string token, int expiresIn) GenerateToken(ApplicationUser user,IEnumerable<string> roles, IEnumerable<string> permissions)
     {
 
-        Claim[] claims = [
+
+        var claims = new List<Claim>
+        {
             new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
             new(JwtRegisteredClaimNames.Email, user.Email!),
             new(JwtRegisteredClaimNames.GivenName, user.FirstName),
             new(JwtRegisteredClaimNames.FamilyName, user.LastName),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new(nameof(roles),JsonSerializer.Serialize(roles),JsonClaimValueTypes.JsonArray),
-            new(nameof(permissions),JsonSerializer.Serialize(permissions),JsonClaimValueTypes.JsonArray),
-        ];
+            new(nameof(roles), JsonSerializer.Serialize(roles), JsonClaimValueTypes.JsonArray),
+            new(nameof(permissions), JsonSerializer.Serialize(permissions), JsonClaimValueTypes.JsonArray),
+        };
+
+        if (user.FacultyId is not null)
+        {
+            claims.Add(new Claim("FacultyId", user.FacultyId.Value.ToString()));
+        }
+
+        if (user.UniversityId is not null)
+        {
+            claims.Add(new Claim("UniversityId", user.UniversityId.Value.ToString()));
+        }
 
 
         var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.Key));

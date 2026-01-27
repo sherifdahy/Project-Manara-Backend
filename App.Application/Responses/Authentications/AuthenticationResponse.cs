@@ -12,8 +12,6 @@ public record AuthenticationResponse(
     string Token,
     int ExpiresIn,
     string RefreshToken,
-    DateTime RefreshTokenExpiration,
-    int? UniversityId,
-    int? FacultyId
+    DateTime RefreshTokenExpiration
 
 );
