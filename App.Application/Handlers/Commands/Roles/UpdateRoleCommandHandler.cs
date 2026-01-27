@@ -3,6 +3,7 @@ using App.Application.Commands.Roles;
 using App.Application.Errors;
 using App.Application.Responses.Role;
 using App.Core.Entities.Identity;
+using App.Core.Enums;
 using App.Infrastructure.Abstractions.Consts;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -12,10 +13,17 @@ using System.Security.Claims;
 
 namespace App.Application.Handlers.Commands.Roles;
 
-public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager,RoleErrors errors) : IRequestHandler<UpdateRoleCommand, Result>
+public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
+    ,RoleErrors errors
+    ,IUnitOfWork unitOfWork
+    ,UniversityErrors universityErrors
+    ,PermissionErrors permissionErrors) : IRequestHandler<UpdateRoleCommand, Result>
 {
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
     private readonly RoleErrors _errors = errors;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly UniversityErrors _universityErrors = universityErrors;
+    private readonly PermissionErrors _permissionErrors = permissionErrors;
 
     public async Task<Result> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
     {
@@ -34,7 +42,15 @@ public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager,R
             return Result.Failure(_errors.NotFound);
 
 
+        if (!(_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId)))
+            return Result.Failure<RoleDetailResponse>(_universityErrors.InvalidId);
+
+        if (!Enum.IsDefined(typeof(RoleType), request.RoleType))
+            return Result.Failure<RoleDetailResponse>(_permissionErrors.InvalidType);
+
         role.Name = request.Name;
+        role.UniversityId=request.UniversityId;
+        role.RoleType=request.RoleType;
 
         var result = await _roleManager.UpdateAsync(role);
 

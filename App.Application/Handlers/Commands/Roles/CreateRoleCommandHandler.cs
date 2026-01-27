@@ -9,6 +9,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using SA.Accountring.Core.Entities.Interfaces;
+using System.Data;
 using System.Security.Claims;
 
 namespace App.Application.Handlers.Commands.Roles;
@@ -37,11 +38,11 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
         if (request.Permissions.Except(allowedPermissions).Any())
             return Result.Failure<RoleDetailResponse>(_permissionErrors.InvalidPermissions);
 
-        if (!_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId))
+        if (!(_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId)))
             return Result.Failure<RoleDetailResponse>(_universityErrors.InvalidId);
 
         if (!Enum.IsDefined(typeof(RoleType), request.RoleType))
-            return Result.Failure<RoleDetailResponse>(_universityErrors.InvalidId);
+            return Result.Failure<RoleDetailResponse>(_permissionErrors.InvalidType);
 
 
         var newRole = new ApplicationRole()
@@ -76,6 +77,8 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
             (   newRole.Id,
                 newRole.Name,
                 newRole.IsDeleted,
+                newRole.UniversityId,
+                newRole!.RoleType,
                 request.Permissions
             ));
         }

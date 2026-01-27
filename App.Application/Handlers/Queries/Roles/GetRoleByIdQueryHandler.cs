@@ -3,6 +3,7 @@ using App.Application.Errors;
 using App.Application.Queries.Roles;
 using App.Application.Responses.Role;
 using App.Core.Entities.Identity;
+using App.Core.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
@@ -24,6 +25,8 @@ public class GetRoleByIdQueryHandler(RoleManager<ApplicationRole> _roleManager,R
             role.Id,
             role.Name!,
             role.IsDeleted,
+            role.UniversityId,
+            role!.RoleType,
             permissions.Select(c => c.Value)
         );
 

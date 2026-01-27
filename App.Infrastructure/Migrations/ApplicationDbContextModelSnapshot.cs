@@ -63,7 +63,10 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("AspNetRoles", (string)null);
+                    b.ToTable("AspNetRoles", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_ApplicationRole_RoleType", "[RoleType] IN (1, 2, 3)");
+                        });
 
                     b.HasData(
                         new
@@ -803,7 +806,7 @@ namespace App.Infrastructure.Migrations
             modelBuilder.Entity("App.Core.Entities.Relations.UserPermissionOverride", b =>
                 {
                     b.HasOne("App.Core.Entities.Identity.ApplicationUser", "ApplicationUser")
-                        .WithMany()
+                        .WithMany("PermissionOverrides")
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -923,6 +926,11 @@ namespace App.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Identity.ApplicationUser", b =>
+                {
+                    b.Navigation("PermissionOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>

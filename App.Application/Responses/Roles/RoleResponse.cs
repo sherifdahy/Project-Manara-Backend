@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,5 +9,7 @@ public record RoleResponse
 (
     int Id,
     string Name,
-    bool IsDeleted
+    bool IsDeleted,
+    int? UniversityId,
+    RoleType RoleType
 );

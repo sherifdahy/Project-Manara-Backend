@@ -1,4 +1,6 @@
-﻿using App.Infrastructure.Abstractions.Consts;
+﻿using App.Core.Enums;
+using App.Infrastructure.Abstractions.Consts;
+using App.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,13 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
 {
     public void Configure(EntityTypeBuilder<ApplicationRole> builder)
     {
+        builder
+            .Property(x => x.RoleType)
+            .IsRequired();
+
+        builder.EnumInRange(x => x.RoleType);
+
+
         builder.HasData
         (
             new ApplicationRole()

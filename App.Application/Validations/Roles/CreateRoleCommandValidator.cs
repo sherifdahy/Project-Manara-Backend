@@ -21,6 +21,9 @@ public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
             .NotEmpty()
             .NotNull();
 
+        RuleFor(x => x.UniversityId)
+            .NotEmpty()
+            .NotNull();
 
         RuleFor(x => x.Permissions)
             .NotNull()
