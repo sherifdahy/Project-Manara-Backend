@@ -226,6 +226,14 @@ F:\Manaraa-University-Management-System\App.Backend\App.API\App.API\obj\Debug\ne
 F:\Manaraa-University-Management-System\App.Backend\App.API\App.API\obj\Debug\net10.0\ref\App.API.dll
 F:\Manaraa-University-Management-System\App.Backend\App.API\App.API\bin\Debug\net10.0\Resources\Permission\ar-EG.json
 F:\Manaraa-University-Management-System\App.Backend\App.API\App.API\bin\Debug\net10.0\Resources\Permission\en-US.json
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.csproj.AssemblyReference.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.AssemblyInfoInputs.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.AssemblyInfo.cs
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.csproj.CoreCompileInputs.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.MvcApplicationPartsAssemblyInfo.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.sourcelink.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\BuildHost-net472\Microsoft.Build.Locator.dll
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\BuildHost-net472\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\BuildHost-net472\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe.config
@@ -475,15 +483,6 @@ D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\App.Infrastructure.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\App.Core.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\App.Services.pdb
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.csproj.AssemblyReference.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\rpswa.dswa.cache.json
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.GeneratedMSBuildEditorConfig.editorconfig
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.AssemblyInfoInputs.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.AssemblyInfo.cs
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.csproj.CoreCompileInputs.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.MvcApplicationPartsAssemblyInfo.cs
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.MvcApplicationPartsAssemblyInfo.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.sourcelink.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\rjimswa.dswa.cache.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
@@ -500,3 +499,4 @@ D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.genruntimeconfig.cache
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\ref\App.API.dll
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.MvcApplicationPartsAssemblyInfo.cs

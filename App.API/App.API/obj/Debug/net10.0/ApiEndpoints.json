@@ -160,6 +160,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
+    "Method": "AssignPermissionToUser",
+    "RelativePath": "api/Permissions/assign-permission-user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "App.Application.Commands.Roles.AssignPermissionToUserCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
+    "Method": "TogglePermissionToUser",
+    "RelativePath": "api/Permissions/toggle-permission-status",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "App.Application.Commands.Roles.ToggleStatusPermissionCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Roles.RolesController",
     "Method": "GetAllRoles",
     "RelativePath": "api/Roles",
@@ -234,22 +266,6 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Roles.RolesController",
-    "Method": "AssignRoleToUser",
-    "RelativePath": "api/Roles/assign-permission-user",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "command",
-        "Type": "App.Application.Commands.Roles.AssignPermissionToUserCommand",
         "IsRequired": true
       }
     ],

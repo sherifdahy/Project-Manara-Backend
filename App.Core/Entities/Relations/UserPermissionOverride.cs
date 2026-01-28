@@ -4,9 +4,8 @@ namespace App.Core.Entities.Relations;
 
 public class UserPermissionOverride
 {
-    public bool IsAllowed { get; set; } = false;
+    public string ClaimValue { get; set; }=string.Empty;
+    public bool IsAllowed { get; set; } 
     public int ApplicationUserId { get; set; }
-    public int RoleClaimId { get; set; }  
     public ApplicationUser ApplicationUser { get; set; } = default!;
-    public IdentityRoleClaim<int> RoleClaim { get; set; } = default!;
 }

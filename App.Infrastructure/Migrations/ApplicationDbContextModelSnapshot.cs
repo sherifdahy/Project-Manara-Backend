@@ -291,17 +291,16 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("ApplicationUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoleClaimId")
-                        .HasColumnType("int");
+                    b.Property<string>("ClaimValue")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("IsAllowed")
                         .HasColumnType("bit");
 
-                    b.HasKey("ApplicationUserId", "RoleClaimId");
+                    b.HasKey("ApplicationUserId", "ClaimValue");
 
-                    b.HasIndex("RoleClaimId");
-
-                    b.ToTable("UserPermissionOverrides");
+                    b.ToTable("UserPermissionOverride");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -811,15 +810,7 @@ namespace App.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", "RoleClaim")
-                        .WithMany()
-                        .HasForeignKey("RoleClaimId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("ApplicationUser");
-
-                    b.Navigation("RoleClaim");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>

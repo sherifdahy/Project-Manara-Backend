@@ -1,6 +1,8 @@
 ﻿using App.Application.Commands.Authentications;
 using App.Application.Responses.Faculties;
+using App.Application.Responses.Roles;
 using App.Core.Entities.Identity;
+using App.Core.Entities.Relations;
 using Mapster;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,13 @@ public class MappingConfigurations : IRegister
                     src => src.Faculties
                     .Where(f => !f.IsDeleted));
 
+        config.NewConfig<UserPermissionOverride, AssignToUserPermissionResponse>()
+            .MapWith(src =>
+                new AssignToUserPermissionResponse(
+                    src.ApplicationUserId,
+                    src.ClaimValue,
+                    src.IsAllowed
+                ));
 
         config.NewConfig<Faculty, FacultyResponse>()
              .Map(dest => dest.NumberOfStudents,

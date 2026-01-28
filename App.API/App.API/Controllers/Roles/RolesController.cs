@@ -39,14 +39,6 @@ public class RolesController(IMediator _mediator) : ControllerBase
         return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 
-    [HttpPut("assign-permission-user")]
-    [HasPermission(Permissions.UpdateRoles)]
-    public async Task<IActionResult> AssignRoleToUser([FromBody] AssignPermissionToUserCommand command, CancellationToken cancellationToken)
-    {
-        var result = await _mediator.Send(command, cancellationToken);
-        return result.IsSuccess ? NoContent() : result.ToProblem();
-    }
-
     [HttpPut]
     [HasPermission(Permissions.UpdateRoles)]
     public async Task<IActionResult> Update([FromBody] UpdateRoleCommand command, CancellationToken cancellationToken)
@@ -62,6 +54,8 @@ public class RolesController(IMediator _mediator) : ControllerBase
         var result = await _mediator.Send(new ToggleStatusRoleCommand(id), cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
+
+
 
 
 }

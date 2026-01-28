@@ -8,20 +8,17 @@ using App.Infrastructure.Localization.Localizers;
 
 namespace App.Application.Validations.Roles;
 
-public class AssignPermissionToUserValidator : AbstractValidator<AssignPermissionToUserCommand>
+public class AssignPermissionToUserCommandValidator : AbstractValidator<AssignPermissionToUserCommand>
 {
-    public AssignPermissionToUserValidator(JsonStringLocalizer localizer)
+    public AssignPermissionToUserCommandValidator(JsonStringLocalizer localizer)
     {
         RuleFor(x => x.UserId)
             .NotEmpty();
 
-        RuleFor(x => x.RoleId)
+        RuleFor(x => x.ClaimValue)
             .NotEmpty();
-
-        RuleFor(x => x.RoleClaim)
-            .NotEmpty();
-
+           
         RuleFor(x => x.IsAllowed)
-            .NotEmpty();
+            .NotNull();
     }
 }

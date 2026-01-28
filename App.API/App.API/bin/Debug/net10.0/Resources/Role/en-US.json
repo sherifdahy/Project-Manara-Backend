@@ -3,5 +3,7 @@
   "InvalidPermissions": "You do not have the required permissions to perform this action",
   "InvalidId": "The provided role ID is invalid",
   "DuplicatedRole": "A role with this name already exists",
-  "ModificationForbidden": "Modifying the system administrator role is not allowed."
+  "ModificationForbidden": "Modifying the system administrator role is not allowed.",
+  "UserAlreadyHasPermission": "This User Has Already This Permission",
+  "OverridePermissionNotFound": "This OverridePermission Is Not Found"
 }

@@ -50,7 +50,7 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager,IUni
 
         foreach (var over in user.PermissionOverrides)
         {
-            var permissionValue = over.RoleClaim.ClaimValue;
+            var permissionValue = over.ClaimValue;
 
             if (over.IsAllowed)
             {

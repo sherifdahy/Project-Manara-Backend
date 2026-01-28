@@ -24,7 +24,6 @@ public class LoginCommandHandler(UserManager<ApplicationUser> userManager
         var user = _userManager.Users
             .Include(w => w.RefreshTokens)
             .Include(s => s.PermissionOverrides)
-            .ThenInclude(po => po.RoleClaim)
             .FirstOrDefault(x => x.Email == request.Email);
 
         if (user is null)
