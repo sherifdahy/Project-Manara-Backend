@@ -1,65 +1,62 @@
 ﻿using App.Application.Queries.Universities;
 using App.Application.Responses.Faculties;
+using App.Core.Entities.Universities;
+using App.Core.Enums;
+using App.Infrastructure.Presistance.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace App.Application.Handlers.Queries.Universities;
 
-public class GetUniversityQueryHandler(IUnitOfWork unitOfWork, UniversityErrors errors) : IRequestHandler<GetUniversityQuery, Result<UniversityDetailResponse>>
+public class GetUniversityQueryHandler(UniversityErrors errors, ApplicationDbContext context) : IRequestHandler<GetUniversityQuery, Result<UniversityDetailResponse>>
 {
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly UniversityErrors _errors = errors;
+    private readonly ApplicationDbContext _context = context;
 
-    #region OldCode
-    //public async Task<Result<UniversityDetailResponse>> Handle(GetUniversityQuery request, CancellationToken cancellationToken)
-    //{
-    //    var university = await _unitOfWork.Universities.FindAsync(x => x.Id == request.Id,
-    //                                                              new Expression<Func<University, object>>[] { u => u.Faculties.Where(x => x.IsDeleted == false) },
-    //                                                              cancellationToken);
 
-    //    if (university == null)
-    //        return Result.Failure<UniversityDetailResponse>(_errors.NotFound);
-
-    //    var response = university.Adapt<UniversityDetailResponse>();
-
-    //    return Result.Success(response);
-    //} 
-    #endregion
-
-    public async Task<Result<UniversityDetailResponse>> Handle( GetUniversityQuery request,CancellationToken cancellationToken)
+    public async Task<Result<UniversityDetailResponse>> Handle(GetUniversityQuery request, CancellationToken cancellationToken)
     {
-        //var university = await _unitOfWork.Universities
-        //    .Query()
-        //    .Where(u => u.Id == request.Id)
-        //    .Select(u => new UniversityDetailResponse(
-        //        u.Id,
-        //        u.Name,
-        //        u.Description,
-        //        u.Address,
-        //        u.Email,
-        //        u.Website,
-        //        u.Faculties
-        //            .Where(f => !f.IsDeleted)
-        //            .Select(f => new FacultyResponse(
-        //                f.Id,
-        //                f.Name,
-        //                f.Description,
-        //                f.Address,
-        //                f.Email,
-        //                f.Website,
-        //                f.IsDeleted,
-        //                f.Departments
-        //                    .SelectMany(d => d.Programs)
-        //                    .SelectMany(p => p.Students)
-        //                    .Count()
-        //            ))
-        //            .ToList()
-        //    ))
-        //    .FirstOrDefaultAsync(cancellationToken);
 
-        //if (university == null)
-        //    return Result.Failure<UniversityDetailResponse>(_errors.NotFound);
+        var university = await _context.Universities
+            .Where(un => un.Id == request.Id && !un.IsDeleted)
+            .Select(un => new UniversityDetailResponse(
+                un.Id,
+                un.Name,
+                un.Description,
+                un.Address,
+                un.Email,
+                un.Website,
+                un.YearOfEstablishment,
+                _context.Users.Count(u => u.UniversityId==request.Id && !u.IsDisabled && _context.UserRoles
+                .Any(ur=>ur.UserId==u.Id && _context.Roles.Any(r=>r.Id==ur.RoleId && r.RoleType==RoleType.Student))),
+                _context.Users.Count(u => u.UniversityId == request.Id && !u.IsDisabled && _context.UserRoles
+                .Any(ur => ur.UserId == u.Id && _context.Roles.Any(r => r.Id == ur.RoleId && r.RoleType == RoleType.Staff))),
+                un.Faculties.Where(f=>!f.IsDeleted).Count(),
+                un.Faculties
+                    .Where(f => !f.IsDeleted)
+                    .Select(f => new FacultyResponse(
+                        f.Id,
+                        f.Name,
+                        f.Description,
+                        f.Address,
+                        f.Email,
+                        f.Website,
+                        f.IsDeleted,
+                        _context.Users.Count(u => u.FacultyId == f.Id && !u.IsDisabled && _context.UserRoles
+                        .Any(ur => ur.UserId == u.Id && _context.Roles.Any(r => r.Id == ur.RoleId && r.RoleType == RoleType.Student))),
+                        _context.Users.Count(u => u.FacultyId == f.Id && !u.IsDisabled && _context.UserRoles
+                        .Any(ur => ur.UserId == u.Id && _context.Roles.Any(r => r.Id == ur.RoleId && r.RoleType == RoleType.Staff)))
+                    ))
+                    .ToList()
+            ))
+            .FirstOrDefaultAsync(cancellationToken);
 
-        return Result.Failure<UniversityDetailResponse>("s");
+        if (university == null)
+            return Result.Failure<UniversityDetailResponse>(_errors.NotFound);
+
+        return Result.Success<UniversityDetailResponse>(university);
     }
 
 }
+
+
