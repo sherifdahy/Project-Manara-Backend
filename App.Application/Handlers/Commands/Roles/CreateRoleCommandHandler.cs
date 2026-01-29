@@ -28,10 +28,6 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
 
     public async Task<Result<RoleDetailResponse>> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
     {
-        var existRole = await _roleManager.FindByNameAsync(request.Name);
-
-        if (existRole is not null)
-            return Result.Failure<RoleDetailResponse>(_roleErrors.Duplicated);
 
         var allowedPermissions = Permissions.GetAllPermissions();
 
@@ -53,6 +49,7 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
             ConcurrencyStamp = Guid.NewGuid().ToString(),
         };
 
+        //This Now Check The Custom Validator (That Make The UniversityId And The RoleName As A composite Key)
         var result = await _roleManager.CreateAsync(newRole);
 
         if(result.Succeeded)

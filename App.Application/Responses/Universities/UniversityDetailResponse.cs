@@ -13,5 +13,9 @@ public record UniversityDetailResponse
     string Address,
     string Email,
     string Website,
+    int YearOfEstablishment,
+    int NumberOfStudents,
+    int NumberOfStuff,
+    int NumberOfFacilities,
     List<FacultyResponse> Faculties
 );

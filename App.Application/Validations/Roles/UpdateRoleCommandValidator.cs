@@ -18,10 +18,6 @@ public class UpdateRoleCommandValidator : AbstractValidator<UpdateRoleCommand>
             .NotEmpty()
             .NotNull();
 
-        RuleFor(x => x.UniversityId)
-            .NotEmpty()
-            .NotNull();
-
         RuleFor(x => x.Permissions)
             .NotNull()
             .NotEmpty();

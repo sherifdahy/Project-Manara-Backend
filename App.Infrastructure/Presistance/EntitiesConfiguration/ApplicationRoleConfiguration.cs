@@ -18,6 +18,16 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
 
         builder.EnumInRange(x => x.RoleType);
 
+        builder.HasIndex(r => r.NormalizedName)
+            .IsUnique()
+            .HasFilter("[UniversityId] IS NULL")
+            .HasDatabaseName("IX_AspNetRoles_NormalizedName_Global");
+
+        builder.HasIndex(r => new { r.NormalizedName, r.UniversityId })
+            .IsUnique()
+            .HasFilter("[UniversityId] IS NOT NULL")
+            .HasDatabaseName("IX_AspNetRoles_NormalizedName_UniversityId");
+
 
         builder.HasData
         (

@@ -26,4 +26,7 @@ public  class RoleErrors
 
     public  Error Duplicated 
         => new("Role.DuplicatedRole", _localizer[RoleLocalizationKeys.DuplicatedRole, LocalizationFolderNames.Role], StatusCodes.Status409Conflict);
+
+    public Error DuplicatedForUniversity
+    => new("Role.DuplicatedForUniversity", _localizer[RoleLocalizationKeys.DuplicatedForUniversity, LocalizationFolderNames.Role], StatusCodes.Status409Conflict);
 }

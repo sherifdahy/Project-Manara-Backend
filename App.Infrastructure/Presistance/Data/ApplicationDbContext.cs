@@ -34,14 +34,24 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
     }
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<ApplicationUser>()
-        .Property(u => u.IsDisabled)
-        .HasColumnName("IsDisabled")
-        .HasDefaultValue(false);
+        base.OnModelCreating(builder);
 
+        var roleEntity = builder.Entity<ApplicationRole>().Metadata;
+        var roleNameIndex = roleEntity.GetIndexes()
+            .FirstOrDefault(i =>
+                i.Properties.Count == 1 &&
+                i.Properties.First().Name == nameof(ApplicationRole.NormalizedName));
+
+        if (roleNameIndex != null)
+        {
+            roleEntity.RemoveIndex(roleNameIndex);
+        }
+
+        builder.Entity<ApplicationUser>()
+            .Property(u => u.IsDisabled)
+            .HasColumnName("IsDisabled")
+            .HasDefaultValue(false);
 
         builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
-
-        base.OnModelCreating(builder);
     }
 }

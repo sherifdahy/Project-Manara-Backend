@@ -30,9 +30,6 @@ public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
         if (request.Id == DefaultRoles.SystemAdminRoleId)
             return Result.Failure(_errors.ModificationForbidden);
 
-        if (await _roleManager.Roles.AnyAsync(x=>x.Name == request.Name && x.Id != request.Id))
-            return Result.Failure(_errors.Duplicated);
-
         var allawedPermissions = Permissions.GetAllPermissions();
 
         if (request.Permissions.Except(allawedPermissions).Any())
@@ -42,16 +39,13 @@ public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
             return Result.Failure(_errors.NotFound);
 
 
-        if (!(_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId)))
-            return Result.Failure<RoleDetailResponse>(_universityErrors.InvalidId);
-
         if (!Enum.IsDefined(typeof(RoleType), request.RoleType))
             return Result.Failure<RoleDetailResponse>(_permissionErrors.InvalidType);
 
         role.Name = request.Name;
-        role.UniversityId=request.UniversityId;
         role.RoleType=request.RoleType;
 
+        //This Now Check The Custom Validator (That Make The UniversityId And The RoleName As A composite Key)
         var result = await _roleManager.UpdateAsync(role);
 
         if(result.Succeeded)

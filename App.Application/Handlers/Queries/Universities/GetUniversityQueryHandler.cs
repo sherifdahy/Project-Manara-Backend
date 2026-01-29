@@ -27,39 +27,39 @@ public class GetUniversityQueryHandler(IUnitOfWork unitOfWork, UniversityErrors 
 
     public async Task<Result<UniversityDetailResponse>> Handle( GetUniversityQuery request,CancellationToken cancellationToken)
     {
-        var university = await _unitOfWork.Universities
-            .Query()
-            .Where(u => u.Id == request.Id)
-            .Select(u => new UniversityDetailResponse(
-                u.Id,
-                u.Name,
-                u.Description,
-                u.Address,
-                u.Email,
-                u.Website,
-                u.Faculties
-                    .Where(f => !f.IsDeleted)
-                    .Select(f => new FacultyResponse(
-                        f.Id,
-                        f.Name,
-                        f.Description,
-                        f.Address,
-                        f.Email,
-                        f.Website,
-                        f.IsDeleted,
-                        f.Departments
-                            .SelectMany(d => d.Programs)
-                            .SelectMany(p => p.Students)
-                            .Count()
-                    ))
-                    .ToList()
-            ))
-            .FirstOrDefaultAsync(cancellationToken);
+        //var university = await _unitOfWork.Universities
+        //    .Query()
+        //    .Where(u => u.Id == request.Id)
+        //    .Select(u => new UniversityDetailResponse(
+        //        u.Id,
+        //        u.Name,
+        //        u.Description,
+        //        u.Address,
+        //        u.Email,
+        //        u.Website,
+        //        u.Faculties
+        //            .Where(f => !f.IsDeleted)
+        //            .Select(f => new FacultyResponse(
+        //                f.Id,
+        //                f.Name,
+        //                f.Description,
+        //                f.Address,
+        //                f.Email,
+        //                f.Website,
+        //                f.IsDeleted,
+        //                f.Departments
+        //                    .SelectMany(d => d.Programs)
+        //                    .SelectMany(p => p.Students)
+        //                    .Count()
+        //            ))
+        //            .ToList()
+        //    ))
+        //    .FirstOrDefaultAsync(cancellationToken);
 
-        if (university == null)
-            return Result.Failure<UniversityDetailResponse>(_errors.NotFound);
+        //if (university == null)
+        //    return Result.Failure<UniversityDetailResponse>(_errors.NotFound);
 
-        return Result.Success(university);
+        return Result.Failure<UniversityDetailResponse>("s");
     }
 
 }

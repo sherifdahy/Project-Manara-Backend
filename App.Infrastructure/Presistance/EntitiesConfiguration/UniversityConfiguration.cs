@@ -16,6 +16,9 @@ public class UniversityConfiguration : IEntityTypeConfiguration<University>
             .IsRequired()
             .HasMaxLength(500);
 
+        builder.ToTable(t => t.HasCheckConstraint(
+            "CK_University_YearOfEstablishment",
+            "[YearOfEstablishment] >= 1800 AND [YearOfEstablishment] <= YEAR(GETDATE())"));
 
         builder.Property(x => x.Address)
             .IsRequired()

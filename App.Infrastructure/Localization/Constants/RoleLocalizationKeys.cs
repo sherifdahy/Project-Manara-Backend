@@ -10,4 +10,6 @@ public class RoleLocalizationKeys
     public static readonly string InvalidId = nameof(InvalidId);
 
     public static readonly string DuplicatedRole = nameof(DuplicatedRole);
+
+    public static readonly string DuplicatedForUniversity = nameof(DuplicatedForUniversity);
 }
