@@ -6,5 +6,6 @@
   "LockedUser": "Your account has been locked. Please contact your administrator",
   "DuplicatedEmail": "This email address is already registered",
   "InvalidToken": "The authentication token is invalid or has expired",
-  "InvalidCode": "The verification code is invalid or has expired"
+  "InvalidCode": "The verification code is invalid or has expired",
+  "NotFound" : "The User Is Not Found"
 }

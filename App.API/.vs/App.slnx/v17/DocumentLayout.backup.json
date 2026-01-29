@@ -47,8 +47,7 @@
               "RelativeToolTip": "..\\App.Application\\Mapping\\MappingConfigurations.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAzwCAAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T18:28:25.986Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T18:28:25.986Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionToUserCommandHandler.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAnwDoAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T18:10:49.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T18:10:49.361Z"
             },
             {
               "$type": "Document",
@@ -73,8 +71,7 @@
               "RelativeToolTip": "..\\App.Core\\Consts\\Permissions.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAAwB8AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T17:50:46.946Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T17:50:46.946Z"
             },
             {
               "$type": "Document",
@@ -99,8 +96,7 @@
               "RelativeToolTip": "App.API\\Controllers\\Roles\\RolesController.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAQwCYAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T17:08:30.995Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T17:08:30.995Z"
             }
           ]
         }
