@@ -104,24 +104,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "command",
-        "Type": "App.Application.Commands.Faculties.CreateFacultyCommand",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Faculties.FaculitiesController",
-    "Method": "Update",
-    "RelativePath": "api/Faculities",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "command",
-        "Type": "App.Application.Commands.Faculties.UpdateFacultyCommand",
+        "Name": "request",
+        "Type": "App.Application.Contracts.Faculties.FacultyRequest",
         "IsRequired": true
       }
     ],
@@ -145,6 +129,27 @@
   },
   {
     "ContainingType": "App.API.Controllers.Faculties.FaculitiesController",
+    "Method": "Update",
+    "RelativePath": "api/Faculities/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Faculties.FacultyRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Faculties.FaculitiesController",
     "Method": "ToggleStatus",
     "RelativePath": "api/Faculities/{id}/toggle-status",
     "HttpMethod": "DELETE",
@@ -154,38 +159,6 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
-    "Method": "AssignPermissionToUser",
-    "RelativePath": "api/Permissions/assign-permission-user",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "command",
-        "Type": "App.Application.Commands.Roles.AssignPermissionToUserCommand",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
-    "Method": "TogglePermissionToUser",
-    "RelativePath": "api/Permissions/toggle-permission-status",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "command",
-        "Type": "App.Application.Commands.Roles.ToggleStatusPermissionCommand",
         "IsRequired": true
       }
     ],
@@ -209,38 +182,6 @@
   },
   {
     "ContainingType": "App.API.Controllers.Roles.RolesController",
-    "Method": "Create",
-    "RelativePath": "api/Roles",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "command",
-        "Type": "App.Application.Commands.Roles.CreateRoleCommand",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Roles.RolesController",
-    "Method": "Update",
-    "RelativePath": "api/Roles",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "command",
-        "Type": "App.Application.Commands.Roles.UpdateRoleCommand",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Roles.RolesController",
     "Method": "GetById",
     "RelativePath": "api/Roles/{id}",
     "HttpMethod": "GET",
@@ -250,6 +191,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Roles.RolesController",
+    "Method": "Update",
+    "RelativePath": "api/Roles/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Roles.RoleRequest",
         "IsRequired": true
       }
     ],
@@ -296,24 +258,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "command",
-        "Type": "App.Application.Commands.Universities.CreateUniversityCommand",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Universities.UniversitiesController",
-    "Method": "Update",
-    "RelativePath": "api/Universities",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "command",
-        "Type": "App.Application.Commands.Universities.UpdateUniversityCommand",
+        "Name": "request",
+        "Type": "App.Application.Contracts.Universities.UniversityRequest",
         "IsRequired": true
       }
     ],
@@ -330,6 +276,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Universities.UniversitiesController",
+    "Method": "Update",
+    "RelativePath": "api/Universities/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Universities.UniversityRequest",
         "IsRequired": true
       }
     ],
@@ -368,6 +335,69 @@
         "Name": "includeDisabled",
         "Type": "System.Boolean",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Roles.RolesController",
+    "Method": "Create",
+    "RelativePath": "api/universities/{universityId}/roles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universityId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Roles.RoleRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
+    "Method": "AssignPermissionToUser",
+    "RelativePath": "api/users/{userId}/permissions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Roles.AssignPermissionToUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
+    "Method": "TogglePermissionToUser",
+    "RelativePath": "api/users/{userId}/permissions",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Roles.ToggleStatusPermissionRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -1,8 +1,10 @@
 ﻿using App.Application.Commands.Universities;
+using App.Application.Contracts.Universities;
 using App.Application.Queries.Roles;
 using App.Application.Queries.Universities;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,17 +37,16 @@ public class UniversitiesController(IMediator mediator) : ControllerBase
 
     [HttpPost]
     [HasPermission(Permissions.CreateUniversities)]
-    public async Task<IActionResult> Create(CreateUniversityCommand command, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> Create(UniversityRequest request, CancellationToken cancellationToken = default)
     {
-        var result = await _mediator.Send(command, cancellationToken);
+        var result = await _mediator.Send(request.Adapt<CreateUniversityCommand>(), cancellationToken);
         return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
-
-    [HttpPut]
+    [HttpPut("{id}")]
     [HasPermission(Permissions.UpdateUniversities)]
-    public async Task<IActionResult> Update(UpdateUniversityCommand command, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> Update([FromRoute]int id,[FromBody]UniversityRequest request, CancellationToken cancellationToken = default)
     {
-        var result = await _mediator.Send(command, cancellationToken);
+        var result = await _mediator.Send(request.Adapt<UpdateUniversityCommand>() with { Id = id }, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 

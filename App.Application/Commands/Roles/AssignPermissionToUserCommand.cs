@@ -5,7 +5,7 @@ using App.Core.Enums;
 
 namespace App.Application.Commands.Roles;
 
-public class AssignPermissionToUserCommand :IRequest<Result<AssignToUserPermissionResponse>>
+public record AssignPermissionToUserCommand :IRequest<Result<AssignToUserPermissionResponse>>
 {
     public int UserId { get; set; } 
     public string ClaimValue { get; set; }=string.Empty;

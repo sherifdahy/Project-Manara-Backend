@@ -1,6 +1,8 @@
 ﻿using App.Application.Commands.Roles;
+using App.Application.Contracts.Roles;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,19 +17,19 @@ namespace App.API.Controllers.Roles
 
         //TODO 
         //UserId alwayed zero 
-        [HttpPost("assign-permission-user")]
+        [HttpPost("/api/users/{userId:int}/permissions")]
         [HasPermission(Permissions.CreatePermissions)]
-        public async Task<IActionResult> AssignPermissionToUser([FromBody] AssignPermissionToUserCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> AssignPermissionToUser([FromRoute]int userId,[FromBody] AssignPermissionToUserRequest request, CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(command, cancellationToken);
+            var result = await _mediator.Send(request.Adapt<AssignPermissionToUserCommand>() with { UserId = userId }, cancellationToken);
             return result.IsSuccess ? Ok() : result.ToProblem();
         }
 
-        [HttpDelete("toggle-permission-status")]
+        [HttpDelete("/api/users/{userId:int}/permissions")]
         [HasPermission(Permissions.ToggleStatusPermissions)]
-        public async Task<IActionResult> TogglePermissionToUser(ToggleStatusPermissionCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> TogglePermissionToUser([FromRoute] int userId, ToggleStatusPermissionRequest request, CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(command, cancellationToken);
+            var result = await _mediator.Send(request.Adapt<ToggleStatusPermissionCommand>() with { UserId = userId }, cancellationToken);
             return result.IsSuccess ? NoContent() : result.ToProblem();
         }
     }

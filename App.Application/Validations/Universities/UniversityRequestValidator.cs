@@ -1,10 +1,13 @@
-﻿using App.Application.Commands.Universities;
+﻿using App.Application.Contracts.Universities;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace App.Application.Validations.Universities;
 
-public class CreateUniversityCommandValidator : AbstractValidator<CreateUniversityCommand>
+public class UniversityRequestValidator : AbstractValidator<UniversityRequest>
 {
-    public CreateUniversityCommandValidator()
+    public UniversityRequestValidator()
     {
         RuleFor(x => x.Name)
         .NotEmpty()
@@ -26,5 +29,10 @@ public class CreateUniversityCommandValidator : AbstractValidator<CreateUniversi
         RuleFor(x => x.Website)
             .NotEmpty()
             .MaximumLength(300);
+
+        RuleFor(x => x.YearOfEstablishment)
+            .NotEmpty()
+            .NotNull()
+            .InclusiveBetween(1800, DateTime.Now.Year);
     }
 }

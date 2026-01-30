@@ -47,52 +47,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUniversityCommand"
+                "$ref": "#/components/schemas/UniversityRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUniversityCommand"
+                "$ref": "#/components/schemas/UniversityRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUniversityCommand"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Universities"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUniversityCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUniversityCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUniversityCommand"
+                "$ref": "#/components/schemas/UniversityRequest"
               }
             }
           },
@@ -137,6 +102,56 @@
             "Bearer": [ ]
           }
         ]
+      },
+      "put": {
+        "tags": [
+          "Universities"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UniversityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UniversityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UniversityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
       }
     },
     "/api/Universities/{id}/toggle-status": {
@@ -171,26 +186,38 @@
         ]
       }
     },
-    "/api/Permissions/assign-permission-user": {
+    "/api/users/{userId}/permissions": {
       "post": {
         "tags": [
           "Permissions"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AssignPermissionToUserCommand"
+                "$ref": "#/components/schemas/AssignPermissionToUserRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AssignPermissionToUserCommand"
+                "$ref": "#/components/schemas/AssignPermissionToUserRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AssignPermissionToUserCommand"
+                "$ref": "#/components/schemas/AssignPermissionToUserRequest"
               }
             }
           },
@@ -206,28 +233,38 @@
             "Bearer": [ ]
           }
         ]
-      }
-    },
-    "/api/Permissions/toggle-permission-status": {
+      },
       "delete": {
         "tags": [
           "Permissions"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ToggleStatusPermissionCommand"
+                "$ref": "#/components/schemas/ToggleStatusPermissionRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ToggleStatusPermissionCommand"
+                "$ref": "#/components/schemas/ToggleStatusPermissionRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ToggleStatusPermissionCommand"
+                "$ref": "#/components/schemas/ToggleStatusPermissionRequest"
               }
             }
           },
@@ -259,76 +296,6 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "Roles"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRoleCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRoleCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRoleCommand"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Roles"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRoleCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRoleCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRoleCommand"
-              }
-            }
-          },
-          "required": true
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -372,6 +339,56 @@
           }
         ]
       },
+      "put": {
+        "tags": [
+          "Roles"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
       "delete": {
         "tags": [
           "Roles"
@@ -391,6 +408,55 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/universities/{universityId}/roles": {
+      "post": {
+        "tags": [
+          "Roles"
+        ],
+        "parameters": [
+          {
+            "name": "universityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -467,28 +533,41 @@
             "Bearer": [ ]
           }
         ]
-      }
-    },
-    "/api/Faculities": {
-      "post": {
+      },
+      "put": {
         "tags": [
           "Faculities"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateFacultyCommand"
+                "$ref": "#/components/schemas/FacultyRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateFacultyCommand"
+                "$ref": "#/components/schemas/FacultyRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateFacultyCommand"
+                "$ref": "#/components/schemas/FacultyRequest"
               }
             }
           },
@@ -504,8 +583,10 @@
             "Bearer": [ ]
           }
         ]
-      },
-      "put": {
+      }
+    },
+    "/api/Faculities": {
+      "post": {
         "tags": [
           "Faculities"
         ],
@@ -513,17 +594,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateFacultyCommand"
+                "$ref": "#/components/schemas/FacultyRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateFacultyCommand"
+                "$ref": "#/components/schemas/FacultyRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateFacultyCommand"
+                "$ref": "#/components/schemas/FacultyRequest"
               }
             }
           },
@@ -798,17 +879,9 @@
   },
   "components": {
     "schemas": {
-      "AssignPermissionToUserCommand": {
+      "AssignPermissionToUserRequest": {
         "type": "object",
         "properties": {
-          "userId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
           "claimValue": {
             "type": "string"
           },
@@ -817,7 +890,7 @@
           }
         }
       },
-      "CreateFacultyCommand": {
+      "FacultyRequest": {
         "type": "object",
         "properties": {
           "name": {
@@ -842,51 +915,6 @@
               "string"
             ],
             "format": "int32"
-          }
-        }
-      },
-      "CreateRoleCommand": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "universityId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "roleType": {
-            "$ref": "#/components/schemas/RoleType"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "CreateUniversityCommand": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "address": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "website": {
-            "type": "string"
           }
         }
       },
@@ -980,72 +1008,9 @@
           }
         }
       },
-      "RoleType": {
-        "type": "integer"
-      },
-      "ToggleStatusPermissionCommand": {
+      "RoleRequest": {
         "type": "object",
         "properties": {
-          "userId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "claimValue": {
-            "type": "string"
-          }
-        }
-      },
-      "UpdateFacultyCommand": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "address": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "website": {
-            "type": "string"
-          },
-          "universityId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          }
-        }
-      },
-      "UpdateRoleCommand": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
           "name": {
             "type": "string"
           },
@@ -1060,17 +1025,20 @@
           }
         }
       },
-      "UpdateUniversityCommand": {
+      "RoleType": {
+        "type": "integer"
+      },
+      "ToggleStatusPermissionRequest": {
         "type": "object",
         "properties": {
-          "id": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
+          "claimValue": {
+            "type": "string"
+          }
+        }
+      },
+      "UniversityRequest": {
+        "type": "object",
+        "properties": {
           "name": {
             "type": "string"
           },
@@ -1085,6 +1053,14 @@
           },
           "website": {
             "type": "string"
+          },
+          "yearOfEstablishment": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
           }
         }
       }

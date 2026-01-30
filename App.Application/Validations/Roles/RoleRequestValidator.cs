@@ -1,5 +1,5 @@
 ﻿using App.Application.Commands.Roles;
-using App.Infrastructure.Abstractions.Consts;
+using App.Application.Contracts.Roles;
 using App.Infrastructure.Localization;
 using App.Infrastructure.Localization.Constants;
 using App.Infrastructure.Localization.Localizers;
@@ -9,19 +9,15 @@ using System.Text;
 
 namespace App.Application.Validations.Roles;
 
-public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
+public class RoleRequestValidator : AbstractValidator<RoleRequest>
 {
-    public CreateRoleCommandValidator(JsonStringLocalizer localizer)
+    public RoleRequestValidator(JsonStringLocalizer localizer)
     {
         RuleFor(x => x.Name)
             .NotEmpty()
             .Length(3, 200);
 
         RuleFor(x => x.RoleType)
-            .NotEmpty()
-            .NotNull();
-
-        RuleFor(x => x.UniversityId)
             .NotEmpty()
             .NotNull();
 
@@ -33,6 +29,7 @@ public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
             .WithMessage(localizer[AuthenticationLocalizationKeys.DuplicatedPermissions, LocalizationFolderNames.Authentication])
             .When(x => x.Permissions != null);
 
-        RuleForEach(x => x.Permissions).Must(p => Permissions.GetAllPermissions().Contains(p));
+
     }
 }
+

@@ -80,12 +80,6 @@ D:\work\GraduationProject\Manaraa-University-Management-System\App.Backend\App.I
 D:\work\GraduationProject\Manaraa-University-Management-System\App.Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.pdb
 D:\work\GraduationProject\Manaraa-University-Management-System\App.Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.genruntimeconfig.cache
 D:\work\GraduationProject\Manaraa-University-Management-System\App.Backend\App.Infrastructure\obj\Debug\net10.0\ref\App.Infrastructure.dll
-D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.csproj.AssemblyReference.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.AssemblyInfoInputs.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.AssemblyInfo.cs
-D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.csproj.CoreCompileInputs.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.sourcelink.json
 D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\bin\Debug\net10.0\BuildHost-net472\Microsoft.Build.Locator.dll
 D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\bin\Debug\net10.0\BuildHost-net472\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe
 D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\bin\Debug\net10.0\BuildHost-net472\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe.config
@@ -138,6 +132,12 @@ D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\bin\Debug\ne
 D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\bin\Debug\net10.0\App.Infrastructure.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\bin\Debug\net10.0\App.Core.dll
 D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\bin\Debug\net10.0\App.Core.pdb
+D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.csproj.AssemblyReference.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.AssemblyInfoInputs.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.AssemblyInfo.cs
+D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.csproj.CoreCompileInputs.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.sourcelink.json
 D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infr.D9A1D18F.Up2Date
 D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\App.Infrastructure.dll
 D:\work\GraduationProject\Project-Manara-Backend\App.Infrastructure\obj\Debug\net10.0\refint\App.Infrastructure.dll

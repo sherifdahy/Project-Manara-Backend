@@ -1,8 +1,10 @@
 ﻿using App.Application.Authentication.Filters;
 using App.Application.Commands.Roles;
+using App.Application.Contracts.Roles;
 using App.Application.Queries.Roles;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,19 +33,19 @@ public class RolesController(IMediator _mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
-    [HttpPost]
+    [HttpPost("/api/universities/{universityId:int}/roles")]
     [HasPermission(Permissions.CreateRoles)]
-    public async Task<IActionResult> Create([FromBody] CreateRoleCommand command, CancellationToken cancellationToken)
+    public async Task<IActionResult> Create([FromRoute] int universityId,[FromBody] RoleRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(command, cancellationToken);
+        var result = await _mediator.Send(request.Adapt<CreateRoleCommand>() with { UniversityId=universityId}, cancellationToken);
         return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 
-    [HttpPut]
+    [HttpPut("{id}")]
     [HasPermission(Permissions.UpdateRoles)]
-    public async Task<IActionResult> Update([FromBody] UpdateRoleCommand command, CancellationToken cancellationToken)
+    public async Task<IActionResult> Update([FromRoute] int id,[FromBody] RoleRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(command, cancellationToken);
+        var result = await _mediator.Send(request.Adapt<UpdateRoleCommand>() with {Id=id}, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 
