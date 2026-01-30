@@ -1,4 +1,6 @@
-﻿namespace App.Application.Handlers.Commands.Authentications;
+﻿using App.Application.Contracts.Responses.Authentications;
+
+namespace App.Application.Handlers.Commands.Authentications;
 
 public class RefreshTokenCommandHandler(IJwtProvider jwtProvider
     ,UserManager<ApplicationUser> userManager

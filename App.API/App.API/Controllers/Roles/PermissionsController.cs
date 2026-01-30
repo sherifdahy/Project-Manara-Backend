@@ -1,5 +1,5 @@
 ﻿using App.Application.Commands.Roles;
-using App.Application.Contracts.Roles;
+using App.Application.Contracts.Requests.Roles;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;

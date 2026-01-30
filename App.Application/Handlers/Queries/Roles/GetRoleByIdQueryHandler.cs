@@ -1,7 +1,7 @@
 ﻿using App.Application.Abstractions;
+using App.Application.Contracts.Responses.Roles;
 using App.Application.Errors;
 using App.Application.Queries.Roles;
-using App.Application.Responses.Role;
 using App.Core.Entities.Identity;
 using App.Core.Enums;
 using MediatR;

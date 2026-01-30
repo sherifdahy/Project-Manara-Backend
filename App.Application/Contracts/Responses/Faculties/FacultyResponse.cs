@@ -1,4 +1,4 @@
-﻿namespace App.Application.Responses.Faculties;
+﻿namespace App.Application.Contracts.Responses.Faculties;
 
 public record FacultyResponse
 (

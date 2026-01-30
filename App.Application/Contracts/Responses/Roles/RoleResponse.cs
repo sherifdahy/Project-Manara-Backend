@@ -3,14 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Application.Responses.Role;
+namespace App.Application.Contracts.Responses.Roles;
 
-public record RoleDetailResponse
+public record RoleResponse
 (
     int Id,
     string Name,
     bool IsDeleted,
     int? UniversityId,
-    RoleType RoleType,
-    IEnumerable<string> Permissions
+    RoleType RoleType
 );

@@ -1,5 +1,5 @@
-﻿using App.Application.Queries.Roles;
-using App.Application.Responses.Role;
+﻿using App.Application.Contracts.Responses.Roles;
+using App.Application.Queries.Roles;
 
 
 namespace App.Application.Handlers.Queries.Roles;

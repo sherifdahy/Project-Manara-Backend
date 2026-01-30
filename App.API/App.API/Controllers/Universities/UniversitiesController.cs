@@ -1,5 +1,5 @@
 ﻿using App.Application.Commands.Universities;
-using App.Application.Contracts.Universities;
+using App.Application.Contracts.Requests.Universities;
 using App.Application.Queries.Roles;
 using App.Application.Queries.Universities;
 using App.Core.Extensions;

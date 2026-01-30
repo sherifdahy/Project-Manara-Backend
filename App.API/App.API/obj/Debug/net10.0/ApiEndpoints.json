@@ -105,7 +105,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Faculties.FacultyRequest",
+        "Type": "App.Application.Contracts.Requests.Faculties.FacultyRequest",
         "IsRequired": true
       }
     ],
@@ -142,7 +142,7 @@
       },
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Faculties.FacultyRequest",
+        "Type": "App.Application.Contracts.Requests.Faculties.FacultyRequest",
         "IsRequired": true
       }
     ],
@@ -211,7 +211,7 @@
       },
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Roles.RoleRequest",
+        "Type": "App.Application.Contracts.Requests.Roles.RoleRequest",
         "IsRequired": true
       }
     ],
@@ -259,7 +259,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Universities.UniversityRequest",
+        "Type": "App.Application.Contracts.Requests.Universities.UniversityRequest",
         "IsRequired": true
       }
     ],
@@ -296,7 +296,7 @@
       },
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Universities.UniversityRequest",
+        "Type": "App.Application.Contracts.Requests.Universities.UniversityRequest",
         "IsRequired": true
       }
     ],
@@ -354,7 +354,7 @@
       },
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Roles.RoleRequest",
+        "Type": "App.Application.Contracts.Requests.Roles.RoleRequest",
         "IsRequired": true
       }
     ],
@@ -375,7 +375,7 @@
       },
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Roles.AssignPermissionToUserRequest",
+        "Type": "App.Application.Contracts.Requests.Roles.AssignPermissionToUserRequest",
         "IsRequired": true
       }
     ],
@@ -396,7 +396,7 @@
       },
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Roles.ToggleStatusPermissionRequest",
+        "Type": "App.Application.Contracts.Requests.Roles.ToggleStatusPermissionRequest",
         "IsRequired": true
       }
     ],

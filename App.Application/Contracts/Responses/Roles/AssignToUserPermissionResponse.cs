@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Application.Responses.Roles;
+namespace App.Application.Contracts.Responses.Roles;
 
 public record AssignToUserPermissionResponse
 (

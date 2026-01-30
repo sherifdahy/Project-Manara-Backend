@@ -1,6 +1,6 @@
 ﻿using App.Application.Commands.Faculties;
 using App.Application.Commands.Universities;
-using App.Application.Contracts.Faculties;
+using App.Application.Contracts.Requests.Faculties;
 using App.Application.Queries.Faculties;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;

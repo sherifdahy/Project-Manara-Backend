@@ -1,4 +1,6 @@
-﻿namespace App.Application.Commands.Universities;
+﻿using App.Application.Contracts.Responses.Universities;
+
+namespace App.Application.Commands.Universities;
 
 public record CreateUniversityCommand : IRequest<Result<UniversityResponse>>
 {

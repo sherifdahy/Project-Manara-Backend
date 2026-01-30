@@ -1,5 +1,5 @@
 ﻿using App.Application.Commands.Faculties;
-using App.Application.Responses.Faculties;
+using App.Application.Contracts.Responses.Faculties;
 
 namespace App.Application.Handlers.Commands.Faculties;
 

@@ -1,5 +1,5 @@
 ﻿using App.Application.Commands.Faculties;
-using App.Application.Contracts.Faculties;
+using App.Application.Contracts.Requests.Faculties;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,5 +1,4 @@
-﻿
-namespace App.Application.Contracts.Universities;
+﻿namespace App.Application.Contracts.Requests.Universities;
 
 public record UniversityRequest
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Application.Responses.Authentications;
+namespace App.Application.Contracts.Responses.Authentications;
 
 public record AuthenticationResponse(
     int Id,

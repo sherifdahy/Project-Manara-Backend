@@ -1,4 +1,5 @@
-﻿using App.Application.Queries.Universities;
+﻿using App.Application.Contracts.Responses.Universities;
+using App.Application.Queries.Universities;
 
 namespace App.Application.Handlers.Queries.Universities;
 

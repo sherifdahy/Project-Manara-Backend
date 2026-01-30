@@ -1,4 +1,4 @@
-﻿using App.Application.Responses.Faculties;
+﻿using App.Application.Contracts.Responses.Faculties;
 
 namespace App.Application.Queries.Faculties;
 

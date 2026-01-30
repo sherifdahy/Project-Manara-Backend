@@ -1,4 +1,5 @@
-﻿using App.Core.Entities.Identity;
+﻿using App.Application.Contracts.Responses.Authentications;
+using App.Core.Entities.Identity;
 using App.Infrastructure.Abstractions.Consts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;

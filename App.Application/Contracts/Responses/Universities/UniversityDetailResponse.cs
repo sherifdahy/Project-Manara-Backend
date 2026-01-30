@@ -1,9 +1,9 @@
-﻿using App.Application.Responses.Faculties;
+﻿using App.Application.Contracts.Responses.Faculties;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Application.Responses.Universities;
+namespace App.Application.Contracts.Responses.Universities;
 
 public record UniversityDetailResponse
 (

@@ -1,4 +1,5 @@
-﻿using App.Application.Responses.Faculties;
+﻿using App.Application.Contracts.Responses.Faculties;
+
 namespace App.Application.Commands.Faculties;
 
 public record CreateFacultyCommand : IRequest<Result<FacultyResponse>>

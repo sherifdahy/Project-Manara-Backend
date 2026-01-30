@@ -1,4 +1,6 @@
-﻿namespace App.Application.Commands.Authentications;
+﻿using App.Application.Contracts.Responses.Authentications;
+
+namespace App.Application.Commands.Authentications;
 
 public record RefreshTokenCommand : IRequest<Result<AuthenticationResponse>>
 {

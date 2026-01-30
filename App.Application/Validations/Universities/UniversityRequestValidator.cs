@@ -1,4 +1,4 @@
-﻿using App.Application.Contracts.Universities;
+﻿using App.Application.Contracts.Requests.Universities;
 using System;
 using System.Collections.Generic;
 using System.Text;

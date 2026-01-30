@@ -1,4 +1,6 @@
-﻿namespace App.Application.Handlers.Commands.Universities;
+﻿using App.Application.Contracts.Responses.Universities;
+
+namespace App.Application.Handlers.Commands.Universities;
 
 public class CreateUniversityCommandHandler(IUnitOfWork unitOfWork,UniversityErrors errors) : IRequestHandler<CreateUniversityCommand, Result<UniversityResponse>>
 {

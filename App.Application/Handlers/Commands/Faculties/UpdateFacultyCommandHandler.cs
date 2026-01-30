@@ -1,6 +1,6 @@
 ﻿using App.Application.Commands.Faculties;
+using App.Application.Contracts.Responses.Faculties;
 using App.Application.Errors;
-using App.Application.Responses.Faculties;
 
 namespace App.Application.Handlers.Commands.Faculties;
 

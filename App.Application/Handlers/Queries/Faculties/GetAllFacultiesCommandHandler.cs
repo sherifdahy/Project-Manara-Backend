@@ -1,5 +1,5 @@
-﻿using App.Application.Queries.Faculties;
-using App.Application.Responses.Faculties;
+﻿using App.Application.Contracts.Responses.Faculties;
+using App.Application.Queries.Faculties;
 
 namespace App.Application.Handlers.Queries.Faculties;
 

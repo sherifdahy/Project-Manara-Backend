@@ -1,5 +1,5 @@
 ﻿using App.Application.Abstractions;
-using App.Application.Responses.Role;
+using App.Application.Contracts.Responses.Roles;
 using MediatR;
 using System;
 using System.Collections.Generic;

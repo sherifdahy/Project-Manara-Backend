@@ -1,5 +1,4 @@
-﻿
-namespace App.Application.Contracts.Faculties;
+﻿namespace App.Application.Contracts.Requests.Faculties;
 
 public record FacultyRequest
 {

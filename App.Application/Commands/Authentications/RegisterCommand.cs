@@ -1,5 +1,5 @@
 ﻿using App.Application.Abstractions;
-using App.Application.Responses.Authentications;
+using App.Application.Contracts.Responses.Authentications;
 using MediatR;
 using System;
 using System.Collections.Generic;

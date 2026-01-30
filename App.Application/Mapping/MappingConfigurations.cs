@@ -1,6 +1,7 @@
 ﻿using App.Application.Commands.Authentications;
-using App.Application.Responses.Faculties;
-using App.Application.Responses.Roles;
+using App.Application.Contracts.Responses.Faculties;
+using App.Application.Contracts.Responses.Roles;
+using App.Application.Contracts.Responses.Universities;
 using App.Core.Entities.Identity;
 using App.Core.Entities.Relations;
 using Mapster;

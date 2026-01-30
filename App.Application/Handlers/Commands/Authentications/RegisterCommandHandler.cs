@@ -1,4 +1,5 @@
 ﻿
+using App.Application.Contracts.Responses.Authentications;
 using App.Infrastructure.Abstractions.Consts;
 using System.Security.Cryptography;
 namespace App.Application.Handlers.Commands.Authentications;

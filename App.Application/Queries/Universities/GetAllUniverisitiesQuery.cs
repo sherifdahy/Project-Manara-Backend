@@ -1,4 +1,4 @@
-﻿using App.Application.Responses.Universities;
+﻿using App.Application.Contracts.Responses.Universities;
 
 namespace App.Application.Queries.Universities;
 

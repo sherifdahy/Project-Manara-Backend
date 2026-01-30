@@ -1,9 +1,8 @@
 ﻿
 
 using App.Application.Commands.Roles;
+using App.Application.Contracts.Responses.Roles;
 using App.Application.Errors;
-using App.Application.Responses.Role;
-using App.Application.Responses.Roles;
 using App.Core.Entities.Relations;
 using App.Infrastructure.Abstractions.Consts;
 using Microsoft.AspNetCore.Identity;

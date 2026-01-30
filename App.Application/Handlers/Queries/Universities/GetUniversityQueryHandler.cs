@@ -1,5 +1,6 @@
-﻿using App.Application.Queries.Universities;
-using App.Application.Responses.Faculties;
+﻿using App.Application.Contracts.Responses.Faculties;
+using App.Application.Contracts.Responses.Universities;
+using App.Application.Queries.Universities;
 using App.Core.Entities.Universities;
 using App.Core.Enums;
 using App.Infrastructure.Presistance.Data;
