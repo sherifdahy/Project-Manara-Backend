@@ -1,21 +1,29 @@
 ﻿using App.Application.Commands.Faculties;
+using App.Application.Errors;
+using App.Application.Responses.Faculties;
 
 namespace App.Application.Handlers.Commands.Faculties;
 
-public class UpdateFacultyCommandHandler(IUnitOfWork unitOfWork,FacultyErrors errors) : IRequestHandler<UpdateFacultyCommand, Result>
+public class UpdateFacultyCommandHandler(IUnitOfWork unitOfWork
+    ,FacultyErrors facultyErrors
+    ,UniversityErrors universityErrors) : IRequestHandler<UpdateFacultyCommand, Result>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
-    private readonly FacultyErrors _errors = errors;
+    private readonly FacultyErrors _facultyErrors = facultyErrors;
+    private readonly UniversityErrors _universityErrors = universityErrors;
 
     public async Task<Result> Handle(UpdateFacultyCommand request, CancellationToken cancellationToken)
     {
         if (_unitOfWork.Fauclties.IsExist(x => x.Name == request.Name && x.Id != request.Id))
-            return Result.Failure(_errors.DuplicatedName);
+            return Result.Failure(_facultyErrors.DuplicatedName);
+
+        if (!_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId))
+            return Result.Failure<FacultyResponse>(_universityErrors.NotFound);
 
         var faculty = await _unitOfWork.Fauclties.GetByIdAsync(request.Id, cancellationToken);
 
         if (faculty == null)
-            return Result.Failure(_errors.NotFound);
+            return Result.Failure(_facultyErrors.NotFound);
 
         request.Adapt(faculty);
 
