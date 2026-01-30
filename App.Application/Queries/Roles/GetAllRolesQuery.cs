@@ -7,11 +7,11 @@ using System.Text;
 
 namespace App.Application.Queries.Roles;
 
-public class GetAllRolesCommand : IRequest<Result<List<RoleResponse>>>
+public class GetAllRolesQuery : IRequest<Result<List<RoleResponse>>>
 {
     public bool? IncludeDisabled { get; set; } = false;
 
-    public GetAllRolesCommand(bool? includeDisabled)
+    public GetAllRolesQuery(bool? includeDisabled)
     {
         IncludeDisabled = includeDisabled;
     }

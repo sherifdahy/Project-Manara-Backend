@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Identity;
 
 namespace App.Application.Handlers.Queries.Roles;
 
-public class GetRoleByIdQueryHandler(RoleManager<ApplicationRole> _roleManager,RoleErrors errors) : IRequestHandler<GetRoleByIdCommand, Result<RoleDetailResponse>>
+public class GetRoleByIdQueryHandler(RoleManager<ApplicationRole> _roleManager,RoleErrors errors) : IRequestHandler<GetRoleByIdQuery, Result<RoleDetailResponse>>
 {
     private readonly RoleErrors _errors = errors;
 
-    public async Task<Result<RoleDetailResponse>> Handle(GetRoleByIdCommand request, CancellationToken cancellationToken)
+    public async Task<Result<RoleDetailResponse>> Handle(GetRoleByIdQuery request, CancellationToken cancellationToken)
     {
         if (await _roleManager.FindByIdAsync(request.Id.ToString()) is not { } role)
             return Result.Failure<RoleDetailResponse>(_errors.NotFound);

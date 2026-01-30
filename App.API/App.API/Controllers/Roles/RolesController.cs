@@ -21,7 +21,15 @@ public class RolesController(IMediator _mediator) : ControllerBase
     [HasPermission(Permissions.GetRoles)]
     public async Task<IActionResult> GetAllRoles([FromQuery] bool includeDisabled, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetAllRolesCommand(includeDisabled), cancellationToken);
+        var result = await _mediator.Send(new GetAllRolesQuery(includeDisabled), cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
+    [HttpGet("/api/universities/{universityId:int}/roles")]
+    [HasPermission(Permissions.GetRoles)]
+    public async Task<IActionResult> GetAllRoles([FromRoute] int universityId, [FromQuery] bool includeDisabled, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new GetAllRolesByUniversityIdQuery(includeDisabled,universityId), cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
@@ -29,7 +37,7 @@ public class RolesController(IMediator _mediator) : ControllerBase
     [HasPermission(Permissions.GetRoles)]
     public async Task<IActionResult> GetById([FromRoute] int id, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetRoleByIdCommand(id), cancellationToken);
+        var result = await _mediator.Send(new GetRoleByIdQuery(id), cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 

@@ -4,7 +4,7 @@ using App.Application.Queries.Roles;
 
 namespace App.Application.Handlers.Queries.Roles;
 
-public class GetAllRoleQueryHandler : IRequestHandler<GetAllRolesCommand, Result<List<RoleResponse>>>
+public class GetAllRoleQueryHandler : IRequestHandler<GetAllRolesQuery, Result<List<RoleResponse>>>
 {
     private readonly RoleManager<ApplicationRole> _roleManager;
 
@@ -13,7 +13,7 @@ public class GetAllRoleQueryHandler : IRequestHandler<GetAllRolesCommand, Result
         _roleManager = roleManager;
     }
 
-    public async Task<Result<List<RoleResponse>>> Handle(GetAllRolesCommand request, CancellationToken cancellationToken)
+    public async Task<Result<List<RoleResponse>>> Handle(GetAllRolesQuery request, CancellationToken cancellationToken)
     {
         var roles = await _roleManager
                                 .Roles

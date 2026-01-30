@@ -341,6 +341,27 @@
   },
   {
     "ContainingType": "App.API.Controllers.Roles.RolesController",
+    "Method": "GetAllRoles",
+    "RelativePath": "api/universities/{universityId}/roles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universityId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "includeDisabled",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Roles.RolesController",
     "Method": "Create",
     "RelativePath": "api/universities/{universityId}/roles",
     "HttpMethod": "POST",

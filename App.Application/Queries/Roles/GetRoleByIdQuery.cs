@@ -7,11 +7,11 @@ using System.Text;
 
 namespace App.Application.Queries.Roles;
 
-public class GetRoleByIdCommand : IRequest<Result<RoleDetailResponse>>
+public class GetRoleByIdQuery : IRequest<Result<RoleDetailResponse>>
 {
     public int Id { get; set; }
 
-    public GetRoleByIdCommand(int id)
+    public GetRoleByIdQuery(int id)
     {
         Id = id;
     }
