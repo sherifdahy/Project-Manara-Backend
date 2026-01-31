@@ -13,8 +13,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
 
     #region Db Sets
     // identity
-    public DbSet<RefreshToken> RefreshTokens { get; set; }  
-
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
+    public DbSet<UserClaimOverride> UserClaimOverrides { get; set; }
+    public DbSet<RoleClaimOverride> RoleClaimOverrides { get; set; }
 
     // bussiness logic
     public DbSet<University> Universities { get; set; }
@@ -23,7 +24,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
     public DbSet<Program> Programs { get; set; }
     public DbSet<Subject> Subjects { get; set; }
     public DbSet<Student> Students { get; set; }
-    //public DbSet<UserPermissionOverride> UserPermissionOverrides { get; set; }
+
 
     #endregion
 
@@ -36,16 +37,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
     {
         base.OnModelCreating(builder);
 
-        var roleEntity = builder.Entity<ApplicationRole>().Metadata;
-        var roleNameIndex = roleEntity.GetIndexes()
-            .FirstOrDefault(i =>
-                i.Properties.Count == 1 &&
-                i.Properties.First().Name == nameof(ApplicationRole.NormalizedName));
-
-        if (roleNameIndex != null)
-        {
-            roleEntity.RemoveIndex(roleNameIndex);
-        }
 
         builder.Entity<ApplicationUser>()
             .Property(u => u.IsDisabled)

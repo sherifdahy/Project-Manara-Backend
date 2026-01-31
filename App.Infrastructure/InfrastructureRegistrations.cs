@@ -1,5 +1,4 @@
 ﻿using App.Infrastructure.Email;
-using App.Infrastructure.Identity;
 using App.Infrastructure.Repository;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -23,10 +22,6 @@ public static class InfrastructureRegistrations
         services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-        services.RemoveAll<IRoleValidator<ApplicationRole>>();
-
-        services.AddScoped<IRoleValidator<ApplicationRole>, CustomRoleValidator<ApplicationRole>>();
 
         services.Configure<IdentityOptions>(options =>
         {

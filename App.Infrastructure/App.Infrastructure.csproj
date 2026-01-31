@@ -81,6 +81,7 @@
 
   <ItemGroup>
     <Folder Include="Abstractions\" />
+    <Folder Include="Identity\" />
   </ItemGroup>
 
 </Project>

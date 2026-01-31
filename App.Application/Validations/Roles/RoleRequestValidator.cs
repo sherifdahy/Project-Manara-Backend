@@ -17,10 +17,6 @@ public class RoleRequestValidator : AbstractValidator<RoleRequest>
             .NotEmpty()
             .Length(3, 200);
 
-        RuleFor(x => x.RoleType)
-            .NotEmpty()
-            .NotNull();
-
         RuleFor(x => x.Permissions)
             .NotNull()
             .NotEmpty();

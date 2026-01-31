@@ -306,58 +306,10 @@
             "Bearer": [ ]
           }
         ]
-      }
-    },
-    "/api/universities/{universityId}/roles": {
-      "get": {
-        "tags": [
-          "Roles"
-        ],
-        "parameters": [
-          {
-            "name": "universityId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "includeDisabled",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
       },
       "post": {
         "tags": [
           "Roles"
-        ],
-        "parameters": [
-          {
-            "name": "universityId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": "integer",
-              "format": "int32"
-            }
-          }
         ],
         "requestBody": {
           "content": {
@@ -1048,9 +1000,6 @@
           "name": {
             "type": "string"
           },
-          "roleType": {
-            "$ref": "#/components/schemas/RoleType"
-          },
           "permissions": {
             "type": "array",
             "items": {
@@ -1058,9 +1007,6 @@
             }
           }
         }
-      },
-      "RoleType": {
-        "type": "integer"
       },
       "ToggleStatusPermissionRequest": {
         "type": "object",

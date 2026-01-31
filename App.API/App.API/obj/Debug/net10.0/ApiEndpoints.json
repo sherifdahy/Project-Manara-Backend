@@ -182,6 +182,22 @@
   },
   {
     "ContainingType": "App.API.Controllers.Roles.RolesController",
+    "Method": "Create",
+    "RelativePath": "api/Roles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Requests.Roles.RoleRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Roles.RolesController",
     "Method": "GetById",
     "RelativePath": "api/Roles/{id}",
     "HttpMethod": "GET",
@@ -335,48 +351,6 @@
         "Name": "includeDisabled",
         "Type": "System.Boolean",
         "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Roles.RolesController",
-    "Method": "GetAllRoles",
-    "RelativePath": "api/universities/{universityId}/roles",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "universityId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "includeDisabled",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Roles.RolesController",
-    "Method": "Create",
-    "RelativePath": "api/universities/{universityId}/roles",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "universityId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "App.Application.Contracts.Requests.Roles.RoleRequest",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": []

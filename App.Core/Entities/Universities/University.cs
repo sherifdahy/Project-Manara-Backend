@@ -15,5 +15,4 @@ public class University
     public bool IsDeleted { get; set; }
     public ICollection<Faculty> Faculties { get; set; } = new HashSet<Faculty>();
     public ICollection<ApplicationUser> Users { get; set; } = new HashSet<ApplicationUser>();
-    public ICollection<ApplicationRole> Roles { get; set; } = new HashSet<ApplicationRole>();
 }

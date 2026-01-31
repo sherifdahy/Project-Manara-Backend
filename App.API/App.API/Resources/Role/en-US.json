@@ -6,5 +6,6 @@
   "ModificationForbidden": "Modifying the system administrator role is not allowed.",
   "UserAlreadyHasPermission": "This User Has Already This Permission",
   "OverridePermissionNotFound": "This OverridePermission Is Not Found",
-  "DuplicatedForUniversity": "This role is already exists for this university."
+  "DuplicatedForUniversity": "This role is already exists for this university.",
+  "DuplicatedPermissionForRole": "This Permission Already Exsists For This Role"
 }

@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 namespace App.Infrastructure.Repository;
 public class Repository<T> : IRepository<T> where T : class
 {
+
     protected ApplicationDbContext _context;
 
     public Repository(ApplicationDbContext context)

@@ -3,7 +3,6 @@
 using App.Application.Commands.Roles;
 using App.Application.Contracts.Responses.Roles;
 using App.Application.Errors;
-using App.Core.Entities.Relations;
 using App.Infrastructure.Abstractions.Consts;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
@@ -39,20 +38,20 @@ public class AssignPermissionToUserCommandHandler(UserManager<ApplicationUser> u
             return Result.Failure<AssignToUserPermissionResponse>(_permissionErrors.UserAlreadyHasPermission);
  
 
-        var isOverrideExist =  _unitOfWork.UserPermissionOverrides
+        var isOverrideExist =  _unitOfWork.UserClaimOverrides
             .IsExist(x=>x.ClaimValue==request.ClaimValue && x.ApplicationUserId==request.UserId);
 
         if(isOverrideExist)
             return Result.Failure<AssignToUserPermissionResponse>(_permissionErrors.DuplicatedPermissionForUser);
 
-        var userPermissionOverride = new UserPermissionOverride
+        var userPermissionOverride = new UserClaimOverride
         {
             ApplicationUserId = request.UserId,
             ClaimValue = request.ClaimValue,
             IsAllowed = request.IsAllowed
         };
 
-        await _unitOfWork.UserPermissionOverrides.AddAsync(userPermissionOverride);
+        await _unitOfWork.UserClaimOverrides.AddAsync(userPermissionOverride);
         await _unitOfWork.SaveAsync(cancellationToken);
 
         return Result.Success(userPermissionOverride.Adapt<AssignToUserPermissionResponse>());

@@ -28,6 +28,11 @@ public class PermissionErrors
       => new Error("Permission.UserAlreadyHasPermission", _localizer[PermissionLocalizationKeys.UserAlreadyHasPermission, LocalizationFolderNames.Permission], StatusCodes.Status409Conflict);
     public Error DuplicatedPermissionForUser
        => new Error("Permission.DuplicatedPermissionForUser", _localizer[PermissionLocalizationKeys.DuplicatedPermissionForUser, LocalizationFolderNames.Permission], StatusCodes.Status409Conflict);
+
     public Error OverridePermissionNotFound
        => new Error("Permission.OverridePermissionNotFound", _localizer[PermissionLocalizationKeys.OverridePermissionNotFound, LocalizationFolderNames.Permission], StatusCodes.Status409Conflict);
+
+    public Error DuplicatedPermissionForRole
+      => new Error("Permission.DuplicatedPermissionForRole", _localizer[PermissionLocalizationKeys.DuplicatedPermissionForRole, LocalizationFolderNames.Permission], StatusCodes.Status409Conflict);
 }
+

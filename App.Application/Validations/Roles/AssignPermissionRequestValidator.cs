@@ -9,9 +9,9 @@ using App.Infrastructure.Localization.Localizers;
 
 namespace App.Application.Validations.Roles;
 
-public class AssignPermissionToUserRequestValidator : AbstractValidator<AssignPermissionToUserRequest>
+public class AssignPermissionRequestValidator : AbstractValidator<AssignPermissionRequest>
 {
-    public AssignPermissionToUserRequestValidator(JsonStringLocalizer localizer)
+    public AssignPermissionRequestValidator(JsonStringLocalizer localizer)
     {
 
         RuleFor(x => x.ClaimValue)

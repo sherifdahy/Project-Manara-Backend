@@ -1,14 +1,11 @@
-﻿
-
-using App.Core.Entities.Relations;
-using App.Infrastructure.Abstractions.Consts;
+﻿using App.Infrastructure.Abstractions.Consts;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace App.Infrastructure.Presistance.EntitiesConfiguration;
 
-public class UserPermissionOverrideConfiguration : IEntityTypeConfiguration<UserPermissionOverride>
+public class UserClaimOverrideConfiguration : IEntityTypeConfiguration<UserClaimOverride>
 {
-    public void Configure(EntityTypeBuilder<UserPermissionOverride> builder)
+    public void Configure(EntityTypeBuilder<UserClaimOverride> builder)
     {
 
         builder.HasKey(x => new { x.ApplicationUserId, x.ClaimValue });

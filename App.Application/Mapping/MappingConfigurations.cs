@@ -2,8 +2,6 @@
 using App.Application.Contracts.Responses.Faculties;
 using App.Application.Contracts.Responses.Roles;
 using App.Application.Contracts.Responses.Universities;
-using App.Core.Entities.Identity;
-using App.Core.Entities.Relations;
 using Mapster;
 using System;
 using System.Collections.Generic;
@@ -25,7 +23,7 @@ public class MappingConfigurations : IRegister
                     src => src.Faculties
                     .Where(f => !f.IsDeleted));
 
-        config.NewConfig<UserPermissionOverride, AssignToUserPermissionResponse>()
+        config.NewConfig<UserClaimOverride, AssignToUserPermissionResponse>()
             .MapWith(src =>
                 new AssignToUserPermissionResponse(
                     src.ApplicationUserId,

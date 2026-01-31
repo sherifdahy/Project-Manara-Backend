@@ -16,12 +16,20 @@ namespace App.API.Controllers.Roles
     {
 
         //TODO 
-        //UserId alwayed zero 
+        //Return The Responses  Rename Again The Actions ,Request ,Command ,Handlers 
         [HttpPost("/api/users/{userId:int}/permissions")]
         [HasPermission(Permissions.CreatePermissions)]
-        public async Task<IActionResult> AssignPermissionToUser([FromRoute]int userId,[FromBody] AssignPermissionToUserRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> AssignPermissionToUser([FromRoute]int userId,[FromBody] AssignPermissionRequest request, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(request.Adapt<AssignPermissionToUserCommand>() with { UserId = userId }, cancellationToken);
+            return result.IsSuccess ? Ok() : result.ToProblem();
+        }
+
+        [HttpPost("/api/roles/{roleId}/faculties/{facultyId}/permissions")]
+        [HasPermission(Permissions.CreatePermissions)]
+        public async Task<IActionResult> AssignPermissionToRoleFaculty([FromRoute] int roleId, [FromRoute] int facultyId, [FromBody] AssignPermissionRequest request, CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(request.Adapt<AssignPermissionToRoleCommand>() with { RoleId=roleId,FacultyId=facultyId }, cancellationToken);
             return result.IsSuccess ? Ok() : result.ToProblem();
         }
 

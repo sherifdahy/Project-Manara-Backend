@@ -17,4 +17,6 @@ public class PermissionLocalizationKeys
     public static readonly string DuplicatedPermissionForUser = nameof(DuplicatedPermissionForUser);
 
     public static readonly string OverridePermissionNotFound = nameof(OverridePermissionNotFound);
+
+    public static readonly string DuplicatedPermissionForRole = nameof(DuplicatedPermissionForRole);
 }

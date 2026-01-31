@@ -1,5 +1,4 @@
-﻿using App.Core.Entities.Relations;
-using App.Core.Entities.Universities;
+﻿using App.Core.Entities.Universities;
 
 namespace App.Core.Entities.Identity;
 public class ApplicationUser : IdentityUser<int>
@@ -13,6 +12,6 @@ public class ApplicationUser : IdentityUser<int>
     public University? University { get; set; }
     public Faculty? Faculty { get; set; }
     public List<RefreshToken> RefreshTokens { get; set; } = [];
-    public ICollection<UserPermissionOverride> PermissionOverrides { get; set; } = new HashSet<UserPermissionOverride>();
+    public ICollection<UserClaimOverride> PermissionOverrides { get; set; } = new HashSet<UserClaimOverride>();
 
 }

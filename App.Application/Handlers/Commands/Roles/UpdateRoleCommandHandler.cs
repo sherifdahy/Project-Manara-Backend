@@ -3,7 +3,6 @@ using App.Application.Commands.Roles;
 using App.Application.Contracts.Responses.Roles;
 using App.Application.Errors;
 using App.Core.Entities.Identity;
-using App.Core.Enums;
 using App.Infrastructure.Abstractions.Consts;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -33,19 +32,14 @@ public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
         var allawedPermissions = Permissions.GetAllPermissions();
 
         if (request.Permissions.Except(allawedPermissions).Any())
-            return Result.Failure<RoleDetailResponse>(_errors.InvalidPermissions);
+            return Result.Failure(_errors.InvalidPermissions);
 
         if (await _roleManager.FindByIdAsync(request.Id.ToString()) is not { } role)
             return Result.Failure(_errors.NotFound);
 
 
-        if (!Enum.IsDefined(typeof(RoleType), request.RoleType))
-            return Result.Failure<RoleDetailResponse>(_permissionErrors.InvalidType);
-
         role.Name = request.Name;
-        role.RoleType=request.RoleType;
 
-        //This Now Check The Custom Validator (That Make The UniversityId And The RoleName As A composite Key)
         var result = await _roleManager.UpdateAsync(role);
 
         if(result.Succeeded)

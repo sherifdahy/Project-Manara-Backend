@@ -1,7 +1,6 @@
 ﻿
 using App.Application.Commands.Roles;
 using App.Application.Errors;
-using App.Core.Entities.Relations;
 using App.Infrastructure.Abstractions.Consts;
 using App.Infrastructure.Repository;
 using Microsoft.AspNetCore.Identity;
@@ -32,7 +31,7 @@ public class ToggleStatusPermissionCommandHandler(UserManager<ApplicationUser> u
             return Result.Failure(_permissionErrors.InvalidPermissions);
 
 
-        var overridePermission = await _unitOfWork.UserPermissionOverrides
+        var overridePermission = await _unitOfWork.UserClaimOverrides
             .FindAsync(x => x.ClaimValue == request.ClaimValue && x.ApplicationUserId == request.UserId);
 
 
@@ -41,7 +40,7 @@ public class ToggleStatusPermissionCommandHandler(UserManager<ApplicationUser> u
 
         overridePermission.IsAllowed = !overridePermission.IsAllowed;
 
-         _unitOfWork.UserPermissionOverrides.Update(overridePermission);
+         _unitOfWork.UserClaimOverrides.Update(overridePermission);
         await _unitOfWork.SaveAsync(cancellationToken);
 
 

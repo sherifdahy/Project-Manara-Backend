@@ -1,7 +1,6 @@
 ﻿
 
 using App.Application.Contracts.Responses.Roles;
-using App.Core.Enums;
 
 namespace App.Application.Commands.Roles;
 

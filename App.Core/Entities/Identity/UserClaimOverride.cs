@@ -1,8 +1,6 @@
-﻿using App.Core.Entities.Identity;
+﻿namespace App.Core.Entities.Identity;
 
-namespace App.Core.Entities.Relations;
-
-public class UserPermissionOverride
+public class UserClaimOverride
 {
     public string ClaimValue { get; set; }=string.Empty;
     public bool IsAllowed { get; set; } 

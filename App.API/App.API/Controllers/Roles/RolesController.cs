@@ -25,14 +25,6 @@ public class RolesController(IMediator _mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
-    [HttpGet("/api/universities/{universityId:int}/roles")]
-    [HasPermission(Permissions.GetRoles)]
-    public async Task<IActionResult> GetAllRoles([FromRoute] int universityId, [FromQuery] bool includeDisabled, CancellationToken cancellationToken)
-    {
-        var result = await _mediator.Send(new GetAllRolesByUniversityIdQuery(includeDisabled,universityId), cancellationToken);
-        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
-    }
-
     [HttpGet("{id}")]
     [HasPermission(Permissions.GetRoles)]
     public async Task<IActionResult> GetById([FromRoute] int id, CancellationToken cancellationToken)
@@ -41,19 +33,19 @@ public class RolesController(IMediator _mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
-    [HttpPost("/api/universities/{universityId:int}/roles")]
+    [HttpPost("")]
     [HasPermission(Permissions.CreateRoles)]
-    public async Task<IActionResult> Create([FromRoute] int universityId,[FromBody] RoleRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Create([FromBody] RoleRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(request.Adapt<CreateRoleCommand>() with { UniversityId=universityId}, cancellationToken);
+        var result = await _mediator.Send(request.Adapt<CreateRoleCommand>(), cancellationToken);
         return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 
     [HttpPut("{id}")]
     [HasPermission(Permissions.UpdateRoles)]
-    public async Task<IActionResult> Update([FromRoute] int id,[FromBody] RoleRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] RoleRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(request.Adapt<UpdateRoleCommand>() with {Id=id}, cancellationToken);
+        var result = await _mediator.Send(request.Adapt<UpdateRoleCommand>() with { Id = id }, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 

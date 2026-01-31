@@ -499,3 +499,4 @@ D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.genruntimeconfig.cache
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\ref\App.API.dll
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.MvcApplicationPartsAssemblyInfo.cs

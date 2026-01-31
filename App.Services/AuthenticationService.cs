@@ -46,6 +46,24 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager,IUni
             var rolePermissions = await _roleManager.GetClaimsAsync(role);
 
             permissions.AddRange(rolePermissions.Where(x => x.Type == Permissions.Type).Select(x => x.Value).Distinct());
+            
+           
+            var roleClaimOverrides = await _unitOfWork.RoleClaimOverrides
+                .FindAllAsync(rc=>rc.RoleId == role.Id && rc.FacultyId==user.FacultyId);
+
+            foreach (var roleClaimOverride in roleClaimOverrides)
+            {
+                if(roleClaimOverride is null) continue;
+
+                if (roleClaimOverride.IsAllowed)
+                {
+                    permissions.Add(roleClaimOverride.ClaimValue);
+                }
+                else
+                {
+                    permissions.Remove(roleClaimOverride.ClaimValue);
+                }
+            }
         }
 
         foreach (var over in user.PermissionOverrides)
@@ -61,6 +79,8 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager,IUni
                 permissions.Remove(permissionValue!);
             }
         }
+
+
 
         return (roles, permissions);
 

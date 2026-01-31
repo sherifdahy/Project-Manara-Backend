@@ -1,5 +1,4 @@
-﻿using App.Core.Enums;
-using App.Infrastructure.Abstractions.Consts;
+﻿using App.Infrastructure.Abstractions.Consts;
 using App.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -12,21 +11,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
 {
     public void Configure(EntityTypeBuilder<ApplicationRole> builder)
     {
-        builder
-            .Property(x => x.RoleType)
-            .IsRequired();
-
-        builder.EnumInRange(x => x.RoleType);
-
-        builder.HasIndex(r => r.NormalizedName)
-            .IsUnique()
-            .HasFilter("[UniversityId] IS NULL")
-            .HasDatabaseName("IX_AspNetRoles_NormalizedName_Global");
-
-        builder.HasIndex(r => new { r.NormalizedName, r.UniversityId })
-            .IsUnique()
-            .HasFilter("[UniversityId] IS NOT NULL")
-            .HasDatabaseName("IX_AspNetRoles_NormalizedName_UniversityId");
 
 
         builder.HasData

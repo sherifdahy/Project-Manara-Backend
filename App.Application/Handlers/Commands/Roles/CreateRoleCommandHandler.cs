@@ -3,7 +3,6 @@ using App.Application.Commands.Roles;
 using App.Application.Contracts.Responses.Roles;
 using App.Application.Errors;
 using App.Core.Entities.Identity;
-using App.Core.Enums;
 using App.Infrastructure.Abstractions.Consts;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -34,22 +33,13 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
         if (request.Permissions.Except(allowedPermissions).Any())
             return Result.Failure<RoleDetailResponse>(_permissionErrors.InvalidPermissions);
 
-        if (!(_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId)))
-            return Result.Failure<RoleDetailResponse>(_universityErrors.InvalidId);
-
-        if (!Enum.IsDefined(typeof(RoleType), request.RoleType))
-            return Result.Failure<RoleDetailResponse>(_permissionErrors.InvalidType);
-
 
         var newRole = new ApplicationRole()
         {
             Name = request.Name,
-            UniversityId= request.UniversityId,
-            RoleType= request.RoleType,
             ConcurrencyStamp = Guid.NewGuid().ToString(),
         };
 
-        //This Now Check The Custom Validator (That Make The UniversityId And The RoleName As A composite Key)
         var result = await _roleManager.CreateAsync(newRole);
 
         if(result.Succeeded)
@@ -74,8 +64,6 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
             (   newRole.Id,
                 newRole.Name,
                 newRole.IsDeleted,
-                newRole.UniversityId,
-                newRole!.RoleType,
                 request.Permissions
             ));
         }
