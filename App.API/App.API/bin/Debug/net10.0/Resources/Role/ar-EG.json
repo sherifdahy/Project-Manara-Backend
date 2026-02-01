@@ -6,6 +6,7 @@
   "ModificationForbidden": "غير مسموح بتعديل دور مسؤول النظام.",
   "UserAlreadyHasPermission": "هذا المستخدم لديه بالفعل هذة الصلاحية",
   "OverridePermissionNotFound": "هذه الصلاحية المراد تعديلها غير موجودة",
-  "DuplicatedForUniversity": "هذه الصلاحية موجودة بالفعل فى الجامعة"
+  "DuplicatedForUniversity": "هذه الصلاحية موجودة بالفعل فى الجامعة",
+  "DuplicatedPermissionForRole" :"هذه الصلاحية هى موجودة بالفعل فى هذا الدور"
 
 }

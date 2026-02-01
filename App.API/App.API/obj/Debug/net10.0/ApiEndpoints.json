@@ -250,6 +250,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
+    "Method": "AssignPermissionToRoleFaculty",
+    "RelativePath": "api/roles/{roleId}/faculties/{facultyId}/permissions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "facultyId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Requests.Roles.AssignPermissionRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Universities.UniversitiesController",
     "Method": "GetAll",
     "RelativePath": "api/Universities",
@@ -370,7 +396,7 @@
       },
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Requests.Roles.AssignPermissionToUserRequest",
+        "Type": "App.Application.Contracts.Requests.Roles.AssignPermissionRequest",
         "IsRequired": true
       }
     ],
