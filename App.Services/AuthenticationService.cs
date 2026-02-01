@@ -79,7 +79,7 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager,IUni
                 permissions.Remove(permissionValue!);
             }
         }
-
+         
 
 
         return (roles, permissions);

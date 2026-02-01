@@ -6,7 +6,7 @@ namespace App.Application.Contracts.Responses.Roles;
 
 public record AssignToUserPermissionResponse
 (
-    int UserId,
+    int ApplicationUserId,
     string ClaimValue,
     bool IsAllowed
 );

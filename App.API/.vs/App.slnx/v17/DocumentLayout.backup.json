@@ -6,31 +6,31 @@
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\roles\\assignpermissiontorolecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\roles\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\roles\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.core\\consts\\permissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\roles\\assignpermissiontousercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\roles\\togglestatuspermissionrolecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\errors\\permissionerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\resources\\faculty\\ar-eg.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\resources\\faculty\\ar-eg.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\resources\\role\\en-us.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\resources\\role\\en-us.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\resources\\faculty\\en-us.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\resources\\faculty\\en-us.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.infrastructure\\extensions\\facultyextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\errors\\facultyerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\resources\\role\\ar-eg.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\resources\\role\\ar-eg.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.infrastructure\\localization\\constants\\permissionlocalizationkeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\roles\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\roles\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.infrastructure\\localization\\constants\\facultylocalizationkeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,7 +40,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -52,75 +52,94 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AuthenticationService.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\AuthenticationService.cs",
               "RelativeDocumentMoniker": "..\\App.Services\\AuthenticationService.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\AuthenticationService.cs",
               "RelativeToolTip": "..\\App.Services\\AuthenticationService.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAYwC0AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAvwFkAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T18:55:38.966Z"
+              "WhenOpened": "2026-02-01T13:19:45.785Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FacultyExtension.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Extensions\\FacultyExtension.cs",
-              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Extensions\\FacultyExtension.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Extensions\\FacultyExtension.cs",
-              "RelativeToolTip": "..\\App.Infrastructure\\Extensions\\FacultyExtension.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Permissions.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Consts\\Permissions.cs",
+              "RelativeDocumentMoniker": "..\\App.Core\\Consts\\Permissions.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Consts\\Permissions.cs",
+              "RelativeToolTip": "..\\App.Core\\Consts\\Permissions.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwA4AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T18:44:28.609Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PermissionLocalizationKeys.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Localization\\Constants\\PermissionLocalizationKeys.cs",
-              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Localization\\Constants\\PermissionLocalizationKeys.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Localization\\Constants\\PermissionLocalizationKeys.cs",
-              "RelativeToolTip": "..\\App.Infrastructure\\Localization\\Constants\\PermissionLocalizationKeys.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T18:34:46.288Z"
+              "WhenOpened": "2026-02-01T13:12:30.791Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ar-EG.json",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Resources\\Role\\ar-EG.json",
-              "RelativeDocumentMoniker": "App.API\\Resources\\Role\\ar-EG.json",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Resources\\Role\\ar-EG.json",
-              "RelativeToolTip": "App.API\\Resources\\Role\\ar-EG.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-31T18:33:33.672Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "en-US.json",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Resources\\Role\\en-US.json",
-              "RelativeDocumentMoniker": "App.API\\Resources\\Role\\en-US.json",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Resources\\Role\\en-US.json",
-              "RelativeToolTip": "App.API\\Resources\\Role\\en-US.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABPAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Resources\\Faculty\\en-US.json",
+              "RelativeDocumentMoniker": "App.API\\Resources\\Faculty\\en-US.json",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Resources\\Faculty\\en-US.json",
+              "RelativeToolTip": "App.API\\Resources\\Faculty\\en-US.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-31T18:33:34.208Z"
+              "WhenOpened": "2026-02-01T13:09:34.692Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PermissionErrors.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Errors\\PermissionErrors.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Errors\\PermissionErrors.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Errors\\PermissionErrors.cs",
-              "RelativeToolTip": "..\\App.Application\\Errors\\PermissionErrors.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwCMAAABiAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "ar-EG.json",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Resources\\Faculty\\ar-EG.json",
+              "RelativeDocumentMoniker": "App.API\\Resources\\Faculty\\ar-EG.json",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Resources\\Faculty\\ar-EG.json",
+              "RelativeToolTip": "App.API\\Resources\\Faculty\\ar-EG.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-01T13:09:33.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FacultyLocalizationKeys.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Localization\\Constants\\FacultyLocalizationKeys.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Localization\\Constants\\FacultyLocalizationKeys.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Localization\\Constants\\FacultyLocalizationKeys.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Localization\\Constants\\FacultyLocalizationKeys.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T18:32:33.082Z"
+              "WhenOpened": "2026-02-01T13:09:19.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FacultyErrors.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Errors\\FacultyErrors.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Errors\\FacultyErrors.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Errors\\FacultyErrors.cs",
+              "RelativeToolTip": "..\\App.Application\\Errors\\FacultyErrors.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wBwAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T13:08:32.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PermissionsController.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAAB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T13:05:38.666Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -130,34 +149,23 @@
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionToRoleCommandHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionToRoleCommandHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionToRoleCommandHandler.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAnwBsAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAvwDYAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T18:13:40.842Z",
+              "WhenOpened": "2026-02-01T12:38:57.45Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AssignPermissionToUserCommandHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionToUserCommandHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionToUserCommandHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionToUserCommandHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionToUserCommandHandler.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAwB0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ToggleStatusPermissionRoleCommandHandler.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Roles\\ToggleStatusPermissionRoleCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Roles\\ToggleStatusPermissionRoleCommandHandler.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Roles\\ToggleStatusPermissionRoleCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Roles\\ToggleStatusPermissionRoleCommandHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T18:13:13.439Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PermissionsController.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\PermissionsController.cs",
-              "RelativeDocumentMoniker": "App.API\\Controllers\\Roles\\PermissionsController.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\PermissionsController.cs",
-              "RelativeToolTip": "App.API\\Controllers\\Roles\\PermissionsController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAxwB8AAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T17:49:54.742Z"
+              "WhenOpened": "2026-02-01T12:26:37.84Z",
+              "EditorCaption": ""
             }
           ]
         }

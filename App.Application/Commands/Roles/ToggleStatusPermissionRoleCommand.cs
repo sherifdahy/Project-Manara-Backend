@@ -1,13 +1,15 @@
-﻿using App.Application.Contracts.Responses.Roles;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Claims;
+using System.Text;
 
 namespace App.Application.Commands.Roles;
 
-public record AssignPermissionToRoleCommand : IRequest<Result<AssignToRolePermissionResponse>>
+public record ToggleStatusPermissionRoleCommand : IRequest<Result>
 {
     public int RoleId { get; set; }
     public int FacultyId { get; set; }
     public ClaimsPrincipal User { get; set; } = default!;
     public string ClaimValue { get; set; } = string.Empty;
-    public bool IsAllowed { get; set; } = true;
+
 }

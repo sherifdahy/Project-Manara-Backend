@@ -1,4 +1,5 @@
-﻿using App.Core.Interfaces;
+﻿using App.Core.Consts;
+using App.Core.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -29,12 +30,12 @@ public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
 
         if (user.FacultyId is not null)
         {
-            claims.Add(new Claim("facultyId", user.FacultyId.Value.ToString()));
+            claims.Add(new Claim(ClaimsConstants.facultyId, user.FacultyId.Value.ToString()));
         }
 
         if (user.UniversityId is not null)
         {
-            claims.Add(new Claim("universityId", user.UniversityId.Value.ToString()));
+            claims.Add(new Claim(ClaimsConstants.universityId, user.UniversityId.Value.ToString()));
         }
 
 
