@@ -9,5 +9,6 @@ public record RoleResponse
     int Id,
     string Name,
     string Description,
-    bool IsDeleted
+    bool IsDeleted,
+    int NumberOfPermissions
 );

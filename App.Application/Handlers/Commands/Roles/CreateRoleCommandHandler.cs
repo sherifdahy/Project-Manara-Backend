@@ -58,6 +58,7 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
                 newRole.Name,
                 newRole.Description,
                 newRole.IsDeleted,
+                0,
                 request.Permissions
             ));
         }

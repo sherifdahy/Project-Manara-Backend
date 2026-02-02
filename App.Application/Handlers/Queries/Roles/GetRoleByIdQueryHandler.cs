@@ -8,9 +8,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace App.Application.Handlers.Queries.Roles;
 
-public class GetRoleByIdQueryHandler(RoleManager<ApplicationRole> _roleManager,RoleErrors errors) : IRequestHandler<GetRoleByIdQuery, Result<RoleDetailResponse>>
+public class GetRoleByIdQueryHandler(
+    RoleManager<ApplicationRole> _roleManager
+    ,RoleErrors errors
+    ,IUnitOfWork unitOfWork) : IRequestHandler<GetRoleByIdQuery, Result<RoleDetailResponse>>
 {
     private readonly RoleErrors _errors = errors;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     public async Task<Result<RoleDetailResponse>> Handle(GetRoleByIdQuery request, CancellationToken cancellationToken)
     {
@@ -19,12 +23,15 @@ public class GetRoleByIdQueryHandler(RoleManager<ApplicationRole> _roleManager,R
 
         var permissions = await _roleManager.GetClaimsAsync(role);
 
+        var numberOfUsers = await _unitOfWork.UserRoles.CountAsync(ur=>ur.RoleId==role.Id);
+
         var response = new RoleDetailResponse
         (
             role.Id,
             role.Name!,
             role.Description,
             role.IsDeleted,
+            numberOfUsers,
             permissions.Select(c => c.Value)
         );
 

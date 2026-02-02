@@ -10,5 +10,6 @@ public record RoleDetailResponse
     string Name,
     string Description,
     bool IsDeleted,
+    int  NumberOfUsers,
     IEnumerable<string> Permissions
 );
