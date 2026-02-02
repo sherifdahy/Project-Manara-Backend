@@ -14,8 +14,7 @@ public class PermissionErrors
     {
         _localizer = localizer;
     }
-    public Error NotFound
-        => new Error("Permission.NotFound", _localizer[PermissionLocalizationKeys.NotFound, LocalizationFolderNames.Permission], StatusCodes.Status404NotFound);
+    
 
     public Error InvalidPermissions
        => new Error("Permission.InvalidPermissions", _localizer[PermissionLocalizationKeys.InvalidPermissions, LocalizationFolderNames.Permission], StatusCodes.Status404NotFound);
