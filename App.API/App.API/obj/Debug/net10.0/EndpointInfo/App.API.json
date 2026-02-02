@@ -443,17 +443,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RoleRequest"
+                "$ref": "#/components/schemas/CreateRoleRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RoleRequest"
+                "$ref": "#/components/schemas/CreateRoleRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RoleRequest"
+                "$ref": "#/components/schemas/CreateRoleRequest"
               }
             }
           },
@@ -525,17 +525,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RoleRequest"
+                "$ref": "#/components/schemas/UpdateRoleRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RoleRequest"
+                "$ref": "#/components/schemas/UpdateRoleRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RoleRequest"
+                "$ref": "#/components/schemas/UpdateRoleRequest"
               }
             }
           },
@@ -1004,6 +1004,26 @@
           }
         }
       },
+      "CreateRoleRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "FacultyRequest": {
         "type": "object",
         "properties": {
@@ -1122,23 +1142,6 @@
           }
         }
       },
-      "RoleRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
       "ToggleStatusPermissionRequest": {
         "type": "object",
         "properties": {
@@ -1172,6 +1175,23 @@
               "string"
             ],
             "format": "int32"
+          }
+        }
+      },
+      "UpdateRoleRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

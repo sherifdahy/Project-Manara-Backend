@@ -29,6 +29,7 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
         {
             Name = request.Name,
             Description=request.Description,
+            IsDeleted = request.IsDeleted,
             ConcurrencyStamp = Guid.NewGuid().ToString(),
         };
 

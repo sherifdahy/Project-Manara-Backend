@@ -35,7 +35,7 @@ public class RolesController(IMediator _mediator) : ControllerBase
 
     [HttpPost("")]
     [HasPermission(Permissions.CreateRoles)]
-    public async Task<IActionResult> Create([FromBody] RoleRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Create([FromBody] CreateRoleRequest request, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(request.Adapt<CreateRoleCommand>(), cancellationToken);
         return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
@@ -43,7 +43,7 @@ public class RolesController(IMediator _mediator) : ControllerBase
 
     [HttpPut("{id}")]
     [HasPermission(Permissions.UpdateRoles)]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] RoleRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateRoleRequest request, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(request.Adapt<UpdateRoleCommand>() with { Id = id }, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();

@@ -190,7 +190,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Requests.Roles.RoleRequest",
+        "Type": "App.Application.Contracts.Requests.Roles.CreateRoleRequest",
         "IsRequired": true
       }
     ],
@@ -227,7 +227,7 @@
       },
       {
         "Name": "request",
-        "Type": "App.Application.Contracts.Requests.Roles.RoleRequest",
+        "Type": "App.Application.Contracts.Requests.Roles.UpdateRoleRequest",
         "IsRequired": true
       }
     ],

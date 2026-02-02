@@ -1,5 +1,4 @@
-﻿using App.Application.Commands.Roles;
-using App.Application.Contracts.Requests.Roles;
+﻿using App.Application.Contracts.Requests.Roles;
 using App.Infrastructure.Localization;
 using App.Infrastructure.Localization.Constants;
 using App.Infrastructure.Localization.Localizers;
@@ -9,13 +8,16 @@ using System.Text;
 
 namespace App.Application.Validations.Roles;
 
-public class RoleRequestValidator : AbstractValidator<RoleRequest>
+public class CreateRoleRequestValidator : AbstractValidator<CreateRoleRequest>
 {
-    public RoleRequestValidator(JsonStringLocalizer localizer)
+    public CreateRoleRequestValidator(JsonStringLocalizer localizer)
     {
         RuleFor(x => x.Name)
             .NotEmpty()
             .Length(3, 200);
+
+        RuleFor(x => x.IsDeleted)
+            .NotNull();
 
         RuleFor(x => x.Permissions)
             .NotNull()
@@ -28,4 +30,3 @@ public class RoleRequestValidator : AbstractValidator<RoleRequest>
 
     }
 }
-

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Application.Contracts.Requests.Roles;
 
-public record RoleRequest
+public record UpdateRoleRequest
 {
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
