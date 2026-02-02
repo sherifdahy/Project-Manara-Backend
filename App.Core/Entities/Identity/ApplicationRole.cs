@@ -6,6 +6,7 @@ public class ApplicationRole : IdentityRole<int>
 {
     public bool IsDeleted { get; set; }
     public bool IsDefualt { get; set; }
+    public string Description { get; set; } = string.Empty;
     public ICollection<RoleClaimOverride> RoleClaimOverrides { get; set; } = new HashSet<RoleClaimOverride>();
 
 }

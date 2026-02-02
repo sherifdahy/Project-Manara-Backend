@@ -1,9 +1,11 @@
 ﻿using App.Core.Entities.Identity;
+using App.Core.Entities.Universities;
 using App.Core.Interfaces;
 using App.Infrastructure.Abstractions.Consts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SA.Accountring.Core.Entities.Interfaces;
+using System.Security.Claims;
 using System.Security.Cryptography;
 namespace App.Services;
 
@@ -86,6 +88,26 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager,IUni
 
 
     }
+
+    //public bool IsUserHasAccessToUniversity(int? userUniversityId, int universityId)
+    //{
+    //    if (userUniversityId == null)
+    //        return true;
+
+    //    return userUniversityId == universityId;
+
+    //}
+
+    //public  bool IsUserHasAccessToFaculty(ClaimsPrincipal user, int facultyId)
+    //{
+    //    user.GetFacultyId();
+
+    //    return true;
+
+    //}
+
+
+
     private static string GenerateRefreshToken()
     {
         return Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));

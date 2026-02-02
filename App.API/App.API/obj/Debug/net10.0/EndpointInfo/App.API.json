@@ -1128,6 +1128,9 @@
           "name": {
             "type": "string"
           },
+          "description": {
+            "type": "string"
+          },
           "permissions": {
             "type": "array",
             "items": {

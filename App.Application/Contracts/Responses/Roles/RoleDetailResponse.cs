@@ -8,6 +8,7 @@ public record RoleDetailResponse
 (
     int Id,
     string Name,
+    string Description,
     bool IsDeleted,
     IEnumerable<string> Permissions
 );

@@ -39,6 +39,7 @@ public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
 
 
         role.Name = request.Name;
+        role.Description = request.Description;
 
         var result = await _roleManager.UpdateAsync(role);
 

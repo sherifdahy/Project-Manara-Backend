@@ -23,6 +23,7 @@ public class GetRoleByIdQueryHandler(RoleManager<ApplicationRole> _roleManager,R
         (
             role.Id,
             role.Name!,
+            role.Description,
             role.IsDeleted,
             permissions.Select(c => c.Value)
         );

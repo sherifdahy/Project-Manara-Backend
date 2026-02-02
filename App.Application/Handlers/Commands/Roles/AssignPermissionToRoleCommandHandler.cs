@@ -16,14 +16,15 @@ public class AssignPermissionToRoleCommandHandler(IUnitOfWork unitOfWork
     ,PermissionErrors permissionErrors
     ,FacultyErrors facultyErrors
     ,RoleErrors roleErrors
-    ,RoleManager<ApplicationRole> roleManager) : IRequestHandler<AssignPermissionToRoleCommand, Result<AssignToRolePermissionResponse>>
+    ,RoleManager<ApplicationRole> roleManager
+    ,IAuthenticationService authenticationService) : IRequestHandler<AssignPermissionToRoleCommand, Result<AssignToRolePermissionResponse>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly PermissionErrors _permissionErrors = permissionErrors;
     private readonly FacultyErrors _facultyErrors = facultyErrors;
     private readonly RoleErrors _roleErrors = roleErrors;
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
-
+    private readonly IAuthenticationService _authenticationService = authenticationService;
 
     public async Task<Result<AssignToRolePermissionResponse>> Handle(AssignPermissionToRoleCommand request, CancellationToken cancellationToken)
     {
@@ -40,11 +41,12 @@ public class AssignPermissionToRoleCommandHandler(IUnitOfWork unitOfWork
             return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotFound);
 
 
-        if ( request.User.GetFacultyId()!=null && request.User.GetFacultyId()!=request.FacultyId)
+        if (request.User.GetFacultyId() != null && request.User.GetFacultyId() != request.FacultyId)
             return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotAllowedFaculty);
 
+
         if (request.User.GetUniversityId() != null && !_unitOfWork.Fauclties
-                .IsExist(f=>f.Id==request.FacultyId && f.UniversityId==request.User.GetUniversityId()))
+                .IsExist(f => f.Id == request.FacultyId && f.UniversityId == request.User.GetUniversityId()))
             return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotAllowedFaculty);
 
         var allowedPermissions = Permissions.GetAllPermissions();

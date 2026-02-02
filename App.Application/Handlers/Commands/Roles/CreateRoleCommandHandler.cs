@@ -1,15 +1,6 @@
-﻿using App.Application.Abstractions;
-using App.Application.Commands.Roles;
+﻿using App.Application.Commands.Roles;
 using App.Application.Contracts.Responses.Roles;
-using App.Application.Errors;
-using App.Core.Entities.Identity;
 using App.Infrastructure.Abstractions.Consts;
-using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using SA.Accountring.Core.Entities.Interfaces;
-using System.Data;
-using System.Security.Claims;
 
 namespace App.Application.Handlers.Commands.Roles;
 
@@ -37,6 +28,7 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
         var newRole = new ApplicationRole()
         {
             Name = request.Name,
+            Description=request.Description,
             ConcurrencyStamp = Guid.NewGuid().ToString(),
         };
 
@@ -63,6 +55,7 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
             return Result.Success(new RoleDetailResponse
             (   newRole.Id,
                 newRole.Name,
+                newRole.Description,
                 newRole.IsDeleted,
                 request.Permissions
             ));
