@@ -1,14 +1,8 @@
 ﻿using App.Application.Commands.Roles;
 using App.Application.Contracts.Responses.Roles;
-using App.Application.Errors;
+using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
-using App.Infrastructure.Extensions;
-using App.Infrastructure.Repository;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace App.Application.Handlers.Commands.Roles;
 
@@ -41,13 +35,9 @@ public class AssignPermissionToRoleCommandHandler(IUnitOfWork unitOfWork
             return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotFound);
 
 
-        if (request.User.GetFacultyId() != null && request.User.GetFacultyId() != request.FacultyId)
+        if(!_authenticationService.IsUserHasAccessToFaculty(request.User,request.FacultyId))
             return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotAllowedFaculty);
 
-
-        if (request.User.GetUniversityId() != null && !_unitOfWork.Fauclties
-                .IsExist(f => f.Id == request.FacultyId && f.UniversityId == request.User.GetUniversityId()))
-            return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotAllowedFaculty);
 
         var allowedPermissions = Permissions.GetAllPermissions();
 

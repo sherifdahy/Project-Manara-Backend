@@ -1,10 +1,7 @@
 ﻿using App.Core.Consts;
-using System;
-using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
 
-namespace App.Infrastructure.Extensions;
+namespace App.Core.Extensions;
 
 public static class UniversityExtension
 {

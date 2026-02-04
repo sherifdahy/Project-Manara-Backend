@@ -33,7 +33,7 @@ public class RolesController(IMediator _mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
-    [HttpPost("")]
+    [HttpPost]
     [HasPermission(Permissions.CreateRoles)]
     public async Task<IActionResult> Create([FromBody] CreateRoleRequest request, CancellationToken cancellationToken)
     {

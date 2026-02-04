@@ -1,12 +1,13 @@
 ﻿using App.Core.Entities.Identity;
 using App.Core.Entities.Universities;
+using App.Core.Extensions;
 using App.Core.Interfaces;
 using App.Infrastructure.Abstractions.Consts;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using SA.Accountring.Core.Entities.Interfaces;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 namespace App.Services;
 
 public class AuthenticationService(UserManager<ApplicationUser> userManager,IUnitOfWork unitOfWork,RoleManager<ApplicationRole> roleManager) : IAuthenticationService
@@ -89,22 +90,45 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager,IUni
 
     }
 
-    //public bool IsUserHasAccessToUniversity(int? userUniversityId, int universityId)
-    //{
-    //    if (userUniversityId == null)
-    //        return true;
+    public bool IsUserHasAccessToUniversity(ClaimsPrincipal user, int requestUniversityId)
+    {
 
-    //    return userUniversityId == universityId;
+        //1.0 System Admin 
+        if (user.GetUniversityId() == null && user.GetFacultyId() == null)
+            return true;
 
-    //}
+        //2.0 Others
+        if (user.GetUniversityId() == requestUniversityId)
+            return true;
 
-    //public  bool IsUserHasAccessToFaculty(ClaimsPrincipal user, int facultyId)
-    //{
-    //    user.GetFacultyId();
+        return false;
+        
+    }
 
-    //    return true;
+    public bool IsUserHasAccessToFaculty(ClaimsPrincipal user, int requestFacultyId)
+    {
+        
+        //1.0 System Admin 
+        if (user.GetUniversityId() == null && user.GetFacultyId() == null)
+            return true;
 
-    //}
+        if(user.GetFacultyId()==null)
+        {
+            //2.0 Admin University (Here I Must Check That the faculty is subset of the university)
+            var isFacultyExists = _unitOfWork.Fauclties
+                .IsExist(f => f.Id == requestFacultyId && f.UniversityId == user.GetUniversityId());
+
+            return isFacultyExists;
+        }
+        else
+        {
+            //3.0 Others
+            if(user.GetFacultyId()== requestFacultyId)
+                return true;
+            return false;
+        }
+
+    }
 
 
 

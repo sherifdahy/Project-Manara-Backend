@@ -22,4 +22,7 @@ public  class UniversityErrors
 
     public  Error DuplicatedName 
         => new("University.DuplicatedName", _localizer[UniversityLocalizationKeys.DuplicatedName, LocalizationFolderNames.University], StatusCodes.Status409Conflict);
+
+    public Error NotAllowedUniversity
+      => new("University.NotAllowedUniversity", _localizer[UniversityLocalizationKeys.NotAllowedUniversity, LocalizationFolderNames.University], StatusCodes.Status400BadRequest);
 }

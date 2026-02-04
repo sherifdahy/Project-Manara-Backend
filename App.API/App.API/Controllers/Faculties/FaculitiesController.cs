@@ -18,6 +18,7 @@ public class FaculitiesController(IMediator mediator) : ControllerBase
     private readonly IMediator _mediator = mediator;
 
     [HttpGet("/api/universities/{universityId:int}/faculities")]
+    [RequireUniversityAccess("universityId")]
     [HasPermission(Permissions.GetFaculties)]
     public async Task<IActionResult> GetAll([FromRoute] int universityId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
     {
@@ -27,6 +28,7 @@ public class FaculitiesController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id:int}")]
+    [RequireFacultyAccess("id")]
     [HasPermission(Permissions.GetFaculties)]
     public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken = default)
     {
@@ -44,6 +46,7 @@ public class FaculitiesController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [RequireFacultyAccess("id")]
     [HasPermission(Permissions.UpdateFaculties)]
     public async Task<IActionResult> Update([FromRoute] int id,[FromBody]FacultyRequest request, CancellationToken cancellationToken = default)
     {
@@ -52,6 +55,7 @@ public class FaculitiesController(IMediator mediator) : ControllerBase
     }
 
     [HttpDelete("{id}/toggle-status")]
+    [RequireFacultyAccess("id")]
     [HasPermission(Permissions.ToggleStatusFaculties)]
     public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
     {

@@ -1,9 +1,5 @@
 ﻿using App.Infrastructure.Abstractions.Consts;
-using App.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Infrastructure.Presistance.EntitiesConfiguration;
 

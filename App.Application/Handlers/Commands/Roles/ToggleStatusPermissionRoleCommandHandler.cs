@@ -1,22 +1,19 @@
 ﻿using App.Application.Commands.Roles;
 using App.Application.Contracts.Responses.Roles;
-using App.Application.Errors;
+using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
-using App.Infrastructure.Extensions;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Application.Handlers.Commands.Roles;
 
 public class ToggleStatusPermissionRoleCommandHandler(IUnitOfWork unitOfWork
     ,PermissionErrors permissionErrors
-    ,FacultyErrors facultyErrors) : IRequestHandler<ToggleStatusPermissionRoleCommand, Result>
+    ,FacultyErrors facultyErrors
+    ,IAuthenticationService authenticationService) : IRequestHandler<ToggleStatusPermissionRoleCommand, Result>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly PermissionErrors _permissionErrors = permissionErrors;
     private readonly FacultyErrors _facultyErrors = facultyErrors;
+    private readonly IAuthenticationService _authenticationService = authenticationService;
 
     public async Task<Result> Handle(ToggleStatusPermissionRoleCommand request, CancellationToken cancellationToken)
     {
@@ -32,12 +29,7 @@ public class ToggleStatusPermissionRoleCommandHandler(IUnitOfWork unitOfWork
         if (roleClaimOverride == null)
             return Result.Failure(_permissionErrors.OverridePermissionNotFound);
 
-
-        if (request.User.GetFacultyId() != null && request.User.GetFacultyId() != request.FacultyId)
-            return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotAllowedFaculty);
-
-        if (request.User.GetUniversityId() != null && !_unitOfWork.Fauclties
-                .IsExist(f => f.Id == request.FacultyId && f.UniversityId == request.User.GetUniversityId()))
+        if (!_authenticationService.IsUserHasAccessToFaculty(request.User, request.FacultyId))
             return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotAllowedFaculty);
 
 

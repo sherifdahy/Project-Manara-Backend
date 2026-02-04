@@ -27,6 +27,7 @@ public class UniversitiesController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id:int}")]
+    [RequireUniversityAccess("id")]
     [HasPermission(Permissions.GetUniversities)]
     public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken = default)
     {
@@ -43,6 +44,7 @@ public class UniversitiesController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
     [HttpPut("{id}")]
+    [RequireUniversityAccess("id")]
     [HasPermission(Permissions.UpdateUniversities)]
     public async Task<IActionResult> Update([FromRoute]int id,[FromBody]UniversityRequest request, CancellationToken cancellationToken = default)
     {
@@ -51,6 +53,7 @@ public class UniversitiesController(IMediator mediator) : ControllerBase
     }
 
     [HttpDelete("{id}/toggle-status")]
+    [RequireUniversityAccess("id")]
     [HasPermission(Permissions.ToggleStatusUniversities)]
     public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
     {

@@ -9,4 +9,7 @@ public class UniversityLocalizationKeys
     public static readonly string InvalidId = nameof(InvalidId);
 
     public static readonly string DuplicatedName = nameof(DuplicatedName);
+
+    public static readonly string NotAllowedUniversity = nameof(NotAllowedUniversity);
+
 }

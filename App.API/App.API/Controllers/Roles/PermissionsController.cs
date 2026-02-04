@@ -24,6 +24,7 @@ namespace App.API.Controllers.Roles
         }
 
         [HttpPost("/api/roles/{roleId}/faculties/{facultyId}/permissions")]
+        [RequireFacultyAccess("facultyId")]
         [HasPermission(Permissions.CreatePermissions)]
         public async Task<IActionResult> AssignPermissionToRoleFaculty([FromRoute] int roleId, [FromRoute] int facultyId, [FromBody] AssignPermissionRequest request, CancellationToken cancellationToken)
         {
@@ -40,6 +41,7 @@ namespace App.API.Controllers.Roles
         }
 
         [HttpDelete("/api/roles/{roleId}/faculties/{facultyId}/permissions")]
+        [RequireFacultyAccess("facultyId")]
         [HasPermission(Permissions.ToggleStatusPermissions)]
         public async Task<IActionResult> TogglePermissionToRole([FromRoute] int roleId, [FromRoute] int facultyId, ToggleStatusPermissionRequest request, CancellationToken cancellationToken)
         {
