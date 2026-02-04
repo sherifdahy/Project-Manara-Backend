@@ -17,9 +17,6 @@ public class UpdateFacultyCommandHandler(IUnitOfWork unitOfWork
         if (_unitOfWork.Fauclties.IsExist(x => x.Name == request.Name && x.Id != request.Id))
             return Result.Failure(_facultyErrors.DuplicatedName);
 
-        if (!_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId))
-            return Result.Failure<FacultyResponse>(_universityErrors.NotFound);
-
         var faculty = await _unitOfWork.Fauclties.GetByIdAsync(request.Id, cancellationToken);
 
         if (faculty == null)

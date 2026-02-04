@@ -10,9 +10,6 @@ public class FacultyRequestValidator : AbstractValidator<FacultyRequest>
 {
     public FacultyRequestValidator()
     {
-        RuleFor(f => f.UniversityId)
-            .NotEmpty()
-            .GreaterThan(0);
 
         RuleFor(f => f.Name)
             .NotEmpty()
