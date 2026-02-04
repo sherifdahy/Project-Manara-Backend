@@ -768,6 +768,58 @@
         ]
       }
     },
+    "/api/Departments/faculties/{facultyId}/departments": {
+      "post": {
+        "tags": [
+          "Departments"
+        ],
+        "parameters": [
+          {
+            "name": "facultyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepartmentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepartmentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepartmentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
     "/api/Authentications/login": {
       "post": {
         "tags": [
@@ -1024,6 +1076,26 @@
           }
         }
       },
+      "DepartmentRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "headOfDepartment": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
       "FacultyRequest": {
         "type": "object",
         "properties": {
@@ -1208,6 +1280,9 @@
     },
     {
       "name": "Faculities"
+    },
+    {
+      "name": "Departments"
     },
     {
       "name": "Authentications"

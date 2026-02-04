@@ -676,6 +676,34 @@ namespace App.Infrastructure.Migrations
                             ClaimType = "permissions",
                             ClaimValue = "faculties:toggleStatus",
                             RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ClaimType = "permissions",
+                            ClaimValue = "departments:read",
+                            RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ClaimType = "permissions",
+                            ClaimValue = "departments:create",
+                            RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ClaimType = "permissions",
+                            ClaimValue = "departments:update",
+                            RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ClaimType = "permissions",
+                            ClaimValue = "departments:toggleStatus",
+                            RoleId = 102
                         });
                 });
 

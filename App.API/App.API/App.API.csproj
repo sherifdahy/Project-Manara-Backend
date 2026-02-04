@@ -82,6 +82,7 @@
 
   <ItemGroup>
     <Folder Include="Resources\Faculty\" />
+    <Folder Include="Resources\Department\" />
   </ItemGroup>
 
 </Project>

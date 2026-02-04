@@ -11,4 +11,6 @@ public static class LocalizationFolderNames
     public  static readonly string Role = nameof(Role);
 
     public static readonly string Permission = nameof(Permission);
+
+    public static readonly string Department = nameof(Department);
 }

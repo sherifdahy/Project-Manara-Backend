@@ -1,4 +1,8 @@
 {
   "InvalidPermissions": "Some permissions you provided are not recognized by the system.",
-  "InvalidType": "The Type Is OutSide the Range"
+  "InvalidType": "The Type Is OutSide the Range",
+  "DuplicatedPermissionForUser": "This Permission already exsists for this user",
+  "UserAlreadyHasPermission": "This User Has Already This Permission",
+  "DuplicatedPermissionForRole": "This Permission Already Exsists For This Role",
+  "OverridePermissionNotFound": "This OverridePermission Is Not Found"
 }

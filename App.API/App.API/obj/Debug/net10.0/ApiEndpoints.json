@@ -96,6 +96,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.Departments.DepartmentsController",
+    "Method": "Create",
+    "RelativePath": "api/Departments/faculties/{facultyId}/departments",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "facultyId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Requests.Departments.DepartmentRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Faculties.FaculitiesController",
     "Method": "Create",
     "RelativePath": "api/Faculities",

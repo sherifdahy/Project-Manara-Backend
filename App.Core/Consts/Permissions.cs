@@ -32,6 +32,12 @@ public class Permissions
     public const string UpdateFaculties = "faculties:update";
     public const string ToggleStatusFaculties = "faculties:toggleStatus";
 
+    // Department Permissions
+
+    public const string GetDepartments = "departments:read";
+    public const string CreateDepartments = "departments:create";
+    public const string UpdateDepartments = "departments:update";
+    public const string ToggleStatusDepartments = "departments:toggleStatus";
 
     public static IList<string> GetAllPermissions()
     {

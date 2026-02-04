@@ -24,6 +24,7 @@ public class UnitOfWork : IUnitOfWork
     // bussiness logic 
     public IRepository<University> Universities => new Repository<University>(_context);
     public IRepository<Faculty> Fauclties => new Repository<Faculty>(_context);
+    public IRepository<Department> Departments => new Repository<Department>(_context);
 
 
     public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
