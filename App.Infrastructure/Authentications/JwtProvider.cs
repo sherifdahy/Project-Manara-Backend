@@ -28,16 +28,6 @@ public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
             new(nameof(permissions), JsonSerializer.Serialize(permissions), JsonClaimValueTypes.JsonArray),
         };
 
-        if (user.FacultyId is not null)
-        {
-            claims.Add(new Claim(ClaimsConstants.facultyId, user.FacultyId.Value.ToString()));
-        }
-
-        if (user.UniversityId is not null)
-        {
-            claims.Add(new Claim(ClaimsConstants.universityId, user.UniversityId.Value.ToString()));
-        }
-
 
         var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.Key));
 
@@ -70,7 +60,6 @@ public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
                 ValidateIssuerSigningKey = true,
                 ValidateIssuer = false,
                 ValidateAudience = false,
-                //ClockSkew = TimeSpan.Zero
                 ValidateLifetime = false, 
 
             }, out SecurityToken validatedToken);

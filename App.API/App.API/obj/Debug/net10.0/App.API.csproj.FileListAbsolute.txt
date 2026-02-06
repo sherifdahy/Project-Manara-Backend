@@ -502,3 +502,4 @@ D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.MvcApplicationPartsAssemblyInfo.cs
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Department\ar-EG.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Department\en-US.json
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\appsettings.development.json

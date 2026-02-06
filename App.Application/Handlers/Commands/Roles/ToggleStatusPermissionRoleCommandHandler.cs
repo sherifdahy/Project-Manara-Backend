@@ -29,9 +29,6 @@ public class ToggleStatusPermissionRoleCommandHandler(IUnitOfWork unitOfWork
         if (roleClaimOverride == null)
             return Result.Failure(_permissionErrors.OverridePermissionNotFound);
 
-        if (!_authenticationService.IsUserHasAccessToFaculty(request.User, request.FacultyId))
-            return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotAllowedFaculty);
-
 
         roleClaimOverride.IsAllowed = !roleClaimOverride.IsAllowed;
 

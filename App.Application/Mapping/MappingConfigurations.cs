@@ -35,7 +35,7 @@ public class MappingConfigurations : IRegister
              .Map(dest => dest.NumberOfStudents,
                 src => src.Departments
              .SelectMany(d => d.Programs)
-             .SelectMany(p => p.Students)
+             .SelectMany(p => p.ProgramUsers)
              .Count());
     }
 }

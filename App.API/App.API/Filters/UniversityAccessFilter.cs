@@ -1,17 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using App.Core.Consts;
+using App.Core.Entities.Identity;
+using App.Core.Extensions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using SA.Accountring.Core.Entities.Interfaces;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 public class UniversityAccessFilter : IAsyncActionFilter
 {
-    private readonly IAuthenticationService _accessService;
     private readonly string _parameterName;
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public UniversityAccessFilter(
-        IAuthenticationService accessService,
-        string parameterName)
+    public UniversityAccessFilter(string parameterName,IUnitOfWork unitOfWork,UserManager<ApplicationUser> userManager)
     {
-        _accessService = accessService;
         _parameterName = parameterName;
+        this._unitOfWork = unitOfWork;
+        this._userManager = userManager;
     }
 
     public async Task OnActionExecutionAsync(
@@ -27,12 +34,32 @@ public class UniversityAccessFilter : IAsyncActionFilter
             return;
         }
 
-        if (!_accessService.IsUserHasAccessToUniversity(user, universityId))
+        if (!await IsUserHasAccessToUniversity(user, universityId))
         {
             context.Result = new ForbidResult();
             return;
         }
 
         await next();
+    }
+
+    private async Task<bool> IsUserHasAccessToUniversity(ClaimsPrincipal user, int requestUniversityId)
+    {
+        var userEntity = await _userManager.FindByIdAsync(user.GetUserId().ToString());
+        var userRoles = await _userManager.GetRolesAsync(userEntity!);
+
+        if (userRoles.Contains(RolesConstants.SystemAdmin))
+            return true;
+
+        var universityUser = _unitOfWork.UniversityUsers
+           .Find(fu => fu.UserId == user.GetUserId());
+
+        if (universityUser != null)
+            return requestUniversityId == universityUser.UniversityId;
+
+
+        return false;
+
+
     }
 }

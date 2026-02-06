@@ -51,8 +51,6 @@ namespace App.Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<int>("RoleType")
-                        .HasColumnType("int");
 
                     b.Property<int?>("UniversityId")
                         .HasColumnType("int");
@@ -71,10 +69,7 @@ namespace App.Infrastructure.Migrations
                         .HasDatabaseName("IX_AspNetRoles_NormalizedName_UniversityId")
                         .HasFilter("[UniversityId] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles", null, t =>
-                        {
-                            t.HasCheckConstraint("CK_ApplicationRole_RoleType", "[RoleType] IN (1, 2, 3)");
-                        });
+
 
                     b.HasData(
                         new
@@ -84,8 +79,7 @@ namespace App.Infrastructure.Migrations
                             IsDefualt = false,
                             IsDeleted = false,
                             Name = "Admin",
-                            NormalizedName = "ADMIN",
-                            RoleType = 0
+                            NormalizedName = "ADMIN"
                         },
                         new
                         {
@@ -94,8 +88,7 @@ namespace App.Infrastructure.Migrations
                             IsDefualt = true,
                             IsDeleted = false,
                             Name = "Member",
-                            NormalizedName = "MEMBER",
-                            RoleType = 0
+                            NormalizedName = "MEMBER"
                         },
                         new
                         {
@@ -104,8 +97,7 @@ namespace App.Infrastructure.Migrations
                             IsDefualt = false,
                             IsDeleted = false,
                             Name = "SystemAdmin",
-                            NormalizedName = "SYSTEMADMIN",
-                            RoleType = 0
+                            NormalizedName = "SYSTEMADMIN"
                         });
                 });
 

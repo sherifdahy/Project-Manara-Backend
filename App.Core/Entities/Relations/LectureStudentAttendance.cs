@@ -10,6 +10,6 @@ public class LectureStudentAttendance
     public int AttendanceId { get; set; }
 
     public Lecture Lecture { get; set; } = default!;
-    public Student Student { get; set; } = default!;
+    public ProgramUser Student { get; set; } = default!;
     public Attendance Attendance { get; set; } = default!;
 }

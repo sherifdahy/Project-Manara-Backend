@@ -8,6 +8,6 @@ public class StudentSurvey
     public int StudentId { get; set; }
     public int SurveyId { get; set; }
 
-    public Student Student { get; set; } = default!;
+    public ProgramUser Student { get; set; } = default!;
     public Survey Survey { get; set; } = default!;
 }

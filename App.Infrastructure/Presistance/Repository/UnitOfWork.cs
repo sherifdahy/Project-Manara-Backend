@@ -1,4 +1,5 @@
 ﻿using App.Core.Entities.Interfaces;
+using App.Core.Entities.Personnel;
 using App.Core.Entities.Universities;
 using Microsoft.EntityFrameworkCore.Storage;
 using SA.Accountring.Core.Entities.Interfaces;
@@ -20,6 +21,10 @@ public class UnitOfWork : IUnitOfWork
     public IRepository<IdentityUserRole<int>> UserRoles => new Repository<IdentityUserRole<int>>(_context);
     public IRepository<UserClaimOverride> UserClaimOverrides => new Repository<UserClaimOverride>(_context);
     public IRepository<RoleClaimOverride> RoleClaimOverrides => new Repository<RoleClaimOverride>(_context);
+    public IRepository<FacultyUser> FacultyUsers => new Repository<FacultyUser>(_context);
+    public IRepository<UniversityUser> UniversityUsers => new Repository<UniversityUser>(_context);
+    public IRepository<DepartmentUser> DepartmentUsers => new Repository<DepartmentUser>(_context);
+    public IRepository<ProgramUser> ProgramUsers => new Repository<ProgramUser>(_context);
 
     // bussiness logic 
     public IRepository<University> Universities => new Repository<University>(_context);

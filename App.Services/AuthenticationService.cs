@@ -10,7 +10,9 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 namespace App.Services;
 
-public class AuthenticationService(UserManager<ApplicationUser> userManager,IUnitOfWork unitOfWork,RoleManager<ApplicationRole> roleManager) : IAuthenticationService
+public class AuthenticationService(UserManager<ApplicationUser> userManager
+    ,IUnitOfWork unitOfWork
+    ,RoleManager<ApplicationRole> roleManager) : IAuthenticationService
 {
     private readonly int _refreshTokenExpirationDays = 14;
     private readonly UserManager<ApplicationUser> _userManager = userManager;
@@ -49,14 +51,21 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager,IUni
             var rolePermissions = await _roleManager.GetClaimsAsync(role);
 
             permissions.AddRange(rolePermissions.Where(x => x.Type == Permissions.Type).Select(x => x.Value).Distinct());
-            
-           
+
+            //TODO roleClaimOverrides on DepartmentUsers and ProgrammUser 
+
+            var facultyUser = await _unitOfWork.FacultyUsers
+                .FindAsync(fu=>fu.UserId == user.Id);
+
+            if(facultyUser is null)
+                continue;
+
             var roleClaimOverrides = await _unitOfWork.RoleClaimOverrides
-                .FindAllAsync(rc=>rc.RoleId == role.Id && rc.FacultyId==user.FacultyId);
+                .FindAllAsync(rc => rc.RoleId == role.Id && rc.FacultyId == facultyUser.FacultyId);
 
             foreach (var roleClaimOverride in roleClaimOverrides)
             {
-                if(roleClaimOverride is null) continue;
+                if (roleClaimOverride is null) continue;
 
                 if (roleClaimOverride.IsAllowed)
                 {
@@ -90,46 +99,8 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager,IUni
 
     }
 
-    public bool IsUserHasAccessToUniversity(ClaimsPrincipal user, int requestUniversityId)
-    {
-
-        //1.0 System Admin 
-        if (user.GetUniversityId() == null && user.GetFacultyId() == null)
-            return true;
-
-        //2.0 Others
-        if (user.GetUniversityId() == requestUniversityId)
-            return true;
-
-        return false;
-        
-    }
-
-    public bool IsUserHasAccessToFaculty(ClaimsPrincipal user, int requestFacultyId)
-    {
-        
-        //1.0 System Admin 
-        if (user.GetUniversityId() == null && user.GetFacultyId() == null)
-            return true;
-
-        if(user.GetFacultyId()==null)
-        {
-            //2.0 Admin University (Here I Must Check That the faculty is subset of the university)
-            var isFacultyExists = _unitOfWork.Fauclties
-                .IsExist(f => f.Id == requestFacultyId && f.UniversityId == user.GetUniversityId());
-
-            return isFacultyExists;
-        }
-        else
-        {
-            //3.0 Others
-            if(user.GetFacultyId()== requestFacultyId)
-                return true;
-            return false;
-        }
-
-    }
-
+     
+    //TODO IsUserHasAccessToDepartment , IsUserHasAccessToProgramm
 
 
     private static string GenerateRefreshToken()

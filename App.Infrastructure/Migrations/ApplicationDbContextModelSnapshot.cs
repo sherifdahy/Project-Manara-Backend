@@ -116,9 +116,6 @@ namespace App.Infrastructure.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("FacultyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -164,16 +161,11 @@ namespace App.Infrastructure.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("UniversityId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FacultyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -182,8 +174,6 @@ namespace App.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("UniversityId");
 
                     b.ToTable("AspNetUsers", (string)null);
 
@@ -267,13 +257,40 @@ namespace App.Infrastructure.Migrations
                     b.ToTable("UserClaimOverrides");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
+            modelBuilder.Entity("App.Core.Entities.Personnel.DepartmentUser", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("DepartmentUsers");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Personnel.FacultyUser", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("FacultyId");
+
+                    b.ToTable("FacultyUsers");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("AcademicLevel")
                         .HasColumnType("int");
@@ -305,17 +322,26 @@ namespace App.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.HasIndex("ProgramId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.ToTable("ProgramUsers");
+                });
 
-                    b.ToTable("Students");
+            modelBuilder.Entity("App.Core.Entities.Personnel.UniversityUser", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UniversityId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("UniversityId");
+
+                    b.ToTable("UniversityUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -800,14 +826,6 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationUser", b =>
                 {
-                    b.HasOne("App.Core.Entities.Universities.Faculty", "Faculty")
-                        .WithMany("Users")
-                        .HasForeignKey("FacultyId");
-
-                    b.HasOne("App.Core.Entities.Universities.University", "University")
-                        .WithMany("Users")
-                        .HasForeignKey("UniversityId");
-
                     b.OwnsMany("App.Core.Entities.Identity.RefreshToken", "RefreshTokens", b1 =>
                         {
                             b1.Property<int>("UserId")
@@ -840,11 +858,7 @@ namespace App.Infrastructure.Migrations
                                 .HasForeignKey("UserId");
                         });
 
-                    b.Navigation("Faculty");
-
                     b.Navigation("RefreshTokens");
-
-                    b.Navigation("University");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.RoleClaimOverride", b =>
@@ -877,13 +891,80 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
+            modelBuilder.Entity("App.Core.Entities.Personnel.DepartmentUser", b =>
                 {
-                    b.HasOne("App.Core.Entities.Universities.Program", null)
-                        .WithMany("Students")
+                    b.HasOne("App.Core.Entities.Universities.Department", "Department")
+                        .WithMany("DepartmentUsers")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Identity.ApplicationUser", "User")
+                        .WithOne("DepartmentUser")
+                        .HasForeignKey("App.Core.Entities.Personnel.DepartmentUser", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Personnel.FacultyUser", b =>
+                {
+                    b.HasOne("App.Core.Entities.Universities.Faculty", "Faculty")
+                        .WithMany("FacultyUsers")
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Identity.ApplicationUser", "User")
+                        .WithOne("FacultyUser")
+                        .HasForeignKey("App.Core.Entities.Personnel.FacultyUser", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Faculty");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
+                {
+                    b.HasOne("App.Core.Entities.Universities.Program", "Program")
+                        .WithMany("ProgramUsers")
                         .HasForeignKey("ProgramId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Identity.ApplicationUser", "User")
+                        .WithOne("ProgramUser")
+                        .HasForeignKey("App.Core.Entities.Personnel.ProgramUser", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Program");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Personnel.UniversityUser", b =>
+                {
+                    b.HasOne("App.Core.Entities.Universities.University", "University")
+                        .WithMany("UniversityUsers")
+                        .HasForeignKey("UniversityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Identity.ApplicationUser", "User")
+                        .WithOne("UniversityUser")
+                        .HasForeignKey("App.Core.Entities.Personnel.UniversityUser", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("University");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -999,11 +1080,25 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationUser", b =>
                 {
+                    b.Navigation("DepartmentUser")
+                        .IsRequired();
+
+                    b.Navigation("FacultyUser")
+                        .IsRequired();
+
                     b.Navigation("PermissionOverrides");
+
+                    b.Navigation("ProgramUser")
+                        .IsRequired();
+
+                    b.Navigation("UniversityUser")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
                 {
+                    b.Navigation("DepartmentUsers");
+
                     b.Navigation("Programs");
                 });
 
@@ -1011,14 +1106,14 @@ namespace App.Infrastructure.Migrations
                 {
                     b.Navigation("Departments");
 
-                    b.Navigation("RoleClaimOverrides");
+                    b.Navigation("FacultyUsers");
 
-                    b.Navigation("Users");
+                    b.Navigation("RoleClaimOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
                 {
-                    b.Navigation("Students");
+                    b.Navigation("ProgramUsers");
 
                     b.Navigation("Subjects");
                 });
@@ -1032,7 +1127,7 @@ namespace App.Infrastructure.Migrations
                 {
                     b.Navigation("Faculties");
 
-                    b.Navigation("Users");
+                    b.Navigation("UniversityUsers");
                 });
 #pragma warning restore 612, 618
         }

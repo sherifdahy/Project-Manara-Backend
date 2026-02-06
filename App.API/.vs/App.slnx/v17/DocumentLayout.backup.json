@@ -3,26 +3,10 @@
   "WorkspaceRootPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\requests\\departments\\createdepartmentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\queries\\universities\\getuniversityqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\departments\\createdepartmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\responses\\departments\\departmentresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\commands\\departments\\createdepartmentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\departments\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\departments\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\validations\\departments\\createdepartmentrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.core\\consts\\permissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,7 +16,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -44,93 +28,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreateDepartmentCommandHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T11:30:40.987Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DepartmentResponse.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Departments\\DepartmentResponse.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\Departments\\DepartmentResponse.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Departments\\DepartmentResponse.cs",
-              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Departments\\DepartmentResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T11:26:51.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CreateDepartmentCommand.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Departments\\CreateDepartmentCommand.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Commands\\Departments\\CreateDepartmentCommand.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Departments\\CreateDepartmentCommand.cs",
-              "RelativeToolTip": "..\\App.Application\\Commands\\Departments\\CreateDepartmentCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T11:24:05.56Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateDepartmentRequestValidator.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Validations\\Departments\\CreateDepartmentRequestValidator.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Validations\\Departments\\CreateDepartmentRequestValidator.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Validations\\Departments\\CreateDepartmentRequestValidator.cs",
-              "RelativeToolTip": "..\\App.Application\\Validations\\Departments\\CreateDepartmentRequestValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T11:14:07.833Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CreateDepartmentRequest.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\Departments\\CreateDepartmentRequest.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Requests\\Departments\\CreateDepartmentRequest.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\Departments\\CreateDepartmentRequest.cs",
-              "RelativeToolTip": "..\\App.Application\\Contracts\\Requests\\Departments\\CreateDepartmentRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAA7AAAAAAAAAA==",
+              "Title": "GetUniversityQueryHandler.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Universities\\GetUniversityQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Universities\\GetUniversityQueryHandler.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Universities\\GetUniversityQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Universities\\GetUniversityQueryHandler.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAABcAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T11:08:58.818Z",
+              "WhenOpened": "2026-02-04T14:19:18.906Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Permissions.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Consts\\Permissions.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Consts\\Permissions.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Consts\\Permissions.cs",
-              "RelativeToolTip": "..\\App.Core\\Consts\\Permissions.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAzwCcAAAAvAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "..\\App.Services\\AuthenticationService.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\AuthenticationService.cs",
+              "RelativeToolTip": "..\\App.Services\\AuthenticationService.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAACYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T11:05:14.298Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DepartmentsController.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Departments\\DepartmentsController.cs",
-              "RelativeDocumentMoniker": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Departments\\DepartmentsController.cs",
-              "RelativeToolTip": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T10:47:40.941Z",
+              "WhenOpened": "2026-02-04T14:18:45.06Z",
               "EditorCaption": ""
             }
           ]

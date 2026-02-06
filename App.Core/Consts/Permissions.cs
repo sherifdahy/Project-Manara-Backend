@@ -15,6 +15,8 @@ public class Permissions
     public const string CreateRoles = "roles:create";
     public const string UpdateRoles = "roles:update";
     public const string ToggleStatusRoles = "roles:toggleStatus";
+
+    //Permission Permission 
     public const string ToggleStatusPermissions = "permissions:toggleStatus";
     public const string CreatePermissions = "permissions:create";
 

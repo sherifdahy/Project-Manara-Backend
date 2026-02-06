@@ -3,10 +3,20 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace App.Infrastructure.Presistance.EntitiesConfiguration;
 
-public class StudentConfiguration : IEntityTypeConfiguration<Student>
+public class ProgramUserConfiguration : IEntityTypeConfiguration<ProgramUser>
 {
-    public void Configure(EntityTypeBuilder<Student> builder)
+    public void Configure(EntityTypeBuilder<ProgramUser> builder)
     {
+
+        builder.HasKey(fu => fu.UserId);
+
+        builder.Property(fu => fu.UserId)
+            .IsRequired();
+
+
+        builder.Property(fu => fu.ProgramId)
+            .IsRequired();
+
 
         builder.Property(f => f.Gender)
             .IsRequired()
@@ -34,10 +44,5 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
         builder.Property(f => f.AcademicLevel)
             .IsRequired();
 
-        builder.HasIndex(s => s.UserId)
-               .IsUnique();
-
-        builder.Property(f => f.ProgramId)
-            .IsRequired();
     }
 }

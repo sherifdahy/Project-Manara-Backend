@@ -1,8 +1,9 @@
-﻿namespace App.Core.Entities.Personnel;
+﻿using App.Core.Entities.Identity;
 
-public class Student
+namespace App.Core.Entities.Personnel;
+
+public class ProgramUser
 {
-    public int Id { get; set; }
     public string Gender { get; set; } = string.Empty;
     public string NationalId { get; set; } = string.Empty;
     public DateTime BirthDate { get; set; }
@@ -14,5 +15,6 @@ public class Student
     public int UserId { get; set; }
     public int ProgramId { get; set; }
 
-    //public UniversityManagement.Program Program { get; set; } = default!;
+    public Program Program { get; set; } = default!;
+    public ApplicationUser User { get; set; } = default!;
 }

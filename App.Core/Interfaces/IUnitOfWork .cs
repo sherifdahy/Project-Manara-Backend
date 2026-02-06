@@ -14,6 +14,10 @@ public interface IUnitOfWork : IDisposable
     public IRepository<IdentityUserRole<int>> UserRoles { get; }
     public IRepository<UserClaimOverride> UserClaimOverrides { get; }
     public IRepository<RoleClaimOverride> RoleClaimOverrides { get; }
+    public IRepository<FacultyUser> FacultyUsers { get; }
+    public IRepository<UniversityUser> UniversityUsers  { get; }
+    public IRepository<DepartmentUser> DepartmentUsers { get; }
+    public IRepository<ProgramUser> ProgramUsers { get; }
 
     // bussiness logic
     public IRepository<University> Universities { get; }

@@ -583,7 +583,7 @@
         ]
       }
     },
-    "/api/universities/{universityId}/faculities": {
+    "/api/universities/{universityId}/facilities": {
       "get": {
         "tags": [
           "Faculities"
@@ -608,6 +608,53 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Faculities"
+        ],
+        "parameters": [
+          {
+            "name": "universityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacultyRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacultyRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacultyRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -666,43 +713,6 @@
               "format": "int32"
             }
           }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FacultyRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FacultyRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/FacultyRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
-    "/api/Faculities": {
-      "post": {
-        "tags": [
-          "Faculities"
         ],
         "requestBody": {
           "content": {
@@ -1160,24 +1170,6 @@
           },
           "lastName": {
             "type": "string"
-          },
-          "universityId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "null",
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "facultyId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "null",
-              "integer",
-              "string"
-            ],
-            "format": "int32"
           }
         }
       },

@@ -118,22 +118,6 @@
   },
   {
     "ContainingType": "App.API.Controllers.Faculties.FaculitiesController",
-    "Method": "Create",
-    "RelativePath": "api/Faculities",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "App.Application.Contracts.Requests.Faculties.FacultyRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Faculties.FaculitiesController",
     "Method": "GetById",
     "RelativePath": "api/Faculities/{id}",
     "HttpMethod": "GET",
@@ -410,7 +394,7 @@
   {
     "ContainingType": "App.API.Controllers.Faculties.FaculitiesController",
     "Method": "GetAll",
-    "RelativePath": "api/universities/{universityId}/faculities",
+    "RelativePath": "api/universities/{universityId}/facilities",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -424,6 +408,27 @@
         "Name": "includeDisabled",
         "Type": "System.Boolean",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Faculties.FaculitiesController",
+    "Method": "Create",
+    "RelativePath": "api/universities/{universityId}/facilities",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universityId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Requests.Faculties.FacultyRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

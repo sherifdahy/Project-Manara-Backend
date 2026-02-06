@@ -17,7 +17,7 @@ public class FaculitiesController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
 
-    [HttpGet("/api/universities/{universityId:int}/faculities")]
+    [HttpGet("/api/universities/{universityId:int}/facilities")]
     [RequireUniversityAccess("universityId")]
     [HasPermission(Permissions.GetFaculties)]
     public async Task<IActionResult> GetAll([FromRoute] int universityId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
@@ -37,11 +37,12 @@ public class FaculitiesController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
-    [HttpPost]
+    [HttpPost("/api/universities/{universityId:int}/facilities")] 
+    [RequireUniversityAccess("universityId")]
     [HasPermission(Permissions.CreateFaculties)]
-    public async Task<IActionResult> Create([FromBody]FacultyRequest request, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> Create([FromRoute] int universityId,[FromBody]FacultyRequest request, CancellationToken cancellationToken = default)
     {
-        var result = await _mediator.Send(request.Adapt<CreateFacultyCommand>(), cancellationToken);
+        var result = await _mediator.Send(request.Adapt<CreateFacultyCommand>() with { UniversityId=universityId}, cancellationToken);
         return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 

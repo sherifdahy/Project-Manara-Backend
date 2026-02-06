@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260127111150_ForceEnumToTakeTheValueInsideRange")]
-    partial class ForceEnumToTakeTheValueInsideRange
+    [Migration("20260204150914_RemoveUniversityIdAndFacultyIdFromTheTable")]
+    partial class RemoveUniversityIdAndFacultyIdFromTheTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,10 @@ namespace App.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDefualt")
                         .HasColumnType("bit");
 
@@ -51,12 +55,6 @@ namespace App.Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<int>("RoleType")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UniversityId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
@@ -64,43 +62,38 @@ namespace App.Infrastructure.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.HasIndex("UniversityId");
-
-                    b.ToTable("AspNetRoles", null, t =>
-                        {
-                            t.HasCheckConstraint("CK_ApplicationRole_RoleType", "[RoleType] IN (1, 2, 3)");
-                        });
+                    b.ToTable("AspNetRoles", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 100,
                             ConcurrencyStamp = "51655B45-963A-4DD7-A68F-1F18B3F4BE47",
+                            Description = "",
                             IsDefualt = false,
                             IsDeleted = false,
                             Name = "Admin",
-                            NormalizedName = "ADMIN",
-                            RoleType = 0
+                            NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 101,
                             ConcurrencyStamp = "9601DE96-3D34-48D0-BA24-4D7C1A9F6C7F",
+                            Description = "",
                             IsDefualt = true,
                             IsDeleted = false,
                             Name = "Member",
-                            NormalizedName = "MEMBER",
-                            RoleType = 0
+                            NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 102,
                             ConcurrencyStamp = "AE6C6754-0862-4EA2-8868-BF5C27E7AEF9",
+                            Description = "",
                             IsDefualt = false,
                             IsDeleted = false,
                             Name = "SystemAdmin",
-                            NormalizedName = "SYSTEMADMIN",
-                            RoleType = 0
+                            NormalizedName = "SYSTEMADMIN"
                         });
                 });
 
@@ -125,9 +118,6 @@ namespace App.Infrastructure.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("FacultyId")
-                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -174,16 +164,11 @@ namespace App.Infrastructure.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("UniversityId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FacultyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -192,8 +177,6 @@ namespace App.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("UniversityId");
 
                     b.ToTable("AspNetUsers", (string)null);
 
@@ -236,6 +219,45 @@ namespace App.Infrastructure.Migrations
                             TwoFactorEnabled = false,
                             UserName = "admin@manara.org"
                         });
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Identity.RoleClaimOverride", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClaimValue")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsAllowed")
+                        .HasColumnType("bit");
+
+                    b.HasKey("RoleId", "FacultyId", "ClaimValue");
+
+                    b.HasIndex("FacultyId");
+
+                    b.ToTable("RoleClaimOverrides");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Identity.UserClaimOverride", b =>
+                {
+                    b.Property<int>("ApplicationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClaimValue")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsAllowed")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ApplicationUserId", "ClaimValue");
+
+                    b.ToTable("UserClaimOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
@@ -287,24 +309,6 @@ namespace App.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("App.Core.Entities.Relations.UserPermissionOverride", b =>
-                {
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoleClaimId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsAllowed")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ApplicationUserId", "RoleClaimId");
-
-                    b.HasIndex("RoleClaimId");
-
-                    b.ToTable("UserPermissionOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -530,12 +534,18 @@ namespace App.Infrastructure.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
+                    b.Property<int>("YearOfEstablishment")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Universities");
+                    b.ToTable("Universities", t =>
+                        {
+                            t.HasCheckConstraint("CK_University_YearOfEstablishment", "[YearOfEstablishment] >= 1800 AND [YearOfEstablishment] <= YEAR(GETDATE())");
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -594,56 +604,98 @@ namespace App.Infrastructure.Migrations
                         {
                             Id = 5,
                             ClaimType = "permissions",
-                            ClaimValue = "universities:read",
+                            ClaimValue = "permissions:toggleStatus",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 6,
                             ClaimType = "permissions",
-                            ClaimValue = "universities:create",
+                            ClaimValue = "permissions:create",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 7,
                             ClaimType = "permissions",
-                            ClaimValue = "universities:update",
+                            ClaimValue = "universities:read",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 8,
                             ClaimType = "permissions",
-                            ClaimValue = "universities:toggleStatus",
+                            ClaimValue = "universities:create",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 9,
                             ClaimType = "permissions",
-                            ClaimValue = "faculties:read",
+                            ClaimValue = "universities:update",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 10,
                             ClaimType = "permissions",
-                            ClaimValue = "faculties:create",
+                            ClaimValue = "universities:toggleStatus",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 11,
                             ClaimType = "permissions",
-                            ClaimValue = "faculties:update",
+                            ClaimValue = "faculties:read",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 12,
                             ClaimType = "permissions",
+                            ClaimValue = "faculties:create",
+                            RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ClaimType = "permissions",
+                            ClaimValue = "faculties:update",
+                            RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ClaimType = "permissions",
                             ClaimValue = "faculties:toggleStatus",
+                            RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ClaimType = "permissions",
+                            ClaimValue = "departments:read",
+                            RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ClaimType = "permissions",
+                            ClaimValue = "departments:create",
+                            RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ClaimType = "permissions",
+                            ClaimValue = "departments:update",
+                            RoleId = 102
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ClaimType = "permissions",
+                            ClaimValue = "departments:toggleStatus",
                             RoleId = 102
                         });
                 });
@@ -739,25 +791,8 @@ namespace App.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Identity.ApplicationRole", b =>
-                {
-                    b.HasOne("App.Core.Entities.Universities.University", "University")
-                        .WithMany("Roles")
-                        .HasForeignKey("UniversityId");
-
-                    b.Navigation("University");
-                });
-
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationUser", b =>
                 {
-                    b.HasOne("App.Core.Entities.Universities.Faculty", "Faculty")
-                        .WithMany("Users")
-                        .HasForeignKey("FacultyId");
-
-                    b.HasOne("App.Core.Entities.Universities.University", "University")
-                        .WithMany("Users")
-                        .HasForeignKey("UniversityId");
-
                     b.OwnsMany("App.Core.Entities.Identity.RefreshToken", "RefreshTokens", b1 =>
                         {
                             b1.Property<int>("UserId")
@@ -790,11 +825,37 @@ namespace App.Infrastructure.Migrations
                                 .HasForeignKey("UserId");
                         });
 
+                    b.Navigation("RefreshTokens");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Identity.RoleClaimOverride", b =>
+                {
+                    b.HasOne("App.Core.Entities.Universities.Faculty", "Faculty")
+                        .WithMany("RoleClaimOverrides")
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Identity.ApplicationRole", "Role")
+                        .WithMany("RoleClaimOverrides")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Faculty");
 
-                    b.Navigation("RefreshTokens");
+                    b.Navigation("Role");
+                });
 
-                    b.Navigation("University");
+            modelBuilder.Entity("App.Core.Entities.Identity.UserClaimOverride", b =>
+                {
+                    b.HasOne("App.Core.Entities.Identity.ApplicationUser", "ApplicationUser")
+                        .WithMany("PermissionOverrides")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
@@ -804,25 +865,6 @@ namespace App.Infrastructure.Migrations
                         .HasForeignKey("ProgramId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("App.Core.Entities.Relations.UserPermissionOverride", b =>
-                {
-                    b.HasOne("App.Core.Entities.Identity.ApplicationUser", "ApplicationUser")
-                        .WithMany("PermissionOverrides")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", "RoleClaim")
-                        .WithMany()
-                        .HasForeignKey("RoleClaimId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
-
-                    b.Navigation("RoleClaim");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -931,6 +973,11 @@ namespace App.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("App.Core.Entities.Identity.ApplicationRole", b =>
+                {
+                    b.Navigation("RoleClaimOverrides");
+                });
+
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationUser", b =>
                 {
                     b.Navigation("PermissionOverrides");
@@ -945,7 +992,7 @@ namespace App.Infrastructure.Migrations
                 {
                     b.Navigation("Departments");
 
-                    b.Navigation("Users");
+                    b.Navigation("RoleClaimOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
@@ -963,10 +1010,6 @@ namespace App.Infrastructure.Migrations
             modelBuilder.Entity("App.Core.Entities.Universities.University", b =>
                 {
                     b.Navigation("Faculties");
-
-                    b.Navigation("Roles");
-
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

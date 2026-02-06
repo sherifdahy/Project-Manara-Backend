@@ -10,6 +10,6 @@ public class Department
 
     public int FacultyId { get; set; }
     public Faculty Faculty { get; set; } = default!;
-
+    public ICollection<DepartmentUser> DepartmentUsers { get; set; } = new HashSet<DepartmentUser>();
     public ICollection<Program> Programs { get; set; } = new HashSet<Program>();
 }

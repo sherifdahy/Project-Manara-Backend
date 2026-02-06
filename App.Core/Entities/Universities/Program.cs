@@ -13,5 +13,5 @@ public class Program
     public Department Department { get; set; } = default!;
 
     public ICollection<Subject> Subjects { get; set; } = new HashSet<Subject>();    
-    public ICollection<Student> Students { get; set; } = new HashSet<Student>();
+    public ICollection<ProgramUser> ProgramUsers { get; set; } = new HashSet<ProgramUser>();
 }

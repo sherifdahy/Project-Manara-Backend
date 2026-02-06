@@ -27,11 +27,11 @@ public class RegisterCommandHandler(UserManager<ApplicationUser> userManager,
         if (emailIsExists)
             return Result.Failure<AuthenticationResponse>(_errors.DuplicatedEmail);
 
-        if (!(_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId)))
-            return Result.Failure<AuthenticationResponse>(_universityErrors.InvalidId);
+        //if (!(_unitOfWork.Universities.IsExist(x => x.Id == request.UniversityId)))
+        //    return Result.Failure<AuthenticationResponse>(_universityErrors.InvalidId);
 
-        if (!(_unitOfWork.Fauclties.IsExist(x => (x.Id == request.FacultyId) &&(x.UniversityId==request.UniversityId )) || request.FacultyId is null))
-            return Result.Failure<AuthenticationResponse>(_facultyErrors.InvalidId);
+        //if (!(_unitOfWork.Fauclties.IsExist(x => (x.Id == request.FacultyId) &&(x.UniversityId==request.UniversityId )) || request.FacultyId is null))
+        //    return Result.Failure<AuthenticationResponse>(_facultyErrors.InvalidId);
 
         var user = request.Adapt<ApplicationUser>();
 

@@ -35,10 +35,6 @@ public class AssignPermissionToRoleCommandHandler(IUnitOfWork unitOfWork
             return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotFound);
 
 
-        if(!_authenticationService.IsUserHasAccessToFaculty(request.User,request.FacultyId))
-            return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotAllowedFaculty);
-
-
         var allowedPermissions = Permissions.GetAllPermissions();
 
         if (!allowedPermissions.Contains(request.ClaimValue))
