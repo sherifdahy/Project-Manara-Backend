@@ -4,6 +4,7 @@ using App.Infrastructure.Presistance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260206124617_AddThePermissionToTheSystemAdmin")]
+    partial class AddThePermissionToTheSystemAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -237,7 +240,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("RoleClaimOverrides", (string)null);
+                    b.ToTable("RoleClaimOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.UserClaimOverride", b =>
@@ -254,7 +257,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasKey("ApplicationUserId", "ClaimValue");
 
-                    b.ToTable("UserClaimOverrides", (string)null);
+                    b.ToTable("UserClaimOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.DepartmentUser", b =>
@@ -269,7 +272,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("DepartmentUsers", (string)null);
+                    b.ToTable("DepartmentUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.FacultyUser", b =>
@@ -284,7 +287,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("FacultyUsers", (string)null);
+                    b.ToTable("FacultyUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
@@ -326,7 +329,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ProgramId");
 
-                    b.ToTable("ProgramUsers", (string)null);
+                    b.ToTable("ProgramUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.UniversityUser", b =>
@@ -341,7 +344,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("UniversityUsers", (string)null);
+                    b.ToTable("UniversityUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -384,7 +387,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.FAQ", b =>
@@ -410,7 +413,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("FAQ", (string)null);
+                    b.ToTable("FAQ");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Faculty", b =>
@@ -459,7 +462,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("Faculties", (string)null);
+                    b.ToTable("Faculties");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
@@ -495,7 +498,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Programs", (string)null);
+                    b.ToTable("Programs");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Subject", b =>
@@ -528,7 +531,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ProgramId");
 
-                    b.ToTable("Subjects", (string)null);
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.University", b =>
@@ -575,7 +578,7 @@ namespace App.Infrastructure.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Universities", null, t =>
+                    b.ToTable("Universities", t =>
                         {
                             t.HasCheckConstraint("CK_University_YearOfEstablishment", "[YearOfEstablishment] >= 1800 AND [YearOfEstablishment] <= YEAR(GETDATE())");
                         });

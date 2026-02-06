@@ -170,6 +170,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
+    "Method": "GetAll",
+    "RelativePath": "api/Permissions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Roles.RolesController",
     "Method": "GetAllRoles",
     "RelativePath": "api/Roles",

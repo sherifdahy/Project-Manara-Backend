@@ -18,12 +18,6 @@ F:\Manaraa-University-Management-System\App.Backend\App.Application\obj\Debug\ne
 F:\Manaraa-University-Management-System\App.Backend\App.Application\obj\Debug\net10.0\refint\App.Application.dll
 F:\Manaraa-University-Management-System\App.Backend\App.Application\obj\Debug\net10.0\App.Application.pdb
 F:\Manaraa-University-Management-System\App.Backend\App.Application\obj\Debug\net10.0\ref\App.Application.dll
-D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.csproj.AssemblyReference.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.GeneratedMSBuildEditorConfig.editorconfig
-D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.AssemblyInfoInputs.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.AssemblyInfo.cs
-D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.csproj.CoreCompileInputs.cache
-D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.sourcelink.json
 D:\work\GraduationProject\Project-Manara-Backend\App.Application\bin\Debug\net10.0\BuildHost-net472\Microsoft.Build.Locator.dll
 D:\work\GraduationProject\Project-Manara-Backend\App.Application\bin\Debug\net10.0\BuildHost-net472\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe
 D:\work\GraduationProject\Project-Manara-Backend\App.Application\bin\Debug\net10.0\BuildHost-net472\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe.config
@@ -79,6 +73,12 @@ D:\work\GraduationProject\Project-Manara-Backend\App.Application\bin\Debug\net10
 D:\work\GraduationProject\Project-Manara-Backend\App.Application\bin\Debug\net10.0\App.Infrastructure.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.Application\bin\Debug\net10.0\App.Services.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.Application\bin\Debug\net10.0\App.Core.pdb
+D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.csproj.AssemblyReference.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.AssemblyInfoInputs.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.AssemblyInfo.cs
+D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.csproj.CoreCompileInputs.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.sourcelink.json
 D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Appl.090A7001.Up2Date
 D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\App.Application.dll
 D:\work\GraduationProject\Project-Manara-Backend\App.Application\obj\Debug\net10.0\refint\App.Application.dll

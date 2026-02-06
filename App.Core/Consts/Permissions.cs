@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 namespace App.Infrastructure.Abstractions.Consts;
 
 public class Permissions
@@ -17,8 +17,9 @@ public class Permissions
     public const string ToggleStatusRoles = "roles:toggleStatus";
 
     //Permission Permission 
-    public const string ToggleStatusPermissions = "permissions:toggleStatus";
+    public const string GetPermissions = "permissions:read";
     public const string CreatePermissions = "permissions:create";
+    public const string ToggleStatusPermissions = "permissions:toggleStatus";
 
 
     // University Permissions

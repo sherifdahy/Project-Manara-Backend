@@ -1,5 +1,6 @@
 ﻿using App.Application.Commands.Roles;
 using App.Application.Contracts.Requests.Roles;
+using App.Application.Queries.Permissions;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
@@ -14,6 +15,15 @@ namespace App.API.Controllers.Roles
     [Authorize]
     public class PermissionsController(IMediator _mediator) : ControllerBase
     {
+
+        [HttpGet]
+        [HasPermission(Permissions.GetPermissions)]
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(new GetAllPermissionsQuery(), cancellationToken);
+            return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+        }
+
 
         [HttpPost("/api/users/{userId:int}/permissions")]
         [HasPermission(Permissions.CreatePermissions)]
