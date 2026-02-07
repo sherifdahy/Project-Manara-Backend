@@ -35,7 +35,8 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager
 
         return (refreshToken,refreshTokenExpiration);
     }
-    public async Task<(IEnumerable<string> roles, IEnumerable<string> permissions)> GetUserRolesAndPermissions(ApplicationUser user, CancellationToken cancellationToken)
+    public async Task<(IEnumerable<string> roles, IEnumerable<string> permissions)> 
+        GetUserOverrideRolesAndPermissions(ApplicationUser user,CancellationToken cancellationToken, bool includeUserOverride = true)
     {
 
         var roles = await _userManager.GetRolesAsync(user);
@@ -52,57 +53,62 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager
 
             permissions.AddRange(rolePermissions.Where(x => x.Type == Permissions.Type).Select(x => x.Value).Distinct());
 
-            //TODO roleClaimOverrides on DepartmentUsers and ProgrammUser 
-
-            var facultyUser = await _unitOfWork.FacultyUsers
-                .FindAsync(fu=>fu.UserId == user.Id);
-
-            if(facultyUser is null)
-                continue;
+            int facultyId = await GetUserFacultyId(user);
 
             var roleClaimOverrides = await _unitOfWork.RoleClaimOverrides
-                .FindAllAsync(rc => rc.RoleId == role.Id && rc.FacultyId == facultyUser.FacultyId);
+                .FindAllAsync(rc => rc.RoleId == role.Id && rc.FacultyId == facultyId);
 
             foreach (var roleClaimOverride in roleClaimOverrides)
             {
                 if (roleClaimOverride is null) continue;
-
-                if (roleClaimOverride.IsAllowed)
-                {
-                    permissions.Add(roleClaimOverride.ClaimValue);
-                }
-                else
-                {
-                    permissions.Remove(roleClaimOverride.ClaimValue);
-                }
+                permissions.Remove(roleClaimOverride.ClaimValue);
             }
         }
 
-        foreach (var over in user.PermissionOverrides)
+        if (includeUserOverride)
         {
-            var permissionValue = over.ClaimValue;
-
-            if (over.IsAllowed)
+            foreach (var over in user.PermissionOverrides)
             {
-                permissions.Add(permissionValue!);
-            }
-            else
-            {
+                var permissionValue = over.ClaimValue;
                 permissions.Remove(permissionValue!);
             }
         }
+
          
-
-
         return (roles, permissions);
-
-
     }
 
-     
+   
+
+
+
     //TODO IsUserHasAccessToDepartment , IsUserHasAccessToProgramm
 
 
+    private async Task<int> GetUserFacultyId(ApplicationUser user)
+    {
+        int facultyId = 0;
+
+        var facultyUser = await _unitOfWork.FacultyUsers
+            .FindAsync(fu => fu.UserId == user.Id);
+
+        if (facultyUser != null)
+            facultyId = facultyUser.FacultyId;
+
+        var departmentUser = await _unitOfWork.DepartmentUsers
+            .FindAsync(du => du.UserId == user.Id, [du => du.Department]);
+
+        if (departmentUser != null)
+            facultyId = departmentUser.Department.FacultyId;
+
+        var programUser = await _unitOfWork.ProgramUsers
+            .FindAsync(du => du.UserId == user.Id, [du => du.Program.Department]);
+
+        if (programUser != null)
+            facultyId = programUser.Program.Department.FacultyId;
+
+        return facultyId;
+    }
     private static string GenerateRefreshToken()
     {
         return Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));

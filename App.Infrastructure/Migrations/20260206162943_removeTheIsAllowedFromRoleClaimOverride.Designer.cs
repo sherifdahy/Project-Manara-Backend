@@ -4,6 +4,7 @@ using App.Infrastructure.Presistance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260206162943_removeTheIsAllowedFromRoleClaimOverride")]
+    partial class removeTheIsAllowedFromRoleClaimOverride
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,19 +33,13 @@ namespace App.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDefualt")
                         .HasColumnType("bit");
@@ -58,9 +55,6 @@ namespace App.Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<int?>("RoleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
@@ -68,15 +62,12 @@ namespace App.Infrastructure.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.HasIndex("RoleId");
-
                     b.ToTable("AspNetRoles", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 100,
-                            Code = "",
                             ConcurrencyStamp = "51655B45-963A-4DD7-A68F-1F18B3F4BE47",
                             Description = "",
                             IsDefualt = false,
@@ -87,7 +78,6 @@ namespace App.Infrastructure.Migrations
                         new
                         {
                             Id = 101,
-                            Code = "",
                             ConcurrencyStamp = "9601DE96-3D34-48D0-BA24-4D7C1A9F6C7F",
                             Description = "",
                             IsDefualt = true,
@@ -98,7 +88,6 @@ namespace App.Infrastructure.Migrations
                         new
                         {
                             Id = 102,
-                            Code = "",
                             ConcurrencyStamp = "AE6C6754-0862-4EA2-8868-BF5C27E7AEF9",
                             Description = "",
                             IsDefualt = false,
@@ -130,8 +119,10 @@ namespace App.Infrastructure.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("IsDisabled")
                         .ValueGeneratedOnAdd()
@@ -139,16 +130,16 @@ namespace App.Infrastructure.Migrations
                         .HasDefaultValue(false)
                         .HasColumnName("IsDisabled");
 
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -166,12 +157,6 @@ namespace App.Infrastructure.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("SSN")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -203,15 +188,14 @@ namespace App.Infrastructure.Migrations
                             ConcurrencyStamp = "F0DD1622-6D6B-4654-9F52-82EDE53E5AD8",
                             Email = "system.admin@manara.org",
                             EmailConfirmed = true,
-                            IsDeleted = false,
+                            FirstName = "",
                             IsDisabled = false,
+                            LastName = "",
                             LockoutEnabled = false,
-                            Name = "",
                             NormalizedEmail = "SYSTEM.ADMIN@MANARA.ORG",
                             NormalizedUserName = "SYSTEM.ADMIN@MANARA.ORG",
                             PasswordHash = "AQAAAAIAAYagAAAAEE9EyJUN4Xz2bvn2+h3p+oAlYKNgZ0pdEOC/OGIcSmBUG2cPPtftxmy87pluEQ6pLw==",
                             PhoneNumberConfirmed = false,
-                            SSN = "",
                             SecurityStamp = "5965A8A5-ACBA-46EE-8612-4F0771FDFAB8",
                             TwoFactorEnabled = false,
                             UserName = "system.admin@manara.org"
@@ -223,15 +207,14 @@ namespace App.Infrastructure.Migrations
                             ConcurrencyStamp = "21BB4316-3388-4644-B048-C514DEB63A58",
                             Email = "admin@manara.org",
                             EmailConfirmed = true,
-                            IsDeleted = false,
+                            FirstName = "",
                             IsDisabled = false,
+                            LastName = "",
                             LockoutEnabled = false,
-                            Name = "",
                             NormalizedEmail = "ADMIN@MANARA.ORG",
                             NormalizedUserName = "ADMIN@MANARA.ORG",
                             PasswordHash = "AQAAAAIAAYagAAAAEE9EyJUN4Xz2bvn2+h3p+oAlYKNgZ0pdEOC/OGIcSmBUG2cPPtftxmy87pluEQ6pLw==",
                             PhoneNumberConfirmed = false,
-                            SSN = "",
                             SecurityStamp = "CE187833-A9A3-4682-8594-7BFE6A08AE64",
                             TwoFactorEnabled = false,
                             UserName = "admin@manara.org"
@@ -254,7 +237,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("RoleClaimOverrides", (string)null);
+                    b.ToTable("RoleClaimOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.UserClaimOverride", b =>
@@ -266,9 +249,12 @@ namespace App.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("IsAllowed")
+                        .HasColumnType("bit");
+
                     b.HasKey("ApplicationUserId", "ClaimValue");
 
-                    b.ToTable("UserClaimOverrides", (string)null);
+                    b.ToTable("UserClaimOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.DepartmentUser", b =>
@@ -283,7 +269,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("DepartmentUsers", (string)null);
+                    b.ToTable("DepartmentUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.FacultyUser", b =>
@@ -298,7 +284,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("FacultyUsers", (string)null);
+                    b.ToTable("FacultyUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
@@ -340,7 +326,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ProgramId");
 
-                    b.ToTable("ProgramUsers", (string)null);
+                    b.ToTable("ProgramUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.UniversityUser", b =>
@@ -355,7 +341,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("UniversityUsers", (string)null);
+                    b.ToTable("UniversityUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -398,7 +384,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.FAQ", b =>
@@ -424,7 +410,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("FAQ", (string)null);
+                    b.ToTable("FAQ");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Faculty", b =>
@@ -473,7 +459,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("Faculties", (string)null);
+                    b.ToTable("Faculties");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
@@ -509,7 +495,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Programs", (string)null);
+                    b.ToTable("Programs");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Subject", b =>
@@ -542,7 +528,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ProgramId");
 
-                    b.ToTable("Subjects", (string)null);
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.University", b =>
@@ -589,7 +575,7 @@ namespace App.Infrastructure.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Universities", null, t =>
+                    b.ToTable("Universities", t =>
                         {
                             t.HasCheckConstraint("CK_University_YearOfEstablishment", "[YearOfEstablishment] >= 1800 AND [YearOfEstablishment] <= YEAR(GETDATE())");
                         });
@@ -850,15 +836,6 @@ namespace App.Infrastructure.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("App.Core.Entities.Identity.ApplicationRole", b =>
-                {
-                    b.HasOne("App.Core.Entities.Identity.ApplicationRole", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
-
-                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationUser", b =>

@@ -503,9 +503,12 @@ D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.genruntimeconfig.cache
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\ref\App.API.dll
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\appsettings.Development.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\appsettings.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Authentication\ar-EG.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Authentication\en-US.json
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Department\ar-EG.json
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Department\en-US.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Faculty\ar-EG.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Faculty\en-US.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Permission\ar-EG.json
@@ -514,9 +517,6 @@ F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\R
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Role\en-US.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\University\ar-EG.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\University\en-US.json
-F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\appsettings.Development.json
-F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Department\ar-EG.json
-F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Department\en-US.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\App.API.staticwebassets.endpoints.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\App.API.exe
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\App.API.deps.json

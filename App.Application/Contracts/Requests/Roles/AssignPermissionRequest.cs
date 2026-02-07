@@ -6,6 +6,5 @@ namespace App.Application.Contracts.Requests.Roles;
 
 public record AssignPermissionRequest
 {
-    public string ClaimValue { get; set; } = string.Empty;
-    public bool IsAllowed { get; set; } = true;
+    public List<string> ClaimValues { get; set; } = default!;
 }

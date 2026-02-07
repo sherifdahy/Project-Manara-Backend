@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Text;
 
-namespace App.Application.Contracts.Responses.Roles;
+//namespace App.Application.Contracts.Responses.Roles;
 
-public record AssignToRolePermissionResponse
-(
-    int RoleId,
-    int FacultyId,
-    string ClaimValue,
-    bool IsAllowed
-);
+//public record AssignToRolePermissionResponse
+//(
+//    int RoleId,
+//    int FacultyId,
+//    List<string> ClaimValues
+//);
+
+//COMMENT

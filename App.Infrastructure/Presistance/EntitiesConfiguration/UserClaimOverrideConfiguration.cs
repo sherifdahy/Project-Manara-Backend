@@ -15,9 +15,6 @@ public class UserClaimOverrideConfiguration : IEntityTypeConfiguration<UserClaim
             .IsRequired()
             .HasMaxLength(100);
 
-        builder
-            .Property(x => x.IsAllowed)
-            .IsRequired();
 
         builder
          .Property(x => x.ApplicationUserId)

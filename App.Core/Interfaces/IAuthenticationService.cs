@@ -8,6 +8,7 @@ namespace App.Core.Interfaces;
 
 public interface IAuthenticationService
 {
-    Task<(IEnumerable<string> roles, IEnumerable<string> permissions)> GetUserRolesAndPermissions(ApplicationUser user, CancellationToken cancellationToken);
+    Task<(IEnumerable<string> roles, IEnumerable<string> permissions)> 
+        GetUserOverrideRolesAndPermissions(ApplicationUser user, CancellationToken cancellationToken,bool includeUserOverride = true);
     (string refreshToken, DateTime refreshTokenExpiration) AddRefreshToken(ApplicationUser user);
 }

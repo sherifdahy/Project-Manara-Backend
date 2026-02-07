@@ -356,9 +356,9 @@
   },
   {
     "ContainingType": "App.API.Controllers.Roles.PermissionsController",
-    "Method": "AssignPermissionToRoleFaculty",
+    "Method": "AssignPermissionsToRoleFaculty",
     "RelativePath": "api/roles/{roleId}/faculties/{facultyId}/permissions",
-    "HttpMethod": "POST",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -375,32 +375,6 @@
       {
         "Name": "request",
         "Type": "App.Application.Contracts.Requests.Roles.AssignPermissionRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
-    "Method": "TogglePermissionToRole",
-    "RelativePath": "api/roles/{roleId}/faculties/{facultyId}/permissions",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "roleId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "facultyId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "App.Application.Contracts.Requests.Roles.ToggleStatusPermissionRequest",
         "IsRequired": true
       }
     ],
@@ -537,7 +511,7 @@
     "ContainingType": "App.API.Controllers.Roles.PermissionsController",
     "Method": "AssignPermissionToUser",
     "RelativePath": "api/users/{userId}/permissions",
-    "HttpMethod": "POST",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -549,27 +523,6 @@
       {
         "Name": "request",
         "Type": "App.Application.Contracts.Requests.Roles.AssignPermissionRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "App.API.Controllers.Roles.PermissionsController",
-    "Method": "TogglePermissionToUser",
-    "RelativePath": "api/users/{userId}/permissions",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "App.Application.Contracts.Requests.Roles.ToggleStatusPermissionRequest",
         "IsRequired": true
       }
     ],

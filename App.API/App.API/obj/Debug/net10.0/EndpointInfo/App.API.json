@@ -204,7 +204,7 @@
       }
     },
     "/api/users/{userId}/permissions": {
-      "post": {
+      "put": {
         "tags": [
           "Permissions"
         ],
@@ -235,53 +235,6 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/AssignPermissionRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Permissions"
-        ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ToggleStatusPermissionRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ToggleStatusPermissionRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ToggleStatusPermissionRequest"
               }
             }
           },
@@ -300,7 +253,7 @@
       }
     },
     "/api/roles/{roleId}/faculties/{facultyId}/permissions": {
-      "post": {
+      "put": {
         "tags": [
           "Permissions"
         ],
@@ -347,69 +300,6 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/AssignPermissionRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Permissions"
-        ],
-        "parameters": [
-          {
-            "name": "roleId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
-              "format": "int32"
-            }
-          },
-          {
-            "name": "facultyId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ToggleStatusPermissionRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ToggleStatusPermissionRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ToggleStatusPermissionRequest"
               }
             }
           },
@@ -1269,11 +1159,11 @@
       "AssignPermissionRequest": {
         "type": "object",
         "properties": {
-          "claimValue": {
-            "type": "string"
-          },
-          "isAllowed": {
-            "type": "boolean"
+          "claimValues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -1443,14 +1333,6 @@
             "type": "string"
           },
           "refreshToken": {
-            "type": "string"
-          }
-        }
-      },
-      "ToggleStatusPermissionRequest": {
-        "type": "object",
-        "properties": {
-          "claimValue": {
             "type": "string"
           }
         }

@@ -44,7 +44,7 @@ public class RegisterCommandHandler(UserManager<ApplicationUser> userManager,
 
             await _userManager.AddToRoleAsync(user, DefaultRoles.Member);
 
-            var (userRoles, userPermissions) = await _authenticationService.GetUserRolesAndPermissions(user, cancellationToken);
+            var (userRoles, userPermissions) = await _authenticationService.GetUserOverrideRolesAndPermissions(user, cancellationToken);
 
             var (token, expiresIn) = _jwtProvider.GenerateToken(user, userRoles, userPermissions); 
 

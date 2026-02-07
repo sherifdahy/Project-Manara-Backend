@@ -38,7 +38,7 @@ public class ToggleStatusPermissionCommandHandler(UserManager<ApplicationUser> u
         if(overridePermission==null)
             return Result.Failure(_permissionErrors.OverridePermissionNotFound);
 
-        overridePermission.IsAllowed = !overridePermission.IsAllowed;
+        //overridePermission.IsAllowed = !overridePermission.IsAllowed;
 
          _unitOfWork.UserClaimOverrides.Update(overridePermission);
         await _unitOfWork.SaveAsync(cancellationToken);
