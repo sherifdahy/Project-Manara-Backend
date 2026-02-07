@@ -24,16 +24,3 @@ D:\work\GraduationProject\Project-Manara-Backend\App.Core\obj\Release\net10.0\Ap
 D:\work\GraduationProject\Project-Manara-Backend\App.Core\obj\Release\net10.0\refint\App.Core.dll
 D:\work\GraduationProject\Project-Manara-Backend\App.Core\obj\Release\net10.0\App.Core.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.Core\obj\Release\net10.0\ref\App.Core.dll
-F:\Graduation-Project\Project-Manara-Backend\App.Core\bin\Release\net10.0\App.Core.deps.json
-F:\Graduation-Project\Project-Manara-Backend\App.Core\bin\Release\net10.0\App.Core.dll
-F:\Graduation-Project\Project-Manara-Backend\App.Core\bin\Release\net10.0\App.Core.pdb
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\App.Core.csproj.AssemblyReference.cache
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\App.Core.GeneratedMSBuildEditorConfig.editorconfig
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\App.Core.AssemblyInfoInputs.cache
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\App.Core.AssemblyInfo.cs
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\App.Core.csproj.CoreCompileInputs.cache
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\App.Core.sourcelink.json
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\App.Core.dll
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\refint\App.Core.dll
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\App.Core.pdb
-F:\Graduation-Project\Project-Manara-Backend\App.Core\obj\Release\net10.0\ref\App.Core.dll

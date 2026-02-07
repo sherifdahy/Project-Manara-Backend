@@ -12,17 +12,10 @@ using System.Security.Claims;
 
 namespace App.Application.Handlers.Commands.Roles;
 
-public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
-    ,RoleErrors errors
-    ,IUnitOfWork unitOfWork
-    ,UniversityErrors universityErrors
-    ,PermissionErrors permissionErrors) : IRequestHandler<UpdateRoleCommand, Result>
+public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager,RoleErrors errors) : IRequestHandler<UpdateRoleCommand, Result>
 {
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
     private readonly RoleErrors _errors = errors;
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
-    private readonly UniversityErrors _universityErrors = universityErrors;
-    private readonly PermissionErrors _permissionErrors = permissionErrors;
 
     public async Task<Result> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
     {
@@ -38,8 +31,7 @@ public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
             return Result.Failure(_errors.NotFound);
 
 
-        role.Name = request.Name;
-        role.Description = request.Description;
+        request.Adapt(role);
 
         var result = await _roleManager.UpdateAsync(role);
 

@@ -7,7 +7,8 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
 {
     public void Configure(EntityTypeBuilder<ApplicationRole> builder)
     {
-
+        builder.Property(x => x.Code).HasMaxLength(256);
+        builder.Property(x => x.Description).HasMaxLength(1000);
 
         builder.HasData
         (

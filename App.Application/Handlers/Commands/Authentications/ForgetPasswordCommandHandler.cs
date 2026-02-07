@@ -40,7 +40,7 @@ public class ForgetPasswordCommandHandler (UserManager<ApplicationUser> userMana
         var emailBody = EmailBodyBuilder.GenerateEmailBody("ForgetPassword",
             templateModel: new Dictionary<string, string>
             {
-                { "{{name}}", user.FirstName },
+                { "{{name}}", user.Name },
                 { "{{action_url}}", $"{origin}/auth/new-password?email={user.Email}&code={code}" }//This will Be the route of the frontend 
             }
         );

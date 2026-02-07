@@ -30,13 +30,19 @@ namespace App.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<bool>("IsDefualt")
                         .HasColumnType("bit");
@@ -70,6 +76,7 @@ namespace App.Infrastructure.Migrations
                         new
                         {
                             Id = 100,
+                            Code = "",
                             ConcurrencyStamp = "51655B45-963A-4DD7-A68F-1F18B3F4BE47",
                             Description = "",
                             IsDefualt = false,
@@ -80,6 +87,7 @@ namespace App.Infrastructure.Migrations
                         new
                         {
                             Id = 101,
+                            Code = "",
                             ConcurrencyStamp = "9601DE96-3D34-48D0-BA24-4D7C1A9F6C7F",
                             Description = "",
                             IsDefualt = true,
@@ -90,6 +98,7 @@ namespace App.Infrastructure.Migrations
                         new
                         {
                             Id = 102,
+                            Code = "",
                             ConcurrencyStamp = "AE6C6754-0862-4EA2-8868-BF5C27E7AEF9",
                             Description = "",
                             IsDefualt = false,
@@ -121,10 +130,8 @@ namespace App.Infrastructure.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDisabled")
                         .ValueGeneratedOnAdd()
@@ -132,16 +139,16 @@ namespace App.Infrastructure.Migrations
                         .HasDefaultValue(false)
                         .HasColumnName("IsDisabled");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -159,6 +166,12 @@ namespace App.Infrastructure.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("SSN")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -190,14 +203,15 @@ namespace App.Infrastructure.Migrations
                             ConcurrencyStamp = "F0DD1622-6D6B-4654-9F52-82EDE53E5AD8",
                             Email = "system.admin@manara.org",
                             EmailConfirmed = true,
-                            FirstName = "",
+                            IsDeleted = false,
                             IsDisabled = false,
-                            LastName = "",
                             LockoutEnabled = false,
+                            Name = "",
                             NormalizedEmail = "SYSTEM.ADMIN@MANARA.ORG",
                             NormalizedUserName = "SYSTEM.ADMIN@MANARA.ORG",
                             PasswordHash = "AQAAAAIAAYagAAAAEE9EyJUN4Xz2bvn2+h3p+oAlYKNgZ0pdEOC/OGIcSmBUG2cPPtftxmy87pluEQ6pLw==",
                             PhoneNumberConfirmed = false,
+                            SSN = "",
                             SecurityStamp = "5965A8A5-ACBA-46EE-8612-4F0771FDFAB8",
                             TwoFactorEnabled = false,
                             UserName = "system.admin@manara.org"
@@ -209,14 +223,15 @@ namespace App.Infrastructure.Migrations
                             ConcurrencyStamp = "21BB4316-3388-4644-B048-C514DEB63A58",
                             Email = "admin@manara.org",
                             EmailConfirmed = true,
-                            FirstName = "",
+                            IsDeleted = false,
                             IsDisabled = false,
-                            LastName = "",
                             LockoutEnabled = false,
+                            Name = "",
                             NormalizedEmail = "ADMIN@MANARA.ORG",
                             NormalizedUserName = "ADMIN@MANARA.ORG",
                             PasswordHash = "AQAAAAIAAYagAAAAEE9EyJUN4Xz2bvn2+h3p+oAlYKNgZ0pdEOC/OGIcSmBUG2cPPtftxmy87pluEQ6pLw==",
                             PhoneNumberConfirmed = false,
+                            SSN = "",
                             SecurityStamp = "CE187833-A9A3-4682-8594-7BFE6A08AE64",
                             TwoFactorEnabled = false,
                             UserName = "admin@manara.org"
@@ -242,7 +257,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("RoleClaimOverrides");
+                    b.ToTable("RoleClaimOverrides", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.UserClaimOverride", b =>
@@ -259,7 +274,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasKey("ApplicationUserId", "ClaimValue");
 
-                    b.ToTable("UserClaimOverrides");
+                    b.ToTable("UserClaimOverrides", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.DepartmentUser", b =>
@@ -274,7 +289,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("DepartmentUsers");
+                    b.ToTable("DepartmentUsers", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.FacultyUser", b =>
@@ -289,7 +304,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("FacultyUsers");
+                    b.ToTable("FacultyUsers", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
@@ -331,7 +346,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ProgramId");
 
-                    b.ToTable("ProgramUsers");
+                    b.ToTable("ProgramUsers", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.UniversityUser", b =>
@@ -346,7 +361,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("UniversityUsers");
+                    b.ToTable("UniversityUsers", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -389,7 +404,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.FAQ", b =>
@@ -415,7 +430,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("FAQ");
+                    b.ToTable("FAQ", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Faculty", b =>
@@ -464,7 +479,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("Faculties");
+                    b.ToTable("Faculties", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
@@ -500,7 +515,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Programs");
+                    b.ToTable("Programs", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Subject", b =>
@@ -533,7 +548,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ProgramId");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.University", b =>
@@ -580,7 +595,7 @@ namespace App.Infrastructure.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Universities", t =>
+                    b.ToTable("Universities", null, t =>
                         {
                             t.HasCheckConstraint("CK_University_YearOfEstablishment", "[YearOfEstablishment] >= 1800 AND [YearOfEstablishment] <= YEAR(GETDATE())");
                         });

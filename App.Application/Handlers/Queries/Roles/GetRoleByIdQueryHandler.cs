@@ -29,6 +29,7 @@ public class GetRoleByIdQueryHandler(
         (
             role.Id,
             role.Name!,
+            role.Code,
             role.Description,
             role.IsDeleted,
             numberOfUsers,

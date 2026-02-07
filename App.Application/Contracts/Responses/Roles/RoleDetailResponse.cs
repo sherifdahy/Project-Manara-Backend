@@ -8,6 +8,7 @@ public record RoleDetailResponse
 (
     int Id,
     string Name,
+    string Code,
     string Description,
     bool IsDeleted,
     int  NumberOfUsers,

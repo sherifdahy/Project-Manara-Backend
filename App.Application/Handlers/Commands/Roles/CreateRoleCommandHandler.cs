@@ -6,15 +6,11 @@ namespace App.Application.Handlers.Commands.Roles;
 
 public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
     ,IUnitOfWork unitOfWork
-    , RoleErrors roleErrors
-    ,PermissionErrors permissionErrors
-    ,UniversityErrors universityErrors) : IRequestHandler<CreateRoleCommand, Result<RoleDetailResponse>>
+    ,PermissionErrors permissionErrors) : IRequestHandler<CreateRoleCommand, Result<RoleDetailResponse>>
 {
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
-    private readonly RoleErrors _roleErrors = roleErrors;
     private readonly PermissionErrors _permissionErrors= permissionErrors;
-    private readonly UniversityErrors _universityErrors = universityErrors;
 
     public async Task<Result<RoleDetailResponse>> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
     {
@@ -28,6 +24,8 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
         var newRole = new ApplicationRole()
         {
             Name = request.Name,
+            Code = request.Code,
+            RoleId = request.RoleId,
             Description=request.Description,
             IsDeleted = request.IsDeleted,
             ConcurrencyStamp = Guid.NewGuid().ToString(),
@@ -57,6 +55,7 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
             (   newRole.Id,
                 newRole.Name,
                 newRole.Description,
+                newRole.Code,
                 newRole.IsDeleted,
                 0,
                 request.Permissions

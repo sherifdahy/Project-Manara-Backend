@@ -16,9 +16,11 @@ public class ApplicationUserConfiguration : IEntityTypeConfiguration<Application
             .WithOwner()
             .HasForeignKey("UserId");
 
-        builder.Property(x => x.FirstName).HasMaxLength(100);
+        builder.Property(x => x.Name).HasMaxLength(256);
 
-        builder.Property(x => x.LastName).HasMaxLength(100);
+        builder.Property(x => x.SSN)
+            .HasMaxLength(50)
+            .IsUnicode(false);
 
         var _passwordHasher = new PasswordHasher<ApplicationUser>();
 
