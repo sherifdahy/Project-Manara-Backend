@@ -1,4 +1,5 @@
-﻿using App.Application.Commands.Roles;
+﻿using App.API.Attributes;
+using App.Application.Commands.Roles;
 using App.Application.Contracts.Requests.Roles;
 using App.Application.Queries.Permissions;
 using App.Core.Extensions;
@@ -34,6 +35,7 @@ namespace App.API.Controllers.Roles
         }
 
         [HttpPut("/api/roles/{roleId}/faculties/{facultyId}/permissions")]
+        [RequireRoleAccess("roleId")]
         [RequireFacultyAccess("facultyId")]
         [HasPermission(Permissions.UpdatePermissions)]
         public async Task<IActionResult> AssignPermissionsToRoleFaculty([FromRoute] int roleId, [FromRoute] int facultyId, [FromBody] AssignPermissionRequest request, CancellationToken cancellationToken)

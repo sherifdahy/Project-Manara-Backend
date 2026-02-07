@@ -58,11 +58,6 @@ public class AssignPermissionsToRoleCommandHandler(IUnitOfWork unitOfWork
                 return Result.Failure(_permissionErrors.InvalidPermissions);
         }
 
-
-
-        //4.0 TODO Must The Role To be less than the userRole (Must Be Attribute)
-
-
         var currentRolePermissionsOverride = await _unitOfWork.RoleClaimOverrides
             .FindAllAsync(rco => rco.RoleId == request.RoleId && rco.FacultyId == request.FacultyId);
 
@@ -94,50 +89,3 @@ public class AssignPermissionsToRoleCommandHandler(IUnitOfWork unitOfWork
 
 
 
-
-#region MyRegion
-//var isRoleOverrideExists = _unitOfWork.RoleClaimOverrides
-//    .IsExist(rc => rc.RoleId == request.RoleId && rc.ClaimValue == request.ClaimValue && rc.FacultyId == request.FacultyId);
-
-//if (isRoleOverrideExists)
-//    return Result.Failure<AssignToRolePermissionResponse>(_permissionErrors.DuplicatedPermissionForRole);
-
-//var isFacultyExists = _unitOfWork.Fauclties
-//    .IsExist(f => f.Id == request.FacultyId);
-
-//if (!isFacultyExists)
-//    return Result.Failure<AssignToRolePermissionResponse>(_facultyErrors.NotFound);
-
-
-//var allowedPermissions = Permissions.GetAllPermissions();
-
-//foreach(var claimValue in request.ClaimValues)
-//{
-//    if (!allowedPermissions.Contains(claimValue))
-//        return Result.Failure<AssignToRolePermissionResponse>(_permissionErrors.InvalidPermissions);
-//}
-
-
-
-//if (await _roleManager.FindByIdAsync(request.RoleId.ToString()) is not { } role)
-//    return Result.Failure<AssignToRolePermissionResponse>(_roleErrors.NotFound);
-
-//var rolePermissions = await _roleManager.GetClaimsAsync(role);
-
-//if (rolePermissions.Select(rp => rp.Value).Contains(request.ClaimValue) && request.IsAllowed==true)
-//    return Result.Failure<AssignToRolePermissionResponse>(_permissionErrors.DuplicatedPermissionForRole);
-
-
-//var roleClaimOverride = new RoleClaimOverride()
-//{
-//    RoleId = request.RoleId,
-//    ClaimValue = request.ClaimValue,
-//    FacultyId = request.FacultyId,
-//    IsAllowed=request.IsAllowed,
-//};
-
-//await _unitOfWork.RoleClaimOverrides.AddAsync(roleClaimOverride);
-//await _unitOfWork.SaveAsync();
-
-//return Result.Success<AssignToRolePermissionResponse>(roleClaimOverride.Adapt<AssignToRolePermissionResponse>()); 
-#endregion

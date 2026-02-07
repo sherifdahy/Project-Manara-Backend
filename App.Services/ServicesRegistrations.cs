@@ -11,5 +11,8 @@ public static class ServicesRegistrations
     public static void AddServicesRegistration(this IServiceCollection services)
     {
         services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddScoped<IRoleService, RoleService>();
+        services.AddScoped<IUniversityService, UniversityService>();
+        services.AddScoped<IFacultyService, FacultyService>();
     }
 }

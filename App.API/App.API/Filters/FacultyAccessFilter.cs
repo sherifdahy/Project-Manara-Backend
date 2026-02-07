@@ -9,14 +9,12 @@ using System.Security.Claims;
 public class FacultyAccessFilter : IAsyncActionFilter
 {
     private readonly string _parameterName;
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IFacultyService _facultyService;
 
-    public FacultyAccessFilter(string parameterName,IUnitOfWork unitOfWork,UserManager<ApplicationUser> userManager)
+    public FacultyAccessFilter(string parameterName,IFacultyService facultyService)
     {
         _parameterName = parameterName;
-        this._unitOfWork = unitOfWork;
-        this._userManager = userManager;
+        this._facultyService = facultyService;
     }
 
     public async Task OnActionExecutionAsync(
@@ -32,7 +30,7 @@ public class FacultyAccessFilter : IAsyncActionFilter
             return;
         }
 
-        if (!await IsUserHasAccessToFaculty(user, facultyId))
+        if (!await _facultyService.IsUserHasAccessToFaculty(user, facultyId))
         {
             context.Result = new ForbidResult();
             return;
@@ -40,28 +38,5 @@ public class FacultyAccessFilter : IAsyncActionFilter
 
         await next();
     }
-    private async Task<bool> IsUserHasAccessToFaculty(ClaimsPrincipal user, int requestFacultyId)
-    {
-        var userEntity = await _userManager.FindByIdAsync(user.GetUserId().ToString());
-        var userRoles = await _userManager.GetRolesAsync(userEntity!);
 
-        if (userRoles.Contains(RolesConstants.SystemAdmin))
-            return true;
-
-        var universityUser = _unitOfWork.UniversityUsers
-           .Find(fu => fu.UserId == user.GetUserId());
-
-        if (universityUser != null)
-            return _unitOfWork.Fauclties.IsExist(f => f.UniversityId == universityUser.UniversityId && f.Id == requestFacultyId);
-
-
-        var facultyUser = _unitOfWork.FacultyUsers
-            .Find(fu => fu.UserId == user.GetUserId());
-
-        if (facultyUser != null)
-            return requestFacultyId == facultyUser.FacultyId;
-
-
-        return false;
-    }
 }
