@@ -17,9 +17,6 @@ public class RoleClaimOverrideConfiguration : IEntityTypeConfiguration<RoleClaim
             .IsRequired()
             .HasMaxLength(100);
 
-        builder
-            .Property(x => x.IsAllowed)
-            .IsRequired();
 
         builder
          .Property(x => x.RoleId)

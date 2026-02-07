@@ -39,7 +39,7 @@ public class RefreshTokenCommandHandler(IJwtProvider jwtProvider
 
         userRefreshToken.RevokedOn = DateTime.UtcNow;
 
-        var (userRoles, userPermissions) = await _authenticationService.GetUserRolesAndPermissions(user, cancellationToken);
+        var (userRoles, userPermissions) = await _authenticationService.GetUserOverrideRolesAndPermissions(user, cancellationToken);
 
         var (newToken, newExpiresIn) = _jwtProvider.GenerateToken(user, userRoles, userPermissions);
 

@@ -23,13 +23,6 @@ public class MappingConfigurations : IRegister
                     src => src.Faculties
                     .Where(f => !f.IsDeleted));
 
-        config.NewConfig<UserClaimOverride, AssignToUserPermissionResponse>()
-            .MapWith(src =>
-                new AssignToUserPermissionResponse(
-                    src.ApplicationUserId,
-                    src.ClaimValue,
-                    src.IsAllowed
-                ));
 
         config.NewConfig<Faculty, FacultyResponse>()
              .Map(dest => dest.NumberOfStudents,

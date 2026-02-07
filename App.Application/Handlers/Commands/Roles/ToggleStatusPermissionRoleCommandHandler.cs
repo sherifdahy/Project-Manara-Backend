@@ -21,7 +21,7 @@ public class ToggleStatusPermissionRoleCommandHandler(IUnitOfWork unitOfWork
         var allowedPermissions = Permissions.GetAllPermissions();
 
         if (!allowedPermissions.Contains(request.ClaimValue))
-            return Result.Failure<AssignToRolePermissionResponse>(_permissionErrors.InvalidPermissions);
+            return Result.Failure(_permissionErrors.InvalidPermissions);
 
         var roleClaimOverride = await _unitOfWork.RoleClaimOverrides
             .FindAsync(rc => rc.RoleId == request.RoleId && rc.ClaimValue == request.ClaimValue && rc.FacultyId == request.FacultyId);
@@ -30,7 +30,7 @@ public class ToggleStatusPermissionRoleCommandHandler(IUnitOfWork unitOfWork
             return Result.Failure(_permissionErrors.OverridePermissionNotFound);
 
 
-        roleClaimOverride.IsAllowed = !roleClaimOverride.IsAllowed;
+        //roleClaimOverride.IsAllowed = !roleClaimOverride.IsAllowed;
 
         _unitOfWork.RoleClaimOverrides.Update(roleClaimOverride);
         await _unitOfWork.SaveAsync();

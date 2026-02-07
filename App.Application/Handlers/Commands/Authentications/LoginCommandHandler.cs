@@ -37,7 +37,7 @@ public class LoginCommandHandler(UserManager<ApplicationUser> userManager
 
         if (result.Succeeded)
         {
-            var (roles, permissions) = await _authenticationService.GetUserRolesAndPermissions(user, cancellationToken);
+            var (roles, permissions) = await _authenticationService.GetUserOverrideRolesAndPermissions(user, cancellationToken);
 
             var (token, expiresIn) = _jwtProvider.GenerateToken(user, roles, permissions);
 

@@ -18,6 +18,7 @@ public class Permissions
 
     //Permission Permission 
     public const string GetPermissions = "permissions:read";
+    public const string UpdatePermissions = "permissions:update";
     public const string CreatePermissions = "permissions:create";
     public const string ToggleStatusPermissions = "permissions:toggleStatus";
 
