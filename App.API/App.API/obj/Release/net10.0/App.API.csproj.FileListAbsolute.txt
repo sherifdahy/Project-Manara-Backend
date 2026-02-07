@@ -728,3 +728,6 @@ F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Release\net10.0
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Release\net10.0\App.API.pdb
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Release\net10.0\App.API.genruntimeconfig.cache
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Release\net10.0\ref\App.API.dll
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Release\net10.0\appsettings.Development.json
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Release\net10.0\Resources\Department\ar-EG.json
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Release\net10.0\Resources\Department\en-US.json

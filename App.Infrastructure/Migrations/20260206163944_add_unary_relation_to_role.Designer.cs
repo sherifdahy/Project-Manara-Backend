@@ -4,6 +4,7 @@ using App.Infrastructure.Presistance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260206163944_add_unary_relation_to_role")]
+    partial class add_unary_relation_to_role
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,6 +238,9 @@ namespace App.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("IsAllowed")
+                        .HasColumnType("bit");
+
                     b.HasKey("RoleId", "FacultyId", "ClaimValue");
 
                     b.HasIndex("FacultyId");
@@ -250,6 +256,9 @@ namespace App.Infrastructure.Migrations
                     b.Property<string>("ClaimValue")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsAllowed")
+                        .HasColumnType("bit");
 
                     b.HasKey("ApplicationUserId", "ClaimValue");
 
@@ -643,103 +652,96 @@ namespace App.Infrastructure.Migrations
                         {
                             Id = 6,
                             ClaimType = "permissions",
-                            ClaimValue = "permissions:update",
+                            ClaimValue = "permissions:create",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 7,
                             ClaimType = "permissions",
-                            ClaimValue = "permissions:create",
+                            ClaimValue = "permissions:toggleStatus",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 8,
                             ClaimType = "permissions",
-                            ClaimValue = "permissions:toggleStatus",
+                            ClaimValue = "universities:read",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 9,
                             ClaimType = "permissions",
-                            ClaimValue = "universities:read",
+                            ClaimValue = "universities:create",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 10,
                             ClaimType = "permissions",
-                            ClaimValue = "universities:create",
+                            ClaimValue = "universities:update",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 11,
                             ClaimType = "permissions",
-                            ClaimValue = "universities:update",
+                            ClaimValue = "universities:toggleStatus",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 12,
                             ClaimType = "permissions",
-                            ClaimValue = "universities:toggleStatus",
+                            ClaimValue = "faculties:read",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 13,
                             ClaimType = "permissions",
-                            ClaimValue = "faculties:read",
+                            ClaimValue = "faculties:create",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 14,
                             ClaimType = "permissions",
-                            ClaimValue = "faculties:create",
+                            ClaimValue = "faculties:update",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 15,
                             ClaimType = "permissions",
-                            ClaimValue = "faculties:update",
+                            ClaimValue = "faculties:toggleStatus",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 16,
                             ClaimType = "permissions",
-                            ClaimValue = "faculties:toggleStatus",
+                            ClaimValue = "departments:read",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 17,
                             ClaimType = "permissions",
-                            ClaimValue = "departments:read",
+                            ClaimValue = "departments:create",
                             RoleId = 102
                         },
                         new
                         {
                             Id = 18,
                             ClaimType = "permissions",
-                            ClaimValue = "departments:create",
-                            RoleId = 102
-                        },
-                        new
-                        {
-                            Id = 19,
-                            ClaimType = "permissions",
                             ClaimValue = "departments:update",
                             RoleId = 102
                         },
                         new
                         {
-                            Id = 20,
+                            Id = 19,
                             ClaimType = "permissions",
                             ClaimValue = "departments:toggleStatus",
                             RoleId = 102
