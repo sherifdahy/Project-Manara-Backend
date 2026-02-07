@@ -12,8 +12,9 @@ using System.Security.Claims;
 
 namespace App.Application.Handlers.Commands.Roles;
 
-public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager,RoleErrors errors) : IRequestHandler<UpdateRoleCommand, Result>
+public class UpdateRoleCommandHandler(RoleErrors roleErrors,RoleManager<ApplicationRole> roleManager,RoleErrors errors) : IRequestHandler<UpdateRoleCommand, Result>
 {
+    private readonly RoleErrors _roleErrors = roleErrors;
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
     private readonly RoleErrors _errors = errors;
 
@@ -30,6 +31,8 @@ public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager,R
         if (await _roleManager.FindByIdAsync(request.Id.ToString()) is not { } role)
             return Result.Failure(_errors.NotFound);
 
+        if (request.RoleId.HasValue && await _roleManager.FindByIdAsync(request.RoleId.ToString()!) is null)
+            return Result.Failure<RoleDetailResponse>(_roleErrors.NotFound);
 
         request.Adapt(role);
 
