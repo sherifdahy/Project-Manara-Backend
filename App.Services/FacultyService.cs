@@ -10,9 +10,9 @@ using System.Security.Claims;
 
 namespace App.Services;
 
-public class FacultyService(UserManager<ApplicationRole> userManager,IUnitOfWork unitOfWork) :IFacultyService
+public class FacultyService(UserManager<ApplicationUser> userManager,IUnitOfWork unitOfWork) :IFacultyService
 {
-    private readonly UserManager<ApplicationRole> _userManager = userManager;
+    private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     public async Task<bool> IsUserHasAccessToFaculty(ClaimsPrincipal user, int requestFacultyId)

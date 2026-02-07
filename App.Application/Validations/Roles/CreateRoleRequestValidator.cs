@@ -19,6 +19,10 @@ public class CreateRoleRequestValidator : AbstractValidator<CreateRoleRequest>
         RuleFor(x => x.IsDeleted)
             .NotNull();
 
+
+        RuleFor(x => x.Code).Length(3, 256);
+        RuleFor(x => x.Description).Length(3, 1000);
+
         RuleFor(x => x.Permissions)
             .NotNull()
             .NotEmpty();

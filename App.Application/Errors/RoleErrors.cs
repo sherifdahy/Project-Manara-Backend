@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace App.Application.Errors;
 
-public  class RoleErrors
+public class RoleErrors
 {
     private readonly JsonStringLocalizer _localizer;
 

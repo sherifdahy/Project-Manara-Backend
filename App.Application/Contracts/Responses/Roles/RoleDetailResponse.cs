@@ -8,8 +8,10 @@ public record RoleDetailResponse
 (
     int Id,
     string Name,
+    string Code,
     string Description,
     bool IsDeleted,
     int  NumberOfUsers,
-    IEnumerable<string> Permissions
+    IEnumerable<string> Permissions,
+    RoleResponse? ChildRole 
 );

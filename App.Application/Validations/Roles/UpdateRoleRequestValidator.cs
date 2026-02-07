@@ -17,6 +17,9 @@ public class UpdateRoleRequestValidator : AbstractValidator<UpdateRoleRequest>
             .NotEmpty()
             .Length(3, 200);
 
+        RuleFor(x => x.Code).Length(3,256);
+        RuleFor(x => x.Description).Length(3,1000);
+
         RuleFor(x => x.Permissions)
             .NotNull()
             .NotEmpty();

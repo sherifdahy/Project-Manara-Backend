@@ -8,6 +8,7 @@ public record RoleResponse
 (
     int Id,
     string Name,
+    string Code,
     string Description,
     bool IsDeleted,
     int NumberOfPermissions

@@ -1,8 +1,0 @@
-{
-  "NotFound": "Faculty does not exist",
-  "InvalidPermissions": "You do not have the required permissions to perform this action",
-  "InvalidId": "The provided faculty ID is invalid",
-  "DuplicatedName": "A faculty with this name already exists",
-  "NotRelatedToUniversity": "faculty Not Related To This University",
-  "NotAllowedFaculty" : "Not Allowed To You Change This Faculty"
-}

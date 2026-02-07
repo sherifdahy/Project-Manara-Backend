@@ -12,17 +12,11 @@ using System.Security.Claims;
 
 namespace App.Application.Handlers.Commands.Roles;
 
-public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
-    ,RoleErrors errors
-    ,IUnitOfWork unitOfWork
-    ,UniversityErrors universityErrors
-    ,PermissionErrors permissionErrors) : IRequestHandler<UpdateRoleCommand, Result>
+public class UpdateRoleCommandHandler(RoleErrors roleErrors,RoleManager<ApplicationRole> roleManager,RoleErrors errors) : IRequestHandler<UpdateRoleCommand, Result>
 {
+    private readonly RoleErrors _roleErrors = roleErrors;
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
     private readonly RoleErrors _errors = errors;
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
-    private readonly UniversityErrors _universityErrors = universityErrors;
-    private readonly PermissionErrors _permissionErrors = permissionErrors;
 
     public async Task<Result> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
     {
@@ -37,9 +31,10 @@ public class UpdateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
         if (await _roleManager.FindByIdAsync(request.Id.ToString()) is not { } role)
             return Result.Failure(_errors.NotFound);
 
+        if (request.RoleId.HasValue && await _roleManager.FindByIdAsync(request.RoleId.ToString()!) is null)
+            return Result.Failure<RoleDetailResponse>(_roleErrors.NotFound);
 
-        role.Name = request.Name;
-        role.Description = request.Description;
+        request.Adapt(role);
 
         var result = await _roleManager.UpdateAsync(role);
 

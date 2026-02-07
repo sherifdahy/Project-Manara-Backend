@@ -11,9 +11,9 @@ using System.Text;
 
 namespace App.Services;
 
-public class UniversityService(UserManager<ApplicationRole> userManager,IUnitOfWork unitOfWork) : IUniversityService
+public class UniversityService(UserManager<ApplicationUser> userManager,IUnitOfWork unitOfWork) : IUniversityService
 {
-    private readonly UserManager<ApplicationRole> _userManager = userManager;
+    private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     public async Task<bool> IsUserHasAccessToUniversity(ClaimsPrincipal user, int requestUniversityId)

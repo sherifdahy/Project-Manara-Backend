@@ -29,10 +29,12 @@ public class GetRoleByIdQueryHandler(
         (
             role.Id,
             role.Name!,
+            role.Code,
             role.Description,
             role.IsDeleted,
             numberOfUsers,
-            permissions.Select(c => c.Value)
+            permissions.Select(c => c.Value),
+            role.RoleId != null ? (await _roleManager.FindByIdAsync(role.RoleId.ToString()!)).Adapt<RoleResponse>() : null
         );
 
         return Result.Success(response);

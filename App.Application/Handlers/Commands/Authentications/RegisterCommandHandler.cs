@@ -52,7 +52,7 @@ public class RegisterCommandHandler(UserManager<ApplicationUser> userManager,
 
             await _userManager.UpdateAsync(user);
 
-            var response = new AuthenticationResponse(user.Id, user.Email, user.FirstName, user.LastName
+            var response = new AuthenticationResponse(user.Id, user.Email, user.Name
                 , token, expiresIn, refreshToken, refreshTokenExpiration);
 
             return Result.Success<AuthenticationResponse>(response);

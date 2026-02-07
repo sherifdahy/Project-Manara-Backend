@@ -170,6 +170,96 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.FacultyUsers.FacultyUsersController",
+    "Method": "GetAll",
+    "RelativePath": "api/faculties/{facultyId}/FacultyUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "facultyId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.FacultyUsers.FacultyUsersController",
+    "Method": "Create",
+    "RelativePath": "api/faculties/{facultyId}/FacultyUsers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "facultyId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Requests.FacultyUsers.FacultyUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.FacultyUsers.FacultyUsersController",
+    "Method": "Get",
+    "RelativePath": "api/FacultyUsers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.FacultyUsers.FacultyUsersController",
+    "Method": "Update",
+    "RelativePath": "api/FacultyUsers/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Requests.FacultyUsers.FacultyUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.FacultyUsers.FacultyUsersController",
+    "Method": "ToggleStatus",
+    "RelativePath": "api/FacultyUsers/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Roles.PermissionsController",
     "Method": "GetAll",
     "RelativePath": "api/Permissions",

@@ -15,9 +15,7 @@ public class FacultyUserConfiguration : IEntityTypeConfiguration<FacultyUser>
         builder.Property(fu => fu.UserId)
             .IsRequired();
 
-
         builder.Property(fu => fu.FacultyId)
             .IsRequired();
-
     }
 }

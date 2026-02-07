@@ -3,10 +3,10 @@
 namespace App.Core.Entities.Identity;
 public class ApplicationUser : IdentityUser<int>
 {
-    public string FirstName { get; set; } = string.Empty;
-    public string LastName { get; set; } =string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string SSN { get; set; } = string.Empty;
     public bool IsDisabled { get; set; }
-
+    public bool IsDeleted { get; set; }
     public List<RefreshToken> RefreshTokens { get; set; } = [];
     public ICollection<UserClaimOverride> PermissionOverrides { get; set; } = new HashSet<UserClaimOverride>();
     public FacultyUser FacultyUser { get; set; } = default!;

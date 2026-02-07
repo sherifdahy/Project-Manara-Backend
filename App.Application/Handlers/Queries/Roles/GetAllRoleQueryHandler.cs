@@ -24,6 +24,7 @@ public class GetAllRoleQueryHandler : IRequestHandler<GetAllRolesQuery, Result<L
             .Select(r => new RoleResponse(
                 r.Id,
                 r.Name!,
+                r.Code,
                 r.Description,
                 r.IsDeleted,
                 _context.RoleClaims.Count(rc => rc.RoleId == r.Id) 

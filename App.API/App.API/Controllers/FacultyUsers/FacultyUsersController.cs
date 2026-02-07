@@ -1,0 +1,58 @@
+﻿using App.Application.Commands.Faculties;
+using App.Application.Commands.FacultyUsers;
+using App.Application.Contracts.Requests.FacultyUsers;
+using App.Application.Queries.FacultyUsers;
+using App.Core.Extensions;
+using Mapster;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace App.API.Controllers.FacultyUsers;
+
+[Route("api/[controller]")]
+[ApiController]
+[Authorize]
+public class FacultyUsersController(IMediator mediator) : ControllerBase
+{
+    private readonly IMediator _mediator = mediator;
+
+    [HttpGet("/api/faculties/{facultyId}/[controller]")]
+    public async Task<IActionResult> GetAll([FromRoute] int facultyId, CancellationToken cancellationToken)
+    {
+        var query = new GetAllFacultyUsersQuery() with { FacultyId = facultyId };
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
+    {
+        var query = new GetFacultyUserQuery() with { Id = id };
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
+    [HttpPost("/api/faculties/{facultyId}/[controller]")]
+    public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] FacultyUserRequest request, CancellationToken cancellationToken)
+    {
+        var command = request.Adapt<CreateFacultyUserCommand>() with { FacultyId = facultyId };
+        var result = await _mediator.Send(command, cancellationToken);
+        return result.IsSuccess ? Created() : result.ToProblem();
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] FacultyUserRequest request,CancellationToken cancellationToken)
+    {
+        var command = request.Adapt<UpdateFacultyUserCommand>() with { UserId = id };
+        var result = await _mediator.Send(command, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> ToggleStatus([FromRoute] int id, CancellationToken cancellationToken)
+    {
+        var command = new ToggleStatusFacultyUserCommand () with { Id = id };
+        var result = await _mediator.Send(command, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
+    }
+}
