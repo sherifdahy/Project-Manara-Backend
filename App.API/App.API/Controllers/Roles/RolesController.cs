@@ -35,6 +35,16 @@ public class RolesController(IMediator _mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
+    [HttpGet("/api/faculties/{facultyId}/roles/{roleId}")]
+    [RequireFacultyAccess("facultyId")]
+    [RequireRoleAccess("roleId")]
+    [HasPermission(Permissions.GetRoles)]
+    public async Task<IActionResult> GetRoleInFaculty([FromRoute] int facultyId,[FromRoute] int roleId, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new GetRoleInFacultyQuery(roleId,facultyId), cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
     [HttpPost]
     [HasPermission(Permissions.CreateRoles)]
     public async Task<IActionResult> Create([FromBody] CreateRoleRequest request, CancellationToken cancellationToken)

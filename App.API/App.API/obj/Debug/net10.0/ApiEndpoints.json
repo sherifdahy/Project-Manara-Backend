@@ -207,6 +207,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.Roles.RolesController",
+    "Method": "GetRoleInFaculty",
+    "RelativePath": "api/faculties/{facultyId}/roles/{roleId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "facultyId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "roleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.FacultyUsers.FacultyUsersController",
     "Method": "Get",
     "RelativePath": "api/FacultyUsers/{id}",
