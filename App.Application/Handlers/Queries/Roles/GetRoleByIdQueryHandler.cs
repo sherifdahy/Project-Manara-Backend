@@ -1,10 +1,6 @@
 ﻿using App.Application.Abstractions;
 using App.Application.Contracts.Responses.Roles;
-using App.Application.Errors;
 using App.Application.Queries.Roles;
-using App.Core.Entities.Identity;
-using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace App.Application.Handlers.Queries.Roles;
 

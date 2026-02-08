@@ -25,10 +25,6 @@ public class CreateFacultyUserCommandHandler(
         if (await _userManager.FindByEmailAsync(request.Email) is not null)
             return Result.Failure<FacultyUserResponse>(UserErrors.DuplicatedEmail);
 
-        //if (_userManager.Users.FirstOrDefault(x=> x.SSN == request.SSN) is not null)
-        //    return Result.Failure<FacultyUserResponse>(UserErrors.DuplicatedSSN);
-
-
         foreach(var role in request.Roles)
         {
             var result = await _roleManager.FindByNameAsync(role);

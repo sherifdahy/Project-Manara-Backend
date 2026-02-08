@@ -21,9 +21,6 @@ public class UpdateFacultyUserCommandHandler(RoleErrors roleErrors,IUnitOfWork u
         if (_userManager.Users.Any(x => x.Email == request.Email && x.Id != request.UserId))
             return Result.Failure<FacultyUserResponse>(UserErrors.DuplicatedEmail);
 
-        //if (_userManager.Users.Any(x => x.SSN == request.SSN && x.Id != request.UserId))
-        //    return Result.Failure<FacultyUserResponse>(UserErrors.DuplicatedSSN);
-
         foreach (var role in request.Roles)
         {
             if (!await _roleManager.RoleExistsAsync(role))

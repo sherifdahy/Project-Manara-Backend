@@ -43,6 +43,13 @@ public class Permissions
     public const string UpdateDepartments = "departments:update";
     public const string ToggleStatusDepartments = "departments:toggleStatus";
 
+    // FacultyUsers Pemissions
+    public const string GetFacultyUsers = "facultyUsers:read";
+    public const string CreateFacultyUsers = "facultyUsers:create";
+    public const string UpdateFacultyUsers = "facultyUsers:update";
+    public const string ToggleStatusFacultyUsers = "facultyUsers:toggleStatus";
+
+
     public static IList<string> GetAllPermissions()
     {
         return typeof(Permissions).GetFields().Select(x=>x.GetValue(x) as string).ToList()!;

@@ -1,8 +1,8 @@
-﻿using App.Application.Commands.Faculties;
-using App.Application.Commands.FacultyUsers;
+﻿using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Requests.FacultyUsers;
 using App.Application.Queries.FacultyUsers;
 using App.Core.Extensions;
+using App.Infrastructure.Abstractions.Consts;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +17,8 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     private readonly IMediator _mediator = mediator;
 
     [HttpGet("/api/faculties/{facultyId}/[controller]")]
+    [RequireFacultyAccess("facultyId")]
+    [HasPermission(Permissions.GetFacultyUsers)]
     public async Task<IActionResult> GetAll([FromRoute] int facultyId, CancellationToken cancellationToken)
     {
         var query = new GetAllFacultyUsersQuery() with { FacultyId = facultyId };
@@ -25,6 +27,7 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [HasPermission(Permissions.GetFacultyUsers)]
     public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
     {
         var query = new GetFacultyUserQuery() with { Id = id };
@@ -33,6 +36,7 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("/api/faculties/{facultyId}/[controller]")]
+    [HasPermission(Permissions.CreateFacultyUsers)]
     public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] FacultyUserRequest request, CancellationToken cancellationToken)
     {
         var command = request.Adapt<CreateFacultyUserCommand>() with { FacultyId = facultyId };
@@ -41,6 +45,7 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [HasPermission(Permissions.UpdateFacultyUsers)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] FacultyUserRequest request,CancellationToken cancellationToken)
     {
         var command = request.Adapt<UpdateFacultyUserCommand>() with { UserId = id };
@@ -49,6 +54,7 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [HasPermission(Permissions.ToggleStatusFacultyUsers)]
     public async Task<IActionResult> ToggleStatus([FromRoute] int id, CancellationToken cancellationToken)
     {
         var command = new ToggleStatusFacultyUserCommand () with { Id = id };
