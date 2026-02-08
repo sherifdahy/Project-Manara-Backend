@@ -25,8 +25,6 @@ public class AssignPermissionsToUserCommandHandler(UserManager<ApplicationUser> 
     public async Task<Result> Handle(AssignPermissionsToUserCommand request, CancellationToken cancellationToken)
     {
 
-        //TODO Must The Role of the userSend less than the the acualUser
-
         if (await _userManager.FindByIdAsync(request.UserId.ToString()) is not { } user)
             return Result.Failure(_authenticationErrors.NotFound);
 

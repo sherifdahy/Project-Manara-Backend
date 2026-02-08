@@ -509,7 +509,7 @@
   },
   {
     "ContainingType": "App.API.Controllers.Roles.PermissionsController",
-    "Method": "AssignPermissionToUser",
+    "Method": "AssignPermissionsToUser",
     "RelativePath": "api/users/{userId}/permissions",
     "HttpMethod": "PUT",
     "IsController": true,
