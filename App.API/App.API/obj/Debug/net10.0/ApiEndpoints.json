@@ -548,5 +548,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Roles.RolesController",
+    "Method": "Test",
+    "RelativePath": "test/{scopeName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scopeName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

@@ -25,6 +25,7 @@ public class UnitOfWork : IUnitOfWork
     public IRepository<UniversityUser> UniversityUsers => new Repository<UniversityUser>(_context);
     public IRepository<DepartmentUser> DepartmentUsers => new Repository<DepartmentUser>(_context);
     public IRepository<ProgramUser> ProgramUsers => new Repository<ProgramUser>(_context);
+    public IRepository<Scope> Scopes => new Repository<Scope>(_context);
 
     // bussiness logic 
     public IRepository<University> Universities => new Repository<University>(_context);

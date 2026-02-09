@@ -8,43 +8,48 @@ using System.Security.Claims;
 
 namespace App.Services;
 
-public class RoleService(UserManager<ApplicationUser> userManager, IUnitOfWork unitOfWork) : IRoleService
+public class RoleService(UserManager<ApplicationUser> userManager
+    , IUnitOfWork unitOfWork,IScopeService scopeService) : IRoleService
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
-
+    private readonly IScopeService _scopeService = scopeService;
 
     public async Task<bool> IsUserHasAccessToRole(ClaimsPrincipal user, int requestRoleId)
     {
 
         //TODO Filter Bussines Change
 
-        //var userEntity = await _userManager.FindByIdAsync(user.GetUserId().ToString());
 
-        //if (userEntity == null)
-        //    return false;
+        var userEntity = await _userManager.FindByIdAsync(user.GetUserId().ToString());
 
-        //var roleNames = await _userManager.GetRolesAsync(userEntity);
+        if (userEntity == null)
+            return false;
 
-
-        //var roles = await _unitOfWork.Roles.FindAllAsync(r => roleNames.Contains(r.Name!));
+        var roleNames = await _userManager.GetRolesAsync(userEntity);
 
 
-        //foreach (var role in roles)
-        //{
-        //    var currentRole = role;
+        var roleEntities = await _unitOfWork.Roles.FindAllAsync(r => roleNames.Contains(r.Name!));
 
-        //    while (currentRole != null)
-        //    {
-        //        var nextRoleId = currentRole.RoleId;
 
-        //        if (nextRoleId == requestRoleId)
-        //            return true;
+        foreach (var roleEntity in roleEntities)
+        {
+            var requestRoleEntity = await _unitOfWork.Roles.FindAsync(r=>r.Id==requestRoleId);
 
-        //        currentRole = await _unitOfWork.Roles.FindAsync(r => r.Id == nextRoleId);
-        //    }
-        //}
+            while (requestRoleEntity != null)
+            {
+                if (roleEntity.Id == requestRoleEntity.Id)
+                    return true;
+
+                if (roleEntity.ParentRoleId == requestRoleEntity.ParentRoleId)
+                    return true;
+
+                requestRoleEntity = await _unitOfWork.Roles.FindAsync(s => s.Id == requestRoleEntity.ParentRoleId);
+            }
+        }
 
         return false;
     }
+
+
 }
