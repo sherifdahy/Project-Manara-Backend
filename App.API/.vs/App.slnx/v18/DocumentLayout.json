@@ -1,26 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\filters\\facultyaccessfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\filters\\facultyaccessfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\filters\\universityaccessfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\filters\\universityaccessfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|f:\\graduation-project\\project-manara-backend\\app.services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|f:\\graduation-project\\project-manara-backend\\app.services\\servicesregistrations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -28,76 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UniversityAccessFilter.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Filters\\UniversityAccessFilter.cs",
-              "RelativeDocumentMoniker": "App.API\\Filters\\UniversityAccessFilter.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Filters\\UniversityAccessFilter.cs",
-              "RelativeToolTip": "App.API\\Filters\\UniversityAccessFilter.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAC0AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T15:03:56.081Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthenticationService.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\AuthenticationService.cs",
-              "RelativeDocumentMoniker": "..\\App.Services\\AuthenticationService.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\AuthenticationService.cs",
-              "RelativeToolTip": "..\\App.Services\\AuthenticationService.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T15:03:32.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ServicesRegistrations.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\ServicesRegistrations.cs",
-              "RelativeDocumentMoniker": "..\\App.Services\\ServicesRegistrations.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\ServicesRegistrations.cs",
-              "RelativeToolTip": "..\\App.Services\\ServicesRegistrations.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T15:03:31.113Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FacultyAccessFilter.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Filters\\FacultyAccessFilter.cs",
-              "RelativeDocumentMoniker": "App.API\\Filters\\FacultyAccessFilter.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Filters\\FacultyAccessFilter.cs",
-              "RelativeToolTip": "App.API\\Filters\\FacultyAccessFilter.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwDYAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T14:25:39.92Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FacultyUsersController.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
-              "RelativeDocumentMoniker": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
-              "RelativeToolTip": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T14:16:30.652Z",
-              "EditorCaption": ""
             }
           ]
         }

@@ -1,9 +1,0 @@
-{
-  "NotFound": "Role does not exist",
-  "InvalidPermissions": "You do not have the required permissions to perform this action",
-  "InvalidId": "The provided role ID is invalid",
-  "DuplicatedRole": "A role with this name already exists",
-  "ModificationForbidden": "Modifying the system administrator role is not allowed.",
-  "DuplicatedForUniversity": "This role is already exists for this university."
-  
-}

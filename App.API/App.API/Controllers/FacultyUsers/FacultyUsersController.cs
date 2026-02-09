@@ -36,6 +36,7 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("/api/faculties/{facultyId}/[controller]")]
+    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.CreateFacultyUsers)]
     public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] FacultyUserRequest request, CancellationToken cancellationToken)
     {

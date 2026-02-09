@@ -84,7 +84,6 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager
 
     //TODO IsUserHasAccessToDepartment , IsUserHasAccessToProgramm
 
-
     private async Task<int> GetUserFacultyId(ApplicationUser user)
     {
         int facultyId = 0;

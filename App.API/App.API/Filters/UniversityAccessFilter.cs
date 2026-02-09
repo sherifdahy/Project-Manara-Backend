@@ -11,14 +11,12 @@ using System.Threading.Tasks;
 public class UniversityAccessFilter : IAsyncActionFilter
 {
     private readonly string _parameterName;
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUniversityService _universityService;
 
-    public UniversityAccessFilter(string parameterName,IUnitOfWork unitOfWork,UserManager<ApplicationUser> userManager)
+    public UniversityAccessFilter(string parameterName,IUniversityService universityService)
     {
         _parameterName = parameterName;
-        this._unitOfWork = unitOfWork;
-        this._userManager = userManager;
+        this._universityService = universityService;
     }
 
     public async Task OnActionExecutionAsync(
@@ -34,7 +32,7 @@ public class UniversityAccessFilter : IAsyncActionFilter
             return;
         }
 
-        if (!await IsUserHasAccessToUniversity(user, universityId))
+        if (!await _universityService.IsUserHasAccessToUniversity(user, universityId))
         {
             context.Result = new ForbidResult();
             return;
@@ -43,23 +41,5 @@ public class UniversityAccessFilter : IAsyncActionFilter
         await next();
     }
 
-    private async Task<bool> IsUserHasAccessToUniversity(ClaimsPrincipal user, int requestUniversityId)
-    {
-        var userEntity = await _userManager.FindByIdAsync(user.GetUserId().ToString());
-        var userRoles = await _userManager.GetRolesAsync(userEntity!);
 
-        if (userRoles.Contains(RolesConstants.SystemAdmin))
-            return true;
-
-        var universityUser = _unitOfWork.UniversityUsers
-           .Find(fu => fu.UserId == user.GetUserId());
-
-        if (universityUser != null)
-            return requestUniversityId == universityUser.UniversityId;
-
-
-        return false;
-
-
-    }
 }

@@ -3,29 +3,31 @@
   "WorkspaceRootPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|f:\\graduation-project\\project-manara-backend\\app.core\\entities\\universities\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\handlers\\commands\\facultyusers\\createfacultyusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|f:\\graduation-project\\project-manara-backend\\app.core\\entities\\universities\\faculty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\handlers\\queries\\facultyusers\\getfacultyuserqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|f:\\graduation-project\\project-manara-backend\\app.core\\entities\\universities\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\handlers\\commands\\facultyusers\\togglestatusfacultyusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|f:\\graduation-project\\project-manara-backend\\app.core\\entities\\personnel\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\errors\\permissionerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|f:\\graduation-project\\project-manara-backend\\app.core\\entities\\identity\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\errors\\usererrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|f:\\graduation-project\\project-manara-backend\\app.core\\entities\\identity\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\errors\\universityerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|f:\\graduation-project\\project-manara-backend\\app.infrastructure\\localization\\constants\\localizationfoldernames.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|f:\\graduation-project\\project-manara-backend\\app.core\\entities\\personnel\\facultyuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\errors\\roleerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\applicationregistrations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,114 +37,127 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateFacultyUserCommandHandler.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\FacultyUsers\\CreateFacultyUserCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\FacultyUsers\\CreateFacultyUserCommandHandler.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\FacultyUsers\\CreateFacultyUserCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\FacultyUsers\\CreateFacultyUserCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T17:20:55.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetFacultyUserQueryHandler.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetFacultyUserQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetFacultyUserQueryHandler.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetFacultyUserQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetFacultyUserQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T17:20:38.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ToggleStatusFacultyUserCommandHandler.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\FacultyUsers\\ToggleStatusFacultyUserCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\FacultyUsers\\ToggleStatusFacultyUserCommandHandler.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\FacultyUsers\\ToggleStatusFacultyUserCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\FacultyUsers\\ToggleStatusFacultyUserCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T17:20:24.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LocalizationFolderNames.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Localization\\Constants\\LocalizationFolderNames.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Localization\\Constants\\LocalizationFolderNames.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Localization\\Constants\\LocalizationFolderNames.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Localization\\Constants\\LocalizationFolderNames.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T17:18:28.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UniversityErrors.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Errors\\UniversityErrors.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Errors\\UniversityErrors.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Errors\\UniversityErrors.cs",
+              "RelativeToolTip": "..\\App.Application\\Errors\\UniversityErrors.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T17:17:08.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RoleErrors.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Errors\\RoleErrors.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Errors\\RoleErrors.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Errors\\RoleErrors.cs",
+              "RelativeToolTip": "..\\App.Application\\Errors\\RoleErrors.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T17:15:47.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PermissionErrors.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Errors\\PermissionErrors.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Errors\\PermissionErrors.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Errors\\PermissionErrors.cs",
+              "RelativeToolTip": "..\\App.Application\\Errors\\PermissionErrors.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T17:13:41.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserErrors.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Errors\\UserErrors.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Errors\\UserErrors.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Errors\\UserErrors.cs",
+              "RelativeToolTip": "..\\App.Application\\Errors\\UserErrors.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwA8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T17:13:29.212Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Subject.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Universities\\Subject.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Universities\\Subject.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Universities\\Subject.cs",
-              "RelativeToolTip": "..\\App.Core\\Entities\\Universities\\Subject.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "ApplicationRegistrations.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\ApplicationRegistrations.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\ApplicationRegistrations.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\ApplicationRegistrations.cs",
+              "RelativeToolTip": "..\\App.Application\\ApplicationRegistrations.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T20:02:34.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Faculty.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Universities\\Faculty.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Universities\\Faculty.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Universities\\Faculty.cs",
-              "RelativeToolTip": "..\\App.Core\\Entities\\Universities\\Faculty.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T20:02:32.935Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Department.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Universities\\Department.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Universities\\Department.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Universities\\Department.cs",
-              "RelativeToolTip": "..\\App.Core\\Entities\\Universities\\Department.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T20:02:32.24Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Doctor.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Personnel\\Doctor.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Personnel\\Doctor.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Personnel\\Doctor.cs",
-              "RelativeToolTip": "..\\App.Core\\Entities\\Personnel\\Doctor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T20:02:19.724Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Identity\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Identity\\ApplicationUser.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Identity\\ApplicationUser.cs",
-              "RelativeToolTip": "..\\App.Core\\Entities\\Identity\\ApplicationUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T20:02:17.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApplicationRole.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Identity\\ApplicationRole.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Identity\\ApplicationRole.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Identity\\ApplicationRole.cs",
-              "RelativeToolTip": "..\\App.Core\\Entities\\Identity\\ApplicationRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T20:02:16.916Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FacultyUsersController.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
-              "RelativeDocumentMoniker": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
-              "RelativeToolTip": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAkwCEAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T17:56:57.903Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FacultyUser.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Personnel\\FacultyUser.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Personnel\\FacultyUser.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Personnel\\FacultyUser.cs",
-              "RelativeToolTip": "..\\App.Core\\Entities\\Personnel\\FacultyUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T18:08:11.386Z",
+              "WhenOpened": "2026-02-08T17:12:58.793Z",
               "EditorCaption": ""
             }
           ]

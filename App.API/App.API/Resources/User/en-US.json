@@ -1,0 +1,6 @@
+{
+  "DuplicatedEmail": "This email already exists.",
+  "DuplicatedSSN": "This SSN already exists.",
+  "NotFound": "User not found.",
+  "Forbidden": "User is not allowed to access this resource."
+}

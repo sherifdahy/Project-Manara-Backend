@@ -1,4 +1,6 @@
-﻿namespace App.Application;
+﻿using App.Core.Entities.Personnel;
+
+namespace App.Application;
 
 public static class ApplicationRegistrations
 {
@@ -14,6 +16,6 @@ public static class ApplicationRegistrations
         services.AddSingleton<UniversityErrors>();
         services.AddSingleton<RoleErrors>();
         services.AddSingleton<PermissionErrors>();
-
+        services.AddSingleton<UserErrors>();
     }
 }

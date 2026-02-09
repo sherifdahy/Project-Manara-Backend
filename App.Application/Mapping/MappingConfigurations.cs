@@ -25,7 +25,7 @@ public class MappingConfigurations : IRegister
 
 
         config.NewConfig<Faculty, FacultyResponse>()
-             .Map(dest => dest.NumberOfStudents,
+             .Map(dest => dest.NumberOfProgramUsers,
                 src => src.Departments
              .SelectMany(d => d.Programs)
              .SelectMany(p => p.ProgramUsers)

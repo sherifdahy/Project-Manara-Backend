@@ -1,13 +1,17 @@
 ﻿using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Responses.FacultyUsers;
+using App.Services;
 using System.Data;
 
 namespace App.Application.Handlers.Commands.FacultyUsers;
 
-public class UpdateFacultyUserCommandHandler(RoleErrors roleErrors,IUnitOfWork unitOfWork,UserManager<ApplicationUser> userManager,RoleManager<ApplicationRole> roleManager) : IRequestHandler<UpdateFacultyUserCommand, Result>
+public class UpdateFacultyUserCommandHandler(UserErrors userErrors,RoleErrors roleErrors,IUnitOfWork unitOfWork,IFacultyService facultyService,IHttpContextAccessor httpContextAccessor,UserManager<ApplicationUser> userManager,RoleManager<ApplicationRole> roleManager) : IRequestHandler<UpdateFacultyUserCommand, Result>
 {
+    private readonly UserErrors _userErrors = userErrors;
     private readonly RoleErrors _roleErrors = roleErrors;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly IFacultyService _facultyService = facultyService;
+    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
 
@@ -16,10 +20,13 @@ public class UpdateFacultyUserCommandHandler(RoleErrors roleErrors,IUnitOfWork u
         var facultyUser = await _unitOfWork.FacultyUsers.FindAsync(x => x.UserId == request.UserId,[i=>i.User],cancellationToken);
 
         if (facultyUser == null)
-            return Result.Failure(UserErrors.NotFound);
+            return Result.Failure(_userErrors.NotFound);
+
+        if (!await _facultyService.IsUserHasAccessToFaculty(_httpContextAccessor.HttpContext!.User, facultyUser.FacultyId))
+            return Result.Failure<FacultyUserResponse>(_userErrors.Forbidden);
 
         if (_userManager.Users.Any(x => x.Email == request.Email && x.Id != request.UserId))
-            return Result.Failure<FacultyUserResponse>(UserErrors.DuplicatedEmail);
+            return Result.Failure<FacultyUserResponse>(_userErrors.DuplicatedEmail);
 
         foreach (var role in request.Roles)
         {

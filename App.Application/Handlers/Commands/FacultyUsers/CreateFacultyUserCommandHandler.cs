@@ -9,6 +9,7 @@ public class CreateFacultyUserCommandHandler(
     FacultyErrors facultyErrors,
     RoleErrors roleErrors,
     IUnitOfWork unitOfWork,
+    UserErrors userErrors,
     RoleManager<ApplicationRole> roleManager,
     UserManager<ApplicationUser> userManager) : IRequestHandler<CreateFacultyUserCommand, Result<FacultyUserResponse>>
 {
@@ -16,6 +17,7 @@ public class CreateFacultyUserCommandHandler(
     private readonly FacultyErrors _facultyErrors = facultyErrors;
     private readonly RoleErrors _roleErrors = roleErrors;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly UserErrors _userErrors = userErrors;
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
     public async Task<Result<FacultyUserResponse>> Handle(CreateFacultyUserCommand request, CancellationToken cancellationToken)
     {
@@ -23,7 +25,7 @@ public class CreateFacultyUserCommandHandler(
             return Result.Failure<FacultyUserResponse>(_facultyErrors.NotFound);
 
         if (await _userManager.FindByEmailAsync(request.Email) is not null)
-            return Result.Failure<FacultyUserResponse>(UserErrors.DuplicatedEmail);
+            return Result.Failure<FacultyUserResponse>(_userErrors.DuplicatedEmail);
 
         foreach(var role in request.Roles)
         {
