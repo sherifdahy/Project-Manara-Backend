@@ -1,7 +1,6 @@
 ﻿
 using App.Application.Contracts.Responses.Authentications;
 using App.Infrastructure.Abstractions.Consts;
-using System.Security.Cryptography;
 namespace App.Application.Handlers.Commands.Authentications;
 
 public class RegisterCommandHandler(UserManager<ApplicationUser> userManager,
@@ -42,7 +41,7 @@ public class RegisterCommandHandler(UserManager<ApplicationUser> userManager,
         if (result.Succeeded)
         {
 
-            await _userManager.AddToRoleAsync(user, DefaultRoles.Member);
+            await _userManager.AddToRoleAsync(user, DefaultRoles.GPAStudent);
 
             var (userRoles, userPermissions) = await _authenticationService.GetUserOverrideRolesAndPermissions(user, cancellationToken);
 

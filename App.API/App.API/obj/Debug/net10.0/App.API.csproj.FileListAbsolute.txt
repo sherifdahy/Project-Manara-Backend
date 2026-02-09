@@ -12,6 +12,8 @@ F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\R
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Role\en-US.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\University\ar-EG.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\University\en-US.json
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\User\ar-EG.json
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\User\en-US.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\App.API.staticwebassets.endpoints.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\App.API.exe
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\App.API.deps.json
@@ -229,5 +231,3 @@ F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\r
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.pdb
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.genruntimeconfig.cache
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\ref\App.API.dll
-F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\User\ar-EG.json
-F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\User\en-US.json

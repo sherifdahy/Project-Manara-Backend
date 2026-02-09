@@ -10,11 +10,7 @@ public class UserRoleConfiguration : IEntityTypeConfiguration<IdentityUserRole<i
 {
     public void Configure(EntityTypeBuilder<IdentityUserRole<int>> builder)
     {
-        builder.HasData(new IdentityUserRole<int>()
-        {
-            RoleId = DefaultRoles.AdminRoleId,
-            UserId = DefaultUsers.AdminId,
-        },
+        builder.HasData(
         new IdentityUserRole<int>()
         {
             RoleId = DefaultRoles.SystemAdminRoleId,

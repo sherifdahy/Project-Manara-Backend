@@ -1,9 +1,5 @@
 ﻿using App.Infrastructure.Abstractions.Consts;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Org.BouncyCastle.Security;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Infrastructure.Presistance.EntitiesConfiguration;
 
@@ -36,21 +32,8 @@ public class ApplicationUserConfiguration : IEntityTypeConfiguration<Application
                 ConcurrencyStamp = DefaultUsers.SystemAdminConcurrencyStamp,
                 SecurityStamp = DefaultUsers.SystemAdminSecurityStamp,
                 EmailConfirmed = true,
-                PasswordHash = DefaultUsers.AdminPassword
+                PasswordHash = DefaultUsers.SystemAdminPassword
                 //PasswordHash = _passwordHasher.HashPassword(null!, DefaultUsers.SystemAdminPassword),
-            },
-            new ApplicationUser()
-            {
-                Id = DefaultUsers.AdminId,
-                UserName = DefaultUsers.AdminEmail,
-                Email = DefaultUsers.AdminEmail,
-                NormalizedEmail = DefaultUsers.AdminEmail.ToUpper(),
-                NormalizedUserName = DefaultUsers.AdminEmail.ToUpper(),
-                ConcurrencyStamp = DefaultUsers.AdminConcurrencyStamp,
-                SecurityStamp = DefaultUsers.AdminSecurityStamp,
-                EmailConfirmed = true,
-                PasswordHash = DefaultUsers.SystemAdminPassword,
-                //PasswordHash = _passwordHasher.HashPassword(null!, DefaultUsers.AdminPassword),
             }
         );
     }

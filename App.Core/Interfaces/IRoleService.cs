@@ -8,4 +8,3 @@ public interface IRoleService
 {
     Task<bool> IsUserHasAccessToRole(ClaimsPrincipal user, int requestRoleId);
 }
-

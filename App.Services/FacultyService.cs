@@ -10,7 +10,7 @@ using System.Security.Claims;
 
 namespace App.Services;
 
-public class FacultyService(UserManager<ApplicationUser> userManager,IUnitOfWork unitOfWork) :IFacultyService
+public class FacultyService(UserManager<ApplicationUser> userManager, IUnitOfWork unitOfWork) : IFacultyService
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;

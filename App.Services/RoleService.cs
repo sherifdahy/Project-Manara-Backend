@@ -8,13 +8,13 @@ using System.Security.Claims;
 
 namespace App.Services;
 
-public class RoleService(UserManager<ApplicationUser> userManager,IUnitOfWork unitOfWork) :IRoleService
+public class RoleService(UserManager<ApplicationUser> userManager, IUnitOfWork unitOfWork) : IRoleService
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
 
-    public async Task<bool> IsUserHasAccessToRole(ClaimsPrincipal user,int requestRoleId)
+    public async Task<bool> IsUserHasAccessToRole(ClaimsPrincipal user, int requestRoleId)
     {
 
 
@@ -30,14 +30,14 @@ public class RoleService(UserManager<ApplicationUser> userManager,IUnitOfWork un
 
 
         foreach (var role in roles)
-        { 
+        {
             var currentRole = role;
 
             while (currentRole != null)
             {
                 var nextRoleId = currentRole.RoleId;
 
-                if(nextRoleId==requestRoleId)
+                if (nextRoleId == requestRoleId)
                     return true;
 
                 currentRole = await _unitOfWork.Roles.FindAsync(r => r.Id == nextRoleId);

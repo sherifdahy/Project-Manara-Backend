@@ -11,7 +11,7 @@ public record RoleDetailResponse
     string Code,
     string Description,
     bool IsDeleted,
-    int  NumberOfUsers,
+    int NumberOfUsers,
     IEnumerable<string> Permissions,
-    RoleResponse? ChildRole 
+    RoleResponse? ChildRole
 );

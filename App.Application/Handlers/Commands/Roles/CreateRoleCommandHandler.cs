@@ -6,14 +6,14 @@ using System.Data;
 namespace App.Application.Handlers.Commands.Roles;
 
 public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
-    ,IUnitOfWork unitOfWork,
+    , IUnitOfWork unitOfWork,
     RoleErrors roleErrors
-    ,PermissionErrors permissionErrors) : IRequestHandler<CreateRoleCommand, Result<RoleDetailResponse>>
+    , PermissionErrors permissionErrors) : IRequestHandler<CreateRoleCommand, Result<RoleDetailResponse>>
 {
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly RoleErrors _roleErrors = roleErrors;
-    private readonly PermissionErrors _permissionErrors= permissionErrors;
+    private readonly PermissionErrors _permissionErrors = permissionErrors;
 
     public async Task<Result<RoleDetailResponse>> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
     {
@@ -31,14 +31,14 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
             Name = request.Name,
             Code = request.Code,
             RoleId = request.RoleId,
-            Description=request.Description,
+            Description = request.Description,
             IsDeleted = request.IsDeleted,
             ConcurrencyStamp = Guid.NewGuid().ToString(),
         };
 
         var result = await _roleManager.CreateAsync(newRole);
 
-        if(result.Succeeded)
+        if (result.Succeeded)
         {
             var roleClaims = new List<IdentityRoleClaim<int>>();
 
@@ -57,7 +57,7 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
             await _unitOfWork.SaveAsync(cancellationToken);
 
             return Result.Success(new RoleDetailResponse
-            (   newRole.Id,
+            (newRole.Id,
                 newRole.Name,
                 newRole.Description,
                 newRole.Code,

@@ -1,13 +1,12 @@
-﻿using App.Application.Abstractions;
-using App.Application.Contracts.Responses.Roles;
+﻿using App.Application.Contracts.Responses.Roles;
 using App.Application.Queries.Roles;
 
 namespace App.Application.Handlers.Queries.Roles;
 
 public class GetRoleByIdQueryHandler(
     RoleManager<ApplicationRole> _roleManager
-    ,RoleErrors errors
-    ,IUnitOfWork unitOfWork) : IRequestHandler<GetRoleByIdQuery, Result<RoleDetailResponse>>
+    , RoleErrors errors
+    , IUnitOfWork unitOfWork) : IRequestHandler<GetRoleByIdQuery, Result<RoleDetailResponse>>
 {
     private readonly RoleErrors _errors = errors;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
@@ -19,7 +18,7 @@ public class GetRoleByIdQueryHandler(
 
         var permissions = await _roleManager.GetClaimsAsync(role);
 
-        var numberOfUsers = await _unitOfWork.UserRoles.CountAsync(ur=>ur.RoleId==role.Id);
+        var numberOfUsers = await _unitOfWork.UserRoles.CountAsync(ur => ur.RoleId == role.Id);
 
         var response = new RoleDetailResponse
         (

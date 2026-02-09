@@ -14,31 +14,6 @@ namespace App.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AspNetRoles",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    IsDefualt = table.Column<bool>(type: "bit", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetRoles_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
                 {
@@ -69,6 +44,26 @@ namespace App.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Scopes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    ParentScopeId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Scopes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Scopes_Scopes_ParentScopeId",
+                        column: x => x.ParentScopeId,
+                        principalTable: "Scopes",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Universities",
                 columns: table => new
                 {
@@ -86,27 +81,6 @@ namespace App.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Universities", x => x.Id);
                     table.CheckConstraint("CK_University_YearOfEstablishment", "[YearOfEstablishment] >= 1800 AND [YearOfEstablishment] <= YEAR(GETDATE())");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -144,30 +118,6 @@ namespace App.Infrastructure.Migrations
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserRoles",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -236,6 +186,38 @@ namespace App.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetRoles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    IsDefault = table.Column<bool>(type: "bit", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    ScopeId = table.Column<int>(type: "int", nullable: false),
+                    ParentRoleId = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoles_AspNetRoles_ParentRoleId",
+                        column: x => x.ParentRoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_AspNetRoles_Scopes_ScopeId",
+                        column: x => x.ScopeId,
+                        principalTable: "Scopes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Faculties",
                 columns: table => new
                 {
@@ -280,6 +262,51 @@ namespace App.Infrastructure.Migrations
                         name: "FK_UniversityUsers_Universities_UniversityId",
                         column: x => x.UniversityId,
                         principalTable: "Universities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserRoles",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    RoleId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -480,62 +507,110 @@ namespace App.Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "Code", "ConcurrencyStamp", "Description", "IsDefualt", "IsDeleted", "Name", "NormalizedName", "RoleId" },
-                values: new object[,]
-                {
-                    { 100, "", "51655B45-963A-4DD7-A68F-1F18B3F4BE47", "", false, false, "Admin", "ADMIN", null },
-                    { 101, "", "9601DE96-3D34-48D0-BA24-4D7C1A9F6C7F", "", true, false, "Member", "MEMBER", null },
-                    { 102, "", "AE6C6754-0862-4EA2-8868-BF5C27E7AEF9", "", false, false, "SystemAdmin", "SYSTEMADMIN", null }
-                });
-
-            migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "IsDeleted", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SSN", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { 100, 0, "21BB4316-3388-4644-B048-C514DEB63A58", "admin@manara.org", true, false, false, null, "", "ADMIN@MANARA.ORG", "ADMIN@MANARA.ORG", "AQAAAAIAAYagAAAAEE9EyJUN4Xz2bvn2+h3p+oAlYKNgZ0pdEOC/OGIcSmBUG2cPPtftxmy87pluEQ6pLw==", null, false, "", "CE187833-A9A3-4682-8594-7BFE6A08AE64", false, "admin@manara.org" },
-                    { 101, 0, "F0DD1622-6D6B-4654-9F52-82EDE53E5AD8", "system.admin@manara.org", true, false, false, null, "", "SYSTEM.ADMIN@MANARA.ORG", "SYSTEM.ADMIN@MANARA.ORG", "AQAAAAIAAYagAAAAEE9EyJUN4Xz2bvn2+h3p+oAlYKNgZ0pdEOC/OGIcSmBUG2cPPtftxmy87pluEQ6pLw==", null, false, "", "5965A8A5-ACBA-46EE-8612-4F0771FDFAB8", false, "system.admin@manara.org" }
-                });
+                values: new object[] { 100, 0, "F0DD1622-6D6B-4654-9F52-82EDE53E5AD8", "system-admin@manara.org", true, false, false, null, "", "SYSTEM-ADMIN@MANARA.ORG", "SYSTEM-ADMIN@MANARA.ORG", "AQAAAAIAAYagAAAAEE9EyJUN4Xz2bvn2+h3p+oAlYKNgZ0pdEOC/OGIcSmBUG2cPPtftxmy87pluEQ6pLw==", null, false, "", "5965A8A5-ACBA-46EE-8612-4F0771FDFAB8", false, "system-admin@manara.org" });
+
+            migrationBuilder.InsertData(
+                table: "Scopes",
+                columns: new[] { "Id", "IsDeleted", "Name", "ParentScopeId" },
+                values: new object[] { 1, false, "System", null });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Code", "ConcurrencyStamp", "Description", "IsDefault", "IsDeleted", "Name", "NormalizedName", "ParentRoleId", "ScopeId" },
+                values: new object[] { 100, "SYS_ADMIN", "AE6C6754-0862-4EA2-8868-BF5C27E7AEF9", "System Administrator with full access", true, false, "SystemAdmin", "SYSTEMADMIN", null, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Scopes",
+                columns: new[] { "Id", "IsDeleted", "Name", "ParentScopeId" },
+                values: new object[] { 2, false, "University", 1 });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoleClaims",
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "RoleId" },
                 values: new object[,]
                 {
-                    { 1, "permissions", "roles:read", 102 },
-                    { 2, "permissions", "roles:create", 102 },
-                    { 3, "permissions", "roles:update", 102 },
-                    { 4, "permissions", "roles:toggleStatus", 102 },
-                    { 5, "permissions", "permissions:read", 102 },
-                    { 6, "permissions", "permissions:update", 102 },
-                    { 7, "permissions", "permissions:create", 102 },
-                    { 8, "permissions", "permissions:toggleStatus", 102 },
-                    { 9, "permissions", "universities:read", 102 },
-                    { 10, "permissions", "universities:create", 102 },
-                    { 11, "permissions", "universities:update", 102 },
-                    { 12, "permissions", "universities:toggleStatus", 102 },
-                    { 13, "permissions", "faculties:read", 102 },
-                    { 14, "permissions", "faculties:create", 102 },
-                    { 15, "permissions", "faculties:update", 102 },
-                    { 16, "permissions", "faculties:toggleStatus", 102 },
-                    { 17, "permissions", "departments:read", 102 },
-                    { 18, "permissions", "departments:create", 102 },
-                    { 19, "permissions", "departments:update", 102 },
-                    { 20, "permissions", "departments:toggleStatus", 102 },
-                    { 21, "permissions", "facultyUsers:read", 102 },
-                    { 22, "permissions", "facultyUsers:create", 102 },
-                    { 23, "permissions", "facultyUsers:update", 102 },
-                    { 24, "permissions", "facultyUsers:toggleStatus", 102 }
+                    { 1, "permissions", "roles:read", 100 },
+                    { 2, "permissions", "roles:create", 100 },
+                    { 3, "permissions", "roles:update", 100 },
+                    { 4, "permissions", "roles:toggleStatus", 100 },
+                    { 5, "permissions", "permissions:read", 100 },
+                    { 6, "permissions", "permissions:update", 100 },
+                    { 7, "permissions", "permissions:create", 100 },
+                    { 8, "permissions", "permissions:toggleStatus", 100 },
+                    { 9, "permissions", "universities:read", 100 },
+                    { 10, "permissions", "universities:create", 100 },
+                    { 11, "permissions", "universities:update", 100 },
+                    { 12, "permissions", "universities:toggleStatus", 100 },
+                    { 13, "permissions", "faculties:read", 100 },
+                    { 14, "permissions", "faculties:create", 100 },
+                    { 15, "permissions", "faculties:update", 100 },
+                    { 16, "permissions", "faculties:toggleStatus", 100 },
+                    { 17, "permissions", "departments:read", 100 },
+                    { 18, "permissions", "departments:create", 100 },
+                    { 19, "permissions", "departments:update", 100 },
+                    { 20, "permissions", "departments:toggleStatus", 100 },
+                    { 21, "permissions", "facultyUsers:read", 100 },
+                    { 22, "permissions", "facultyUsers:create", 100 },
+                    { 23, "permissions", "facultyUsers:update", 100 },
+                    { 24, "permissions", "facultyUsers:toggleStatus", 100 },
+                    { 25, "permissions", "scopes:read", 100 },
+                    { 26, "permissions", "scopes:readDetail", 100 },
+                    { 27, "permissions", "scopes:create", 100 },
+                    { 28, "permissions", "scopes:update", 100 },
+                    { 29, "permissions", "scopes:toggleStatus", 100 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Code", "ConcurrencyStamp", "Description", "IsDefault", "IsDeleted", "Name", "NormalizedName", "ParentRoleId", "ScopeId" },
+                values: new object[] { 101, "UNI_ADMIN", "B1A2C3D4-5E6F-7890-ABCD-EF1234567890", "University Administrator", true, false, "UniversityAdmin", "UNIVERSITYADMIN", 100, 2 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
+                values: new object[] { 100, 100 });
+
+            migrationBuilder.InsertData(
+                table: "Scopes",
+                columns: new[] { "Id", "IsDeleted", "Name", "ParentScopeId" },
+                values: new object[] { 3, false, "Faculty", 2 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Code", "ConcurrencyStamp", "Description", "IsDefault", "IsDeleted", "Name", "NormalizedName", "ParentRoleId", "ScopeId" },
+                values: new object[] { 102, "FAC_ADMIN", "D3C4E5F6-7081-9012-CDEF-345678901234", "Faculty Administrator", true, false, "FacultyAdmin", "FACULTYADMIN", 101, 3 });
+
+            migrationBuilder.InsertData(
+                table: "Scopes",
+                columns: new[] { "Id", "IsDeleted", "Name", "ParentScopeId" },
+                values: new object[] { 4, false, "Department", 3 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Code", "ConcurrencyStamp", "Description", "IsDefault", "IsDeleted", "Name", "NormalizedName", "ParentRoleId", "ScopeId" },
                 values: new object[,]
                 {
-                    { 100, 100 },
-                    { 102, 101 }
+                    { 103, "FAC_COORD", "E4D5F6A7-8192-0123-DEF4-456789012345", "Faculty Coordinator", false, false, "FacultyCoordinator", "FACULTYCOORDINATOR", 102, 3 },
+                    { 104, "ACAD_ADV", "F5E6A7B8-9203-1234-EF45-567890123456", "Academic Advisor", false, false, "AcademicAdvisor", "ACADEMICADVISOR", 102, 3 },
+                    { 105, "DEPT_ADMIN", "A6F7B8C9-0314-2345-F456-678901234567", "Department Administrator", false, false, "DepartmentHead", "DEPARTMENTHEAD", 102, 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Scopes",
+                columns: new[] { "Id", "IsDeleted", "Name", "ParentScopeId" },
+                values: new object[] { 5, false, "Program", 4 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Code", "ConcurrencyStamp", "Description", "IsDefault", "IsDeleted", "Name", "NormalizedName", "ParentRoleId", "ScopeId" },
+                values: new object[,]
+                {
+                    { 106, "DOCTOR", "B7A8C9D0-1425-3456-A567-789012345678", "Doctor/Professor", false, false, "Doctor", "DOCTOR", 105, 4 },
+                    { 110, "MAIN_STUDENT", "F1E2A3B4-5869-789A-E901-123456789012", "Main Stream Student", false, false, "MainStreamStudent", "MAINSTREAMSTUDENT", null, 5 },
+                    { 111, "GPA_STUDENT", "A2F3B4C5-6970-89AB-F012-234567890123", "GPA Student", false, false, "GPAStudent", "GPASTUDENT", null, 5 },
+                    { 107, "INSTRUCTOR", "C8B9D0E1-2536-4567-B678-890123456789", "Instructor/Teaching Assistant", false, false, "Instructor", "INSTRUCTOR", 106, 4 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -544,9 +619,20 @@ namespace App.Infrastructure.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetRoles_RoleId",
+                name: "IX_AspNetRoles_Code",
                 table: "AspNetRoles",
-                column: "RoleId");
+                column: "Code",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoles_ParentRoleId",
+                table: "AspNetRoles",
+                column: "ParentRoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoles_ScopeId",
+                table: "AspNetRoles",
+                column: "ScopeId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
@@ -629,6 +715,11 @@ namespace App.Infrastructure.Migrations
                 column: "FacultyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Scopes_ParentScopeId",
+                table: "Scopes",
+                column: "ParentScopeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Subjects_ProgramId",
                 table: "Subjects",
                 column: "ProgramId");
@@ -698,6 +789,9 @@ namespace App.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Programs");
+
+            migrationBuilder.DropTable(
+                name: "Scopes");
 
             migrationBuilder.DropTable(
                 name: "Departments");

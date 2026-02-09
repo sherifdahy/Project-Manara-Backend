@@ -9,10 +9,10 @@ namespace App.Application.Commands.Roles;
 
 public record CreateRoleCommand : IRequest<Result<RoleDetailResponse>>
 {
-    public string Name { get; set; } = string.Empty;
-    public string Code { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public bool IsDeleted { get; set; }
-    public int? RoleId { get; set; }
-    public IList<string> Permissions { get; set; } = [];
+    public string Name { get; init; } = string.Empty;
+    public string Code { get; init; } = string.Empty;
+    public string Description { get; init; } = string.Empty;
+    public bool IsDeleted { get; init; } = false; 
+    public int? ParentRoleId { get; init; }
+    public IList<string> Permissions { get; init; } = [];
 }

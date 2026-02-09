@@ -22,7 +22,6 @@ public class Permissions
     public const string CreatePermissions = "permissions:create";
     public const string ToggleStatusPermissions = "permissions:toggleStatus";
 
-
     // University Permissions
     public const string GetUniversities = "universities:read";
     public const string CreateUniversities = "universities:create";
@@ -49,7 +48,13 @@ public class Permissions
     public const string UpdateFacultyUsers = "facultyUsers:update";
     public const string ToggleStatusFacultyUsers = "facultyUsers:toggleStatus";
 
-
+    // Scope Permissions
+    public const string GetScopes = "scopes:read";
+    public const string GetScopeDetail = "scopes:readDetail";
+    public const string CreateScopes = "scopes:create";
+    public const string UpdateScopes = "scopes:update";
+    public const string ToggleStatusScopes = "scopes:toggleStatus";
+    
     public static IList<string> GetAllPermissions()
     {
         return typeof(Permissions).GetFields().Select(x=>x.GetValue(x) as string).ToList()!;

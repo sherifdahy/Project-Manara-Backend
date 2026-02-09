@@ -44,7 +44,7 @@ namespace App.Infrastructure.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<bool>("IsDefualt")
+                    b.Property<bool>("IsDefault")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
@@ -58,17 +58,25 @@ namespace App.Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<int?>("RoleId")
+                    b.Property<int?>("ParentRoleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ScopeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("ParentRoleId");
+
+                    b.HasIndex("ScopeId");
 
                     b.ToTable("AspNetRoles", (string)null);
 
@@ -76,35 +84,129 @@ namespace App.Infrastructure.Migrations
                         new
                         {
                             Id = 100,
-                            Code = "",
-                            ConcurrencyStamp = "51655B45-963A-4DD7-A68F-1F18B3F4BE47",
-                            Description = "",
-                            IsDefualt = false,
+                            Code = "SYS_ADMIN",
+                            ConcurrencyStamp = "AE6C6754-0862-4EA2-8868-BF5C27E7AEF9",
+                            Description = "System Administrator with full access",
+                            IsDefault = true,
                             IsDeleted = false,
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Name = "SystemAdmin",
+                            NormalizedName = "SYSTEMADMIN",
+                            ScopeId = 1
                         },
                         new
                         {
                             Id = 101,
-                            Code = "",
-                            ConcurrencyStamp = "9601DE96-3D34-48D0-BA24-4D7C1A9F6C7F",
-                            Description = "",
-                            IsDefualt = true,
+                            Code = "UNI_ADMIN",
+                            ConcurrencyStamp = "B1A2C3D4-5E6F-7890-ABCD-EF1234567890",
+                            Description = "University Administrator",
+                            IsDefault = true,
                             IsDeleted = false,
-                            Name = "Member",
-                            NormalizedName = "MEMBER"
+                            Name = "UniversityAdmin",
+                            NormalizedName = "UNIVERSITYADMIN",
+                            ParentRoleId = 100,
+                            ScopeId = 2
                         },
                         new
                         {
                             Id = 102,
-                            Code = "",
-                            ConcurrencyStamp = "AE6C6754-0862-4EA2-8868-BF5C27E7AEF9",
-                            Description = "",
-                            IsDefualt = false,
+                            Code = "FAC_ADMIN",
+                            ConcurrencyStamp = "D3C4E5F6-7081-9012-CDEF-345678901234",
+                            Description = "Faculty Administrator",
+                            IsDefault = true,
                             IsDeleted = false,
-                            Name = "SystemAdmin",
-                            NormalizedName = "SYSTEMADMIN"
+                            Name = "FacultyAdmin",
+                            NormalizedName = "FACULTYADMIN",
+                            ParentRoleId = 101,
+                            ScopeId = 3
+                        },
+                        new
+                        {
+                            Id = 103,
+                            Code = "FAC_COORD",
+                            ConcurrencyStamp = "E4D5F6A7-8192-0123-DEF4-456789012345",
+                            Description = "Faculty Coordinator",
+                            IsDefault = false,
+                            IsDeleted = false,
+                            Name = "FacultyCoordinator",
+                            NormalizedName = "FACULTYCOORDINATOR",
+                            ParentRoleId = 102,
+                            ScopeId = 3
+                        },
+                        new
+                        {
+                            Id = 104,
+                            Code = "ACAD_ADV",
+                            ConcurrencyStamp = "F5E6A7B8-9203-1234-EF45-567890123456",
+                            Description = "Academic Advisor",
+                            IsDefault = false,
+                            IsDeleted = false,
+                            Name = "AcademicAdvisor",
+                            NormalizedName = "ACADEMICADVISOR",
+                            ParentRoleId = 102,
+                            ScopeId = 3
+                        },
+                        new
+                        {
+                            Id = 105,
+                            Code = "DEPT_ADMIN",
+                            ConcurrencyStamp = "A6F7B8C9-0314-2345-F456-678901234567",
+                            Description = "Department Administrator",
+                            IsDefault = false,
+                            IsDeleted = false,
+                            Name = "DepartmentHead",
+                            NormalizedName = "DEPARTMENTHEAD",
+                            ParentRoleId = 102,
+                            ScopeId = 4
+                        },
+                        new
+                        {
+                            Id = 106,
+                            Code = "DOCTOR",
+                            ConcurrencyStamp = "B7A8C9D0-1425-3456-A567-789012345678",
+                            Description = "Doctor/Professor",
+                            IsDefault = false,
+                            IsDeleted = false,
+                            Name = "Doctor",
+                            NormalizedName = "DOCTOR",
+                            ParentRoleId = 105,
+                            ScopeId = 4
+                        },
+                        new
+                        {
+                            Id = 107,
+                            Code = "INSTRUCTOR",
+                            ConcurrencyStamp = "C8B9D0E1-2536-4567-B678-890123456789",
+                            Description = "Instructor/Teaching Assistant",
+                            IsDefault = false,
+                            IsDeleted = false,
+                            Name = "Instructor",
+                            NormalizedName = "INSTRUCTOR",
+                            ParentRoleId = 106,
+                            ScopeId = 4
+                        },
+                        new
+                        {
+                            Id = 110,
+                            Code = "MAIN_STUDENT",
+                            ConcurrencyStamp = "F1E2A3B4-5869-789A-E901-123456789012",
+                            Description = "Main Stream Student",
+                            IsDefault = false,
+                            IsDeleted = false,
+                            Name = "MainStreamStudent",
+                            NormalizedName = "MAINSTREAMSTUDENT",
+                            ScopeId = 5
+                        },
+                        new
+                        {
+                            Id = 111,
+                            Code = "GPA_STUDENT",
+                            ConcurrencyStamp = "A2F3B4C5-6970-89AB-F012-234567890123",
+                            Description = "GPA Student",
+                            IsDefault = false,
+                            IsDeleted = false,
+                            Name = "GPAStudent",
+                            NormalizedName = "GPASTUDENT",
+                            ScopeId = 5
                         });
                 });
 
@@ -198,43 +300,23 @@ namespace App.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 101,
+                            Id = 100,
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "F0DD1622-6D6B-4654-9F52-82EDE53E5AD8",
-                            Email = "system.admin@manara.org",
+                            Email = "system-admin@manara.org",
                             EmailConfirmed = true,
                             IsDeleted = false,
                             IsDisabled = false,
                             LockoutEnabled = false,
                             Name = "",
-                            NormalizedEmail = "SYSTEM.ADMIN@MANARA.ORG",
-                            NormalizedUserName = "SYSTEM.ADMIN@MANARA.ORG",
+                            NormalizedEmail = "SYSTEM-ADMIN@MANARA.ORG",
+                            NormalizedUserName = "SYSTEM-ADMIN@MANARA.ORG",
                             PasswordHash = "AQAAAAIAAYagAAAAEE9EyJUN4Xz2bvn2+h3p+oAlYKNgZ0pdEOC/OGIcSmBUG2cPPtftxmy87pluEQ6pLw==",
                             PhoneNumberConfirmed = false,
                             SSN = "",
                             SecurityStamp = "5965A8A5-ACBA-46EE-8612-4F0771FDFAB8",
                             TwoFactorEnabled = false,
-                            UserName = "system.admin@manara.org"
-                        },
-                        new
-                        {
-                            Id = 100,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "21BB4316-3388-4644-B048-C514DEB63A58",
-                            Email = "admin@manara.org",
-                            EmailConfirmed = true,
-                            IsDeleted = false,
-                            IsDisabled = false,
-                            LockoutEnabled = false,
-                            Name = "",
-                            NormalizedEmail = "ADMIN@MANARA.ORG",
-                            NormalizedUserName = "ADMIN@MANARA.ORG",
-                            PasswordHash = "AQAAAAIAAYagAAAAEE9EyJUN4Xz2bvn2+h3p+oAlYKNgZ0pdEOC/OGIcSmBUG2cPPtftxmy87pluEQ6pLw==",
-                            PhoneNumberConfirmed = false,
-                            SSN = "",
-                            SecurityStamp = "CE187833-A9A3-4682-8594-7BFE6A08AE64",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@manara.org"
+                            UserName = "system-admin@manara.org"
                         });
                 });
 
@@ -255,6 +337,67 @@ namespace App.Infrastructure.Migrations
                     b.HasIndex("FacultyId");
 
                     b.ToTable("RoleClaimOverrides");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Identity.Scope", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ParentScopeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentScopeId");
+
+                    b.ToTable("Scopes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDeleted = false,
+                            Name = "System"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsDeleted = false,
+                            Name = "University",
+                            ParentScopeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsDeleted = false,
+                            Name = "Faculty",
+                            ParentScopeId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsDeleted = false,
+                            Name = "Department",
+                            ParentScopeId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsDeleted = false,
+                            Name = "Program",
+                            ParentScopeId = 4
+                        });
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.UserClaimOverride", b =>
@@ -624,168 +767,203 @@ namespace App.Infrastructure.Migrations
                             Id = 1,
                             ClaimType = "permissions",
                             ClaimValue = "roles:read",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 2,
                             ClaimType = "permissions",
                             ClaimValue = "roles:create",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 3,
                             ClaimType = "permissions",
                             ClaimValue = "roles:update",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 4,
                             ClaimType = "permissions",
                             ClaimValue = "roles:toggleStatus",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 5,
                             ClaimType = "permissions",
                             ClaimValue = "permissions:read",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 6,
                             ClaimType = "permissions",
                             ClaimValue = "permissions:update",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 7,
                             ClaimType = "permissions",
                             ClaimValue = "permissions:create",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 8,
                             ClaimType = "permissions",
                             ClaimValue = "permissions:toggleStatus",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 9,
                             ClaimType = "permissions",
                             ClaimValue = "universities:read",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 10,
                             ClaimType = "permissions",
                             ClaimValue = "universities:create",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 11,
                             ClaimType = "permissions",
                             ClaimValue = "universities:update",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 12,
                             ClaimType = "permissions",
                             ClaimValue = "universities:toggleStatus",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 13,
                             ClaimType = "permissions",
                             ClaimValue = "faculties:read",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 14,
                             ClaimType = "permissions",
                             ClaimValue = "faculties:create",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 15,
                             ClaimType = "permissions",
                             ClaimValue = "faculties:update",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 16,
                             ClaimType = "permissions",
                             ClaimValue = "faculties:toggleStatus",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 17,
                             ClaimType = "permissions",
                             ClaimValue = "departments:read",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 18,
                             ClaimType = "permissions",
                             ClaimValue = "departments:create",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 19,
                             ClaimType = "permissions",
                             ClaimValue = "departments:update",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 20,
                             ClaimType = "permissions",
                             ClaimValue = "departments:toggleStatus",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 21,
                             ClaimType = "permissions",
                             ClaimValue = "facultyUsers:read",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 22,
                             ClaimType = "permissions",
                             ClaimValue = "facultyUsers:create",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 23,
                             ClaimType = "permissions",
                             ClaimValue = "facultyUsers:update",
-                            RoleId = 102
+                            RoleId = 100
                         },
                         new
                         {
                             Id = 24,
                             ClaimType = "permissions",
                             ClaimValue = "facultyUsers:toggleStatus",
-                            RoleId = 102
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:readDetail",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 29,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:toggleStatus",
+                            RoleId = 100
                         });
                 });
 
@@ -853,11 +1031,6 @@ namespace App.Infrastructure.Migrations
                         {
                             UserId = 100,
                             RoleId = 100
-                        },
-                        new
-                        {
-                            UserId = 101,
-                            RoleId = 102
                         });
                 });
 
@@ -882,11 +1055,19 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationRole", b =>
                 {
-                    b.HasOne("App.Core.Entities.Identity.ApplicationRole", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
+                    b.HasOne("App.Core.Entities.Identity.ApplicationRole", "ParentRole")
+                        .WithMany("ChildRoles")
+                        .HasForeignKey("ParentRoleId");
 
-                    b.Navigation("Role");
+                    b.HasOne("App.Core.Entities.Identity.Scope", "Scope")
+                        .WithMany("Roles")
+                        .HasForeignKey("ScopeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ParentRole");
+
+                    b.Navigation("Scope");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationUser", b =>
@@ -943,6 +1124,15 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("Faculty");
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Identity.Scope", b =>
+                {
+                    b.HasOne("App.Core.Entities.Identity.Scope", "ParentScope")
+                        .WithMany("ChildScopes")
+                        .HasForeignKey("ParentScopeId");
+
+                    b.Navigation("ParentScope");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.UserClaimOverride", b =>
@@ -1140,6 +1330,8 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationRole", b =>
                 {
+                    b.Navigation("ChildRoles");
+
                     b.Navigation("RoleClaimOverrides");
                 });
 
@@ -1158,6 +1350,13 @@ namespace App.Infrastructure.Migrations
 
                     b.Navigation("UniversityUser")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Identity.Scope", b =>
+                {
+                    b.Navigation("ChildScopes");
+
+                    b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>

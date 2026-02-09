@@ -13,6 +13,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
 
     #region Db Sets
     // identity
+    public DbSet<Scope> Scopes { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<UserClaimOverride> UserClaimOverrides { get; set; }
     public DbSet<RoleClaimOverride> RoleClaimOverrides { get; set; }
