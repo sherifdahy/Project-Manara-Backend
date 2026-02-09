@@ -17,32 +17,33 @@ public class RoleService(UserManager<ApplicationUser> userManager, IUnitOfWork u
     public async Task<bool> IsUserHasAccessToRole(ClaimsPrincipal user, int requestRoleId)
     {
 
+        //TODO Filter Bussines Change
 
-        var userEntity = await _userManager.FindByIdAsync(user.GetUserId().ToString());
+        //var userEntity = await _userManager.FindByIdAsync(user.GetUserId().ToString());
 
-        if (userEntity == null)
-            return false;
+        //if (userEntity == null)
+        //    return false;
 
-        var roleNames = await _userManager.GetRolesAsync(userEntity);
-
-
-        var roles = await _unitOfWork.Roles.FindAllAsync(r => roleNames.Contains(r.Name!));
+        //var roleNames = await _userManager.GetRolesAsync(userEntity);
 
 
-        foreach (var role in roles)
-        {
-            var currentRole = role;
+        //var roles = await _unitOfWork.Roles.FindAllAsync(r => roleNames.Contains(r.Name!));
 
-            while (currentRole != null)
-            {
-                var nextRoleId = currentRole.RoleId;
 
-                if (nextRoleId == requestRoleId)
-                    return true;
+        //foreach (var role in roles)
+        //{
+        //    var currentRole = role;
 
-                currentRole = await _unitOfWork.Roles.FindAsync(r => r.Id == nextRoleId);
-            }
-        }
+        //    while (currentRole != null)
+        //    {
+        //        var nextRoleId = currentRole.RoleId;
+
+        //        if (nextRoleId == requestRoleId)
+        //            return true;
+
+        //        currentRole = await _unitOfWork.Roles.FindAsync(r => r.Id == nextRoleId);
+        //    }
+        //}
 
         return false;
     }

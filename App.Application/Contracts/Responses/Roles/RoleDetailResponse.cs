@@ -12,6 +12,6 @@ public record RoleDetailResponse
     string Description,
     bool IsDeleted,
     int NumberOfUsers,
-    IEnumerable<string> Permissions,
-    RoleResponse? ChildRole
+    IEnumerable<string> Permissions
 );
+//TODO Should Return The Parent ??

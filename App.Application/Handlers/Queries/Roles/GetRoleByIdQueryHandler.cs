@@ -28,9 +28,8 @@ public class GetRoleByIdQueryHandler(
             role.Description,
             role.IsDeleted,
             numberOfUsers,
-            permissions.Select(c => c.Value),
-            role.RoleId != null ? (await _roleManager.FindByIdAsync(role.RoleId.ToString()!)).Adapt<RoleResponse>() : null
-        );
+            permissions.Select(c => c.Value)
+            );
 
         return Result.Success(response);
     }

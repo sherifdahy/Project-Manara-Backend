@@ -23,14 +23,11 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
         if (request.Permissions.Except(allowedPermissions).Any())
             return Result.Failure<RoleDetailResponse>(_permissionErrors.InvalidPermissions);
 
-        if (request.RoleId.HasValue && await _roleManager.FindByIdAsync(request.RoleId.ToString()!) is null)
-            return Result.Failure<RoleDetailResponse>(_roleErrors.NotFound);
 
         var newRole = new ApplicationRole()
         {
             Name = request.Name,
             Code = request.Code,
-            RoleId = request.RoleId,
             Description = request.Description,
             IsDeleted = request.IsDeleted,
             ConcurrencyStamp = Guid.NewGuid().ToString(),
@@ -63,8 +60,7 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
                 newRole.Code,
                 newRole.IsDeleted,
                 0,
-                request.Permissions,
-                request.RoleId != null ? (await _roleManager.FindByIdAsync(request.RoleId.ToString()!)).Adapt<RoleResponse>() : null
+                request.Permissions
             ));
         }
 
