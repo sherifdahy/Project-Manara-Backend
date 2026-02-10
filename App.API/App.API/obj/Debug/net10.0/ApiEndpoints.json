@@ -402,6 +402,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.Scopes.ScopesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Scopes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.Scopes.ScopesController",
+    "Method": "Get",
+    "RelativePath": "api/Scopes/{scopeName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scopeName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Universities.UniversitiesController",
     "Method": "GetAll",
     "RelativePath": "api/Universities",

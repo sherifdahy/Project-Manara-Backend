@@ -15,6 +15,7 @@ public class UnitOfWork : IUnitOfWork
     }
 
     // identity
+    public IRepository<Scope> Scopes => new Repository<Scope>(_context);
     public IRepository<ApplicationRole> Roles =>  new Repository<ApplicationRole>(_context);
     public IRepository<IdentityRoleClaim<int>> RoleClaims => new Repository<IdentityRoleClaim<int>>(_context);
     public IRepository<ApplicationUser> Users => new Repository<ApplicationUser>(_context);

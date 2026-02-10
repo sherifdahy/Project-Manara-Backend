@@ -186,6 +186,50 @@
         ]
       }
     },
+    "/api/Scopes": {
+      "get": {
+        "tags": [
+          "Scopes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/Scopes/{scopeName}": {
+      "get": {
+        "tags": [
+          "Scopes"
+        ],
+        "parameters": [
+          {
+            "name": "scopeName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
     "/api/Permissions": {
       "get": {
         "tags": [
@@ -1451,6 +1495,9 @@
   "tags": [
     {
       "name": "Universities"
+    },
+    {
+      "name": "Scopes"
     },
     {
       "name": "Permissions"

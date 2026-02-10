@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\App.Application.csproj": {}
+    "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\App.Application.csproj": {}
   },
   "projects": {
-    "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\App.Application.csproj": {
+    "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\App.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\App.Application.csproj",
+        "projectUniqueName": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\App.Application.csproj",
         "projectName": "App.Application",
-        "projectPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\App.Application.csproj",
-        "packagesPath": "C:\\Users\\omarz\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\obj\\",
+        "projectPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\App.Application.csproj",
+        "packagesPath": "C:\\Users\\shrif\\.nuget\\packages\\",
+        "outputPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\omarz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shrif\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -32,11 +34,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj": {
-                "projectPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj"
+              "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj": {
+                "projectPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj"
               },
-              "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\App.Services.csproj": {
-                "projectPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\App.Services.csproj"
+              "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\App.Services.csproj": {
+                "projectPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\App.Services.csproj"
               }
             }
           }
@@ -109,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -527,22 +529,24 @@
         }
       }
     },
-    "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\App.Core.csproj": {
+    "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\App.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\App.Core.csproj",
+        "projectUniqueName": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\App.Core.csproj",
         "projectName": "App.Core",
-        "projectPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\App.Core.csproj",
-        "packagesPath": "C:\\Users\\omarz\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\obj\\",
+        "projectPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\App.Core.csproj",
+        "packagesPath": "C:\\Users\\shrif\\.nuget\\packages\\",
+        "outputPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\omarz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shrif\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -597,7 +601,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -1015,22 +1019,24 @@
         }
       }
     },
-    "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj": {
+    "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj",
+        "projectUniqueName": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj",
         "projectName": "App.Infrastructure",
-        "projectPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\omarz\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\obj\\",
+        "projectPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\shrif\\.nuget\\packages\\",
+        "outputPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\omarz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shrif\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -1043,8 +1049,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\App.Core.csproj": {
-                "projectPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\App.Core.csproj"
+              "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\App.Core.csproj": {
+                "projectPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\App.Core.csproj"
               }
             }
           }
@@ -1126,7 +1132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1404,22 +1410,24 @@
         }
       }
     },
-    "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\App.Services.csproj": {
+    "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\App.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\App.Services.csproj",
+        "projectUniqueName": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\App.Services.csproj",
         "projectName": "App.Services",
-        "projectPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\App.Services.csproj",
-        "packagesPath": "C:\\Users\\omarz\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\obj\\",
+        "projectPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\App.Services.csproj",
+        "packagesPath": "C:\\Users\\shrif\\.nuget\\packages\\",
+        "outputPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\omarz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shrif\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -1432,8 +1440,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\App.Core.csproj": {
-                "projectPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\App.Core.csproj"
+              "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\App.Core.csproj": {
+                "projectPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\App.Core.csproj"
               }
             }
           }
@@ -1469,7 +1477,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

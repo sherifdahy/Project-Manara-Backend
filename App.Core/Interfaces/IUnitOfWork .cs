@@ -8,6 +8,7 @@ namespace SA.Accountring.Core.Entities.Interfaces;
 public interface IUnitOfWork : IDisposable
 {
     // identity
+    public IRepository<Scope> Scopes { get; }
     public IRepository<ApplicationRole> Roles { get; }
     public IRepository<IdentityRoleClaim<int>> RoleClaims { get; }
     public IRepository<ApplicationUser> Users { get; }
