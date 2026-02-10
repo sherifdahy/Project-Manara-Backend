@@ -60,8 +60,11 @@ public class CreateRoleCommandHandler(RoleManager<ApplicationRole> roleManager
                 newRole.Code,
                 newRole.IsDeleted,
                 0,
+                newRole.ParentRoleId,
+                newRole.ScopeId,
                 request.Permissions
             ));
+
         }
 
         var error = result.Errors.First();

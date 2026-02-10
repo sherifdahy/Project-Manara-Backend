@@ -71,7 +71,12 @@ public class RolesController(IMediator _mediator) : ControllerBase
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 
-
+    [HttpGet("/test/{scopeName}")]
+    [RequireScopeAccess("scopeName")]
+    public async Task<IActionResult> Test([FromRoute] string scopeName, CancellationToken cancellationToken)
+    {
+        return Ok();
+    }
 
 
 }

@@ -101,7 +101,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 ConcurrencyStamp = DefaultRoles.DepartmentAdminRoleConcurrencyStamp,
                 IsDefault = false,
                 ScopeId = DefaultScopes.Department.Id,
-                ParentRoleId = DefaultRoles.FacultyAdminRoleId
+                ParentRoleId = DefaultRoles.AcademicAdvisorRoleId
             },
             new ApplicationRole()
             {
@@ -141,6 +141,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 ConcurrencyStamp = DefaultRoles.MainStreamStudentRoleConcurrencyStamp,
                 IsDefault = false,
                 ScopeId = DefaultScopes.Program.Id,
+                ParentRoleId= DefaultRoles.InstructorRoleId
             },
             new ApplicationRole()
             {
@@ -152,6 +153,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 ConcurrencyStamp = DefaultRoles.GPAStudentRoleConcurrencyStamp,
                 IsDefault = false,
                 ScopeId = DefaultScopes.Program.Id,
+                ParentRoleId = DefaultRoles.InstructorRoleId
             }
         );
     }

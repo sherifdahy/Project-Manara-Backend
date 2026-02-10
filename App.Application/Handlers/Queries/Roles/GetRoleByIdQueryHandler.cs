@@ -28,6 +28,8 @@ public class GetRoleByIdQueryHandler(
             role.Description,
             role.IsDeleted,
             numberOfUsers,
+            role.ParentRoleId,
+            role.ScopeId,
             permissions.Select(c => c.Value)
             );
 
