@@ -1,30 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\",
+  "WorkspaceRootPath": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.services\\scopeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.services\\roleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\attributes\\requirescopeaccessattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\attributes\\requirescopeaccessattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\filters\\scopeaccessfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\filters\\scopeaccessfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\roles\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|c:\\users\\omarz\\onedrive\\desktop\\new folder\\project-manara-backend\\app.api\\app.api\\controllers\\roles\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\roles\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.core\\consts\\permissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|c:\\users\\omarz\\onedrive\\desktop\\new folder\\project-manara-backend\\app.api\\app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.infrastructure\\presistance\\entitiesconfiguration\\applicationroleconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|c:\\users\\omarz\\onedrive\\desktop\\new folder\\project-manara-backend\\app.services\\roleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|c:\\users\\omarz\\onedrive\\desktop\\new folder\\project-manara-backend\\app.application\\handlers\\queries\\roles\\getrolebyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|c:\\users\\omarz\\onedrive\\desktop\\new folder\\project-manara-backend\\app.application\\handlers\\commands\\roles\\createrolecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|c:\\users\\omarz\\onedrive\\desktop\\new folder\\project-manara-backend\\app.application\\contracts\\responses\\roles\\roledetailresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\ScopeService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|c:\\users\\omarz\\onedrive\\desktop\\new folder\\project-manara-backend\\app.api\\app.api\\attributes\\requirescopeaccessattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\attributes\\requirescopeaccessattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|c:\\users\\omarz\\onedrive\\desktop\\new folder\\project-manara-backend\\app.api\\app.api\\filters\\scopeaccessfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\filters\\scopeaccessfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\ApplicationRoleConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Consts\\Permissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\RoleService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,38 +62,95 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ApplicationRoleConfiguration.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\ApplicationRoleConfiguration.cs",
-              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\ApplicationRoleConfiguration.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\ApplicationRoleConfiguration.cs",
-              "RelativeToolTip": "..\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\ApplicationRoleConfiguration.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAAAJsAAAA8AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "FacultyUsersController.cs",
+              "DocumentMoniker": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "ToolTip": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAQwCgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T18:22:33.317Z",
+              "WhenOpened": "2026-02-10T16:20:29.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RoleService.cs",
+              "DocumentMoniker": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.Services\\RoleService.cs",
+              "RelativeDocumentMoniker": "..\\App.Services\\RoleService.cs",
+              "ToolTip": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.Services\\RoleService.cs",
+              "RelativeToolTip": "..\\App.Services\\RoleService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T16:18:49.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetRoleByIdQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
+              "ToolTip": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T16:18:00.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateRoleCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Roles\\CreateRoleCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Roles\\CreateRoleCommandHandler.cs",
+              "ToolTip": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Roles\\CreateRoleCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Roles\\CreateRoleCommandHandler.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwCwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T16:17:21.02Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Permissions.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Consts\\Permissions.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Consts\\Permissions.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Consts\\Permissions.cs",
-              "RelativeToolTip": "..\\App.Core\\Consts\\Permissions.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAkAAAAAAAAAA==",
+              "Title": "RoleDetailResponse.cs",
+              "DocumentMoniker": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Roles\\RoleDetailResponse.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\Roles\\RoleDetailResponse.cs",
+              "ToolTip": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Roles\\RoleDetailResponse.cs",
+              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Roles\\RoleDetailResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T17:36:29.872Z",
+              "WhenOpened": "2026-02-10T16:16:57.859Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
+              "Title": "ApplicationRoleConfiguration.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\ApplicationRoleConfiguration.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\EntitiesConfiguration\\ApplicationRoleConfiguration.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAAJsAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T18:22:33.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Permissions.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Consts\\Permissions.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Consts\\Permissions.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T17:36:29.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "RoleService.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\RoleService.cs",
-              "RelativeDocumentMoniker": "..\\App.Services\\RoleService.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\RoleService.cs",
-              "RelativeToolTip": "..\\App.Services\\RoleService.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAWwBIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-09T16:34:25.069Z",
@@ -85,52 +158,48 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "RolesController.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\RolesController.cs",
+              "DocumentMoniker": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\RolesController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Roles\\RolesController.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\RolesController.cs",
+              "ToolTip": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\RolesController.cs",
               "RelativeToolTip": "App.API\\Controllers\\Roles\\RolesController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAASwDoAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAgwDcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-09T15:18:12.929Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "ScopeAccessFilter.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Filters\\ScopeAccessFilter.cs",
+              "DocumentMoniker": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.API\\App.API\\Filters\\ScopeAccessFilter.cs",
               "RelativeDocumentMoniker": "App.API\\Filters\\ScopeAccessFilter.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Filters\\ScopeAccessFilter.cs",
+              "ToolTip": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.API\\App.API\\Filters\\ScopeAccessFilter.cs",
               "RelativeToolTip": "App.API\\Filters\\ScopeAccessFilter.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAMwCYAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T15:15:43.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T15:15:43.212Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "RequireScopeAccessAttribute.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Attributes\\RequireScopeAccessAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.API\\App.API\\Attributes\\RequireScopeAccessAttribute.cs",
               "RelativeDocumentMoniker": "App.API\\Attributes\\RequireScopeAccessAttribute.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Attributes\\RequireScopeAccessAttribute.cs",
+              "ToolTip": "C:\\Users\\omarz\\OneDrive\\Desktop\\New folder\\Project-Manara-Backend\\App.API\\App.API\\Attributes\\RequireScopeAccessAttribute.cs",
               "RelativeToolTip": "App.API\\Attributes\\RequireScopeAccessAttribute.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T15:14:33.887Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T15:14:33.887Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "ScopeService.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\ScopeService.cs",
-              "RelativeDocumentMoniker": "..\\App.Services\\ScopeService.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\ScopeService.cs",
-              "RelativeToolTip": "..\\App.Services\\ScopeService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAIAywCYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAowBEAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-09T15:01:44.322Z",
               "EditorCaption": ""
