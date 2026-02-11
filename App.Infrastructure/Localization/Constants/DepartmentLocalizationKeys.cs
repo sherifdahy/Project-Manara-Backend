@@ -8,4 +8,6 @@ public static class DepartmentLocalizationKeys
 {
     public static readonly string NotFound = nameof(NotFound);
 
+    public static readonly string DuplicatedName = nameof(DuplicatedName);
+
 }

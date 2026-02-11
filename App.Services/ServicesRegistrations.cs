@@ -16,5 +16,6 @@ public static class ServicesRegistrations
         services.AddScoped<IFacultyService, FacultyService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IScopeService, ScopeService>();
+        services.AddScoped<IDepartmentService, DepartmentService>();
     }
 }

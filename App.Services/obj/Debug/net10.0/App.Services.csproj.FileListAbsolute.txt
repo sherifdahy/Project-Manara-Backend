@@ -1,19 +1,19 @@
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Services.deps.json
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Services.dll
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Services.pdb
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Core.dll
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Core.pdb
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.csproj.AssemblyReference.cache
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.AssemblyInfoInputs.cache
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.AssemblyInfo.cs
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.csproj.CoreCompileInputs.cache
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.sourcelink.json
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Serv.164048D1.Up2Date
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.dll
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\refint\App.Services.dll
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.pdb
-C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Services\obj\Debug\net10.0\ref\App.Services.dll
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Services.deps.json
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Services.dll
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Services.pdb
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Core.dll
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Core.pdb
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.csproj.AssemblyReference.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.AssemblyInfoInputs.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.AssemblyInfo.cs
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.csproj.CoreCompileInputs.cache
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.sourcelink.json
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Serv.164048D1.Up2Date
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.dll
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\refint\App.Services.dll
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\App.Services.pdb
+D:\work\GraduationProject\Project-Manara-Backend\App.Services\obj\Debug\net10.0\ref\App.Services.dll
 F:\Graduation-Project\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Services.deps.json
 F:\Graduation-Project\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Services.dll
 F:\Graduation-Project\Project-Manara-Backend\App.Services\bin\Debug\net10.0\App.Services.pdb

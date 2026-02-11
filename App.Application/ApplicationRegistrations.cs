@@ -18,5 +18,6 @@ public static class ApplicationRegistrations
         services.AddSingleton<PermissionErrors>();
         services.AddSingleton<UserErrors>();
         services.AddSingleton<ScopeErrors>();
+        services.AddSingleton<DepartmentErrors>();
     }
 }
