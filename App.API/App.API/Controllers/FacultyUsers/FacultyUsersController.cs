@@ -1,4 +1,5 @@
-﻿using App.Application.Commands.FacultyUsers;
+﻿using App.API.Attributes;
+using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Requests.FacultyUsers;
 using App.Application.Queries.FacultyUsers;
 using App.Core.Extensions;
@@ -27,6 +28,7 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [RequireUserAccessAttribute("id")]
     [HasPermission(Permissions.GetFacultyUsers)]
     public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
     {
@@ -46,6 +48,7 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [RequireUserAccessAttribute("id")]
     [HasPermission(Permissions.UpdateFacultyUsers)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] FacultyUserRequest request,CancellationToken cancellationToken)
     {
@@ -55,6 +58,7 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [RequireUserAccessAttribute("id")]
     [HasPermission(Permissions.ToggleStatusFacultyUsers)]
     public async Task<IActionResult> ToggleStatus([FromRoute] int id, CancellationToken cancellationToken)
     {

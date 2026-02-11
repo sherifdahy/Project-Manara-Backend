@@ -18,9 +18,6 @@ public class RoleService(UserManager<ApplicationUser> userManager
     public async Task<bool> IsUserHasAccessToRole(ClaimsPrincipal user, int requestRoleId)
     {
 
-        //TODO Filter Bussines Change
-
-
         var userEntity = await _userManager.FindByIdAsync(user.GetUserId().ToString());
 
         if (userEntity == null)

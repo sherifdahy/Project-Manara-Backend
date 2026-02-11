@@ -1,3 +1,16 @@
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\bin\Debug\net10.0\App.Core.deps.json
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\bin\Debug\net10.0\App.Core.dll
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\bin\Debug\net10.0\App.Core.pdb
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.csproj.AssemblyReference.cache
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.AssemblyInfoInputs.cache
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.AssemblyInfo.cs
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.csproj.CoreCompileInputs.cache
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.sourcelink.json
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.dll
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\refint\App.Core.dll
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.pdb
+C:\Users\omarz\OneDrive\Desktop\New folder\Project-Manara-Backend\App.Core\obj\Debug\net10.0\ref\App.Core.dll
 F:\Graduation-Project\Project-Manara-Backend\App.Core\bin\Debug\net10.0\App.Core.deps.json
 F:\Graduation-Project\Project-Manara-Backend\App.Core\bin\Debug\net10.0\App.Core.dll
 F:\Graduation-Project\Project-Manara-Backend\App.Core\bin\Debug\net10.0\App.Core.pdb
