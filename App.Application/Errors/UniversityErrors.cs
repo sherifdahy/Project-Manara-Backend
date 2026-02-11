@@ -13,16 +13,14 @@ public  class UniversityErrors
     }
     public   Error NotFound
         => new Error("University.NotFound", _localizer[UniversityLocalizationKeys.NotFound,LocalizationFolderNames.University], StatusCodes.Status404NotFound);
-
     public  Error InvalidPermissions
        => new Error("University.InvalidPermissions", _localizer[UniversityLocalizationKeys.InvalidPermissions, LocalizationFolderNames.University], StatusCodes.Status404NotFound);
-
     public  Error InvalidId
         => new Error("University.InvalidId", _localizer[UniversityLocalizationKeys.InvalidId, LocalizationFolderNames.University], StatusCodes.Status400BadRequest);
-
     public  Error DuplicatedName 
         => new("University.DuplicatedName", _localizer[UniversityLocalizationKeys.DuplicatedName, LocalizationFolderNames.University], StatusCodes.Status409Conflict);
-
+    public Error NotFoundForCurrentUser
+      => new("University.NotFoundForCurrentUser", _localizer[UniversityLocalizationKeys.NotAllowedUniversity, LocalizationFolderNames.University], StatusCodes.Status400BadRequest);
     public Error NotAllowedUniversity
       => new("University.NotAllowedUniversity", _localizer[UniversityLocalizationKeys.NotAllowedUniversity, LocalizationFolderNames.University], StatusCodes.Status400BadRequest);
 }

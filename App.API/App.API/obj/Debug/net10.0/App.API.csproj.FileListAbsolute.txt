@@ -6,7 +6,6 @@ F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\A
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.csproj.CoreCompileInputs.cache
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.MvcApplicationPartsAssemblyInfo.cache
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.sourcelink.json
-F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\appsettings.Development.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\appsettings.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Authentication\ar-EG.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Authentication\en-US.json

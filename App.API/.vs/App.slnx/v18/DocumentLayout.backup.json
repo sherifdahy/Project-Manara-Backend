@@ -3,6 +3,16 @@
   "WorkspaceRootPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\handlers\\queries\\universities\\getmyuniversityqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\queries\\universities\\getmyuniversityquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\controllers\\universities\\universitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\universities\\universitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\handlers\\queries\\roles\\getrolebyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -35,7 +45,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,7 +53,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UniversitiesController.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Universities\\UniversitiesController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Universities\\UniversitiesController.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Universities\\UniversitiesController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Universities\\UniversitiesController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAkwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T08:05:58.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "GetMyUniversityQueryHandler.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Universities\\GetMyUniversityQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Universities\\GetMyUniversityQueryHandler.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Universities\\GetMyUniversityQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Universities\\GetMyUniversityQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T08:02:25.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetMyUniversityQuery.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Queries\\Universities\\GetMyUniversityQuery.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Queries\\Universities\\GetMyUniversityQuery.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Queries\\Universities\\GetMyUniversityQuery.cs",
+              "RelativeToolTip": "..\\App.Application\\Queries\\Universities\\GetMyUniversityQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T08:01:47.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "GetRoleByIdQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
@@ -51,12 +100,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Roles\\GetRoleByIdQueryHandler.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAmwCEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T16:11:26.476Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T16:11:26.476Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\Repository\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "..\\App.Infrastructure\\Presistance\\Repository\\UnitOfWork.cs",
@@ -69,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "IUnitOfWork .cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Interfaces\\IUnitOfWork .cs",
               "RelativeDocumentMoniker": "..\\App.Core\\Interfaces\\IUnitOfWork .cs",
@@ -82,18 +130,17 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Microsoft.NET.Sdk.Razor.MvcApplicationPartsDiscovery.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.102\\Sdks\\Microsoft.NET.Sdk.Razor\\targets\\Microsoft.NET.Sdk.Razor.MvcApplicationPartsDiscovery.targets",
               "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.102\\Sdks\\Microsoft.NET.Sdk.Razor\\targets\\Microsoft.NET.Sdk.Razor.MvcApplicationPartsDiscovery.targets",
               "ViewState": "AgIAACEAAAAAAAAAAAAvwDUAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-02-10T16:09:41.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T16:09:41.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "RoleDetailResponse.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Roles\\RoleDetailResponse.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\Roles\\RoleDetailResponse.cs",
@@ -101,12 +148,11 @@
               "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Roles\\RoleDetailResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T16:07:39.559Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T16:07:39.559Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "ScopesController.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Scopes\\ScopesController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Scopes\\ScopesController.cs",
@@ -118,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "GetAllScopeQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Scopes\\GetAllScopeQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Scopes\\GetAllScopeQueryHandler.cs",
@@ -130,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "GetScopeQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Scopes\\GetScopeQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Scopes\\GetScopeQueryHandler.cs",
@@ -138,7 +184,8 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Scopes\\GetScopeQueryHandler.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAowBUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T17:06:17.273Z"
+              "WhenOpened": "2026-02-09T17:06:17.273Z",
+              "EditorCaption": ""
             }
           ]
         }

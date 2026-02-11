@@ -3,5 +3,6 @@
   "InvalidPermissions": "You do not have the required permissions to perform this action",
   "InvalidId": "The provided university ID is invalid",
   "DuplicatedName": "A university with this name already exists",
-  "NotAllowedUniversity": "You not allwoed to edit this university"
+  "NotAllowedUniversity": "You not allwoed to edit this university",
+  "NotFoundForCurrentUser": "No university is associated with the current user."
 }
