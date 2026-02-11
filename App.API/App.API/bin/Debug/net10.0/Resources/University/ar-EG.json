@@ -3,5 +3,6 @@
   "InvalidPermissions": "ليس لديك الصلاحيات المطلوبة لتنفيذ هذا الإجراء",
   "InvalidId": "معرف الجامعة المقدم غير صالح",
   "DuplicatedName": "يوجد جامعة بنفس هذا الاسم بالفعل",
-  "NotAllowedUniversity" : "غير مسموح لك التعديل على هذه الجامعة"
+  "NotAllowedUniversity": "غير مسموح لك التعديل على هذه الجامعة",
+  "NotFoundForCurrentUser": "لا توجد جامعة مرتبطة بالمستخدم الحالي."
 }

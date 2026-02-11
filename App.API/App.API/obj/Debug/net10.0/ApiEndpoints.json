@@ -629,6 +629,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.Universities.UniversitiesController",
+    "Method": "My",
+    "RelativePath": "api/Universities/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Roles.PermissionsController",
     "Method": "AssignPermissionsToUser",
     "RelativePath": "api/users/{userId}/permissions",

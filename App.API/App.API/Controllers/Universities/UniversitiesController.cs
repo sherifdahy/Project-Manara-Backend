@@ -36,6 +36,16 @@ public class UniversitiesController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
+    [HttpGet("my")]
+    [RequireUniversityAccess("id")]
+    [HasPermission(Permissions.GetUniversities)]
+    public async Task<IActionResult> My(int id, CancellationToken cancellationToken = default)
+    {
+        var query = new GetMyUniversityQuery();
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
     [HttpPost]
     [HasPermission(Permissions.CreateUniversities)]
     public async Task<IActionResult> Create(UniversityRequest request, CancellationToken cancellationToken = default)
