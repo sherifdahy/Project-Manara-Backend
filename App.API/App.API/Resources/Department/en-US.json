@@ -1,0 +1,4 @@
+{
+  "NotFound": "The department is not found",
+  "DuplicatedName": "there is a department with the same name"
+}

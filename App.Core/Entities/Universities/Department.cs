@@ -7,6 +7,7 @@ public class Department
     public string Description { get; set; } = string.Empty;
     public string HeadOfDepartment { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
+    public bool IsDeleted { get; set; } = false;
 
     public int FacultyId { get; set; }
     public Faculty Faculty { get; set; } = default!;

@@ -14,6 +14,7 @@ public class UpdateFacultyCommandHandler(IUnitOfWork unitOfWork
 
     public async Task<Result> Handle(UpdateFacultyCommand request, CancellationToken cancellationToken)
     {
+        //TODO Make it inside the university
         if (_unitOfWork.Fauclties.IsExist(x => x.Name == request.Name && x.Id != request.Id))
             return Result.Failure(_facultyErrors.DuplicatedName);
 
