@@ -27,5 +27,6 @@ public  class FacultyErrors
            new("Faculty.NotRelatedToUniversity", _localizer[FacultyLocalizationKeys.NotRelatedToUniversity, LocalizationFolderNames.Faculty], StatusCodes.Status409Conflict);
     public Error NotAllowedFaculty =>
            new("Faculty.NotAllowedFaculty", _localizer[FacultyLocalizationKeys.NotAllowedFaculty, LocalizationFolderNames.Faculty], StatusCodes.Status409Conflict);
-
+    public Error NotFoundForCurrentUser
+      => new("Faculty.NotFoundForCurrentUser", _localizer[FacultyLocalizationKeys.NotFoundForCurrentUser, LocalizationFolderNames.Faculty], StatusCodes.Status400BadRequest);
 }
