@@ -1,10 +1,7 @@
 ﻿using App.API.Attributes;
 using App.Application.Commands.Departments;
-using App.Application.Commands.Faculties;
 using App.Application.Contracts.Requests.Departments;
-using App.Application.Contracts.Requests.Faculties;
 using App.Application.Queries.Departments;
-using App.Application.Queries.Faculties;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;

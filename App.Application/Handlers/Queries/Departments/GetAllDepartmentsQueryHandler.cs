@@ -9,7 +9,7 @@ using System.Text;
 
 namespace App.Application.Handlers.Queries.Departments;
 
-public class GetAllDepartmentsCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<GetAllDepartmentsQuery, Result<List<DepartmentResponse>>>
+public class GetAllDepartmentsQueryHandler(IUnitOfWork unitOfWork) : IRequestHandler<GetAllDepartmentsQuery, Result<List<DepartmentResponse>>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 

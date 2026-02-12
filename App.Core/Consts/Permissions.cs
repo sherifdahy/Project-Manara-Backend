@@ -42,6 +42,14 @@ public class Permissions
     public const string UpdateDepartments = "departments:update";
     public const string ToggleStatusDepartments = "departments:toggleStatus";
 
+    //Program Permissions
+
+    public const string GetPrograms = "Programs:read";
+    public const string CreatePrograms = "Programs:create";
+    public const string UpdatePrograms = "Programs:update";
+    public const string ToggleStatusPrograms = "Programs:toggleStatus";
+
+
     // FacultyUsers Pemissions
     public const string GetFacultyUsers = "facultyUsers:read";
     public const string CreateFacultyUsers = "facultyUsers:create";

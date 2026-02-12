@@ -338,7 +338,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("RoleClaimOverrides");
+                    b.ToTable("RoleClaimOverrides", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.Scope", b =>
@@ -363,7 +363,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ParentScopeId");
 
-                    b.ToTable("Scopes");
+                    b.ToTable("Scopes", (string)null);
 
                     b.HasData(
                         new
@@ -413,7 +413,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasKey("ApplicationUserId", "ClaimValue");
 
-                    b.ToTable("UserClaimOverrides");
+                    b.ToTable("UserClaimOverrides", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.DepartmentUser", b =>
@@ -428,7 +428,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("DepartmentUsers");
+                    b.ToTable("DepartmentUsers", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.FacultyUser", b =>
@@ -443,7 +443,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("FacultyUsers");
+                    b.ToTable("FacultyUsers", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
@@ -485,7 +485,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ProgramId");
 
-                    b.ToTable("ProgramUsers");
+                    b.ToTable("ProgramUsers", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.UniversityUser", b =>
@@ -500,7 +500,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("UniversityUsers");
+                    b.ToTable("UniversityUsers", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -546,7 +546,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.FAQ", b =>
@@ -572,7 +572,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("FAQ");
+                    b.ToTable("FAQ", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Faculty", b =>
@@ -621,7 +621,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("Faculties");
+                    b.ToTable("Faculties", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
@@ -648,6 +648,9 @@ namespace App.Infrastructure.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -657,7 +660,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Programs");
+                    b.ToTable("Programs", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Subject", b =>
@@ -690,7 +693,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ProgramId");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.University", b =>
@@ -737,7 +740,7 @@ namespace App.Infrastructure.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Universities", t =>
+                    b.ToTable("Universities", null, t =>
                         {
                             t.HasCheckConstraint("CK_University_YearOfEstablishment", "[YearOfEstablishment] >= 1800 AND [YearOfEstablishment] <= YEAR(GETDATE())");
                         });
@@ -911,61 +914,89 @@ namespace App.Infrastructure.Migrations
                         {
                             Id = 21,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:read",
+                            ClaimValue = "Programs:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 22,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:create",
+                            ClaimValue = "Programs:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 23,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:update",
+                            ClaimValue = "Programs:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 24,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:toggleStatus",
+                            ClaimValue = "Programs:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 25,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:read",
+                            ClaimValue = "facultyUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 26,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:readDetail",
+                            ClaimValue = "facultyUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 27,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:create",
+                            ClaimValue = "facultyUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 28,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:update",
+                            ClaimValue = "facultyUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 29,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 30,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:readDetail",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 31,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 32,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 33,
                             ClaimType = "permissions",
                             ClaimValue = "scopes:toggleStatus",
                             RoleId = 100
