@@ -265,6 +265,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.Faculties.FaculitiesController",
+    "Method": "My",
+    "RelativePath": "api/Faculities/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Departments.DepartmentsController",
     "Method": "Create",
     "RelativePath": "api/faculties/{facultyId}/departments",

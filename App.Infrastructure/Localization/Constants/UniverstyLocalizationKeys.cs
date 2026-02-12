@@ -11,5 +11,6 @@ public class UniversityLocalizationKeys
     public static readonly string DuplicatedName = nameof(DuplicatedName);
 
     public static readonly string NotAllowedUniversity = nameof(NotAllowedUniversity);
+
     public static readonly string NotFoundForCurrentUser = nameof(NotFoundForCurrentUser);
 }

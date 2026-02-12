@@ -1165,6 +1165,23 @@
         ]
       }
     },
+    "/api/Faculities/my": {
+      "get": {
+        "tags": [
+          "Faculities"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
     "/api/Faculities/{id}/toggle-status": {
       "delete": {
         "tags": [

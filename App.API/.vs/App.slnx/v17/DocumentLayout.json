@@ -47,8 +47,7 @@
               "RelativeToolTip": "..\\App.Services\\ProgramService.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAWwBMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T17:03:50.461Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-12T17:03:50.461Z"
             },
             {
               "$type": "Document",
@@ -58,7 +57,7 @@
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Programs\\ToggleStatusProgramCommandHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Programs\\ToggleStatusProgramCommandHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Programs\\ToggleStatusProgramCommandHandler.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBEAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-12T17:01:22.224Z",
               "EditorCaption": ""
@@ -73,8 +72,7 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Departments\\ToggleStatusDepartmentCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T17:00:59.835Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-12T17:00:59.835Z"
             },
             {
               "$type": "Document",
@@ -86,8 +84,7 @@
               "RelativeToolTip": "App.API\\Controllers\\Programs\\ProgramsController.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAzwEQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T16:33:16.007Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-11T16:33:16.007Z"
             },
             {
               "$type": "Document",
@@ -99,8 +96,7 @@
               "RelativeToolTip": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAgwDgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T16:57:45.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T16:57:45.577Z"
             }
           ]
         }

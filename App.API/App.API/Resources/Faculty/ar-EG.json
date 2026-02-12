@@ -4,5 +4,6 @@
   "InvalidId": "معرف الكلية المقدم غير صالح",
   "DuplicatedName": "يوجد كلية بنفس هذا الاسم بالفعل",
   "NotRelatedToUniversity": "هذه الكلية لا تنتمى الى هذه الجامعة",
-  "NotAllowedFaculty": "غير مسموح لك التدخل فى هذه الكلية"
+  "NotAllowedFaculty": "غير مسموح لك التدخل فى هذه الكلية",
+  "NotFoundForCurrentUser": "لا توجد كلية مرتبطة بالمستخدم الحالي."
 }

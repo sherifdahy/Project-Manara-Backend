@@ -54,6 +54,8 @@ D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Faculty\en-US.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Permission\ar-EG.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Permission\en-US.json
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Program\ar-EG.json
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Program\en-US.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Role\ar-EG.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Role\en-US.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Scope\ar-EG.json
@@ -279,5 +281,3 @@ D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\App.API.genruntimeconfig.cache
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10.0\ref\App.API.dll
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Program\ar-EG.json
-D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Program\en-US.json

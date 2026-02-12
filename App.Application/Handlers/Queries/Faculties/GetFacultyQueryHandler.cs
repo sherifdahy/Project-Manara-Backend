@@ -7,7 +7,7 @@ using System.Text;
 
 namespace App.Application.Handlers.Queries.Faculties;
 
-public class GetFacultyCommandHandler(IUnitOfWork unitOfWork,FacultyErrors errors) : IRequestHandler<GetFacultyQuery, Result<FacultyDetailResponse>>
+public class GetFacultyQueryHandler(IUnitOfWork unitOfWork,FacultyErrors errors) : IRequestHandler<GetFacultyQuery, Result<FacultyDetailResponse>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly FacultyErrors _errors = errors;
