@@ -7,7 +7,6 @@ public class FacultyConfiguration : IEntityTypeConfiguration<Faculty>
 {
     public void Configure(EntityTypeBuilder<Faculty> builder)
     {
-        builder.HasIndex(f => f.Name).IsUnique();
 
         builder.Property(f => f.Name)
             .IsRequired()
