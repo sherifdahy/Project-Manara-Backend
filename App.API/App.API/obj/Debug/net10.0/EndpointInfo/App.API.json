@@ -776,6 +776,23 @@
         ]
       }
     },
+    "/api/Programs/my": {
+      "get": {
+        "tags": [
+          "Programs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
     "/api/Programs/{id}/toggle-status": {
       "delete": {
         "tags": [
@@ -1318,6 +1335,23 @@
           },
           "required": true
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/Departments/my": {
+      "get": {
+        "tags": [
+          "Departments"
+        ],
         "responses": {
           "200": {
             "description": "OK"

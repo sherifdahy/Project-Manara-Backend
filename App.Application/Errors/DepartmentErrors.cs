@@ -18,5 +18,7 @@ public class DepartmentErrors
         => new Error("Department.NotFound", _localizer[DepartmentLocalizationKeys.NotFound, LocalizationFolderNames.Department], StatusCodes.Status404NotFound);
     public Error DuplicatedName
        => new Error("Department.DuplicatedName", _localizer[DepartmentLocalizationKeys.DuplicatedName, LocalizationFolderNames.Department], StatusCodes.Status409Conflict);
+    public Error NotFoundForCurrentUser
+       => new Error("Department.NotFoundForCurrentUser", _localizer[DepartmentLocalizationKeys.NotFoundForCurrentUser, LocalizationFolderNames.Department], StatusCodes.Status409Conflict);
 
 }

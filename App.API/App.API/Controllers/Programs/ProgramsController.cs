@@ -41,6 +41,15 @@ namespace App.API.Controllers.Programs
             return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
         }
 
+        [HttpGet("my")]
+        [HasPermission(Permissions.GetPrograms)]
+        public async Task<IActionResult> My(CancellationToken cancellationToken = default)
+        {
+            var query = new GetMyProgramQuery();
+            var result = await _mediator.Send(query, cancellationToken);
+            return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+        }
+
         [HttpPost("/api/departments/{departmentId}/programs")]
         [RequireDepartmentAccess("departmentId")]
         [HasPermission(Permissions.CreatePrograms)]

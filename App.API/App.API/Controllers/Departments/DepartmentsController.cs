@@ -2,6 +2,7 @@
 using App.Application.Commands.Departments;
 using App.Application.Contracts.Requests.Departments;
 using App.Application.Queries.Departments;
+using App.Application.Queries.Faculties;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
@@ -33,6 +34,15 @@ namespace App.API.Controllers.Departments
         public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken = default)
         {
             var query = new GetDepartmentQuery(id);
+            var result = await _mediator.Send(query, cancellationToken);
+            return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+        }
+
+        [HttpGet("my")]
+        [HasPermission(Permissions.GetDepartments)]
+        public async Task<IActionResult> My(CancellationToken cancellationToken = default)
+        {
+            var query = new GetMyDepartmentQuery();
             var result = await _mediator.Send(query, cancellationToken);
             return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
         }

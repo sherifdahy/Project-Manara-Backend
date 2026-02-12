@@ -4,12 +4,12 @@ using App.Core.Extensions;
 
 namespace App.Application.Handlers.Queries.Faculties;
 
-public record GetMyFacultyQueryHandler(FacultyErrors facultyErrors,IHttpContextAccessor httpContextAccessor,IUnitOfWork unitOfWork) : IRequestHandler<GetMyFacultQuery, Result<FacultyDetailResponse>>
+public record GetMyFacultyQueryHandler(FacultyErrors facultyErrors,IHttpContextAccessor httpContextAccessor,IUnitOfWork unitOfWork) : IRequestHandler<GetMyFacultyQuery, Result<FacultyDetailResponse>>
 {
     private readonly FacultyErrors _facultyErrors = facultyErrors;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IHttpContextAccessor _contextAccessor = httpContextAccessor;
-    public async Task<Result<FacultyDetailResponse>> Handle(GetMyFacultQuery request, CancellationToken cancellationToken)
+    public async Task<Result<FacultyDetailResponse>> Handle(GetMyFacultyQuery request, CancellationToken cancellationToken)
     {
         var userId = _contextAccessor.HttpContext!.User.GetUserId();
 

@@ -1,4 +1,5 @@
 ﻿{
   "NotFound": "هذا الاسم غير موجود",
-  "DuplicatedName": "هذا الاسم يوجد فى برنامج اخر"
+  "DuplicatedName": "هذا الاسم يوجد فى برنامج اخر",
+  "NotFoundForCurrentUser": "غير موجود للمستخدم الحالى "
 }

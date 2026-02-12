@@ -1,4 +1,5 @@
 {
   "NotFound": "The department is not found",
-  "DuplicatedName": "there is a department with the same name"
+  "DuplicatedName": "there is a department with the same name",
+  "NotFoundForCurrentUser": "Not Found For Current User"
 }
