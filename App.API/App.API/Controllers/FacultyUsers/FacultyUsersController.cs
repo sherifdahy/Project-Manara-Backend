@@ -1,4 +1,5 @@
 ﻿using App.API.Attributes;
+using App.Application.Abstractions;
 using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Requests.FacultyUsers;
 using App.Application.Queries.FacultyUsers;
@@ -20,9 +21,9 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
     [HttpGet("/api/faculties/{facultyId}/[controller]")]
     [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.GetFacultyUsers)]
-    public async Task<IActionResult> GetAll([FromRoute] int facultyId, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAll([FromQuery] bool includeDisabled,[FromQuery] RequestFilters filters,[FromRoute] int facultyId, CancellationToken cancellationToken)
     {
-        var query = new GetAllFacultyUsersQuery() with { FacultyId = facultyId };
+        var query = new GetAllFacultyUsersQuery() with { FacultyId = facultyId ,IncludeDisabled = includeDisabled,Filters = filters};
         var result = await _mediator.Send(query, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
