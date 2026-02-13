@@ -754,6 +754,43 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "App.API.Controllers.UniversityUsers.UniversityUsersController",
+    "Method": "GetAll",
+    "RelativePath": "api/universities/{universityId}/UniversityUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universityId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.UniversityUsers.UniversityUsersController",
+    "Method": "Create",
+    "RelativePath": "api/universities/{universityId}/UniversityUsers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universityId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Requests.FacultyUsers.FacultyUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "App.API.Controllers.Universities.UniversitiesController",
     "Method": "My",
     "RelativePath": "api/Universities/my",
@@ -765,6 +802,59 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.UniversityUsers.UniversityUsersController",
+    "Method": "Get",
+    "RelativePath": "api/UniversityUsers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.UniversityUsers.UniversityUsersController",
+    "Method": "Update",
+    "RelativePath": "api/UniversityUsers/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "App.Application.Contracts.Requests.FacultyUsers.FacultyUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "App.API.Controllers.UniversityUsers.UniversityUsersController",
+    "Method": "ToggleStatus",
+    "RelativePath": "api/UniversityUsers/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

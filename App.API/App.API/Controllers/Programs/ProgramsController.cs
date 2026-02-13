@@ -16,6 +16,7 @@ namespace App.API.Controllers.Programs
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProgramsController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;

@@ -1,7 +1,9 @@
 ﻿using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Responses.FacultyUsers;
 using App.Application.Contracts.Responses.Roles;
+using App.Core.Consts;
 using App.Core.Entities.Personnel;
+using App.Core.Extensions;
 
 namespace App.Application.Handlers.Commands.FacultyUsers;
 
@@ -27,13 +29,19 @@ public class CreateFacultyUserCommandHandler(
         if (await _userManager.FindByEmailAsync(request.Email) is not null)
             return Result.Failure<FacultyUserResponse>(_userErrors.DuplicatedEmail);
 
+
         foreach(var role in request.Roles)
         {
-            var result = await _roleManager.FindByNameAsync(role);
+            var roleEntity = await _roleManager.FindByNameAsync(role);
             
-            if(result is null)
+            if(roleEntity is null)
                 return Result.Failure<FacultyUserResponse>(_roleErrors.NotFound);
+
+            if (roleEntity.ScopeId != DefaultScopes.Faculty.Id)
+                return Result.Failure<FacultyUserResponse>(_roleErrors.ScopeIsNotValidForRole);
+             
         }
+
 
         var applicationUser = request.Adapt<ApplicationUser>();
 

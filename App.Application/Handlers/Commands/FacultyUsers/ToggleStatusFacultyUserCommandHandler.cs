@@ -4,7 +4,11 @@ using App.Services;
 
 namespace App.Application.Handlers.Commands.FacultyUsers;
 
-public class ToggleStatusFacultyUserCommandHandler(UserErrors userErrors,IHttpContextAccessor httpContextAccessor,IFacultyService facultyService,UserManager<ApplicationUser> userManager,IUnitOfWork unitOfWork) : IRequestHandler<ToggleStatusFacultyUserCommand, Result>
+public class ToggleStatusFacultyUserCommandHandler(UserErrors userErrors
+    ,IHttpContextAccessor httpContextAccessor
+    ,IFacultyService facultyService
+    ,UserManager<ApplicationUser> userManager
+    ,IUnitOfWork unitOfWork) : IRequestHandler<ToggleStatusFacultyUserCommand, Result>
 {
     private readonly UserErrors _userErrors = userErrors;
     private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
