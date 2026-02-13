@@ -30,7 +30,7 @@ public class LoginCommandHandler(UserManager<ApplicationUser> userManager
         if (user is null)
             return Result.Failure<AuthenticationResponse>(_errors.InvalidCredentials);
 
-        if (user.IsDisabled)
+        if (user.IsDeleted)
             return Result.Failure<AuthenticationResponse>(_errors.DisabledUser);
 
         var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, true);

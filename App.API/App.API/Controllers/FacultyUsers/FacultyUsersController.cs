@@ -66,4 +66,6 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
         var result = await _mediator.Send(command, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
+
+
 }

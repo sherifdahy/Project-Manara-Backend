@@ -45,7 +45,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 ConcurrencyStamp = DefaultRoles.UniversityAdminRoleConcurrencyStamp,
                 IsDefault = true,
                 ScopeId = DefaultScopes.University.Id,
-                ParentRoleId = DefaultRoles.SystemAdminRoleId
+                ParentRoleId = null
             },
 
             // ═══════════════════════════════════════════════════════════
@@ -61,7 +61,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 ConcurrencyStamp = DefaultRoles.FacultyAdminRoleConcurrencyStamp,
                 IsDefault = true,
                 ScopeId = DefaultScopes.Faculty.Id,
-                ParentRoleId = DefaultRoles.UniversityAdminRoleId
+                ParentRoleId = null
             },
             new ApplicationRole()
             {
@@ -101,7 +101,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 ConcurrencyStamp = DefaultRoles.DepartmentAdminRoleConcurrencyStamp,
                 IsDefault = false,
                 ScopeId = DefaultScopes.Department.Id,
-                ParentRoleId = DefaultRoles.AcademicAdvisorRoleId
+                ParentRoleId = null
             },
             new ApplicationRole()
             {
@@ -141,7 +141,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 ConcurrencyStamp = DefaultRoles.MainStreamStudentRoleConcurrencyStamp,
                 IsDefault = false,
                 ScopeId = DefaultScopes.Program.Id,
-                ParentRoleId= DefaultRoles.InstructorRoleId
+                ParentRoleId= null
             },
             new ApplicationRole()
             {
@@ -153,7 +153,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 ConcurrencyStamp = DefaultRoles.GPAStudentRoleConcurrencyStamp,
                 IsDefault = false,
                 ScopeId = DefaultScopes.Program.Id,
-                ParentRoleId = DefaultRoles.InstructorRoleId
+                ParentRoleId = null
             }
         );
     }
