@@ -5,4 +5,4 @@ using System.Text;
 
 namespace App.Application.Queries.Faculties;
 
-public record GetMyFacultQuery : IRequest<Result<FacultyDetailResponse>> { }
+public record GetMyFacultyQuery : IRequest<Result<FacultyDetailResponse>> { }

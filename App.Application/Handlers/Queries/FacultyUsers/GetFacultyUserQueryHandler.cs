@@ -4,7 +4,11 @@ using App.Services;
 
 namespace App.Application.Handlers.Queries.FacultyUsers;
 
-public class GetFacultyUserQueryHandler(UserErrors userErrors,IHttpContextAccessor httpContextAccessor,IUnitOfWork unitOfWork,IFacultyService facultyService,UserManager<ApplicationUser> userManager) : IRequestHandler<GetFacultyUserQuery, Result<FacultyUserResponse>>
+public class GetFacultyUserQueryHandler(UserErrors userErrors
+    ,IHttpContextAccessor httpContextAccessor
+    ,IUnitOfWork unitOfWork
+    ,IFacultyService facultyService
+    ,UserManager<ApplicationUser> userManager) : IRequestHandler<GetFacultyUserQuery, Result<FacultyUserResponse>>
 {
     private readonly UserErrors _userErrors = userErrors;
     private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;

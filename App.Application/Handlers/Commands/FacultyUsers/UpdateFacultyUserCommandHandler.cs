@@ -1,5 +1,6 @@
 ﻿using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Responses.FacultyUsers;
+using App.Core.Consts;
 using App.Services;
 using System.Data;
 
@@ -30,8 +31,14 @@ public class UpdateFacultyUserCommandHandler(UserErrors userErrors,RoleErrors ro
 
         foreach (var role in request.Roles)
         {
-            if (!await _roleManager.RoleExistsAsync(role))
+
+            var roleEntity = await _roleManager.FindByNameAsync(role);
+
+            if (roleEntity is null)
                 return Result.Failure<FacultyUserResponse>(_roleErrors.NotFound);
+
+            if (roleEntity.ScopeId != DefaultScopes.Faculty.Id)
+                return Result.Failure<FacultyUserResponse>(_roleErrors.ScopeIsNotValidForRole);
         }
 
 

@@ -6,6 +6,7 @@ namespace App.Application.Contracts.Responses.Departments;
 
 public record DepartmentDetailResponse
 (
+    int Id,
     string Name,
     string Code,
     string Description,

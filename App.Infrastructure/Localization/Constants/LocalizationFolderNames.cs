@@ -17,4 +17,6 @@ public static class LocalizationFolderNames
     public static readonly string User = nameof(User);
     
     public static readonly string Scope = nameof(Scope);
+
+    public static readonly string Program = nameof(Program);
 }

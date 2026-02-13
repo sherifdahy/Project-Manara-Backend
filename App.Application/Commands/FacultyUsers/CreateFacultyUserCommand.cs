@@ -1,8 +1,5 @@
-﻿using App.Application.Contracts.Requests.FacultyUsers;
-using App.Application.Contracts.Responses.FacultyUsers;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using App.Application.Contracts.Responses.FacultyUsers;
+using System.Security.Claims;
 
 namespace App.Application.Commands.FacultyUsers;
 

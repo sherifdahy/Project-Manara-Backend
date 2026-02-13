@@ -10,4 +10,6 @@ public static class DepartmentLocalizationKeys
 
     public static readonly string DuplicatedName = nameof(DuplicatedName);
 
+    public static readonly string NotFoundForCurrentUser = nameof(NotFoundForCurrentUser);
+
 }

@@ -1,5 +1,7 @@
 ﻿using App.Application.Commands.Faculties;
+using App.Application.Contracts.Responses.Departments;
 using App.Application.Contracts.Responses.Faculties;
+using App.Application.Errors;
 
 namespace App.Application.Handlers.Commands.Faculties;
 
@@ -13,11 +15,17 @@ public class CreateFacultyCommandHandler(IUnitOfWork unitOfWork
 
     public async Task<Result<FacultyResponse>> Handle(CreateFacultyCommand request, CancellationToken cancellationToken)
     {
-        if (_unitOfWork.Fauclties.IsExist(x => x.Name == request.Name))
+        var isUniversityExists = _unitOfWork.Universities.IsExist(f => f.Id == request.UniversityId);
+
+        if (!isUniversityExists)
+            return Result.Failure<FacultyResponse>(_universityErrors.NotFound);
+
+        var isFacultyExists = _unitOfWork.Fauclties
+            .IsExist(x => x.UniversityId == request.UniversityId && x.Name == request.Name);
+
+        if (isFacultyExists)
             return Result.Failure<FacultyResponse>(_facultyerrors.DuplicatedName);
 
-        if(!_unitOfWork.Universities.IsExist(x=>x.Id==request.UniversityId))
-            return Result.Failure<FacultyResponse>(_universityErrors.NotFound);
 
         var faculty = request.Adapt<Faculty>();
 

@@ -14,14 +14,15 @@ public class UpdateFacultyCommandHandler(IUnitOfWork unitOfWork
 
     public async Task<Result> Handle(UpdateFacultyCommand request, CancellationToken cancellationToken)
     {
-        //TODO Make it inside the university
-        if (_unitOfWork.Fauclties.IsExist(x => x.Name == request.Name && x.Id != request.Id))
-            return Result.Failure(_facultyErrors.DuplicatedName);
 
         var faculty = await _unitOfWork.Fauclties.GetByIdAsync(request.Id, cancellationToken);
 
         if (faculty == null)
             return Result.Failure(_facultyErrors.NotFound);
+
+
+        if (_unitOfWork.Fauclties.IsExist(x => x.UniversityId == faculty.UniversityId && x.Name == request.Name && x.Id != request.Id))
+            return Result.Failure(_facultyErrors.DuplicatedName);
 
         request.Adapt(faculty);
 

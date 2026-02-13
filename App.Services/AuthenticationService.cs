@@ -78,8 +78,6 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager
         return (roles, permissions);
     }
 
-   
-
 
 
     //TODO IsUserHasAccessToDepartment , IsUserHasAccessToProgramm

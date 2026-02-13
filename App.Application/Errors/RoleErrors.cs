@@ -29,4 +29,10 @@ public class RoleErrors
 
     public Error DuplicatedForUniversity
     => new("Role.DuplicatedForUniversity", _localizer[RoleLocalizationKeys.DuplicatedForUniversity, LocalizationFolderNames.Role], StatusCodes.Status409Conflict);
+
+    public Error ScopeIsNotValidForRole
+  => new("Role.ScopeIsNotValid", _localizer[RoleLocalizationKeys.ScopeIsNotValidForRole, LocalizationFolderNames.Role], StatusCodes.Status409Conflict);
+
+
+
 }

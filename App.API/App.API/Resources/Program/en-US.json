@@ -1,0 +1,5 @@
+﻿{
+  "NotFound": "This name is not found",
+  "DuplicatedName": "This name was found in another program",
+  "NotFoundForCurrentUser": "Not Found For Current User"
+}

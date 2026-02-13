@@ -103,7 +103,6 @@ namespace App.Infrastructure.Migrations
                             IsDeleted = false,
                             Name = "UniversityAdmin",
                             NormalizedName = "UNIVERSITYADMIN",
-                            ParentRoleId = 100,
                             ScopeId = 2
                         },
                         new
@@ -116,7 +115,6 @@ namespace App.Infrastructure.Migrations
                             IsDeleted = false,
                             Name = "FacultyAdmin",
                             NormalizedName = "FACULTYADMIN",
-                            ParentRoleId = 101,
                             ScopeId = 3
                         },
                         new
@@ -155,7 +153,6 @@ namespace App.Infrastructure.Migrations
                             IsDeleted = false,
                             Name = "DepartmentHead",
                             NormalizedName = "DEPARTMENTHEAD",
-                            ParentRoleId = 104,
                             ScopeId = 4
                         },
                         new
@@ -194,7 +191,6 @@ namespace App.Infrastructure.Migrations
                             IsDeleted = false,
                             Name = "MainStreamStudent",
                             NormalizedName = "MAINSTREAMSTUDENT",
-                            ParentRoleId = 107,
                             ScopeId = 5
                         },
                         new
@@ -207,7 +203,6 @@ namespace App.Infrastructure.Migrations
                             IsDeleted = false,
                             Name = "GPAStudent",
                             NormalizedName = "GPASTUDENT",
-                            ParentRoleId = 107,
                             ScopeId = 5
                         });
                 });
@@ -616,9 +611,6 @@ namespace App.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
                     b.HasIndex("UniversityId");
 
                     b.ToTable("Faculties");
@@ -647,6 +639,9 @@ namespace App.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -911,61 +906,117 @@ namespace App.Infrastructure.Migrations
                         {
                             Id = 21,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:read",
+                            ClaimValue = "Programs:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 22,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:create",
+                            ClaimValue = "Programs:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 23,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:update",
+                            ClaimValue = "Programs:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 24,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:toggleStatus",
+                            ClaimValue = "Programs:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 25,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:read",
+                            ClaimValue = "facultyUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 26,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:readDetail",
+                            ClaimValue = "facultyUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 27,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:create",
+                            ClaimValue = "facultyUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 28,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:update",
+                            ClaimValue = "facultyUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 29,
+                            ClaimType = "permissions",
+                            ClaimValue = "universityUsers:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 30,
+                            ClaimType = "permissions",
+                            ClaimValue = "universityUsers:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 31,
+                            ClaimType = "permissions",
+                            ClaimValue = "universityUsers:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 32,
+                            ClaimType = "permissions",
+                            ClaimValue = "universityUsers:toggleStatus",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 33,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 34,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:readDetail",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 35,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 36,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 37,
                             ClaimType = "permissions",
                             ClaimValue = "scopes:toggleStatus",
                             RoleId = 100

@@ -4,5 +4,6 @@
   "InvalidId": "معرف الدور المقدم غير صالح",
   "DuplicatedRole": "يوجد دور بنفس هذا الاسم بالفعل",
   "ModificationForbidden": "غير مسموح بتعديل دور مسؤول النظام.",
-  "DuplicatedForUniversity": "هذه الصلاحية موجودة بالفعل فى الجامعة"
+  "DuplicatedForUniversity": "هذه الصلاحية موجودة بالفعل فى الجامعة",
+  "ScopeIsNotValidForRole": "غير صالح لهذا الدور"
 }

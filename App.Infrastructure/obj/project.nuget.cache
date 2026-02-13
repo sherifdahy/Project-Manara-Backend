@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jp9SzvvCQKM=",
+  "dgSpecHash": "dew5ZZKwg1I=",
   "success": true,
   "projectFilePath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\App.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -84,6 +84,7 @@
     "C:\\Users\\shrif\\.nuget\\packages\\system.diagnostics.eventlog\\9.0.4\\system.diagnostics.eventlog.9.0.4.nupkg.sha512",
     "C:\\Users\\shrif\\.nuget\\packages\\system.formats.nrbf\\9.0.0\\system.formats.nrbf.9.0.0.nupkg.sha512",
     "C:\\Users\\shrif\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.0.1\\system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512",
+    "C:\\Users\\shrif\\.nuget\\packages\\system.linq.dynamic.core\\1.7.1\\system.linq.dynamic.core.1.7.1.nupkg.sha512",
     "C:\\Users\\shrif\\.nuget\\packages\\system.memory.data\\8.0.1\\system.memory.data.8.0.1.nupkg.sha512",
     "C:\\Users\\shrif\\.nuget\\packages\\system.reflection.metadataloadcontext\\7.0.0\\system.reflection.metadataloadcontext.7.0.0.nupkg.sha512",
     "C:\\Users\\shrif\\.nuget\\packages\\system.resources.extensions\\9.0.0\\system.resources.extensions.9.0.0.nupkg.sha512",

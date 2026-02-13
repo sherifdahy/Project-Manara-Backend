@@ -8,6 +8,7 @@ public class Program
     public string Code { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public int CreditHours { get; set; }
+    public bool IsDeleted { get; set; } = false;
 
     public int DepartmentId { get; set; }
     public Department Department { get; set; } = default!;

@@ -42,11 +42,25 @@ public class Permissions
     public const string UpdateDepartments = "departments:update";
     public const string ToggleStatusDepartments = "departments:toggleStatus";
 
-    // FacultyUsers Pemissions
+    //Program Permissions
+
+    public const string GetPrograms = "Programs:read";
+    public const string CreatePrograms = "Programs:create";
+    public const string UpdatePrograms = "Programs:update";
+    public const string ToggleStatusPrograms = "Programs:toggleStatus";
+
+
+    // FacultyUsers Permissions
     public const string GetFacultyUsers = "facultyUsers:read";
     public const string CreateFacultyUsers = "facultyUsers:create";
     public const string UpdateFacultyUsers = "facultyUsers:update";
     public const string ToggleStatusFacultyUsers = "facultyUsers:toggleStatus";
+
+    // UniversityUsers Permissions
+    public const string GetUniversityUsers = "universityUsers:read";
+    public const string CreateUniversityUsers = "universityUsers:create";
+    public const string UpdateUniversityUsers = "universityUsers:update";
+    public const string ToggleStatusUniversityUsers = "universityUsers:toggleStatus";
 
     // Scope Permissions
     public const string GetScopes = "scopes:read";

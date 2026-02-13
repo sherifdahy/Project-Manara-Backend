@@ -4,6 +4,7 @@
   "InvalidId": "The provided role ID is invalid",
   "DuplicatedRole": "A role with this name already exists",
   "ModificationForbidden": "Modifying the system administrator role is not allowed.",
-  "DuplicatedForUniversity": "This role is already exists for this university."
-  
+  "DuplicatedForUniversity": "This role is already exists for this university.",
+  "ScopeIsNotValidForRole": "Scope Is Not Valid For Role"
+
 }

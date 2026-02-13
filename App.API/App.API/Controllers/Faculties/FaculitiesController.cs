@@ -41,7 +41,7 @@ public class FaculitiesController(IMediator mediator) : ControllerBase
     [HasPermission(Permissions.GetFaculties)]
     public async Task<IActionResult> My(CancellationToken cancellationToken = default)
     {
-        var query = new GetMyFacultQuery();
+        var query = new GetMyFacultyQuery();
         var result = await _mediator.Send(query, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
