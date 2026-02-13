@@ -23,8 +23,8 @@ public class AssignPermissionsToRoleCommandHandler(IUnitOfWork unitOfWork
     public async Task<Result> Handle(AssignPermissionsToRoleCommand request, CancellationToken cancellationToken)
     {
 
-        var isFacultyExists = _unitOfWork.Fauclties
-            .IsExist(f => f.Id == request.FacultyId);
+        var isFacultyExists = await _unitOfWork.Fauclties
+            .IsExistAsync(f => f.Id == request.FacultyId);
 
         if (!isFacultyExists)
             return Result.Failure(_facultyErrors.NotFound);
@@ -42,7 +42,7 @@ public class AssignPermissionsToRoleCommandHandler(IUnitOfWork unitOfWork
         if (emptyClaimValues == null || emptyClaimValues.Count == 0)
         {
             var entities = await _unitOfWork.RoleClaimOverrides
-                .FindAllAsync(rco => rco.RoleId == request.RoleId && rco.FacultyId == request.FacultyId);
+                .FindAllAsync(rco => rco.RoleId == request.RoleId && rco.FacultyId == request.FacultyId, cancellationToken);
 
             _unitOfWork.RoleClaimOverrides.DeleteRange(entities);
             await _unitOfWork.SaveAsync();
@@ -59,7 +59,7 @@ public class AssignPermissionsToRoleCommandHandler(IUnitOfWork unitOfWork
         }
 
         var currentRolePermissionsOverride = await _unitOfWork.RoleClaimOverrides
-            .FindAllAsync(rco => rco.RoleId == request.RoleId && rco.FacultyId == request.FacultyId);
+            .FindAllAsync(rco => rco.RoleId == request.RoleId && rco.FacultyId == request.FacultyId, cancellationToken);
 
         var newRolePermissionsOverride = request.ClaimValues.Except(currentRolePermissionsOverride.Select(x => x.ClaimValue));
 

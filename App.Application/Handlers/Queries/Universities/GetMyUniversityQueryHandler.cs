@@ -19,7 +19,7 @@ public class GetMyUniversityQueryHandler
     {
         var userId = _httpContextAccessor.HttpContext!.User.GetUserId();
 
-        var universityUser = await _unitOfWork.UniversityUsers.FindAsync(x=>x.UserId == userId, [i=>i.University],cancellationToken);
+        var universityUser = await _unitOfWork.UniversityUsers.FindAsync(x=>x.UserId == userId, i=>i.Include(ud=>ud.University),cancellationToken);
 
         if (universityUser == null)
             return Result.Failure<UniversityDetailResponse>(_universityErrors.NotFoundForCurrentUser);

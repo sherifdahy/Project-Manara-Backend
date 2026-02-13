@@ -36,7 +36,7 @@ public class AssignPermissionsToUserCommandHandler(UserManager<ApplicationUser> 
         if (emptyClaimValues == null || emptyClaimValues.Count == 0)
         {
             var entities = await _unitOfWork.UserClaimOverrides
-                .FindAllAsync(uco => uco.ApplicationUserId == request.UserId);
+                .FindAllAsync(uco => uco.ApplicationUserId == request.UserId, cancellationToken);
 
             _unitOfWork.UserClaimOverrides.DeleteRange(entities);
             await _unitOfWork.SaveAsync();
@@ -54,7 +54,7 @@ public class AssignPermissionsToUserCommandHandler(UserManager<ApplicationUser> 
         }
 
         var currentUserPermissionsOverride = await _unitOfWork.UserClaimOverrides
-                .FindAllAsync(uco => uco.ApplicationUserId == request.UserId);
+                .FindAllAsync(uco => uco.ApplicationUserId == request.UserId,cancellationToken);
 
         var newUserPermissionsOverride = request.ClaimValues.Except(currentUserPermissionsOverride.Select(x => x.ClaimValue));
 

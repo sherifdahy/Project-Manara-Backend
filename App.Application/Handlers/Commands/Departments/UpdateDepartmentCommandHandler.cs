@@ -22,7 +22,7 @@ public class UpdateDepartmentCommandHandler(IUnitOfWork unitOfWork,DepartmentErr
         if (department == null)
             return Result.Failure(_departmentErrors.NotFound);
 
-        if (_unitOfWork.Departments.IsExist(x => x.FacultyId==department.FacultyId && x.Name == request.Name && x.Id != request.Id))
+        if (await _unitOfWork.Departments.IsExistAsync(x => x.FacultyId == department.FacultyId && x.Name == request.Name && x.Id != request.Id))
             return Result.Failure(_departmentErrors.DuplicatedName);
 
         request.Adapt(department);

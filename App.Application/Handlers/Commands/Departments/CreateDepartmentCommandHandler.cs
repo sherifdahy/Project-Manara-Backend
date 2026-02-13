@@ -13,13 +13,13 @@ public class CreateDepartmentCommandHandler(IUnitOfWork unitOfWork
 
     public async Task<Result<DepartmentResponse>> Handle(CreateDepartmentCommand request, CancellationToken cancellationToken)
     {
-        var isFacultyExists = _unitOfWork.Fauclties.IsExist(f => f.Id == request.FacultyId);
+        var isFacultyExists = await _unitOfWork.Fauclties.IsExistAsync(f => f.Id == request.FacultyId);
 
         if (!isFacultyExists)
             return Result.Failure<DepartmentResponse>(_facultyErrors.NotFound);
 
-        var isDepartmentExists =  _unitOfWork.Departments
-            .IsExist(x=>x.FacultyId==request.FacultyId && x.Name==request.Name);
+        var isDepartmentExists = await  _unitOfWork.Departments
+            .IsExistAsync(x=>x.FacultyId==request.FacultyId && x.Name==request.Name);
 
         if (isDepartmentExists)  
             return Result.Failure<DepartmentResponse>(_departmentErrors.DuplicatedName);

@@ -21,21 +21,21 @@ public class DepartmentService(UserManager<ApplicationUser> userManager,IUnitOfW
         if (userRoles.Contains(RolesConstants.SystemAdmin))
             return true;
 
-        var universityUser = _unitOfWork.UniversityUsers
-           .Find(fu => fu.UserId == user.GetUserId());
+        var universityUser = await _unitOfWork.UniversityUsers
+           .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if (universityUser != null)
-            return _unitOfWork.Departments.IsExist(f => f.Faculty.UniversityId == universityUser.UniversityId && f.Id == requestDepartmentId);
+            return await _unitOfWork.Departments.IsExistAsync(f => f.Faculty.UniversityId == universityUser.UniversityId && f.Id == requestDepartmentId);
 
 
-        var facultyUser = _unitOfWork.FacultyUsers
-            .Find(fu => fu.UserId == user.GetUserId());
+        var facultyUser = await _unitOfWork.FacultyUsers
+            .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if(facultyUser!=null)
-            return _unitOfWork.Departments.IsExist(f => f.FacultyId == facultyUser.FacultyId && f.Id == requestDepartmentId);
+            return await _unitOfWork.Departments.IsExistAsync(f => f.FacultyId == facultyUser.FacultyId && f.Id == requestDepartmentId);
 
-        var departmentUser = _unitOfWork.DepartmentUsers
-            .Find(fu => fu.UserId == user.GetUserId());
+        var departmentUser = await _unitOfWork.DepartmentUsers
+            .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if (departmentUser != null)
         return requestDepartmentId == departmentUser.DepartmentId;

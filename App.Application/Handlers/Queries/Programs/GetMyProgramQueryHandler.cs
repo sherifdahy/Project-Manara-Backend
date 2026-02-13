@@ -26,7 +26,7 @@ public class GetMyProgramQueryHandler(IUnitOfWork unitOfWork
     {
         var userId = _contextAccessor.HttpContext!.User.GetUserId();
 
-        var programUser = await _unitOfWork.ProgramUsers.FindAsync(x => x.UserId == userId, [i => i.Program], cancellationToken);
+        var programUser = await _unitOfWork.ProgramUsers.FindAsync(x => x.UserId == userId, i => i.Include(d=>d.Program), cancellationToken);
 
         if (programUser == null)
             return Result.Failure<ProgramDetailResponse>(_programErrors.NotFoundForCurrentUser);

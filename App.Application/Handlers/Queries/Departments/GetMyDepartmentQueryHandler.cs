@@ -16,7 +16,7 @@ public class GetMyDepartmentQueryHandler(IUnitOfWork unitOfWork
     {
         var userId = _contextAccessor.HttpContext!.User.GetUserId();
 
-        var departmentUser = await _unitOfWork.DepartmentUsers.FindAsync(x => x.UserId == userId, [i => i.Department], cancellationToken);
+        var departmentUser = await _unitOfWork.DepartmentUsers.FindAsync(x => x.UserId == userId, i => i.Include(d=> d.Department), cancellationToken);
 
         if (departmentUser == null)
             return Result.Failure<DepartmentDetailResponse>(_departmentErrors.NotFoundForCurrentUser);

@@ -34,7 +34,7 @@ public class UpdateUniversityUserCommandHandler(IUniversityService universitySer
     public async Task<Result> Handle(UpdateUniversityUserCommand request, CancellationToken cancellationToken)
     {
         var universityUser = await _unitOfWork.UniversityUsers
-            .FindAsync(x => x.UserId == request.UserId, [i => i.User], cancellationToken);
+            .FindAsync(x => x.UserId == request.UserId, i => i.Include(p => p.User), cancellationToken);
 
         if (universityUser == null)
             return Result.Failure(_userErrors.NotFound);

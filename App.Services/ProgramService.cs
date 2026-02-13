@@ -24,27 +24,27 @@ public class ProgramService(UserManager<ApplicationUser> userManager,IUnitOfWork
         if (userRoles.Contains(RolesConstants.SystemAdmin))
             return true;
 
-        var universityUser = _unitOfWork.UniversityUsers
-           .Find(fu => fu.UserId == user.GetUserId());
+        var universityUser = await _unitOfWork.UniversityUsers
+           .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if (universityUser != null)
-            return _unitOfWork.Programs.IsExist(p => p.Department.Faculty.UniversityId == universityUser.UniversityId && p.Id == requestProgramId);
+            return await _unitOfWork.Programs.IsExistAsync(p => p.Department.Faculty.UniversityId == universityUser.UniversityId && p.Id == requestProgramId);
 
 
-        var facultyUser = _unitOfWork.FacultyUsers
-            .Find(fu => fu.UserId == user.GetUserId());
+        var facultyUser = await _unitOfWork.FacultyUsers
+            .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if (facultyUser != null)
-            return _unitOfWork.Programs.IsExist(p => p.Department.FacultyId == facultyUser.FacultyId && p.Id == requestProgramId);
+            return await _unitOfWork.Programs.IsExistAsync(p => p.Department.FacultyId == facultyUser.FacultyId && p.Id == requestProgramId);
 
-        var departmentUser = _unitOfWork.DepartmentUsers
-            .Find(fu => fu.UserId == user.GetUserId());
+        var departmentUser = await _unitOfWork.DepartmentUsers
+            .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if(departmentUser != null)
-            return _unitOfWork.Programs.IsExist(p => p.DepartmentId == departmentUser.DepartmentId && p.Id == requestProgramId);
+            return await _unitOfWork.Programs.IsExistAsync(p => p.DepartmentId == departmentUser.DepartmentId && p.Id == requestProgramId);
 
-        var programUser = _unitOfWork.ProgramUsers
-            .Find(fu => fu.UserId == user.GetUserId());
+        var programUser = await _unitOfWork.ProgramUsers
+            .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if (programUser != null)
             return requestProgramId == programUser.ProgramId;

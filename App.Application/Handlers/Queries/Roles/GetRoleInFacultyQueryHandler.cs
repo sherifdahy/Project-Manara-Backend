@@ -23,7 +23,7 @@ public class GetRoleInFacultyQueryHandler(RoleManager<ApplicationRole> roleManag
         var defaultPermissions = await _roleManager.GetClaimsAsync(role);
 
         var overridePermissions = await _unitOfWork.RoleClaimOverrides
-            .FindAllAsync(rco=>rco.RoleId == request.RoleId && rco.FacultyId==request.FacultyId);
+            .FindAllAsync(rco=>rco.RoleId == request.RoleId && rco.FacultyId==request.FacultyId,cancellationToken);
 
         var response = new GetRoleInFacultyResponse
         (

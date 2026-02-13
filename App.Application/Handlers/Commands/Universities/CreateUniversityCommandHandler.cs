@@ -9,7 +9,7 @@ public class CreateUniversityCommandHandler(IUnitOfWork unitOfWork,UniversityErr
 
     public async Task<Result<UniversityResponse>> Handle(CreateUniversityCommand request, CancellationToken cancellationToken)
     {
-        if (_unitOfWork.Universities.IsExist(x => x.Name == request.Name))
+        if (await _unitOfWork.Universities.IsExistAsync(x => x.Name == request.Name))
             return Result.Failure<UniversityResponse>(_errors.DuplicatedName);
 
         var university = request.Adapt<University>();

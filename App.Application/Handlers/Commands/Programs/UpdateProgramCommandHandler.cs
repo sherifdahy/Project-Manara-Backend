@@ -21,7 +21,7 @@ public class UpdateProgramCommandHandler(IUnitOfWork unitOfWork,ProgramErrors pr
         if (program == null)
             return Result.Failure(_programErrors.NotFound);
 
-        if (_unitOfWork.Programs.IsExist(x => x.DepartmentId == program.DepartmentId && x.Name == request.Name && x.Id != request.Id))
+        if (await _unitOfWork.Programs.IsExistAsync(x => x.DepartmentId == program.DepartmentId && x.Name == request.Name && x.Id != request.Id))
             return Result.Failure(_programErrors.DuplicatedName);
 
         request.Adapt(program);

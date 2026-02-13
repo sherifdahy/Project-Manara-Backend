@@ -20,13 +20,13 @@ public class CreateProgramCommandHandler(IUnitOfWork unitOfWork
 
     public async Task<Result<ProgramResponse>> Handle(CreateProgramCommand request, CancellationToken cancellationToken)
     {
-        var isDepartmentExists = _unitOfWork.Departments.IsExist(d => d.Id == request.DepartmentId);
+        var isDepartmentExists = await _unitOfWork.Departments.IsExistAsync(d => d.Id == request.DepartmentId);
 
         if (!isDepartmentExists)
             return Result.Failure<ProgramResponse>(_departmentErrors.NotFound);
 
-        var isProgramExists = _unitOfWork.Programs
-            .IsExist(x => x.DepartmentId == request.DepartmentId && x.Name == request.Name);
+        var isProgramExists = await _unitOfWork.Programs
+            .IsExistAsync(x => x.DepartmentId == request.DepartmentId && x.Name == request.Name);
 
         if (isProgramExists)
             return Result.Failure<ProgramResponse>(_programErrors.DuplicatedName);

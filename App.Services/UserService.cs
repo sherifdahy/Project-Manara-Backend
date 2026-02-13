@@ -13,7 +13,7 @@ public class UserService(IUnitOfWork unitOfWork,IRoleService roleService) : IUse
     {
 
         var requestRoles = await _unitOfWork.UserRoles
-            .FindAllAsync(ur => ur.UserId == requestUserId);
+            .FindAllAsync(ur => ur.UserId == requestUserId,CancellationToken.None);
 
         foreach (var requestRole in requestRoles) 
         {

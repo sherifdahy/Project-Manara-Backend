@@ -2,6 +2,7 @@
 using App.Core.Extensions;
 using App.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SA.Accountring.Core.Entities.Interfaces;
 using System.Security.Claims;
 
@@ -23,8 +24,7 @@ public class ScopeService(UserManager<ApplicationUser> userManager,IUnitOfWork u
         var roleNames = await _userManager.GetRolesAsync(userEntity);
 
 
-        var roles = await _unitOfWork.Roles.FindAllAsync(r => roleNames.Contains(r.Name!), [r=>r.Scope]);
-
+        var roles = await _unitOfWork.Roles.FindAllAsync(r => roleNames.Contains(r.Name!), r=>r.Include(d=>d.Scope),CancellationToken.None);
 
         foreach (var role in roles)
         {

@@ -24,7 +24,7 @@ public class GetAllUniversityUsersQueryHandler(IUnitOfWork unitOfWork
 
         var universityUsers = await _unitOfWork.UniversityUsers.FindAllAsync(
             x => x.UniversityId == request.UniversityId && !x.User.IsDeleted,
-            [i => i.User],
+            i => i.Include(o=>o.User),
             cancellationToken
         );
 

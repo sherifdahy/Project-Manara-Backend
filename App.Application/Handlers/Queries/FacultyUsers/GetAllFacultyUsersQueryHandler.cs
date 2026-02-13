@@ -33,10 +33,11 @@ public class GetAllFacultyUsersQueryHandler(
 
         var facultyUsers = await _unitOfWork.FacultyUsers.FindAllAsync(
             query,
-            request.Filters.PageSize,
+            i => i.Include(d => d.User),
             (request.Filters.PageNumber - 1) * request.Filters.PageSize,
-            //request.Filters.SortColumn,
-            //request.Filters.SortDirection,
+            request.Filters.PageSize,
+            request.Filters.SortColumn,
+            request.Filters.SortDirection,
             cancellationToken);
 
         var response = new List<FacultyUserResponse>();

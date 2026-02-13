@@ -24,8 +24,8 @@ public class UniversityService(UserManager<ApplicationUser> userManager,IUnitOfW
         if (userRoles.Contains(RolesConstants.SystemAdmin))
             return true;
 
-        var universityUser = _unitOfWork.UniversityUsers
-           .Find(fu => fu.UserId == user.GetUserId());
+        var universityUser = await _unitOfWork.UniversityUsers
+           .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if (universityUser != null)
             return requestUniversityId == universityUser.UniversityId;

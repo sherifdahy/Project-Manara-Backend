@@ -18,7 +18,7 @@ public class UpdateFacultyUserCommandHandler(UserErrors userErrors,RoleErrors ro
 
     public async Task<Result> Handle(UpdateFacultyUserCommand request, CancellationToken cancellationToken)
     {
-        var facultyUser = await _unitOfWork.FacultyUsers.FindAsync(x => x.UserId == request.UserId,[i=>i.User],cancellationToken);
+        var facultyUser = await _unitOfWork.FacultyUsers.FindAsync(x => x.UserId == request.UserId,i=>i.Include(p=>p.User),cancellationToken);
 
         if (facultyUser == null)
             return Result.Failure(_userErrors.NotFound);

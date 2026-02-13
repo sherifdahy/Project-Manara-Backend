@@ -13,7 +13,7 @@ public class UpdateUniversityCommandHandler(IUnitOfWork unitOfWork,UniversityErr
             return Result.Failure(_errors.NotFound);
 
 
-        if (_unitOfWork.Universities.IsExist(x => x.Name == request.Name && x.Id != request.Id))
+        if (await _unitOfWork.Universities.IsExistAsync(x => x.Name == request.Name && x.Id != request.Id))
             return Result.Failure(_errors.DuplicatedName);
             
         request.Adapt(university);

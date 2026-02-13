@@ -1,22 +1,40 @@
 ﻿using System.Linq.Expressions;
 
 namespace App.Core.Entities.Interfaces;
+
 public interface IRepository<T> where T : class
 {
-    // Get By Id
-    Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+    // Get By Id 
+    Task<T?> GetByIdAsync(object id, CancellationToken cancellationToken = default);
 
     // Get All
     Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default);
 
-    // Distinct Column
-    List<string> GetDistinct(Expression<Func<T, string>> column);
+    // Distinct Column 
+    Task<List<string>> GetDistinctAsync(
+        Expression<Func<T, string>> column,
+        CancellationToken cancellationToken = default
+    );
 
     // Find
-    Task<T?> FindAsync(Expression<Func<T, bool>> criteria, Func<IQueryable<T>, IQueryable<T>>[]? includes = null, CancellationToken cancellationToken = default);
+    Task<T?> FindAsync(
+        Expression<Func<T, bool>> criteria,
+        Func<IQueryable<T>, IQueryable<T>>? includes = null,
+        CancellationToken cancellationToken = default
+    );
 
-    // FindAll
-    Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, Func<IQueryable<T>, IQueryable<T>>[]? includes = null, CancellationToken cancellationToken = default);
+    // FindAll 
+    Task<IEnumerable<T>> FindAllAsync(
+        Expression<Func<T, bool>> criteria,
+        CancellationToken cancellationToken = default
+    );
+
+    Task<IEnumerable<T>> FindAllAsync(
+        Expression<Func<T, bool>> criteria,
+        Func<IQueryable<T>, IQueryable<T>>? includes = null,
+        CancellationToken cancellationToken = default
+    );
+
     Task<IEnumerable<T>> FindAllAsync(
         Expression<Func<T, bool>> criteria,
         int? skip = null,
@@ -25,9 +43,10 @@ public interface IRepository<T> where T : class
         string? direction = null,
         CancellationToken cancellationToken = default
     );
+
     Task<IEnumerable<T>> FindAllAsync(
         Expression<Func<T, bool>> criteria,
-        Func<IQueryable<T>, IQueryable<T>>[]? includes,
+        Func<IQueryable<T>, IQueryable<T>>? includes = null,
         int? skip = null,
         int? take = null,
         string? orderBy = null,
@@ -37,7 +56,10 @@ public interface IRepository<T> where T : class
 
     // Add
     Task<T> AddAsync(T entity, CancellationToken cancellationToken = default);
-    Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
+    Task<IEnumerable<T>> AddRangeAsync(
+        IEnumerable<T> entities,
+        CancellationToken cancellationToken = default
+    );
 
     // Update
     T Update(T entity);
@@ -49,15 +71,32 @@ public interface IRepository<T> where T : class
 
     // Count
     Task<int> CountAsync(CancellationToken cancellationToken = default);
-    Task<int> CountAsync(Expression<Func<T, bool>> criteria, CancellationToken cancellationToken = default);
+    Task<int> CountAsync(
+        Expression<Func<T, bool>> criteria,
+        CancellationToken cancellationToken = default
+    );
 
-    // Max
-    Task<long> MaxAsync(Expression<Func<T, object>> column, CancellationToken cancellationToken = default);
-    Task<long> MaxAsync(Expression<Func<T, bool>> criteria, Expression<Func<T, object>> column, CancellationToken cancellationToken = default);
+    // Max 
+    Task<long> MaxAsync(
+        Expression<Func<T, long>> column,
+        CancellationToken cancellationToken = default
+    );
+    Task<long> MaxAsync(
+        Expression<Func<T, bool>> criteria,
+        Expression<Func<T, long>> column,
+        CancellationToken cancellationToken = default
+    );
 
-    // Exist
-    bool IsExist(Expression<Func<T, bool>> criteria);
+    // Exist 
+    Task<bool> IsExistAsync(
+        Expression<Func<T, bool>> criteria,
+        CancellationToken cancellationToken = default
+    );
 
-    // Last
-    T? Last(Expression<Func<T, bool>> criteria, Expression<Func<T, object>> orderBy);
+    // Last 
+    Task<T?> LastAsync(
+        Expression<Func<T, bool>> criteria,
+        Expression<Func<T, object>> orderBy,
+        CancellationToken cancellationToken = default
+    );
 }

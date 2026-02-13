@@ -13,7 +13,7 @@ public record GetMyFacultyQueryHandler(FacultyErrors facultyErrors,IHttpContextA
     {
         var userId = _contextAccessor.HttpContext!.User.GetUserId();
 
-        var facultyUser = await _unitOfWork.FacultyUsers.FindAsync(x=>x.UserId == userId, [i=>i.Faculty],cancellationToken);
+        var facultyUser = await _unitOfWork.FacultyUsers.FindAsync(x=>x.UserId == userId, i=>i.Include(p=>p.Faculty),cancellationToken);
 
         if (facultyUser == null)
             return Result.Failure<FacultyDetailResponse>(_facultyErrors.NotFoundForCurrentUser);

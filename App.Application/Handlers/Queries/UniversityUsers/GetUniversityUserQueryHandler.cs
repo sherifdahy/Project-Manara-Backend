@@ -19,7 +19,7 @@ public class GetUniversityUserQueryHandler(IUnitOfWork unitOfWork
     public async Task<Result<FacultyUserResponse>> Handle(GetUniversityUserQuery request, CancellationToken cancellationToken)
     {
         var universityUser = await _unitOfWork.UniversityUsers
-            .FindAsync(x => x.UserId == request.Id, [i => i.User], cancellationToken);
+            .FindAsync(x => x.UserId == request.Id, i => i.Include(p => p.User), cancellationToken);
 
         if (universityUser == null)
             return Result.Failure<FacultyUserResponse>(_userErrors.NotFound);

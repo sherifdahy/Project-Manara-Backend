@@ -15,13 +15,12 @@ public class CreateFacultyCommandHandler(IUnitOfWork unitOfWork
 
     public async Task<Result<FacultyResponse>> Handle(CreateFacultyCommand request, CancellationToken cancellationToken)
     {
-        var isUniversityExists = _unitOfWork.Universities.IsExist(f => f.Id == request.UniversityId);
+        var isUniversityExists = await _unitOfWork.Universities.IsExistAsync(f => f.Id == request.UniversityId);
 
         if (!isUniversityExists)
             return Result.Failure<FacultyResponse>(_universityErrors.NotFound);
 
-        var isFacultyExists = _unitOfWork.Fauclties
-            .IsExist(x => x.UniversityId == request.UniversityId && x.Name == request.Name);
+        var isFacultyExists = await _unitOfWork.Fauclties.IsExistAsync(x => x.UniversityId == request.UniversityId && x.Name == request.Name);
 
         if (isFacultyExists)
             return Result.Failure<FacultyResponse>(_facultyerrors.DuplicatedName);

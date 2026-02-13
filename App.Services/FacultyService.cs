@@ -22,15 +22,15 @@ public class FacultyService(UserManager<ApplicationUser> userManager, IUnitOfWor
         if (userRoles.Contains(RolesConstants.SystemAdmin))
             return true;
 
-        var universityUser = _unitOfWork.UniversityUsers
-           .Find(fu => fu.UserId == user.GetUserId());
+        var universityUser = await _unitOfWork.UniversityUsers
+           .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if (universityUser != null)
-            return _unitOfWork.Fauclties.IsExist(f => f.UniversityId == universityUser.UniversityId && f.Id == requestFacultyId);
+            return await _unitOfWork.Fauclties.IsExistAsync(f => f.UniversityId == universityUser.UniversityId && f.Id == requestFacultyId);
 
 
-        var facultyUser = _unitOfWork.FacultyUsers
-            .Find(fu => fu.UserId == user.GetUserId());
+        var facultyUser = await _unitOfWork.FacultyUsers
+            .FindAsync(fu => fu.UserId == user.GetUserId());
 
         if (facultyUser != null)
             return requestFacultyId == facultyUser.FacultyId;

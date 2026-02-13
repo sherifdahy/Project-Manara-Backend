@@ -25,11 +25,10 @@ public class ToggleStatusUniversityUserCommandHandler(IUnitOfWork unitOfWork
     private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
     private readonly UserManager<ApplicationUser> _userManager = userManager;
 
-
     public async Task<Result> Handle(ToggleStatusUniversityUserCommand request, CancellationToken cancellationToken)
     {
         var universityUser = await _unitOfWork.UniversityUsers
-            .FindAsync(x => x.UserId == request.Id, [i => i.User], cancellationToken);
+            .FindAsync(x => x.UserId == request.Id, i => i.Include(p=>p.User), cancellationToken);
 
         if (universityUser == null)
             return Result.Failure(_userErrors.NotFound);

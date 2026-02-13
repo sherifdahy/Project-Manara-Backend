@@ -11,7 +11,10 @@ public class GetScopeQueryHandler(IUnitOfWork unitOfWork,ScopeErrors scopeErrors
 
     public async Task<Result<ScopeDetailResponse>> Handle(GetScopeQuery request, CancellationToken cancellationToken)
     {
-        var scope = await _unitOfWork.Scopes.FindAsync(x=>x.Name == request.Name, [i=>i.ParentScope,i=>i.Roles,i=>i.ChildScopes],cancellationToken);
+        var scope = await _unitOfWork.Scopes.FindAsync(x=>x.Name == request.Name, 
+            i=>i.Include(d=>d.ParentScope)
+                .Include(d=>d.Roles.Where(e=> !e.IsDefault && !e.IsDeleted))
+                .Include(o=>o.ChildScopes),cancellationToken);
 
         if (scope == null)
             return Result.Failure<ScopeDetailResponse>(_scopeErrors.NotFound);

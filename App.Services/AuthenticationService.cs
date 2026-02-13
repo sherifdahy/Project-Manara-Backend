@@ -4,6 +4,7 @@ using App.Core.Extensions;
 using App.Core.Interfaces;
 using App.Infrastructure.Abstractions.Consts;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SA.Accountring.Core.Entities.Interfaces;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -56,7 +57,7 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager
             int facultyId = await GetUserFacultyId(user);
 
             var roleClaimOverrides = await _unitOfWork.RoleClaimOverrides
-                .FindAllAsync(rc => rc.RoleId == role.Id && rc.FacultyId == facultyId);
+                .FindAllAsync(rc => rc.RoleId == role.Id && rc.FacultyId == facultyId,cancellationToken);
 
             foreach (var roleClaimOverride in roleClaimOverrides)
             {
@@ -93,13 +94,13 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager
             facultyId = facultyUser.FacultyId;
 
         var departmentUser = await _unitOfWork.DepartmentUsers
-            .FindAsync(du => du.UserId == user.Id, [du => du.Department]);
+            .FindAsync(du => du.UserId == user.Id, du => du.Include(t=>t.Department));
 
         if (departmentUser != null)
             facultyId = departmentUser.Department.FacultyId;
 
         var programUser = await _unitOfWork.ProgramUsers
-            .FindAsync(du => du.UserId == user.Id, [du => du.Program.Department]);
+            .FindAsync(du => du.UserId == user.Id, du => du.Include(p=>p.Program).ThenInclude(i=>i.Department));
 
         if (programUser != null)
             facultyId = programUser.Program.Department.FacultyId;

@@ -18,7 +18,7 @@ public class ToggleStatusFacultyUserCommandHandler(UserErrors userErrors
 
     public async Task<Result> Handle(ToggleStatusFacultyUserCommand request, CancellationToken cancellationToken)
     {
-        var facultyUser = await _unitOfWork.FacultyUsers.FindAsync(x => x.UserId == request.Id, [i => i.User], cancellationToken);
+        var facultyUser = await _unitOfWork.FacultyUsers.FindAsync(x => x.UserId == request.Id, i => i.Include(o=>o.User), cancellationToken);
 
         if (facultyUser == null)
             return Result.Failure(_userErrors.NotFound);

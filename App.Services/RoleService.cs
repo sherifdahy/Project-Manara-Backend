@@ -27,7 +27,7 @@ public class RoleService(UserManager<ApplicationUser> userManager
         var roleNames = await _userManager.GetRolesAsync(userEntity);
 
 
-        var roleEntities = await _unitOfWork.Roles.FindAllAsync(r => roleNames.Contains(r.Name!));
+        var roleEntities = await _unitOfWork.Roles.FindAllAsync(r => roleNames.Contains(r.Name!),CancellationToken.None);
 
 
         foreach (var roleEntity in roleEntities)
