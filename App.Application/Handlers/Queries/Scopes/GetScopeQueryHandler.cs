@@ -13,7 +13,7 @@ public class GetScopeQueryHandler(IUnitOfWork unitOfWork,ScopeErrors scopeErrors
     {
         var scope = await _unitOfWork.Scopes.FindAsync(x=>x.Name == request.Name, 
             i=>i.Include(d=>d.ParentScope)
-                .Include(d=>d.Roles.Where(e=> !e.IsDefault && !e.IsDeleted))
+                .Include(d=>d.Roles.Where(e=> !e.IsDeleted))
                 .Include(o=>o.ChildScopes),cancellationToken);
 
         if (scope == null)

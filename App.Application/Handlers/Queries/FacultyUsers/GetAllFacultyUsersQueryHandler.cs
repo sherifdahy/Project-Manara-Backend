@@ -52,7 +52,9 @@ public class GetAllFacultyUsersQueryHandler(
                 Email = x.User.Email!,
                 Name = x.User.Name,
                 SSN = x.User.SSN,
-                Roles = roles
+                Roles = roles,
+                IsDeleted = x.User.IsDeleted,
+                IsDisabled = x.User.IsDisabled,
             });
         }
 

@@ -43,7 +43,7 @@ public class GetAllRoleQueryHandler : IRequestHandler<GetAllRolesQuery, Result<L
 
         var roles = await _roleManager
             .Roles
-            .Where(x => !x.IsDefault && (!x.IsDeleted || (request.IncludeDisabled.HasValue && request.IncludeDisabled.Value)))
+            .Where(x =>  (!x.IsDeleted || (request.IncludeDisabled.HasValue && request.IncludeDisabled.Value)))
             .Select(r => new RoleResponse(
                 r.Id,
                 r.Name!,

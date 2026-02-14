@@ -27,7 +27,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "System Administrator with full access",
                 NormalizedName = DefaultRoles.SystemAdmin.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.SystemAdminRoleConcurrencyStamp,
-                IsDefault = true,
                 ScopeId = DefaultScopes.System.Id,
                 ParentRoleId = null // Top level - no parent
             },
@@ -43,7 +42,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "University Administrator",
                 NormalizedName = DefaultRoles.UniversityAdmin.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.UniversityAdminRoleConcurrencyStamp,
-                IsDefault = true,
                 ScopeId = DefaultScopes.University.Id,
                 ParentRoleId = null
             },
@@ -59,7 +57,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "Faculty Administrator",
                 NormalizedName = DefaultRoles.FacultyAdmin.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.FacultyAdminRoleConcurrencyStamp,
-                IsDefault = true,
                 ScopeId = DefaultScopes.Faculty.Id,
                 ParentRoleId = null
             },
@@ -71,7 +68,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "Faculty Coordinator",
                 NormalizedName = DefaultRoles.FacultyCoordinator.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.FacultyCoordinatorRoleConcurrencyStamp,
-                IsDefault = false,
                 ScopeId = DefaultScopes.Faculty.Id,
                 ParentRoleId = DefaultRoles.FacultyAdminRoleId
             },
@@ -83,7 +79,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "Academic Advisor",
                 NormalizedName = DefaultRoles.AcademicAdvisor.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.AcademicAdvisorRoleConcurrencyStamp,
-                IsDefault = false,
                 ScopeId = DefaultScopes.Faculty.Id,
                 ParentRoleId = DefaultRoles.FacultyAdminRoleId
             },
@@ -99,7 +94,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "Department Administrator",
                 NormalizedName = DefaultRoles.DepartmentHead.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.DepartmentAdminRoleConcurrencyStamp,
-                IsDefault = false,
                 ScopeId = DefaultScopes.Department.Id,
                 ParentRoleId = null
             },
@@ -111,7 +105,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "Doctor/Professor",
                 NormalizedName = DefaultRoles.Doctor.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.DoctorRoleConcurrencyStamp,
-                IsDefault = false,
                 ScopeId = DefaultScopes.Department.Id,
                 ParentRoleId = DefaultRoles.DepartmentHeadRoleId
             },
@@ -123,7 +116,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "Instructor/Teaching Assistant",
                 NormalizedName = DefaultRoles.Instructor.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.InstructorRoleConcurrencyStamp,
-                IsDefault = false,
                 ScopeId = DefaultScopes.Department.Id,
                 ParentRoleId = DefaultRoles.DoctorRoleId
             },
@@ -139,7 +131,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "Main Stream Student",
                 NormalizedName = DefaultRoles.MainStreamStudent.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.MainStreamStudentRoleConcurrencyStamp,
-                IsDefault = false,
                 ScopeId = DefaultScopes.Program.Id,
                 ParentRoleId= null
             },
@@ -151,7 +142,6 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
                 Description = "GPA Student",
                 NormalizedName = DefaultRoles.GPAStudent.ToUpper(),
                 ConcurrencyStamp = DefaultRoles.GPAStudentRoleConcurrencyStamp,
-                IsDefault = false,
                 ScopeId = DefaultScopes.Program.Id,
                 ParentRoleId = null
             }

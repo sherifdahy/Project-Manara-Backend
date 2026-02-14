@@ -12,7 +12,7 @@ public class GetAllScopeQueryHandler(IUnitOfWork unitOfWork) : IRequestHandler<G
         var scopes = await _unitOfWork.Scopes.FindAllAsync(x=> true, 
             i=>i.Include(z=> z.ChildScopes.Where(r=> !r.IsDeleted))
                 .Include(p=>p.ParentScope)
-                .Include(r=> r.Roles.Where(r=> !r.IsDefault && !r.IsDeleted)), cancellationToken);
+                .Include(r=> r.Roles.Where(r=> !r.IsDeleted)), cancellationToken);
 
         var response = scopes.Adapt<List<ScopeResponse>>();
 
