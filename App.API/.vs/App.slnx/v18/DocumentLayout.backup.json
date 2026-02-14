@@ -3,6 +3,16 @@
   "WorkspaceRootPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260214133732_update_seading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|f:\\graduation-project\\project-manara-backend\\app.infrastructure\\presistance\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\handlers\\queries\\facultyusers\\getallfacultyusersqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -43,9 +53,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|f:\\graduation-project\\project-manara-backend\\app.core\\interfaces\\irepository.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|f:\\graduation-project\\project-manara-backend\\app.infrastructure\\presistance\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\10.0.102\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
@@ -145,24 +152,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetAllFacultyUsersQueryHandler.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetAllFacultyUsersQueryHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetAllFacultyUsersQueryHandler.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetAllFacultyUsersQueryHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetAllFacultyUsersQueryHandler.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAmwCQAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:35:19.079Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "20260214133732_update_seading.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260214133732_update_seading.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Migrations\\20260214133732_update_seading.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260214133732_update_seading.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Migrations\\20260214133732_update_seading.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBAAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T13:37:32.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
+              "RelativeDocumentMoniker": "App.API\\appsettings.json",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
+              "RelativeToolTip": "App.API\\appsettings.json",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-14T13:18:22.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "UpdateUniversityCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Universities\\UpdateUniversityCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Universities\\UpdateUniversityCommandHandler.cs",
@@ -170,12 +194,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Universities\\UpdateUniversityCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:35:04.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:35:04.768Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "UpdateDepartmentCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Departments\\UpdateDepartmentCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Departments\\UpdateDepartmentCommandHandler.cs",
@@ -183,12 +206,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Departments\\UpdateDepartmentCommandHandler.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAmwBgAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:35:01.015Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:35:01.015Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "CreateUniversityCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Universities\\CreateUniversityCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Universities\\CreateUniversityCommandHandler.cs",
@@ -196,12 +218,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Universities\\CreateUniversityCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:34:57.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:34:57.609Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "UpdateProgramCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Programs\\UpdateProgramCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Programs\\UpdateProgramCommandHandler.cs",
@@ -209,12 +230,37 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Programs\\UpdateProgramCommandHandler.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAmwBcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:34:47.937Z",
+              "WhenOpened": "2026-02-13T21:34:47.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAgwCwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T21:09:01.085Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
+              "Title": "GetAllFacultyUsersQueryHandler.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetAllFacultyUsersQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetAllFacultyUsersQueryHandler.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetAllFacultyUsersQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetAllFacultyUsersQueryHandler.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAswC0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T21:35:19.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "UpdateFacultyCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Faculties\\UpdateFacultyCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Faculties\\UpdateFacultyCommandHandler.cs",
@@ -222,12 +268,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Faculties\\UpdateFacultyCommandHandler.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAmwBcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:34:13.641Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:34:13.641Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "CreateFacultyCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Faculties\\CreateFacultyCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Faculties\\CreateFacultyCommandHandler.cs",
@@ -235,12 +280,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Faculties\\CreateFacultyCommandHandler.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAmwBYAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:34:06.491Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:34:06.491Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "CreateProgramCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Programs\\CreateProgramCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Programs\\CreateProgramCommandHandler.cs",
@@ -248,16 +292,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Programs\\CreateProgramCommandHandler.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAmwBsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:33:48.057Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "WhenOpened": "2026-02-13T21:33:48.057Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "AssignPermissionsToRoleCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionsToRoleCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionsToRoleCommandHandler.cs",
@@ -265,12 +304,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionsToRoleCommandHandler.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAqwBkAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:20:52.55Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:20:52.55Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "ProgramService.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\ProgramService.cs",
               "RelativeDocumentMoniker": "..\\App.Services\\ProgramService.cs",
@@ -278,12 +316,11 @@
               "RelativeToolTip": "..\\App.Services\\ProgramService.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAmwB4AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:15:29.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:15:29.722Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "CreateDepartmentCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
@@ -291,25 +328,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAmwBQAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:33:29.342Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:33:29.342Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
-              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
-              "RelativeToolTip": "..\\App.Infrastructure\\Presistance\\Repository\\Repository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:09:01.085Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "IRepository.cs.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Interfaces\\IRepository.cs.cs",
               "RelativeDocumentMoniker": "..\\App.Core\\Interfaces\\IRepository.cs.cs",
@@ -317,23 +340,21 @@
               "RelativeToolTip": "..\\App.Core\\Interfaces\\IRepository.cs.cs",
               "ViewState": "AgIAAEsAAAAAAAAAAAAAAF8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:25:28.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:25:28.022Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.102\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
               "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.102\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
               "ViewState": "AgIAAJcBAAAAAAAAAAAvwKsBAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-02-13T21:22:20.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:22:20.647Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "FacultyService.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\FacultyService.cs",
               "RelativeDocumentMoniker": "..\\App.Services\\FacultyService.cs",
@@ -341,12 +362,11 @@
               "RelativeToolTip": "..\\App.Services\\FacultyService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:16:06.462Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:16:06.462Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "UniversityUsersController.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
@@ -358,7 +378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "DepartmentService.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\DepartmentService.cs",
               "RelativeDocumentMoniker": "..\\App.Services\\DepartmentService.cs",
@@ -366,12 +386,11 @@
               "RelativeToolTip": "..\\App.Services\\DepartmentService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:14:36.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T21:14:36.184Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "RoleService.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\RoleService.cs",
               "RelativeDocumentMoniker": "..\\App.Services\\RoleService.cs",
@@ -383,7 +402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "UserService.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\UserService.cs",
               "RelativeDocumentMoniker": "..\\App.Services\\UserService.cs",
@@ -395,7 +414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "AssignPermissionsToUserCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionsToUserCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Roles\\AssignPermissionsToUserCommandHandler.cs",
@@ -407,7 +426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "UpdateUniversityUserCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\UniversityUsers\\UpdateUniversityUserCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\UniversityUsers\\UpdateUniversityUserCommandHandler.cs",
@@ -419,7 +438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "GetRoleInFacultyQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Roles\\GetRoleInFacultyQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Roles\\GetRoleInFacultyQueryHandler.cs",
@@ -431,7 +450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "ProgramsController.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Programs\\ProgramsController.cs",
@@ -443,7 +462,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "GetMyProgramQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Programs\\GetMyProgramQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Programs\\GetMyProgramQueryHandler.cs",
@@ -455,7 +474,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "GetMyUniversityQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Universities\\GetMyUniversityQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Universities\\GetMyUniversityQueryHandler.cs",
@@ -467,7 +486,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "ScopeService.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\ScopeService.cs",
               "RelativeDocumentMoniker": "..\\App.Services\\ScopeService.cs",
@@ -479,7 +498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "AuthenticationService.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\AuthenticationService.cs",
               "RelativeDocumentMoniker": "..\\App.Services\\AuthenticationService.cs",
@@ -491,7 +510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "GetMyDepartmentQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Departments\\GetMyDepartmentQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Departments\\GetMyDepartmentQueryHandler.cs",
@@ -503,7 +522,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "ToggleStatusFacultyUserCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\FacultyUsers\\ToggleStatusFacultyUserCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\FacultyUsers\\ToggleStatusFacultyUserCommandHandler.cs",
@@ -515,7 +534,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "GetFacultyUserQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetFacultyUserQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\FacultyUsers\\GetFacultyUserQueryHandler.cs",
@@ -527,7 +546,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "UniversityService.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Services\\UniversityService.cs",
               "RelativeDocumentMoniker": "..\\App.Services\\UniversityService.cs",
@@ -539,7 +558,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "GetUniversityUserQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\UniversityUsers\\GetUniversityUserQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\UniversityUsers\\GetUniversityUserQueryHandler.cs",
@@ -551,7 +570,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "GetAllUniversityUsersQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\UniversityUsers\\GetAllUniversityUsersQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\UniversityUsers\\GetAllUniversityUsersQueryHandler.cs",
@@ -563,7 +582,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "ToggleStatusUniversityUserCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\UniversityUsers\\ToggleStatusUniversityUserCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\UniversityUsers\\ToggleStatusUniversityUserCommandHandler.cs",
@@ -575,7 +594,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "GetScopeQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Scopes\\GetScopeQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Scopes\\GetScopeQueryHandler.cs",
@@ -587,7 +606,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "UpdateFacultyUserCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\FacultyUsers\\UpdateFacultyUserCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\FacultyUsers\\UpdateFacultyUserCommandHandler.cs",
@@ -599,7 +618,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "GetAllScopeQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Scopes\\GetAllScopeQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Scopes\\GetAllScopeQueryHandler.cs",
@@ -611,7 +630,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "GetMyFacultyQueryHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Faculties\\GetMyFacultyQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Faculties\\GetMyFacultyQueryHandler.cs",
@@ -623,7 +642,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "GetMyFacultQuery.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Queries\\Faculties\\GetMyFacultQuery.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Queries\\Faculties\\GetMyFacultQuery.cs",
@@ -634,7 +653,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "GetFacultyQuery.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Queries\\Faculties\\GetFacultyQuery.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Queries\\Faculties\\GetFacultyQuery.cs",
@@ -646,7 +665,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "GetAllFacultiesQuery.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Queries\\Faculties\\GetAllFacultiesQuery.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Queries\\Faculties\\GetAllFacultiesQuery.cs",
@@ -658,7 +677,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "Error.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Abstractions\\Error.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Abstractions\\Error.cs",
@@ -670,7 +689,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Core\\Entities\\Identity\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Identity\\ApplicationUser.cs",
@@ -682,7 +701,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "FaculitiesController.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Faculties\\FaculitiesController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Faculties\\FaculitiesController.cs",
