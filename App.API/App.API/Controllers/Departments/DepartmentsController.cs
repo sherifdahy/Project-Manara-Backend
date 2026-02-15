@@ -18,7 +18,7 @@ namespace App.API.Controllers.Departments
     {
         private readonly IMediator _mediator = mediator;
 
-        [HttpGet("/api/facilities/{facultyId:int}/departments")]
+        [HttpGet("/api/faculties/{facultyId:int}/departments")]
         [RequireFacultyAccess("facultyId")]
         [HasPermission(Permissions.GetDepartments)]
         public async Task<IActionResult> GetAll([FromRoute] int facultyId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)

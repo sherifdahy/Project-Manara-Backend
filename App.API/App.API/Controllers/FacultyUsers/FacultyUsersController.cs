@@ -8,15 +8,17 @@ using App.Infrastructure.Abstractions.Consts;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace App.API.Controllers.FacultyUsers;
 
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
-public class FacultyUsersController(IMediator mediator) : ControllerBase
+public class FacultyUsersController(IMediator mediator,IRoleService roleService) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
+    private readonly IRoleService _roleService = roleService;
 
     [HttpGet("/api/faculties/{facultyId}/[controller]")]
     [RequireFacultyAccess("facultyId")]
@@ -67,6 +69,7 @@ public class FacultyUsersController(IMediator mediator) : ControllerBase
         var result = await _mediator.Send(command, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
+
 
 
 }

@@ -13,11 +13,11 @@ namespace App.API.Controllers.Faculties;
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
-public class FaculitiesController(IMediator mediator) : ControllerBase
+public class FacultiesController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
 
-    [HttpGet("/api/universities/{universityId:int}/facilities")]
+    [HttpGet("/api/universities/{universityId:int}/faculties")]
     [RequireUniversityAccess("universityId")]
     [HasPermission(Permissions.GetFaculties)]
     public async Task<IActionResult> GetAll([FromRoute] int universityId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
@@ -47,7 +47,7 @@ public class FaculitiesController(IMediator mediator) : ControllerBase
     }
 
 
-    [HttpPost("/api/universities/{universityId:int}/facilities")] 
+    [HttpPost("/api/universities/{universityId:int}/faculties")] 
     [RequireUniversityAccess("universityId")]
     [HasPermission(Permissions.CreateFaculties)]
     public async Task<IActionResult> Create([FromRoute] int universityId,[FromBody]FacultyRequest request, CancellationToken cancellationToken = default)

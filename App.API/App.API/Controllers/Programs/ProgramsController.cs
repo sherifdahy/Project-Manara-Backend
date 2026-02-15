@@ -1,15 +1,11 @@
 ﻿using App.API.Attributes;
-using App.Application.Commands.Departments;
 using App.Application.Commands.Programs;
-using App.Application.Contracts.Requests.Departments;
 using App.Application.Contracts.Requests.Programs;
-using App.Application.Queries.Departments;
 using App.Application.Queries.Programs;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.API.Controllers.Programs

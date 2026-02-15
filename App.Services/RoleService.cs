@@ -1,10 +1,8 @@
-﻿
-using App.Core.Entities.Identity;
+﻿using App.Core.Entities.Identity;
 using App.Core.Extensions;
 using App.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using SA.Accountring.Core.Entities.Interfaces;
-using System.Data;
 using System.Security.Claims;
 
 namespace App.Services;
@@ -38,9 +36,7 @@ public class RoleService(UserManager<ApplicationUser> userManager
             if(requestRoleEntity == null) 
                 return false;
 
-            var isScopeBiggerThanRequestScope = IsScopeBiggerThanRequestScope(roleEntity, requestRoleEntity);
-
-            if (await isScopeBiggerThanRequestScope)
+            if (await IsScopeBiggerThanRequestScope(roleEntity, requestRoleEntity))
                 return true;
 
             while (requestRoleEntity != null)
@@ -56,6 +52,8 @@ public class RoleService(UserManager<ApplicationUser> userManager
 
         return false;
     }
+
+
 
     private async Task<bool> IsScopeBiggerThanRequestScope(ApplicationRole role,ApplicationRole requestRole)
     {
