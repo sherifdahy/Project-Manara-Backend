@@ -13,7 +13,7 @@ namespace App.API.Controllers.Faculties;
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
-public class FaculitiesController(IMediator mediator) : ControllerBase
+public class FacultiesController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
 
