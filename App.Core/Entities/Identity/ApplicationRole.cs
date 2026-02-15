@@ -3,7 +3,6 @@
 public class ApplicationRole : IdentityRole<int>
 {
     public bool IsDeleted { get; set; }
-    public bool IsDefault { get; set; }
     public string Description { get; set; } = string.Empty;
     public string Code { get; set; } = string.Empty;
     public int ScopeId { get; set; }

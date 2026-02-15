@@ -4,6 +4,7 @@ using App.Infrastructure.Presistance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260214133732_update_seading")]
+    partial class update_seading
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,6 +46,9 @@ namespace App.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -84,6 +90,7 @@ namespace App.Infrastructure.Migrations
                             Code = "SYS_ADMIN",
                             ConcurrencyStamp = "AE6C6754-0862-4EA2-8868-BF5C27E7AEF9",
                             Description = "System Administrator with full access",
+                            IsDefault = true,
                             IsDeleted = false,
                             Name = "SystemAdmin",
                             NormalizedName = "SYSTEMADMIN",
@@ -95,6 +102,7 @@ namespace App.Infrastructure.Migrations
                             Code = "UNI_ADMIN",
                             ConcurrencyStamp = "B1A2C3D4-5E6F-7890-ABCD-EF1234567890",
                             Description = "University Administrator",
+                            IsDefault = true,
                             IsDeleted = false,
                             Name = "UniversityAdmin",
                             NormalizedName = "UNIVERSITYADMIN",
@@ -106,6 +114,7 @@ namespace App.Infrastructure.Migrations
                             Code = "FAC_ADMIN",
                             ConcurrencyStamp = "D3C4E5F6-7081-9012-CDEF-345678901234",
                             Description = "Faculty Administrator",
+                            IsDefault = true,
                             IsDeleted = false,
                             Name = "FacultyAdmin",
                             NormalizedName = "FACULTYADMIN",
@@ -117,6 +126,7 @@ namespace App.Infrastructure.Migrations
                             Code = "FAC_COORD",
                             ConcurrencyStamp = "E4D5F6A7-8192-0123-DEF4-456789012345",
                             Description = "Faculty Coordinator",
+                            IsDefault = false,
                             IsDeleted = false,
                             Name = "FacultyCoordinator",
                             NormalizedName = "FACULTYCOORDINATOR",
@@ -129,6 +139,7 @@ namespace App.Infrastructure.Migrations
                             Code = "ACAD_ADV",
                             ConcurrencyStamp = "F5E6A7B8-9203-1234-EF45-567890123456",
                             Description = "Academic Advisor",
+                            IsDefault = false,
                             IsDeleted = false,
                             Name = "AcademicAdvisor",
                             NormalizedName = "ACADEMICADVISOR",
@@ -141,6 +152,7 @@ namespace App.Infrastructure.Migrations
                             Code = "DEPT_ADMIN",
                             ConcurrencyStamp = "A6F7B8C9-0314-2345-F456-678901234567",
                             Description = "Department Administrator",
+                            IsDefault = false,
                             IsDeleted = false,
                             Name = "DepartmentHead",
                             NormalizedName = "DEPARTMENTHEAD",
@@ -152,6 +164,7 @@ namespace App.Infrastructure.Migrations
                             Code = "DOCTOR",
                             ConcurrencyStamp = "B7A8C9D0-1425-3456-A567-789012345678",
                             Description = "Doctor/Professor",
+                            IsDefault = false,
                             IsDeleted = false,
                             Name = "Doctor",
                             NormalizedName = "DOCTOR",
@@ -164,6 +177,7 @@ namespace App.Infrastructure.Migrations
                             Code = "INSTRUCTOR",
                             ConcurrencyStamp = "C8B9D0E1-2536-4567-B678-890123456789",
                             Description = "Instructor/Teaching Assistant",
+                            IsDefault = false,
                             IsDeleted = false,
                             Name = "Instructor",
                             NormalizedName = "INSTRUCTOR",
@@ -176,6 +190,7 @@ namespace App.Infrastructure.Migrations
                             Code = "MAIN_STUDENT",
                             ConcurrencyStamp = "F1E2A3B4-5869-789A-E901-123456789012",
                             Description = "Main Stream Student",
+                            IsDefault = false,
                             IsDeleted = false,
                             Name = "MainStreamStudent",
                             NormalizedName = "MAINSTREAMSTUDENT",
@@ -187,6 +202,7 @@ namespace App.Infrastructure.Migrations
                             Code = "GPA_STUDENT",
                             ConcurrencyStamp = "A2F3B4C5-6970-89AB-F012-234567890123",
                             Description = "GPA Student",
+                            IsDefault = false,
                             IsDeleted = false,
                             Name = "GPAStudent",
                             NormalizedName = "GPASTUDENT",

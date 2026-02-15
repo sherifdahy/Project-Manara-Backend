@@ -43,6 +43,7 @@ public class GetAllRoleQueryHandler : IRequestHandler<GetAllRolesQuery, Result<L
             .FindAllAsync(x => userRoles.Contains(x.Name!),null,cancellationToken);
 
 
+
         var mainScope = userRolesEntities.First().ScopeId;
 
         var firstRolesInScope = await _unitOfWork.Roles
