@@ -1,9 +1,7 @@
 ﻿using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Responses.FacultyUsers;
-using App.Application.Contracts.Responses.Roles;
 using App.Core.Consts;
 using App.Core.Entities.Personnel;
-using App.Core.Extensions;
 
 namespace App.Application.Handlers.Commands.FacultyUsers;
 

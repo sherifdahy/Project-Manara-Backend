@@ -1,6 +1,4 @@
 ﻿using App.Application.Contracts.Responses.Permissions;
-using App.Application.Contracts.Responses.Roles;
-using App.Application.Errors;
 using App.Application.Queries.Permissions;
 
 namespace App.Application.Handlers.Queries.Permissions;

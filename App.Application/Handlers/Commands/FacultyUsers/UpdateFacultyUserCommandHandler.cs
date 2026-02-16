@@ -6,7 +6,12 @@ using System.Data;
 
 namespace App.Application.Handlers.Commands.FacultyUsers;
 
-public class UpdateFacultyUserCommandHandler(UserErrors userErrors,RoleErrors roleErrors,IUnitOfWork unitOfWork,IFacultyService facultyService,IHttpContextAccessor httpContextAccessor,UserManager<ApplicationUser> userManager,RoleManager<ApplicationRole> roleManager) : IRequestHandler<UpdateFacultyUserCommand, Result>
+public class UpdateFacultyUserCommandHandler(UserErrors userErrors
+    ,RoleErrors roleErrors
+    ,IUnitOfWork unitOfWork
+    ,IFacultyService facultyService
+    ,IHttpContextAccessor httpContextAccessor
+    ,UserManager<ApplicationUser> userManager,RoleManager<ApplicationRole> roleManager) : IRequestHandler<UpdateFacultyUserCommand, Result>
 {
     private readonly UserErrors _userErrors = userErrors;
     private readonly RoleErrors _roleErrors = roleErrors;

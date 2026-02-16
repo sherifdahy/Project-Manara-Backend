@@ -31,7 +31,7 @@ public class RoleErrors
     => new("Role.DuplicatedForUniversity", _localizer[RoleLocalizationKeys.DuplicatedForUniversity, LocalizationFolderNames.Role], StatusCodes.Status409Conflict);
 
     public Error ScopeIsNotValidForRole
-  => new("Role.ScopeIsNotValid", _localizer[RoleLocalizationKeys.ScopeIsNotValidForRole, LocalizationFolderNames.Role], StatusCodes.Status409Conflict);
+  => new("Role.ScopeIsNotValidForRole", _localizer[RoleLocalizationKeys.ScopeIsNotValidForRole, LocalizationFolderNames.Role], StatusCodes.Status409Conflict);
 
 
 

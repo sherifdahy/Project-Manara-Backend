@@ -1,6 +1,7 @@
 ﻿using App.Application.Commands.FacultyUsers;
 using App.Application.Commands.UniversityUsers;
 using App.Application.Contracts.Responses.FacultyUsers;
+using App.Application.Contracts.Responses.UniversityUser;
 using App.Application.Errors;
 using App.Core.Consts;
 using App.Core.Entities.Personnel;
@@ -17,7 +18,7 @@ public class CreateUniversityUserCommandHandler(UserManager<ApplicationUser> use
     ,IUnitOfWork unitOfWork
     ,UserErrors userErrors
     ,RoleManager<ApplicationRole> roleManager
-    ,UniversityErrors universityErrors) : IRequestHandler<CreateUniversityUserCommand, Result<FacultyUserResponse>>
+    ,UniversityErrors universityErrors) : IRequestHandler<CreateUniversityUserCommand, Result<UniversityUserResponse>>
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly RoleErrors _roleErrors = roleErrors;
@@ -26,23 +27,23 @@ public class CreateUniversityUserCommandHandler(UserManager<ApplicationUser> use
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
     private readonly UniversityErrors _universityErrors = universityErrors;
 
-    public async Task<Result<FacultyUserResponse>> Handle(CreateUniversityUserCommand request, CancellationToken cancellationToken)
+    public async Task<Result<UniversityUserResponse>> Handle(CreateUniversityUserCommand request, CancellationToken cancellationToken)
     {
         if (await _unitOfWork.Universities.GetByIdAsync(request.UniversityId) is null)
-            return Result.Failure<FacultyUserResponse>(_universityErrors.NotFound);
+            return Result.Failure<UniversityUserResponse>(_universityErrors.NotFound);
 
         if (await _userManager.FindByEmailAsync(request.Email) is not null)
-            return Result.Failure<FacultyUserResponse>(_userErrors.DuplicatedEmail);
+            return Result.Failure<UniversityUserResponse>(_userErrors.DuplicatedEmail);
 
         foreach (var role in request.Roles)
         {
             var roleEntity = await _roleManager.FindByNameAsync(role);
 
             if (roleEntity is null)
-                return Result.Failure<FacultyUserResponse>(_roleErrors.NotFound);
+                return Result.Failure<UniversityUserResponse>(_roleErrors.NotFound);
 
             if (roleEntity.ScopeId != DefaultScopes.University.Id)
-                return Result.Failure<FacultyUserResponse>(_roleErrors.ScopeIsNotValidForRole);
+                return Result.Failure<UniversityUserResponse>(_roleErrors.ScopeIsNotValidForRole);
         }
 
         var applicationUser = request.Adapt<ApplicationUser>();
@@ -66,7 +67,7 @@ public class CreateUniversityUserCommandHandler(UserManager<ApplicationUser> use
                 await _unitOfWork.UniversityUsers.AddAsync(universityUser, cancellationToken);
                 await _unitOfWork.SaveAsync(cancellationToken);
 
-                var response = applicationUser.Adapt<FacultyUserResponse>();
+                var response = applicationUser.Adapt<UniversityUserResponse>();
 
                 response.Roles = request.Roles;
 
@@ -75,12 +76,12 @@ public class CreateUniversityUserCommandHandler(UserManager<ApplicationUser> use
 
             var rolesAssignError = creationResult.Errors.First();
 
-            return Result.Failure<FacultyUserResponse>(new Error(rolesAssignError.Code, rolesAssignError.Description, StatusCodes.Status400BadRequest));
+            return Result.Failure<UniversityUserResponse>(new Error(rolesAssignError.Code, rolesAssignError.Description, StatusCodes.Status400BadRequest));
         }
 
         var error = creationResult.Errors.First();
 
-        return Result.Failure<FacultyUserResponse>(new Error(error.Code, error.Description, StatusCodes.Status400BadRequest));
+        return Result.Failure<UniversityUserResponse>(new Error(error.Code, error.Description, StatusCodes.Status400BadRequest));
     }
 
 

@@ -2,6 +2,7 @@
 using App.Application.Commands.FacultyUsers;
 using App.Application.Commands.UniversityUsers;
 using App.Application.Contracts.Requests.FacultyUsers;
+using App.Application.Contracts.Requests.UniversityUsers;
 using App.Application.Queries.FacultyUsers;
 using App.Application.Queries.UniversityUsers;
 using App.Core.Extensions;
@@ -44,17 +45,17 @@ public class UniversityUsersController(IMediator mediator) : ControllerBase
     [HttpPost("/api/universities/{universityId}/[controller]")]
     [RequireUniversityAccess("universityId")]
     [HasPermission(Permissions.CreateUniversityUsers)]
-    public async Task<IActionResult> Create([FromRoute] int universityId, [FromBody] FacultyUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Create([FromRoute] int universityId, [FromBody] UniversityUserRequest request, CancellationToken cancellationToken)
     {
         var command = request.Adapt<CreateUniversityUserCommand>() with { UniversityId = universityId };
         var result = await _mediator.Send(command, cancellationToken);
-        return result.IsSuccess ? Created() : result.ToProblem();
+        return result.IsSuccess ? CreatedAtAction(nameof(Get), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 
     [HttpPut("{id}")]
     [RequireUserAccess("id")]
     [HasPermission(Permissions.UpdateUniversityUsers)]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] FacultyUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UniversityUserRequest request, CancellationToken cancellationToken)
     {
         var command = request.Adapt<UpdateUniversityUserCommand>() with { UserId = id };
         var result = await _mediator.Send(command, cancellationToken);
