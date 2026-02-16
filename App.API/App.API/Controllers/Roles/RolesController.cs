@@ -1,13 +1,12 @@
 ﻿using App.API.Attributes;
-using App.Application.Authentication.Filters;
 using App.Application.Commands.Roles;
 using App.Application.Contracts.Requests.Roles;
+using App.Application.Queries.Permissions;
 using App.Application.Queries.Roles;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.API.Controllers.Roles;
@@ -39,11 +38,12 @@ public class RolesController(IMediator _mediator) : ControllerBase
     [RequireFacultyAccess("facultyId")]
     [RequireRoleAccess("roleId")]
     [HasPermission(Permissions.GetRoles)]
-    public async Task<IActionResult> GetRoleInFaculty([FromRoute] int facultyId,[FromRoute] int roleId, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetPermissionsInFacultyRole([FromRoute] int facultyId, [FromRoute] int roleId, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetRoleInFacultyQuery(roleId,facultyId), cancellationToken);
+        var result = await _mediator.Send(new GetPermissionsInFacultyRoleQuery(roleId, facultyId), cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
+
 
     [HttpPost]
     [HasPermission(Permissions.CreateRoles)]
