@@ -2,6 +2,7 @@
 
 public record FacultyDetailResponse
 (
+    int Id,
     string Name,
     string Description,
     string Address,
