@@ -1,0 +1,4 @@
+﻿{
+  "InvalidBirthDate": "العمر يجب ان يكون اكبر من 16",
+  "InvalidEnrollmentDate": "التاريخ يجب ان يكون بعد تاريخ الميلاد"
+}

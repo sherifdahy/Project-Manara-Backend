@@ -1,15 +1,7 @@
 ﻿using App.Application.Commands.DepartmentUsers;
-using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Responses.DepartmentUsers;
-using App.Application.Contracts.Responses.FacultyUsers;
-using App.Application.Errors;
 using App.Core.Consts;
 using App.Core.Entities.Personnel;
-using App.Infrastructure.Repository;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Application.Handlers.Commands.DepartmentUsers;
 

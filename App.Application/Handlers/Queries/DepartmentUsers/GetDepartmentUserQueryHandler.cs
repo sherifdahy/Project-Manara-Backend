@@ -1,8 +1,5 @@
 ﻿using App.Application.Contracts.Responses.DepartmentUsers;
-using App.Application.Contracts.Responses.FacultyUsers;
 using App.Application.Queries.DepartmentUsers;
-using App.Core.Entities.Personnel;
-using Microsoft.AspNetCore.Identity;
 
 namespace App.Application.Handlers.Queries.DepartmentUsers;
 

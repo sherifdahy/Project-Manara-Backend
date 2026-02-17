@@ -31,7 +31,5 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
             .NotEmpty()
             .Length(3, 100);
 
-        //RuleFor(x => x.UniversityId)
-        //    .NotEmpty();
     }
 }

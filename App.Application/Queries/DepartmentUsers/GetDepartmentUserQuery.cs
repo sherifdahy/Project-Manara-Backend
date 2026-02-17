@@ -1,5 +1,4 @@
 ﻿using App.Application.Contracts.Responses.DepartmentUsers;
-using App.Application.Contracts.Responses.FacultyUsers;
 
 namespace App.Application.Queries.DepartmentUsers;
 

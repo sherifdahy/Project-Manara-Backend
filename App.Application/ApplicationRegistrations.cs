@@ -1,4 +1,5 @@
-﻿using App.Core.Entities.Personnel;
+﻿using App.Application.Mapping;
+using App.Core.Entities.Personnel;
 
 namespace App.Application;
 
@@ -10,6 +11,8 @@ public static class ApplicationRegistrations
         services
             .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly())
             .AddFluentValidationAutoValidation();
+
+
 
         services.AddSingleton<AuthenticationErrors>();
         services.AddSingleton<FacultyErrors>();

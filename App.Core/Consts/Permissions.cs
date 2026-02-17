@@ -68,6 +68,12 @@ public class Permissions
     public const string UpdateDepartmentUsers = "departmentUsers:update";
     public const string ToggleStatusDepartmentUsers = "departmentUsers:toggleStatus";
 
+    //ProgramUsers Permissions
+    public const string GetProgramUsers = "programUsers:read";
+    public const string CreateProgramUsers = "programUsers:create";
+    public const string UpdateProgramUsers = "programUsers:update";
+    public const string ToggleStatusProgramUsers = "programUsers:toggleStatus";
+
     // Scope Permissions
     public const string GetScopes = "scopes:read";
     public const string GetScopeDetail = "scopes:readDetail";

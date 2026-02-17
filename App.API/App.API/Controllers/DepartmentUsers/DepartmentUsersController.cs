@@ -1,11 +1,8 @@
 ﻿using App.API.Attributes;
 using App.Application.Abstractions;
 using App.Application.Commands.DepartmentUsers;
-using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Requests.DepartmentUsers;
-using App.Application.Contracts.Requests.FacultyUsers;
 using App.Application.Queries.DepartmentUsers;
-using App.Application.Queries.FacultyUsers;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
