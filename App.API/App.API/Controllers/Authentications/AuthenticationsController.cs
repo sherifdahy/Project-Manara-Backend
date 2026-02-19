@@ -1,10 +1,7 @@
 ﻿using App.Application.Commands.Authentications;
 using App.Core.Extensions;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
 
 namespace App.API.Controllers.Authentications;
 

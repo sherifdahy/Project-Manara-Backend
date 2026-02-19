@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace App.Application.Commands.DepartmentUsers;
+﻿namespace App.Application.Commands.DepartmentUsers;
 
 public record UpdateDepartmentUserCommand : IRequest<Result>
 {

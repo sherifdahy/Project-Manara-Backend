@@ -293,6 +293,8 @@ F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\R
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Faculty\en-US.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Permission\ar-EG.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Permission\en-US.json
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\ProgramUser\ar-EG.json
+F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\ProgramUser\en-US.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Program\ar-EG.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Program\en-US.json
 F:\Graduation-Project\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Role\ar-EG.json
