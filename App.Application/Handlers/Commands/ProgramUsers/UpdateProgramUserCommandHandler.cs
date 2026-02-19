@@ -1,35 +1,38 @@
-﻿using App.Application.Commands.DepartmentUsers;
+﻿using App.Application.Commands.ProgramUsers;
 using App.Core.Consts;
 
-namespace App.Application.Handlers.Commands.DepartmentUsers;
+namespace App.Application.Handlers.Commands.ProgramUsers;
 
-public class UpdateDepartmentUserCommandHandler(IUnitOfWork unitOfWork
+public class UpdateProgramUserCommandHandler(IUnitOfWork unitOfWork
     ,UserErrors userErrors
-    ,IDepartmentService departmentService
-    , IHttpContextAccessor httpContextAccessor
+    ,IProgramService programService
+    ,IHttpContextAccessor httpContextAccessor
     ,UserManager<ApplicationUser> userManager
     ,RoleManager<ApplicationRole> roleManager
-    ,RoleErrors roleErrors) : IRequestHandler<UpdateDepartmentUserCommand, Result>
+    ,RoleErrors roleErrors) : IRequestHandler<UpdateProgramUserCommand, Result>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly UserErrors _userErrors = userErrors;
-    private readonly IDepartmentService _departmentService = departmentService;
+    private readonly IProgramService _programService = programService;
     private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
     private readonly RoleErrors _roleErrors = roleErrors;
 
- 
-    public async Task<Result> Handle(UpdateDepartmentUserCommand request, CancellationToken cancellationToken)
+
+
+
+    public async Task<Result> Handle(UpdateProgramUserCommand request, CancellationToken cancellationToken)
     {
-        var departmentUser = await _unitOfWork.DepartmentUsers
+        var programUser = await _unitOfWork.ProgramUsers
             .FindAsync(x => x.UserId == request.UserId, i => i.Include(p => p.User), cancellationToken);
 
-        if (departmentUser == null)
+        if (programUser == null)
             return Result.Failure(_userErrors.NotFound);
 
-        if (!await _departmentService.IsUserHasAccessToDepartment(_httpContextAccessor.HttpContext!.User, departmentUser.DepartmentId))
+        if (!await _programService.IsUserHasAccessToProgram(_httpContextAccessor.HttpContext!.User, programUser.ProgramId))
             return Result.Failure(_userErrors.Forbidden);
+
 
         if (_userManager.Users.Any(x => x.Email == request.Email && x.Id != request.UserId))
             return Result.Failure(_userErrors.DuplicatedEmail);
@@ -42,17 +45,17 @@ public class UpdateDepartmentUserCommandHandler(IUnitOfWork unitOfWork
             if (roleEntity is null)
                 return Result.Failure(_roleErrors.NotFound);
 
-            if (roleEntity.ScopeId != DefaultScopes.Department.Id)
+            if (roleEntity.ScopeId != DefaultScopes.Program.Id)
                 return Result.Failure(_roleErrors.ScopeIsNotValidForRole);
         }
 
-        request.Adapt(departmentUser.User);
+        request.Adapt(programUser.User);
 
-        var updateUserResult = await _userManager.UpdateAsync(departmentUser.User);
+        var updateUserResult = await _userManager.UpdateAsync(programUser.User);
 
         if (updateUserResult.Succeeded)
         {
-            var currentRolesAsString = await _userManager.GetRolesAsync(departmentUser.User);
+            var currentRolesAsString = await _userManager.GetRolesAsync(programUser.User);
 
             var newRolesAsString = request.Roles.Except(currentRolesAsString).ToList();
 
@@ -60,7 +63,7 @@ public class UpdateDepartmentUserCommandHandler(IUnitOfWork unitOfWork
 
             if (newRolesAsString.Any())
             {
-                var addResult = await _userManager.AddToRolesAsync(departmentUser.User, newRolesAsString);
+                var addResult = await _userManager.AddToRolesAsync(programUser.User, newRolesAsString);
                 if (!addResult.Succeeded)
                 {
                     var err = addResult.Errors.First();
@@ -70,7 +73,7 @@ public class UpdateDepartmentUserCommandHandler(IUnitOfWork unitOfWork
 
             if (removedRolesAsString.Any())
             {
-                var removeResult = await _userManager.RemoveFromRolesAsync(departmentUser.User, removedRolesAsString);
+                var removeResult = await _userManager.RemoveFromRolesAsync(programUser.User, removedRolesAsString);
                 if (!removeResult.Succeeded)
                 {
                     var err = removeResult.Errors.First();
