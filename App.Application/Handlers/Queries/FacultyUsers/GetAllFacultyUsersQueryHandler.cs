@@ -1,11 +1,7 @@
 ﻿using App.Application.Contracts.Responses.FacultyUsers;
-using App.Application.Contracts.Responses.Roles;
 using App.Application.Queries.FacultyUsers;
 using App.Core.Entities.Personnel;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace App.Application.Handlers.Queries.FacultyUsers;
 

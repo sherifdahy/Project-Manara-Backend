@@ -49,6 +49,12 @@ public class Permissions
     public const string UpdatePrograms = "Programs:update";
     public const string ToggleStatusPrograms = "Programs:toggleStatus";
 
+    // UniversityUsers Permissions
+    public const string GetUniversityUsers = "universityUsers:read";
+    public const string CreateUniversityUsers = "universityUsers:create";
+    public const string UpdateUniversityUsers = "universityUsers:update";
+    public const string ToggleStatusUniversityUsers = "universityUsers:toggleStatus";
+
 
     // FacultyUsers Permissions
     public const string GetFacultyUsers = "facultyUsers:read";
@@ -56,11 +62,17 @@ public class Permissions
     public const string UpdateFacultyUsers = "facultyUsers:update";
     public const string ToggleStatusFacultyUsers = "facultyUsers:toggleStatus";
 
-    // UniversityUsers Permissions
-    public const string GetUniversityUsers = "universityUsers:read";
-    public const string CreateUniversityUsers = "universityUsers:create";
-    public const string UpdateUniversityUsers = "universityUsers:update";
-    public const string ToggleStatusUniversityUsers = "universityUsers:toggleStatus";
+    //DepartmentUsers Permissions
+    public const string GetDepartmentUsers = "departmentUsers:read";
+    public const string CreateDepartmentUsers = "departmentUsers:create";
+    public const string UpdateDepartmentUsers = "departmentUsers:update";
+    public const string ToggleStatusDepartmentUsers = "departmentUsers:toggleStatus";
+
+    //ProgramUsers Permissions
+    public const string GetProgramUsers = "programUsers:read";
+    public const string CreateProgramUsers = "programUsers:create";
+    public const string UpdateProgramUsers = "programUsers:update";
+    public const string ToggleStatusProgramUsers = "programUsers:toggleStatus";
 
     // Scope Permissions
     public const string GetScopes = "scopes:read";

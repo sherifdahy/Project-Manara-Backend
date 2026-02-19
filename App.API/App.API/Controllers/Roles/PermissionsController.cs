@@ -24,6 +24,16 @@ namespace App.API.Controllers.Roles
             return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
         }
 
+        [HttpGet("/api/users/{userId:int}/permissions")]
+        [RequireUserAccess("userId")]
+        [HasPermission(Permissions.GetPermissions)]
+        public async Task<IActionResult> GetPermissionsInUser([FromRoute] int userId, CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(new GetPermissionsInUserQuery(userId), cancellationToken);
+            return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+        }
+
+
 
         [HttpPut("/api/users/{userId:int}/permissions")]
         [RequireUserAccess("userId")]

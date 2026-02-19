@@ -47,7 +47,7 @@ public class FacultyUsersController(IMediator mediator,IRoleService roleService)
     {
         var command = request.Adapt<CreateFacultyUserCommand>() with { FacultyId = facultyId };
         var result = await _mediator.Send(command, cancellationToken);
-        return result.IsSuccess ? Created() : result.ToProblem();
+        return result.IsSuccess ? CreatedAtAction(nameof(Get), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 
     [HttpPut("{id}")]

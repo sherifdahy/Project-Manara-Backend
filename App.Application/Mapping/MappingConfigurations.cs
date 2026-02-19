@@ -1,7 +1,9 @@
 ﻿using App.Application.Commands.Authentications;
 using App.Application.Contracts.Responses.Faculties;
+using App.Application.Contracts.Responses.ProgramUsers;
 using App.Application.Contracts.Responses.Roles;
 using App.Application.Contracts.Responses.Universities;
+using App.Core.Entities.Personnel;
 using Mapster;
 using System;
 using System.Collections.Generic;
@@ -33,5 +35,6 @@ public class MappingConfigurations : IRegister
 
         TypeAdapterConfig<ApplicationRole, RoleResponse>.NewConfig()
             .Map(dest => dest.NumberOfPermissions, src => src.RoleClaimOverrides.Count);
+
     }
 }

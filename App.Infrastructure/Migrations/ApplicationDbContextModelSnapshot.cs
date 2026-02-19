@@ -921,89 +921,145 @@ namespace App.Infrastructure.Migrations
                         {
                             Id = 25,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:read",
+                            ClaimValue = "universityUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 26,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:create",
+                            ClaimValue = "universityUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 27,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:update",
+                            ClaimValue = "universityUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 28,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:toggleStatus",
+                            ClaimValue = "universityUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 29,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:read",
+                            ClaimValue = "facultyUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 30,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:create",
+                            ClaimValue = "facultyUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 31,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:update",
+                            ClaimValue = "facultyUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 32,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:toggleStatus",
+                            ClaimValue = "facultyUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 33,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:read",
+                            ClaimValue = "departmentUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 34,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:readDetail",
+                            ClaimValue = "departmentUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 35,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:create",
+                            ClaimValue = "departmentUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 36,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:update",
+                            ClaimValue = "departmentUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 37,
+                            ClaimType = "permissions",
+                            ClaimValue = "programUsers:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 38,
+                            ClaimType = "permissions",
+                            ClaimValue = "programUsers:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 39,
+                            ClaimType = "permissions",
+                            ClaimValue = "programUsers:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 40,
+                            ClaimType = "permissions",
+                            ClaimValue = "programUsers:toggleStatus",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 41,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 42,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:readDetail",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 43,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 44,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 45,
                             ClaimType = "permissions",
                             ClaimValue = "scopes:toggleStatus",
                             RoleId = 100

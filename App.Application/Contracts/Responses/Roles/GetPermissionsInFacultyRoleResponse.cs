@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Application.Contracts.Responses.Roles;
 
-public record GetRoleInFacultyResponse
+public record GetPermissionsInFacultyRoleResponse
 (
     int Id,
     string Name,

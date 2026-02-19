@@ -2,12 +2,12 @@
 
 namespace App.Application.Queries.Roles;
 
-public class GetRoleInFacultyQuery : IRequest<Result<GetRoleInFacultyResponse>>
+public record GetPermissionsInFacultyRoleQuery : IRequest<Result<GetPermissionsInFacultyRoleResponse>>
 {
     public int RoleId { get; set; }
     public int FacultyId { get; set; }
 
-    public GetRoleInFacultyQuery(int roleId,int facultyId)
+    public GetPermissionsInFacultyRoleQuery(int roleId,int facultyId)
     {
         RoleId = roleId;
         FacultyId = facultyId;
