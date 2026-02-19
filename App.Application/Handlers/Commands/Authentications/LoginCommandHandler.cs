@@ -27,10 +27,10 @@ public class LoginCommandHandler(UserManager<ApplicationUser> userManager
             .Include(s => s.PermissionOverrides)
             .FirstOrDefault(x => x.Email == request.Email);
 
-        if (user is null)
+        if (user is null || user.IsDeleted)
             return Result.Failure<AuthenticationResponse>(_errors.InvalidCredentials);
 
-        if (user.IsDeleted)
+        if (user.IsDisabled)
             return Result.Failure<AuthenticationResponse>(_errors.DisabledUser);
 
         var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, true);

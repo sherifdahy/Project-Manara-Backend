@@ -79,10 +79,6 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager
         return (roles, permissions);
     }
 
-
-
-    //TODO IsUserHasAccessToDepartment , IsUserHasAccessToProgramm
-
     private async Task<int> GetUserFacultyId(ApplicationUser user)
     {
         int facultyId = 0;
