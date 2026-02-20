@@ -3,6 +3,13 @@
   "WorkspaceRootPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\handlers\\queries\\permissions\\getpermissionsinuserqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\controllers\\roles\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\roles\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\validations\\facultyusers\\facultyuserrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -28,6 +35,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "GetPermissionsInUserQueryHandler.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Permissions\\GetPermissionsInUserQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Permissions\\GetPermissionsInUserQueryHandler.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Permissions\\GetPermissionsInUserQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Permissions\\GetPermissionsInUserQueryHandler.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T13:40:30.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PermissionsController.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T13:39:23.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FacultyUserRequestValidator.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Validations\\FacultyUsers\\FacultyUserRequestValidator.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Validations\\FacultyUsers\\FacultyUserRequestValidator.cs",
@@ -35,12 +67,11 @@
               "RelativeToolTip": "..\\App.Application\\Validations\\FacultyUsers\\FacultyUserRequestValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T12:28:32.681Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-20T12:28:32.681Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "UpdateFacultyUserCommandHandler.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\FacultyUsers\\UpdateFacultyUserCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\FacultyUsers\\UpdateFacultyUserCommandHandler.cs",
@@ -48,12 +79,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\FacultyUsers\\UpdateFacultyUserCommandHandler.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAUwDQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T12:20:42.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-20T12:20:42.868Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "FacultyUserRequest.cs",
               "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\FacultyUsers\\FacultyUserRequest.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Requests\\FacultyUsers\\FacultyUserRequest.cs",
@@ -61,8 +91,7 @@
               "RelativeToolTip": "..\\App.Application\\Contracts\\Requests\\FacultyUsers\\FacultyUserRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T12:19:57.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-20T12:19:57.411Z"
             }
           ]
         }

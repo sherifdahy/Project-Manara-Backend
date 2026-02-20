@@ -1,4 +1,5 @@
 ﻿using App.Application.Commands.FacultyUsers;
+using App.Application.Contracts.Requests.FacultyUsers;
 using App.Application.Contracts.Responses.FacultyUsers;
 using App.Core.Consts;
 using App.Services;
@@ -46,9 +47,13 @@ public class UpdateFacultyUserCommandHandler(UserErrors userErrors
                 return Result.Failure<FacultyUserResponse>(_roleErrors.ScopeIsNotValidForRole);
         }
 
-
         request.Adapt(facultyUser.User);
         
+        if(request.Password is not null)
+        {
+            facultyUser.User.PasswordHash = _userManager.PasswordHasher.HashPassword(facultyUser.User, request.Password);
+        }
+
         var updateUserResult =  await _userManager.UpdateAsync(facultyUser.User);
 
         if(updateUserResult.Succeeded)
