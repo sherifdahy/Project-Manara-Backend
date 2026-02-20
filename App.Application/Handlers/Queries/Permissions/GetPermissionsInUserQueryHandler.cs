@@ -29,7 +29,7 @@ public class GetPermissionsInUserQueryHandler(UserManager<ApplicationUser> userM
 
         var response = new GetPermissionsInUserResponse
         (
-            defaultPermissions,
+            defaultPermissions.Distinct(),
             overridePermissions.Select(x => x.ClaimValue)
         );
 

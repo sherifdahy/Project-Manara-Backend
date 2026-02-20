@@ -28,7 +28,7 @@ public class GetPermissionsInFacultyRoleQueryHandler(RoleManager<ApplicationRole
             role.Code,
             role.Description,
             role.IsDeleted,
-            defaultPermissions.Select(x=>x.Value),
+            defaultPermissions.Distinct().Select(x=>x.Value),
             overridePermissions.Select(x => x.ClaimValue)
         );
 
