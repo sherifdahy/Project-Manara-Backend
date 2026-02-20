@@ -1,7 +1,5 @@
 ﻿using App.Application.Contracts.Responses.Faculties;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using App.Application.Contracts.Responses.FacultyUsers;
 
 namespace App.Application.Queries.Faculties;
 

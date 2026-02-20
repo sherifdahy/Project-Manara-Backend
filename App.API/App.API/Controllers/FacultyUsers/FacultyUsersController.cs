@@ -18,7 +18,15 @@ namespace App.API.Controllers.FacultyUsers;
 public class FacultyUsersController(IMediator mediator,IRoleService roleService) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
-    private readonly IRoleService _roleService = roleService;
+
+    [HttpGet("my")]
+    [HasPermission(Permissions.GetFacultyUsers)]
+    public async Task<IActionResult> My(CancellationToken cancellationToken = default)
+    {
+        var query = new GetMyFacultyUserQuery();
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
 
     [HttpGet("/api/faculties/{facultyId}/[controller]")]
     [RequireFacultyAccess("facultyId")]
