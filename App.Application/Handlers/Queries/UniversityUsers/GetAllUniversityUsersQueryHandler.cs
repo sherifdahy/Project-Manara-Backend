@@ -1,33 +1,39 @@
-﻿using App.Application.Contracts.Responses.FacultyUsers;
-using App.Application.Contracts.Responses.UniversityUser;
-using App.Application.Errors;
-using App.Application.Queries.FacultyUsers;
+﻿using App.Application.Contracts.Responses.UniversityUser;
 using App.Application.Queries.UniversityUsers;
-using App.Infrastructure.Repository;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using App.Core.Entities.Personnel;
+using System.Linq.Expressions;
 
 namespace App.Application.Handlers.Queries.UniversityUsers;
 
-public class GetAllUniversityUsersQueryHandler(IUnitOfWork unitOfWork
-    ,UniversityErrors universityErrors,UserManager<ApplicationUser> userManager) : IRequestHandler<GetAllUniversityUsersQuery, Result<List<UniversityUserResponse>>>
+public class GetAllUniversityUsersQueryHandler(
+    IUnitOfWork unitOfWork,
+    UniversityErrors universityErrors,
+    UserManager<ApplicationUser> userManager) : IRequestHandler<GetAllUniversityUsersQuery, Result<PaginatedList<UniversityUserResponse>>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly UniversityErrors _universityErrors = universityErrors;
     private readonly UserManager<ApplicationUser> _userManager = userManager;
 
-    public async Task<Result<List<UniversityUserResponse>>> Handle(GetAllUniversityUsersQuery request, CancellationToken cancellationToken)
+    public async Task<Result<PaginatedList<UniversityUserResponse>>> Handle(GetAllUniversityUsersQuery request, CancellationToken cancellationToken)
     {
         if (await _unitOfWork.Universities.GetByIdAsync(request.UniversityId) is null)
-            return Result.Failure<List<UniversityUserResponse>>(_universityErrors.NotFound);
+            return Result.Failure<PaginatedList<UniversityUserResponse>>(_universityErrors.NotFound);
+
+        Expression<Func<UniversityUser, bool>> query =
+            x => x.UniversityId == request.UniversityId &&
+            (string.IsNullOrEmpty(request.Filters.SearchValue) || x.User.Name.Contains(request.Filters.SearchValue) || x.User.Email!.Contains(request.Filters.SearchValue) || x.User.SSN.Contains(request.Filters.SearchValue)) &&
+            (request.IncludeDisabled == false || x.User.IsDeleted == false);
+
+        var count = await _unitOfWork.UniversityUsers.CountAsync(query);
 
         var universityUsers = await _unitOfWork.UniversityUsers.FindAllAsync(
-            x => x.UniversityId == request.UniversityId && !x.User.IsDeleted,
-            i => i.Include(o=>o.User),
-            cancellationToken
-        );
+            query,
+            i => i.Include(d => d.User),
+            (request.Filters.PageNumber - 1) * request.Filters.PageSize,
+            request.Filters.PageSize,
+            request.Filters.SortColumn,
+            request.Filters.SortDirection,
+            cancellationToken);
 
         var response = new List<UniversityUserResponse>();
 
@@ -41,10 +47,13 @@ public class GetAllUniversityUsersQueryHandler(IUnitOfWork unitOfWork
                 Email = x.User.Email!,
                 Name = x.User.Name,
                 SSN = x.User.SSN,
-                Roles = roles
+                Roles = roles,
+                IsDeleted = x.User.IsDeleted,
+                IsDisabled = x.User.IsDisabled,
             });
         }
 
-        return Result.Success(response);
+        return Result.Success(PaginatedList<UniversityUserResponse>.Create(response, count, request.Filters.PageNumber, request.Filters.PageSize));
+
     }
 }

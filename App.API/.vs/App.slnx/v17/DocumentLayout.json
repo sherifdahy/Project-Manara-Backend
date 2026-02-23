@@ -42,7 +42,7 @@
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Departments\\GetAllDepartmentsQueryHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Departments\\GetAllDepartmentsQueryHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Departments\\GetAllDepartmentsQueryHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAACLAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-23T15:33:28.242Z",
               "EditorCaption": ""
@@ -57,8 +57,7 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Faculties\\GetAllFacultiesQueryHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAACEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-23T15:07:39.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-23T15:07:39.723Z"
             },
             {
               "$type": "Document",
@@ -70,8 +69,7 @@
               "RelativeToolTip": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-23T15:07:21.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-23T15:07:21.689Z"
             },
             {
               "$type": "Document",
@@ -83,8 +81,7 @@
               "RelativeToolTip": "App.API\\Controllers\\Faculties\\FacultiesController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-23T15:06:54.52Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-23T15:06:54.52Z"
             }
           ]
         }
