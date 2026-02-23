@@ -1,16 +1,7 @@
-﻿using App.Application.Commands.FacultyUsers;
-using App.Application.Commands.UniversityUsers;
+﻿using App.Application.Commands.UniversityUsers;
 using App.Application.Contracts.Responses.FacultyUsers;
-using App.Application.Errors;
 using App.Core.Consts;
-using App.Core.Entities.Personnel;
-using App.Infrastructure.Repository;
-using App.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace App.Application.Handlers.Commands.UniversityUsers;
 
@@ -58,6 +49,11 @@ public class UpdateUniversityUserCommandHandler(IUniversityService universitySer
         }
 
         request.Adapt(universityUser.User);
+
+        if (request.Password is not null)
+        {
+            universityUser.User.PasswordHash = _userManager.PasswordHasher.HashPassword(universityUser.User, request.Password);
+        }
 
         var updateUserResult = await _userManager.UpdateAsync(universityUser.User);
 
