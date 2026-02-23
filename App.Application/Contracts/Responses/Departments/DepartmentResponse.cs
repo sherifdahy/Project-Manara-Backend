@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace App.Application.Contracts.Responses.Departments;
+﻿namespace App.Application.Contracts.Responses.Departments;
 
 public record DepartmentResponse 
 (
@@ -12,6 +8,7 @@ public record DepartmentResponse
     string Description,
     string HeadOfDepartment,
     string Email,
+    bool IsDeleted,
     int FacultyId
 );
 

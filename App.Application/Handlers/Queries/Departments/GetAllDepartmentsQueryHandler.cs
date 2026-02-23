@@ -1,11 +1,5 @@
 ﻿using App.Application.Contracts.Responses.Departments;
-using App.Application.Contracts.Responses.Faculties;
 using App.Application.Queries.Departments;
-using App.Application.Queries.Faculties;
-using App.Infrastructure.Repository;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Application.Handlers.Queries.Departments;
 
