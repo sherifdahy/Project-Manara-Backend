@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace App.Application.Contracts.Responses.Programs;
+﻿namespace App.Application.Contracts.Responses.Programs;
 
 public record ProgramResponse
 (
@@ -11,5 +7,6 @@ public record ProgramResponse
     string Code,
     string Description,
     int CreditHours,
+    bool IsDeleted,
     int DepartmentId
 );
