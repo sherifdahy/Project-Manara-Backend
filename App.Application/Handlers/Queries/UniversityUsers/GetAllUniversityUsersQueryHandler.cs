@@ -21,7 +21,7 @@ public class GetAllUniversityUsersQueryHandler(
 
         Expression<Func<UniversityUser, bool>> query =
             x => x.UniversityId == request.UniversityId &&
-            (string.IsNullOrEmpty(request.Filters.SearchValue) || x.User.Name.Contains(request.Filters.SearchValue) || x.User.Email!.Contains(request.Filters.SearchValue) || x.User.SSN.Contains(request.Filters.SearchValue)) &&
+            (string.IsNullOrEmpty(request.Filters.SearchValue) || x.User.Name.Contains(request.Filters.SearchValue) || x.User.Email!.Contains(request.Filters.SearchValue) || x.User.NationalId.Contains(request.Filters.SearchValue)) &&
             (request.IncludeDisabled == false || x.User.IsDeleted == false);
 
         var count = await _unitOfWork.UniversityUsers.CountAsync(query);
@@ -40,17 +40,12 @@ public class GetAllUniversityUsersQueryHandler(
         foreach (var x in universityUsers)
         {
             var roles = (await _userManager.GetRolesAsync(x.User)).ToList();
-
-            response.Add(new UniversityUserResponse
-            {
-                Id = x.UserId,
-                Email = x.User.Email!,
-                Name = x.User.Name,
-                SSN = x.User.SSN,
-                Roles = roles,
-                IsDeleted = x.User.IsDeleted,
-                IsDisabled = x.User.IsDisabled,
-            });
+            
+            var temp = x.User.Adapt<UniversityUserResponse>();
+            
+            temp.Roles = roles;
+            
+            response.Add(temp);
         }
 
         return Result.Success(PaginatedList<UniversityUserResponse>.Create(response, count, request.Filters.PageNumber, request.Filters.PageSize));

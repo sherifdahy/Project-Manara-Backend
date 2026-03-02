@@ -2,12 +2,15 @@
 using App.Application.Contracts.Requests.UniversityUsers;
 using App.Infrastructure.Localization.Constants;
 using App.Infrastructure.Localization.Localizers;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace App.Application.Validations.UinversityUsers;
 
-public class UniversityUserRequestValidator : AbstractValidator<UniversityUserRequest>
+public class UpdateUniversityUserRequestValidator : AbstractValidator<UpdateUniversityUserRequest>
 {
-    public UniversityUserRequestValidator(JsonStringLocalizer localizer)
+    public UpdateUniversityUserRequestValidator(JsonStringLocalizer localizer)
     {
         RuleFor(x => x.Name)
             .NotEmpty()
@@ -19,9 +22,9 @@ public class UniversityUserRequestValidator : AbstractValidator<UniversityUserRe
             .MaximumLength(256);
 
         RuleFor(x => x.Password)
-            .NotEmpty()
             .Matches(RegexPatterns.Password)
-            .WithMessage(localizer[UserLocalizationKeys.InvalidPassword, LocalizationFolderNames.User]);
+            .WithMessage(localizer[UserLocalizationKeys.InvalidPassword, LocalizationFolderNames.User])
+            .When(x => !string.IsNullOrWhiteSpace(x.Password));
 
         RuleFor(x => x.NationalId)
             .NotEmpty()

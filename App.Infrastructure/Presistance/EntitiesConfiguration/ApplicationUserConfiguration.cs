@@ -14,11 +14,10 @@ public class ApplicationUserConfiguration : IEntityTypeConfiguration<Application
 
         builder.Property(x => x.Name).HasMaxLength(256);
 
-        builder.Property(x => x.SSN)
-            .HasMaxLength(50)
+        builder.Property(x => x.NationalId)
+            .IsRequired()
+            .HasMaxLength(14)
             .IsUnicode(false);
-
-        var _passwordHasher = new PasswordHasher<ApplicationUser>();
 
         builder.HasData
         (
@@ -33,7 +32,6 @@ public class ApplicationUserConfiguration : IEntityTypeConfiguration<Application
                 SecurityStamp = DefaultUsers.SystemAdminSecurityStamp,
                 EmailConfirmed = true,
                 PasswordHash = DefaultUsers.SystemAdminPassword
-                //PasswordHash = _passwordHasher.HashPassword(null!, DefaultUsers.SystemAdminPassword),
             }
         );
     }

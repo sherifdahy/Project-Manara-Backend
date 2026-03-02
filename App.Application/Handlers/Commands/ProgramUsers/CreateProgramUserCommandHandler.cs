@@ -55,13 +55,6 @@ public class CreateProgramUserCommandHandler(IUnitOfWork unitOfWork
                 var programUser = new ProgramUser()
                 {
                     ProgramId = request.ProgramId,
-                    Gender=request.Gender,
-                    NationalId=request.NationalId,
-                    BirthDate=request.BirthDate,
-                    EnrollmentDate=request.EnrollmentDate,
-                    GPA=request. GPA,
-                    Status=request.Status,
-                    AcademicLevel=request.AcademicLevel,
                     UserId = applicationUser.Id,
                 };
 
@@ -70,13 +63,9 @@ public class CreateProgramUserCommandHandler(IUnitOfWork unitOfWork
 
                 var response = applicationUser.Adapt<ProgramUserResponse>();
 
-                response.Gender = programUser.Gender;
-                response.NationalId = programUser.NationalId;
-                response.BirthDate = programUser.BirthDate;
-                response.EnrollmentDate = programUser.EnrollmentDate;
-                response.GPA = programUser.GPA;
-                response.Status = programUser.Status;
-                response.AcademicLevel = programUser.AcademicLevel;
+                response.Gender = programUser.User.Gender;
+                response.NationalId = programUser.User.NationalId;
+                response.BirthDate = programUser.User.BirthDate;
 
                 response.Roles = request.Roles;
 

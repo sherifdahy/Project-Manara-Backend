@@ -28,7 +28,6 @@ public class UpdateRoleRequestValidator : AbstractValidator<UpdateRoleRequest>
             .WithMessage(localizer[AuthenticationLocalizationKeys.DuplicatedPermissions, LocalizationFolderNames.Authentication])
             .When(x => x.Permissions != null);
 
-
     }
 }
 

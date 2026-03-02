@@ -22,7 +22,7 @@ public class GetAllFacultyUsersQueryHandler(
 
         Expression<Func<FacultyUser, bool>> query = 
             x => x.FacultyId == request.FacultyId && 
-                (string.IsNullOrEmpty(request.Filters.SearchValue) || x.User.Name.Contains(request.Filters.SearchValue) || x.User.Email!.Contains(request.Filters.SearchValue) || x.User.SSN.Contains(request.Filters.SearchValue)) && 
+                (string.IsNullOrEmpty(request.Filters.SearchValue) || x.User.Name.Contains(request.Filters.SearchValue) || x.User.Email!.Contains(request.Filters.SearchValue) || x.User.NationalId.Contains(request.Filters.SearchValue)) && 
                 (request.IncludeDisabled == true || x.User.IsDeleted == false);
 
         var count = await _unitOfWork.FacultyUsers.CountAsync(query);
@@ -47,7 +47,7 @@ public class GetAllFacultyUsersQueryHandler(
                 Id = x.UserId,
                 Email = x.User.Email!,
                 Name = x.User.Name,
-                SSN = x.User.SSN,
+                NationalId = x.User.NationalId,
                 Roles = roles,
                 IsDeleted = x.User.IsDeleted,
                 IsDisabled = x.User.IsDisabled,

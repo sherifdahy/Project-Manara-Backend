@@ -38,7 +38,6 @@ public class UpdateUniversityUserCommandHandler(IUniversityService universitySer
 
         foreach (var role in request.Roles)
         {
-
             var roleEntity = await _roleManager.FindByNameAsync(role);
 
             if (roleEntity is null)

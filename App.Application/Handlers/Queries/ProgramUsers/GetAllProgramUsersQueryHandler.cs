@@ -24,7 +24,7 @@ public class GetAllProgramUsersQueryHandler(IUnitOfWork unitOfWork
                 (string.IsNullOrEmpty(request.Filters.SearchValue)
                 || x.User.Name.Contains(request.Filters.SearchValue)
                 || x.User.Email!.Contains(request.Filters.SearchValue)
-                || x.User.SSN.Contains(request.Filters.SearchValue)) &&
+                || x.User.NationalId.Contains(request.Filters.SearchValue)) &&
                 (request.IncludeDisabled == true || x.User.IsDeleted == false);
 
         var count = await _unitOfWork.ProgramUsers.CountAsync(query);
@@ -49,24 +49,15 @@ public class GetAllProgramUsersQueryHandler(IUnitOfWork unitOfWork
                 Id = x.UserId,
                 Email = x.User.Email!,
                 Name = x.User.Name,
-                SSN = x.User.SSN,
+                NationalId = x.User.NationalId,
                 Roles = roles,
                 IsDisabled = x.User.IsDisabled,
-                Gender=x.Gender,
-                NationalId=x.NationalId,
-                BirthDate=x.BirthDate,
-                EnrollmentDate=x.EnrollmentDate,
-                GPA=x. GPA,
-                Status=x.Status,
-                AcademicLevel=x.AcademicLevel
-
+                Gender = x.User.Gender,
+                BirthDate=x.User.BirthDate,
             });
-
         }
 
         return Result.Success(PaginatedList<ProgramUserResponse>.Create(response, count, request.Filters.PageNumber, request.Filters.PageSize));
-
-
     }
 }
 

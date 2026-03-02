@@ -1,6 +1,11 @@
 {
-  "DuplicatedEmail": "This email already exists.",
-  "DuplicatedSSN": "This SSN already exists.",
-  "NotFound": "User not found.",
-  "Forbidden": "User is not allowed to access this resource."
+  "DuplicatedEmail": "This email address is already in use.",
+  "DuplicatedSSN": "This national ID is already in use.",
+  "NotFound": "The user was not found.",
+  "Forbidden": "You do not have permission to access this resource.",
+
+  "InvalidNationalId": "The national ID must consist of exactly 14 digits.",
+  "InvalidPhoneNumber": "The phone number format is invalid.",
+  "InvalidPassword": "The password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
+  "DuplicateRoles": "Duplicate roles are not allowed."
 }

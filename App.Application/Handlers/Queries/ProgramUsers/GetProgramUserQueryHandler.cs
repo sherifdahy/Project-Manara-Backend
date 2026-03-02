@@ -31,13 +31,9 @@ public class GetProgramUserQueryHandler(IUnitOfWork unitOfWork
 
         var response = programUser.User.Adapt<ProgramUserResponse>();
 
-        response.Gender = programUser.Gender;
-        response.NationalId = programUser.NationalId;
-        response.BirthDate = programUser.BirthDate;
-        response.EnrollmentDate = programUser.EnrollmentDate;
-        response.GPA = programUser.GPA;
-        response.Status = programUser.Status;
-        response.AcademicLevel = programUser.AcademicLevel;
+        response.Gender = programUser.User.Gender;
+        response.NationalId = programUser.User.NationalId;
+        response.BirthDate = programUser.User.BirthDate;
 
         response.Roles = roles.ToList();
 
