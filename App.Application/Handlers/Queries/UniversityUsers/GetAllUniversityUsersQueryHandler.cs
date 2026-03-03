@@ -22,7 +22,7 @@ public class GetAllUniversityUsersQueryHandler(
         Expression<Func<UniversityUser, bool>> query =
             x => x.UniversityId == request.UniversityId &&
             (string.IsNullOrEmpty(request.Filters.SearchValue) || x.User.Name.Contains(request.Filters.SearchValue) || x.User.Email!.Contains(request.Filters.SearchValue) || x.User.NationalId.Contains(request.Filters.SearchValue)) &&
-            (request.IncludeDisabled == false || x.User.IsDeleted == false);
+            (request.IncludeDisabled == true || x.User.IsDeleted == false);
 
         var count = await _unitOfWork.UniversityUsers.CountAsync(query);
 
