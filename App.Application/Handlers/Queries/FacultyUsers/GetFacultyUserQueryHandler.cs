@@ -23,7 +23,6 @@ public class GetFacultyUserQueryHandler(UserErrors userErrors
         if (facultyUser == null)
             return Result.Failure<FacultyUserResponse>(_userErrors.NotFound);
 
-
         if (!await _facultyService.IsUserHasAccessToFaculty(_httpContextAccessor.HttpContext!.User, facultyUser.FacultyId))
             return Result.Failure<FacultyUserResponse>(_userErrors.Forbidden);
 

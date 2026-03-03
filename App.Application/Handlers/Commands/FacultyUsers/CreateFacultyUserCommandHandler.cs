@@ -37,9 +37,7 @@ public class CreateFacultyUserCommandHandler(
 
             if (roleEntity.ScopeId != DefaultScopes.Faculty.Id)
                 return Result.Failure<FacultyUserResponse>(_roleErrors.ScopeIsNotValidForRole);
-             
         }
-
 
         var applicationUser = request.Adapt<ApplicationUser>();
 

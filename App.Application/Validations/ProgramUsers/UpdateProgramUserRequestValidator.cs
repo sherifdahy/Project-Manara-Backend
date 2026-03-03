@@ -1,7 +1,5 @@
 ﻿using App.Application.Constants;
-using App.Application.Contracts.Requests.DepartmentUsers;
 using App.Application.Contracts.Requests.ProgramUsers;
-using App.Infrastructure.Localization;
 using App.Infrastructure.Localization.Constants;
 using App.Infrastructure.Localization.Localizers;
 using System;
@@ -10,9 +8,9 @@ using System.Text;
 
 namespace App.Application.Validations.ProgramUsers;
 
-public class ProgramUserRequestValidator : AbstractValidator<ProgramUserRequest>
+public class UpdateProgramUserRequestValidator : AbstractValidator<UpdateProgramUserRequest>
 {
-    public ProgramUserRequestValidator(JsonStringLocalizer localizer)
+    public UpdateProgramUserRequestValidator(JsonStringLocalizer localizer)
     {
         RuleFor(x => x.Name)
             .NotEmpty()
@@ -24,9 +22,9 @@ public class ProgramUserRequestValidator : AbstractValidator<ProgramUserRequest>
             .MaximumLength(256);
 
         RuleFor(x => x.Password)
-            .NotEmpty()
             .Matches(RegexPatterns.Password)
-            .WithMessage(localizer[UserLocalizationKeys.InvalidPassword, LocalizationFolderNames.User]);
+            .WithMessage(localizer[UserLocalizationKeys.InvalidPassword, LocalizationFolderNames.User])
+            .When(x => !string.IsNullOrWhiteSpace(x.Password));
 
         RuleFor(x => x.NationalId)
             .NotEmpty()
@@ -60,4 +58,3 @@ public class ProgramUserRequestValidator : AbstractValidator<ProgramUserRequest>
             .When(x => x.Roles != null);
     }
 }
-

@@ -77,4 +77,3 @@ public class CreateDepartmentUserCommandHandler(IUnitOfWork unitOfWork
         return Result.Failure<DepartmentUserResponse>(new Error(error.Code, error.Description, StatusCodes.Status400BadRequest));
     }
 }
-

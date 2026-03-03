@@ -42,16 +42,11 @@ public class GetAllDepartmentUsersQueryHandler(IUnitOfWork unitOfWork
         {
             var roles = (await _userManager.GetRolesAsync(x.User)).ToList();
 
-            response.Add(new DepartmentUserResponse
-            {
-                Id = x.UserId,
-                Email = x.User.Email!,
-                Name = x.User.Name,
-                NationalId = x.User.NationalId,
-                Roles = roles,
-                IsDeleted = x.User.IsDeleted,
-                IsDisabled = x.User.IsDisabled,
-            });
+            var temp = x.User.Adapt<DepartmentUserResponse>();
+
+            temp.Roles = roles;
+
+            response.Add(temp);
         }
 
         return Result.Success(PaginatedList<DepartmentUserResponse>.Create(response, count, request.Filters.PageNumber, request.Filters.PageSize));

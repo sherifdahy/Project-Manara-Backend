@@ -52,7 +52,7 @@ public class ProgramUsersController(IMediator mediator) : ControllerBase
     [HttpPut("{id}")]
     [RequireUserAccess("id")]
     [HasPermission(Permissions.UpdateProgramUsers)]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] ProgramUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateProgramUserRequest request, CancellationToken cancellationToken)
     {
         var command = request.Adapt<UpdateProgramUserCommand>() with { UserId = id };
         var result = await _mediator.Send(command, cancellationToken);

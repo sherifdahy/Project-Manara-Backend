@@ -3,29 +3,10 @@
   "WorkspaceRootPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\controllers\\universityusers\\universityuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\universityusers\\universityuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\validations\\programusers\\updateprogramuserrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\contracts\\responses\\universityuser\\universityuserresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\handlers\\commands\\authentications\\refreshtokencommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\validations\\programusers\\programuserrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\contracts\\requests\\programusers\\programuserrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\commands\\programusers\\createprogramusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\contracts\\responses\\authentications\\authenticationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\commands\\universityusers\\togglestatusuniversityusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|f:\\graduation-project\\project-manara-backend\\app.application\\contracts\\responses\\facultyusers\\facultyuserresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -44,105 +25,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UniversityUsersController.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
-              "RelativeDocumentMoniker": "App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
-              "RelativeToolTip": "App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAwwD0AAABGAAAAAAAAAA==",
+              "Title": "UpdateProgramUserRequestValidator.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Validations\\ProgramUsers\\UpdateProgramUserRequestValidator.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Validations\\ProgramUsers\\UpdateProgramUserRequestValidator.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Validations\\ProgramUsers\\UpdateProgramUserRequestValidator.cs",
+              "RelativeToolTip": "..\\App.Application\\Validations\\ProgramUsers\\UpdateProgramUserRequestValidator.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAArwAwAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:41:12.988Z",
+              "WhenOpened": "2026-03-03T09:57:09.731Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UniversityUserResponse.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\UniversityUser\\UniversityUserResponse.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\UniversityUser\\UniversityUserResponse.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\UniversityUser\\UniversityUserResponse.cs",
-              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\UniversityUser\\UniversityUserResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAoAAAAAAAAAA==",
+              "Title": "FacultyUserResponse.cs",
+              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\FacultyUsers\\FacultyUserResponse.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\FacultyUsers\\FacultyUserResponse.cs",
+              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\FacultyUsers\\FacultyUserResponse.cs",
+              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\FacultyUsers\\FacultyUserResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:38:37.174Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RefreshTokenCommandHandler.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Authentications\\RefreshTokenCommandHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Authentications\\RefreshTokenCommandHandler.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Authentications\\RefreshTokenCommandHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Authentications\\RefreshTokenCommandHandler.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAAADMAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:38:19.171Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProgramUserRequestValidator.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Validations\\ProgramUsers\\ProgramUserRequestValidator.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Validations\\ProgramUsers\\ProgramUserRequestValidator.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Validations\\ProgramUsers\\ProgramUserRequestValidator.cs",
-              "RelativeToolTip": "..\\App.Application\\Validations\\ProgramUsers\\ProgramUserRequestValidator.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAqwBkAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:38:13.076Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProgramUserRequest.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\ProgramUsers\\ProgramUserRequest.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Requests\\ProgramUsers\\ProgramUserRequest.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\ProgramUsers\\ProgramUserRequest.cs",
-              "RelativeToolTip": "..\\App.Application\\Contracts\\Requests\\ProgramUsers\\ProgramUserRequest.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:38:00.455Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateProgramUserCommand.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Commands\\ProgramUsers\\CreateProgramUserCommand.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Commands\\ProgramUsers\\CreateProgramUserCommand.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Commands\\ProgramUsers\\CreateProgramUserCommand.cs",
-              "RelativeToolTip": "..\\App.Application\\Commands\\ProgramUsers\\CreateProgramUserCommand.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAswA8AAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:37:52.43Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AuthenticationResponse.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Authentications\\AuthenticationResponse.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\Authentications\\AuthenticationResponse.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Authentications\\AuthenticationResponse.cs",
-              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Authentications\\AuthenticationResponse.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAuwA0AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:37:48.115Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ToggleStatusUniversityUserCommand.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Commands\\UniversityUsers\\ToggleStatusUniversityUserCommand.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Commands\\UniversityUsers\\ToggleStatusUniversityUserCommand.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.Application\\Commands\\UniversityUsers\\ToggleStatusUniversityUserCommand.cs",
-              "RelativeToolTip": "..\\App.Application\\Commands\\UniversityUsers\\ToggleStatusUniversityUserCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:37:44.193Z",
+              "WhenOpened": "2026-03-03T09:56:50.776Z",
               "EditorCaption": ""
             }
           ]

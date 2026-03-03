@@ -1,20 +1,20 @@
-﻿using App.Application.Contracts.Responses.FacultyUsers;
-using App.Core.Enums;
-using System.Security.Claims;
+﻿using App.Core.Enums;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace App.Application.Commands.FacultyUsers;
+namespace App.Application.Contracts.Requests.FacultyUsers;
 
-public record CreateFacultyUserCommand : IRequest<Result<FacultyUserResponse>>
+public class UpdateFacultyUserRequest
 {
-    public int FacultyId { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
+    public string? Password { get; set; }
     public string NationalId { get; set; } = string.Empty;
     public DateOnly BirthDate { get; set; }
     public Gender Gender { get; set; }
     public Religion Religion { get; set; }
     public string PhoneNumber { get; set; } = string.Empty;
-    public bool IsDisabled { get; set; }
+    public bool IsDisabled { get; set; } = false;
     public List<string> Roles { get; set; } = [];
 }

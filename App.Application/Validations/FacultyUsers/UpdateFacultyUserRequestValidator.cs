@@ -1,18 +1,16 @@
 ﻿using App.Application.Constants;
-using App.Application.Contracts.Requests.DepartmentUsers;
-using App.Application.Contracts.Requests.ProgramUsers;
-using App.Infrastructure.Localization;
+using App.Application.Contracts.Requests.FacultyUsers;
 using App.Infrastructure.Localization.Constants;
 using App.Infrastructure.Localization.Localizers;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Application.Validations.ProgramUsers;
+namespace App.Application.Validations.FacultyUsers;
 
-public class ProgramUserRequestValidator : AbstractValidator<ProgramUserRequest>
+public class UpdateFacultyUserRequestValidator : AbstractValidator<UpdateFacultyUserRequest>
 {
-    public ProgramUserRequestValidator(JsonStringLocalizer localizer)
+    public UpdateFacultyUserRequestValidator(JsonStringLocalizer localizer)
     {
         RuleFor(x => x.Name)
             .NotEmpty()
@@ -24,9 +22,9 @@ public class ProgramUserRequestValidator : AbstractValidator<ProgramUserRequest>
             .MaximumLength(256);
 
         RuleFor(x => x.Password)
-            .NotEmpty()
             .Matches(RegexPatterns.Password)
-            .WithMessage(localizer[UserLocalizationKeys.InvalidPassword, LocalizationFolderNames.User]);
+            .WithMessage(localizer[UserLocalizationKeys.InvalidPassword, LocalizationFolderNames.User])
+            .When(x => !string.IsNullOrWhiteSpace(x.Password));
 
         RuleFor(x => x.NationalId)
             .NotEmpty()
@@ -60,4 +58,3 @@ public class ProgramUserRequestValidator : AbstractValidator<ProgramUserRequest>
             .When(x => x.Roles != null);
     }
 }
-

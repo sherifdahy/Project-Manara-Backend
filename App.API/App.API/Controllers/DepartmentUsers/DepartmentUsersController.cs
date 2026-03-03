@@ -51,7 +51,7 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     [HttpPut("{id}")]
     [RequireUserAccess("id")]
     [HasPermission(Permissions.UpdateDepartmentUsers)]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] DepartmentUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateDepartmentUserRequest request, CancellationToken cancellationToken)
     {
         var command = request.Adapt<UpdateDepartmentUserCommand>() with { UserId = id };
         var result = await _mediator.Send(command, cancellationToken);

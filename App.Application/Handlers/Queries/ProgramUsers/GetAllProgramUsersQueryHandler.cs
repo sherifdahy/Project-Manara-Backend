@@ -44,17 +44,11 @@ public class GetAllProgramUsersQueryHandler(IUnitOfWork unitOfWork
         {
             var roles = (await _userManager.GetRolesAsync(x.User)).ToList();
 
-            response.Add(new ProgramUserResponse
-            {
-                Id = x.UserId,
-                Email = x.User.Email!,
-                Name = x.User.Name,
-                NationalId = x.User.NationalId,
-                Roles = roles,
-                IsDisabled = x.User.IsDisabled,
-                Gender = x.User.Gender,
-                BirthDate=x.User.BirthDate,
-            });
+            var temp = x.User.Adapt<ProgramUserResponse>();
+
+            temp.Roles = roles;
+
+            response.Add(temp);
         }
 
         return Result.Success(PaginatedList<ProgramUserResponse>.Create(response, count, request.Filters.PageNumber, request.Filters.PageSize));

@@ -1,5 +1,6 @@
 ﻿using App.Application.Commands.DepartmentUsers;
 using App.Core.Consts;
+using App.Core.Entities.Personnel;
 
 namespace App.Application.Handlers.Commands.DepartmentUsers;
 
@@ -47,6 +48,11 @@ public class UpdateDepartmentUserCommandHandler(IUnitOfWork unitOfWork
         }
 
         request.Adapt(departmentUser.User);
+
+        if (request.Password is not null)
+        {
+            departmentUser.User.PasswordHash = _userManager.PasswordHasher.HashPassword(departmentUser.User, request.Password);
+        }
 
         var updateUserResult = await _userManager.UpdateAsync(departmentUser.User);
 

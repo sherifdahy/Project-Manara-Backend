@@ -51,6 +51,11 @@ public class UpdateProgramUserCommandHandler(IUnitOfWork unitOfWork
 
         request.Adapt(programUser.User);
 
+        if (request.Password != null)
+        {
+            programUser.User.PasswordHash = _userManager.PasswordHasher.HashPassword(programUser.User, request.Password);
+        }
+
         var updateUserResult = await _userManager.UpdateAsync(programUser.User);
 
         if (updateUserResult.Succeeded)
