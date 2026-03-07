@@ -49,15 +49,6 @@ public class ProgramUserRequestValidator : AbstractValidator<ProgramUserRequest>
         RuleFor(x => x.Religion)
             .IsInEnum()
             .Must(x => x != default);
-
-        RuleFor(x => x.Roles)
-            .NotNull()
-            .NotEmpty();
-
-        RuleFor(x => x.Roles)
-            .Must(r => r.Distinct().Count() == r.Count())
-            .WithMessage(localizer[UserLocalizationKeys.DuplicateRoles, LocalizationFolderNames.User])
-            .When(x => x.Roles != null);
     }
 }
 

@@ -1,4 +1,6 @@
-﻿namespace App.Core.Entities.Universities;
+﻿using App.Core.Entities.Relations;
+
+namespace App.Core.Entities.Universities;
 
 public class Subject
 {
@@ -7,10 +9,11 @@ public class Subject
     public string Code { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public int CreditHours { get; set; }
-
-    public int ProgramId { get; set; }
-    public Program Program { get; set; } = default!;
-
-    public ICollection<FAQ> FAQs { get; set; } = new HashSet<FAQ>();
+    public int ParentSubjectId { get; set; }
+    public Subject ParentSubject { get; set; } = default!;
+    public int FacultyId { get; set; }
+    public Faculty Faculty { get; set; } = default!;
+    public ICollection<ProgramSubject> ProgramSubjects { get; set; } = new HashSet<ProgramSubject>();
+    public ICollection<DepartmentUserSubjectYearTermPeriod> DepartmentUserSubjectYearTermPeriods { get; set; } = new HashSet<DepartmentUserSubjectYearTermPeriod>();
 }
 

@@ -5,22 +5,22 @@ using System.Linq.Expressions;
 
 namespace App.Application.Handlers.Queries.ProgramUsers;
 
-public class GetAllProgramUsersQueryHandler(IUnitOfWork unitOfWork
+public class GetAllProgramUsersByProgramIdQueryHandler(IUnitOfWork unitOfWork
     ,ProgramErrors programErrors
-    ,UserManager<ApplicationUser> userManager) : IRequestHandler<GetAllProgramUsersQuery, Result<PaginatedList<ProgramUserResponse>>>
+    ,UserManager<ApplicationUser> userManager) : IRequestHandler<GetAllProgramUsersByProgramIdQuery, Result<PaginatedList<ProgramUserResponse>>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly ProgramErrors _programErrors = programErrors;
     private readonly UserManager<ApplicationUser> _userManager = userManager;
 
 
-    public async Task<Result<PaginatedList<ProgramUserResponse>>> Handle(GetAllProgramUsersQuery request, CancellationToken cancellationToken)
+    public async Task<Result<PaginatedList<ProgramUserResponse>>> Handle(GetAllProgramUsersByProgramIdQuery request, CancellationToken cancellationToken)
     {
         if (await _unitOfWork.Programs.GetByIdAsync(request.ProgramId) is null)
             return Result.Failure<PaginatedList<ProgramUserResponse>>(_programErrors.NotFound);
 
         Expression<Func<ProgramUser, bool>> query =
-            x => x.ProgramId == request.ProgramId &&
+            x => x.ProgramUserProgramYearTerms.Any(x=>x.ProgramId == request.ProgramId) &&
                 (string.IsNullOrEmpty(request.Filters.SearchValue)
                 || x.User.Name.Contains(request.Filters.SearchValue)
                 || x.User.Email!.Contains(request.Filters.SearchValue)

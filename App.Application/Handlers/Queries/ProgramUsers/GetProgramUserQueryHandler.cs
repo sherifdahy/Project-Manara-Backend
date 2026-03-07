@@ -24,16 +24,10 @@ public class GetProgramUserQueryHandler(IUnitOfWork unitOfWork
         if (programUser == null)
             return Result.Failure<ProgramUserResponse>(_userErrors.NotFound);
 
-        if (!await _programService.IsUserHasAccessToProgram(_httpContextAccessor.HttpContext!.User, programUser.ProgramId))
-            return Result.Failure<ProgramUserResponse>(_userErrors.Forbidden);
 
         var roles = await _userManager.GetRolesAsync(programUser.User);
 
         var response = programUser.User.Adapt<ProgramUserResponse>();
-
-        response.Gender = programUser.User.Gender;
-        response.NationalId = programUser.User.NationalId;
-        response.BirthDate = programUser.User.BirthDate;
 
         response.Roles = roles.ToList();
 

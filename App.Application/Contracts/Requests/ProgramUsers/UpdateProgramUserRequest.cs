@@ -16,5 +16,4 @@ public class UpdateProgramUserRequest
     public Religion Religion { get; set; }
     public string PhoneNumber { get; set; } = string.Empty;
     public bool IsDisabled { get; set; } = false;
-    public List<string> Roles { get; set; } = [];
 }

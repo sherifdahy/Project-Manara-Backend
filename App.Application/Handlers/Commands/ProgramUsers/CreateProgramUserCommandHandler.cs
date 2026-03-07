@@ -2,6 +2,7 @@
 using App.Application.Contracts.Responses.ProgramUsers;
 using App.Core.Consts;
 using App.Core.Entities.Personnel;
+using App.Infrastructure.Abstractions.Consts;
 
 namespace App.Application.Handlers.Commands.ProgramUsers;
 
@@ -9,36 +10,22 @@ public class CreateProgramUserCommandHandler(IUnitOfWork unitOfWork
     ,ProgramErrors programErrors
     ,UserManager<ApplicationUser> userManager
     ,UserErrors userErrors
-    ,RoleManager<ApplicationRole> roleManager
-    ,RoleErrors roleErrors) : IRequestHandler<CreateProgramUserCommand, Result<ProgramUserResponse>>
+    ,FacultyErrors facultyErrors) : IRequestHandler<CreateProgramUserCommand, Result<ProgramUserResponse>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
-    private readonly ProgramErrors _programErrors = programErrors;
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly UserErrors _userErrors = userErrors;
-    private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
-    private readonly RoleErrors _roleErrors = roleErrors;
+    private readonly FacultyErrors _facultyErrors = facultyErrors;
+
 
     public async Task<Result<ProgramUserResponse>> Handle(CreateProgramUserCommand request, CancellationToken cancellationToken)
     {
-        if (await _unitOfWork.Programs.GetByIdAsync(request.ProgramId) is null)
-            return Result.Failure<ProgramUserResponse>(_programErrors.NotFound);
+        if (await _unitOfWork.Fauclties.GetByIdAsync(request.FacultyId) is null)
+            return Result.Failure<ProgramUserResponse>(_facultyErrors.NotFound);
 
         if (await _userManager.FindByEmailAsync(request.Email) is not null)
             return Result.Failure<ProgramUserResponse>(_userErrors.DuplicatedEmail);
 
-
-        foreach (var role in request.Roles)
-        {
-            var roleEntity = await _roleManager.FindByNameAsync(role);
-
-            if (roleEntity is null)
-                return Result.Failure<ProgramUserResponse>(_roleErrors.NotFound);
-
-            if (roleEntity.ScopeId != DefaultScopes.Program.Id)
-                return Result.Failure<ProgramUserResponse>(_roleErrors.ScopeIsNotValidForRole);
-
-        }
 
         var applicationUser = request.Adapt<ApplicationUser>();
 
@@ -48,13 +35,13 @@ public class CreateProgramUserCommandHandler(IUnitOfWork unitOfWork
 
         if (creationResult.Succeeded)
         {
-            var roleAssignResult = await _userManager.AddToRolesAsync(applicationUser, request.Roles);
+            var roleAssignResult = await _userManager.AddToRoleAsync(applicationUser, DefaultRoles.GPAStudent);
 
             if (roleAssignResult.Succeeded)
             {
                 var programUser = new ProgramUser()
                 {
-                    ProgramId = request.ProgramId,
+                    FacultyId = request.FacultyId,
                     UserId = applicationUser.Id,
                 };
 
@@ -66,8 +53,6 @@ public class CreateProgramUserCommandHandler(IUnitOfWork unitOfWork
                 response.Gender = programUser.User.Gender;
                 response.NationalId = programUser.User.NationalId;
                 response.BirthDate = programUser.User.BirthDate;
-
-                response.Roles = request.Roles;
 
                 return Result.Success(response);
             }

@@ -13,7 +13,5 @@ public class ProgramUserConfiguration : IEntityTypeConfiguration<ProgramUser>
         builder.Property(fu => fu.UserId)
             .IsRequired();
 
-        builder.Property(fu => fu.ProgramId)
-            .IsRequired();
     }
 }

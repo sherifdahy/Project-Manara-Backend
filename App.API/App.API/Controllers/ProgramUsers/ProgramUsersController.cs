@@ -23,11 +23,20 @@ public class ProgramUsersController(IMediator mediator) : ControllerBase
     [HasPermission(Permissions.GetProgramUsers)]
     public async Task<IActionResult> GetAll([FromQuery] bool includeDisabled, [FromQuery] RequestFilters filters, [FromRoute] int programId, CancellationToken cancellationToken)
     {
-        var query = new GetAllProgramUsersQuery() with { ProgramId = programId, IncludeDisabled = includeDisabled, Filters = filters };
+        var query = new GetAllProgramUsersByProgramIdQuery() with { ProgramId = programId, IncludeDisabled = includeDisabled, Filters = filters };
         var result = await _mediator.Send(query, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
+    [HttpGet("/api/faculties/{facultyId}/[controller]")]
+    [RequireFacultyAccess("facultyId")]
+    [HasPermission(Permissions.GetProgramUsers)]
+    public async Task<IActionResult> GetAll([FromRoute] int facultyId, [FromQuery] bool includeDisabled, [FromQuery] RequestFilters filters, CancellationToken cancellationToken)
+    {
+        var query = new GetAllProgramUserByFacultyIdQuery() with { FacultyId = facultyId, IncludeDisabled = includeDisabled, Filters = filters };
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
 
     [HttpGet("{id}")]
     [RequireUserAccessAttribute("id")]
@@ -39,22 +48,22 @@ public class ProgramUsersController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
-    [HttpPost("/api/programs/{programId}/[controller]")]
-    [RequireProgramAccess("programId")]
+    [HttpPost("/api/faculties/{facultyId}/[controller]")]
+    [RequireProgramAccess("facultyId")]
     [HasPermission(Permissions.CreateProgramUsers)]
-    public async Task<IActionResult> Create([FromRoute] int programId, [FromBody] ProgramUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] ProgramUserRequest request, CancellationToken cancellationToken)
     {
-        var command = request.Adapt<CreateProgramUserCommand>() with { ProgramId = programId };
+        var command = request.Adapt<CreateProgramUserCommand>() with { FacultyId = facultyId };
         var result = await _mediator.Send(command, cancellationToken);
         return result.IsSuccess ? CreatedAtAction(nameof(Get), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 
-    [HttpPut("{id}")]
-    [RequireUserAccess("id")]
+    [HttpPut("/api/programs/{programId}/programUsers/{programUserId}")]
+    [RequireUserAccess("programUserId")]
     [HasPermission(Permissions.UpdateProgramUsers)]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateProgramUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Update([FromRoute] int programId, [FromRoute] int programUserId, [FromBody] UpdateProgramUserRequest request, CancellationToken cancellationToken)
     {
-        var command = request.Adapt<UpdateProgramUserCommand>() with { UserId = id };
+        var command = request.Adapt<UpdateProgramUserCommand>() with { UserId = programUserId , ProgramId = programId };
         var result = await _mediator.Send(command, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }

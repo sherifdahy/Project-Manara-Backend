@@ -46,10 +46,6 @@ public class ProgramService(UserManager<ApplicationUser> userManager,IUnitOfWork
         var programUser = await _unitOfWork.ProgramUsers
             .FindAsync(fu => fu.UserId == user.GetUserId());
 
-        if (programUser != null)
-            return requestProgramId == programUser.ProgramId;
-
-
         return false;
     }
 }

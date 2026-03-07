@@ -95,12 +95,6 @@ public class AuthenticationService(UserManager<ApplicationUser> userManager
         if (departmentUser != null)
             facultyId = departmentUser.Department.FacultyId;
 
-        var programUser = await _unitOfWork.ProgramUsers
-            .FindAsync(du => du.UserId == user.Id, du => du.Include(p=>p.Program).ThenInclude(i=>i.Department));
-
-        if (programUser != null)
-            facultyId = programUser.Program.Department.FacultyId;
-
         return facultyId;
     }
     private static string GenerateRefreshToken()

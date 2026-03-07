@@ -6,7 +6,7 @@ public class SemesterExamSeatingStudent
     public int ExamSeatingId { get; set; }
     public int StudentId { get; set; }
 
-    public Semester Semester { get; set; } = default!;
+    public Term Semester { get; set; } = default!;
     public ExamSeating ExamSeating { get; set; } = default!;
     public ProgramUser Student { get; set; } = default!;
 }

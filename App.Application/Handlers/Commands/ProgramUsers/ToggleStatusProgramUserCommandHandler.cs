@@ -12,8 +12,6 @@ public class ToggleStatusProgramUserCommandHandler(IUnitOfWork unitOfWork
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly UserErrors _userErrors = userErrors;
-    private readonly IProgramService _programService = programService;
-    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
     private readonly UserManager<ApplicationUser> _userManager = userManager;
 
 
@@ -24,9 +22,6 @@ public class ToggleStatusProgramUserCommandHandler(IUnitOfWork unitOfWork
 
         if (programUser == null)
             return Result.Failure(_userErrors.NotFound);
-
-        if (!await _programService.IsUserHasAccessToProgram(_httpContextAccessor.HttpContext!.User, programUser.ProgramId))
-            return Result.Failure<FacultyUserResponse>(_userErrors.Forbidden);
 
         programUser.User.IsDeleted = !programUser.User.IsDeleted;
 

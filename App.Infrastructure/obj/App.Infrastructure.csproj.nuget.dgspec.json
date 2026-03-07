@@ -590,6 +590,10 @@
               "target": "Package",
               "version": "[10.0.0, )"
             },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.15.1, )"
+            },
             "System.Linq.Dynamic.Core": {
               "target": "Package",
               "version": "[1.7.1, )"

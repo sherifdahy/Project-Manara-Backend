@@ -31,7 +31,7 @@ public class GetUniversityQueryHandler(UniversityErrors errors
                 un.Website,
                 un.YearOfEstablishment,
                 _context.FacultyUsers.Count(fu=>fu.Faculty.UniversityId==request.Id),
-                _context.ProgramUsers.Count(pu=>pu.Program.Department.Faculty.UniversityId==request.Id),
+                _context.ProgramUsers.Count(pu=>pu.Faculty.UniversityId==request.Id),
                 un.Faculties.Where(f => !f.IsDeleted).Count(),
                 un.Faculties
                     .Where(f => !f.IsDeleted)
@@ -44,7 +44,7 @@ public class GetUniversityQueryHandler(UniversityErrors errors
                         f.Website,
                         f.IsDeleted,
                         _context.FacultyUsers.Count(fu => fu.FacultyId == f.Id),
-                        _context.ProgramUsers.Count(pu => pu.Program.Department.FacultyId == f.Id)
+                        _context.ProgramUsers.Count(pu => pu.FacultyId == f.Id)
                     ))
                     .ToList()
             ))

@@ -2,7 +2,7 @@
 
 namespace App.Application.Queries.ProgramUsers;
 
-public record GetAllProgramUsersQuery : IRequest<Result<PaginatedList<ProgramUserResponse>>>
+public record GetAllProgramUsersByProgramIdQuery : IRequest<Result<PaginatedList<ProgramUserResponse>>>
 {
     public bool? IncludeDisabled { get; set; }
     public RequestFilters Filters { get; set; } = default!;

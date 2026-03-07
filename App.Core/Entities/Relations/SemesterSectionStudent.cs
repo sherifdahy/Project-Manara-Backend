@@ -6,7 +6,7 @@ public class SemesterSectionStudent
     public int SectionId { get; set; }
     public int StudentId { get; set; }
 
-    public Semester Semester { get; set; } = default!;
+    public Term Semester { get; set; } = default!;
     public Section Section { get; set; } = default!;
     public ProgramUser Student { get; set; } = default!;
 }

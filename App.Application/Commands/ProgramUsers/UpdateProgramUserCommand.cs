@@ -5,6 +5,7 @@ namespace App.Application.Commands.ProgramUsers;
 public record UpdateProgramUserCommand : IRequest<Result>
 {
     public int UserId { get; set; }
+    public int ProgramId { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
@@ -14,5 +15,4 @@ public record UpdateProgramUserCommand : IRequest<Result>
     public Religion Religion { get; set; }
     public string PhoneNumber { get; set; } = string.Empty;
     public bool IsDisabled { get; set; }
-    public List<string> Roles { get; set; } = [];
 }

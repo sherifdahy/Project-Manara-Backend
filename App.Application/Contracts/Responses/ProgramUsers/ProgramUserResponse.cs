@@ -8,6 +8,8 @@ namespace App.Application.Contracts.Responses.ProgramUsers;
 public record ProgramUserResponse
 {
     public int Id { get; set; }
+    public int ProgramId { get; set; }
+    public int DepartmentId { get; set; }
     public string Name { get; set; } = string.Empty;
     public string NationalId { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;

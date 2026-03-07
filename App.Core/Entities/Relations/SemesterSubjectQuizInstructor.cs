@@ -9,7 +9,7 @@ public class SemesterSubjectQuizInstructor
     public int QuizId { get; set; }
     public int InstructorId { get; set; }
 
-    public Semester Semester { get; set; } = default!;
+    public Term Semester { get; set; } = default!;
     public Subject Subject { get; set; } = default!;
     public Quiz Quiz { get; set; } = default!;
     public Instructor Instructor { get; set; } = default!;

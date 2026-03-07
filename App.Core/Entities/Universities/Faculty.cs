@@ -12,7 +12,9 @@ public class Faculty
     public bool IsDeleted { get; set; }
     public int UniversityId { get; set; }
     public University University { get; set; } = default!;
+    public ICollection<Day> Days { get; set; } = new HashSet<Day>();
     public ICollection<FacultyUser> FacultyUsers { get; set; } = new HashSet<FacultyUser>();
+    public ICollection<ProgramUser> ProgramUsers { get; set; } = new HashSet<ProgramUser>();
     public ICollection<Department> Departments { get; set; } = new HashSet<Department>();
     public ICollection<RoleClaimOverride> RoleClaimOverrides { get; set; } = new HashSet<RoleClaimOverride>();
 }
