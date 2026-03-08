@@ -8,6 +8,7 @@ public static class SubjectLocalizationKeys
 {
     public static readonly string NotFound = nameof(NotFound);
     public static readonly string DuplicatedName = nameof(DuplicatedName);
+    public static readonly string SubjectDependItSelf = nameof(SubjectDependItSelf);
 
 
 }

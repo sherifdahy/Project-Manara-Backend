@@ -1,4 +1,7 @@
-﻿using App.Application.Commands.Subjects;
+﻿using App.API.Attributes;
+using App.Application.Commands.Departments;
+using App.Application.Commands.Subjects;
+using App.Application.Contracts.Requests.Departments;
 using App.Application.Contracts.Requests.Subjects;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
@@ -25,6 +28,14 @@ public class SubjectsController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
         //TODO
         //return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
+    }
+
+    [HttpPut("{id}")]
+    [HasPermission(Permissions.UpdateSubjects)]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] SubjectRequest request, CancellationToken cancellationToken = default)
+    {
+        var result = await _mediator.Send(request.Adapt<UpdateSubjectCommand>() with { Id = id }, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 
 }

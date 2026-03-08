@@ -19,4 +19,8 @@ public class SubjectErrors
 
     public Error DuplicatedName
     => new Error("Subject.DuplicatedName", _localizer[SubjectLocalizationKeys.DuplicatedName, LocalizationFolderNames.Subject], StatusCodes.Status409Conflict);
+
+    public Error SubjectDependItSelf
+    => new Error("Subject.SubjectDependItSelf", _localizer[SubjectLocalizationKeys.SubjectDependItSelf, LocalizationFolderNames.Subject]
+        , StatusCodes.Status400BadRequest);
 }

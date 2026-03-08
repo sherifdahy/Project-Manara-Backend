@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\subjects\\createsubjectcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\subjects\\updatesubjectcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\subjects\\subjectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,14 +34,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CreateSubjectCommandHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Subjects\\CreateSubjectCommandHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Subjects\\CreateSubjectCommandHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Subjects\\CreateSubjectCommandHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Subjects\\CreateSubjectCommandHandler.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAmwEMAAAAPAAAAAAAAAA==",
+              "Title": "UpdateSubjectCommandHandler.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Subjects\\UpdateSubjectCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Subjects\\UpdateSubjectCommandHandler.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Subjects\\UpdateSubjectCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Subjects\\UpdateSubjectCommandHandler.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAMwGkAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T13:44:42.348Z",
+              "WhenOpened": "2026-03-08T17:14:06.203Z",
               "EditorCaption": ""
             },
             {
@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Departments\\DepartmentsController.cs",
               "RelativeToolTip": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwDQAAABZAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwDQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-08T13:29:17.431Z",
               "EditorCaption": ""
@@ -65,7 +65,7 @@
               "RelativeDocumentMoniker": "App.API\\Controllers\\Subjects\\SubjectsController.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Subjects\\SubjectsController.cs",
               "RelativeToolTip": "App.API\\Controllers\\Subjects\\SubjectsController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAABEAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAwwB4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-08T13:07:59.957Z",
               "EditorCaption": ""
