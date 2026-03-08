@@ -39,7 +39,7 @@ public class ProgramUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [RequireUserAccessAttribute("id")]
+    [RequireUserAccess("id")]
     [HasPermission(Permissions.GetProgramUsers)]
     public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
     {
@@ -58,12 +58,12 @@ public class ProgramUsersController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? CreatedAtAction(nameof(Get), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 
-    [HttpPut("/api/programs/{programId}/programUsers/{programUserId}")]
+    [HttpPut("{programUserId}")]
     [RequireUserAccess("programUserId")]
     [HasPermission(Permissions.UpdateProgramUsers)]
-    public async Task<IActionResult> Update([FromRoute] int programId, [FromRoute] int programUserId, [FromBody] UpdateProgramUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Update([FromRoute] int programUserId, [FromBody] UpdateProgramUserRequest request, CancellationToken cancellationToken)
     {
-        var command = request.Adapt<UpdateProgramUserCommand>() with { UserId = programUserId , ProgramId = programId };
+        var command = request.Adapt<UpdateProgramUserCommand>() with { UserId = programUserId };
         var result = await _mediator.Send(command, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
