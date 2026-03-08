@@ -814,7 +814,7 @@ namespace App.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ParentSubjectId")
+                    b.Property<int?>("ParentSubjectId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProgramId")
@@ -1661,9 +1661,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasOne("App.Core.Entities.Universities.Subject", "ParentSubject")
                         .WithMany()
-                        .HasForeignKey("ParentSubjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("ParentSubjectId");
 
                     b.HasOne("App.Core.Entities.Universities.Program", null)
                         .WithMany("Subjects")

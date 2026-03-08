@@ -9,7 +9,7 @@ public class Subject
     public string Code { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public int CreditHours { get; set; }
-    public int ParentSubjectId { get; set; }
+    public int? ParentSubjectId { get; set; }
     public Subject ParentSubject { get; set; } = default!;
     public int FacultyId { get; set; }
     public Faculty Faculty { get; set; } = default!;
