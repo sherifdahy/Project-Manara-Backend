@@ -39,4 +39,14 @@ public class SubjectsController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 
+    [HttpDelete("{id}/toggle-status")]
+    [RequireSubjectAccess("id")]
+    [HasPermission(Permissions.ToggleStatusSubjects)]
+    public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
+    {
+        var command = new ToggleStatusSubjectCommand(id);
+        var result = await _mediator.Send(command, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
+    }
+
 }
