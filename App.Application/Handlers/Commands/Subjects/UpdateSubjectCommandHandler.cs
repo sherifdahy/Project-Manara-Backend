@@ -45,6 +45,12 @@ public class UpdateSubjectCommandHandler(IUnitOfWork unitOfWork
 
         foreach (var newPrerequisiteId in newPrerequisiteIds)
         {
+            var isPrerequisiteExists = await _unitOfWork.Subjects
+                .IsExistAsync(x => x.FacultyId == subject.FacultyId && x.Id == newPrerequisiteId);
+
+            if (!isPrerequisiteExists)
+                return Result.Failure(_subjectErrors.NotFound);
+
             subject.Prerequisites.Add(new SubjectPrerequisite
             {
                 PrerequisiteId = newPrerequisiteId

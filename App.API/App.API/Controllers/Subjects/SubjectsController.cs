@@ -31,6 +31,7 @@ public class SubjectsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [RequireSubjectAccess("id")]
     [HasPermission(Permissions.UpdateSubjects)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] SubjectRequest request, CancellationToken cancellationToken = default)
     {
