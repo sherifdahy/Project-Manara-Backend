@@ -30,6 +30,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
     public DbSet<Department> Departments { get; set; }
     public DbSet<Program> Programs { get; set; }
     public DbSet<Subject> Subjects { get; set; }
+    public DbSet<SubjectPrerequisite> SubjectPrerequisites { get; set; }
 
     #endregion
 

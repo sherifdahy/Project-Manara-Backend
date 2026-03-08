@@ -80,7 +80,13 @@ public class Permissions
     public const string CreateScopes = "scopes:create";
     public const string UpdateScopes = "scopes:update";
     public const string ToggleStatusScopes = "scopes:toggleStatus";
-    
+
+    //Subject Permissions
+    public const string GetSubjects = "subjects:read";
+    public const string CreateSubjects = "subjects:create";
+    public const string UpdateSubjects = "subjects:update";
+    public const string ToggleStatusSubjects = "subjects:toggleStatus";
+
     public static IList<string> GetAllPermissions()
     {
         return typeof(Permissions).GetFields().Select(x=>x.GetValue(x) as string).ToList()!;
