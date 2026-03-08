@@ -32,6 +32,8 @@ public class UnitOfWork : IUnitOfWork
     public IRepository<Faculty> Fauclties => new Repository<Faculty>(_context);
     public IRepository<Department> Departments => new Repository<Department>(_context);
     public IRepository<Program> Programs => new Repository<Program>(_context);
+    public IRepository<Subject> Subjects => new Repository<Subject>(_context);
+    public IRepository<SubjectPrerequisite> SubjectPrerequisites => new Repository<SubjectPrerequisite>(_context);
 
 
     public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)

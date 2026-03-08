@@ -25,6 +25,8 @@ public interface IUnitOfWork : IDisposable
     public IRepository<Faculty> Fauclties { get; }
     public IRepository<Department> Departments { get; }
     public IRepository<Program> Programs { get; }
+    public IRepository<Subject> Subjects { get; }
+    public IRepository<SubjectPrerequisite> SubjectPrerequisites { get; }
 
 
     Task<int> SaveAsync(CancellationToken cancellationToken = default);

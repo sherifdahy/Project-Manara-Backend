@@ -810,25 +810,33 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("FacultyId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ParentSubjectId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProgramId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FacultyId");
 
-                    b.HasIndex("ParentSubjectId");
-
-                    b.HasIndex("ProgramId");
-
                     b.ToTable("Subjects");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Universities.SubjectPrerequisite", b =>
+                {
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrerequisiteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SubjectId", "PrerequisiteId");
+
+                    b.HasIndex("PrerequisiteId");
+
+                    b.ToTable("SubjectPrerequisites");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.University", b =>
@@ -1219,6 +1227,34 @@ namespace App.Infrastructure.Migrations
                             ClaimType = "permissions",
                             ClaimValue = "scopes:toggleStatus",
                             RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 46,
+                            ClaimType = "permissions",
+                            ClaimValue = "subjects:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 47,
+                            ClaimType = "permissions",
+                            ClaimValue = "subjects:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 48,
+                            ClaimType = "permissions",
+                            ClaimValue = "subjects:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 49,
+                            ClaimType = "permissions",
+                            ClaimValue = "subjects:toggleStatus",
+                            RoleId = 100
                         });
                 });
 
@@ -1556,7 +1592,7 @@ namespace App.Infrastructure.Migrations
             modelBuilder.Entity("App.Core.Entities.Relations.ProgramSubject", b =>
                 {
                     b.HasOne("App.Core.Entities.Universities.Program", "Program")
-                        .WithMany()
+                        .WithMany("ProgramSubjects")
                         .HasForeignKey("ProgramId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1659,19 +1695,26 @@ namespace App.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("App.Core.Entities.Universities.Subject", "ParentSubject")
+                    b.Navigation("Faculty");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Universities.SubjectPrerequisite", b =>
+                {
+                    b.HasOne("App.Core.Entities.Universities.Subject", "Prerequisite")
                         .WithMany()
-                        .HasForeignKey("ParentSubjectId")
+                        .HasForeignKey("PrerequisiteId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("App.Core.Entities.Universities.Program", null)
-                        .WithMany("Subjects")
-                        .HasForeignKey("ProgramId");
+                    b.HasOne("App.Core.Entities.Universities.Subject", "Subject")
+                        .WithMany("Prerequisites")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
-                    b.Navigation("Faculty");
+                    b.Navigation("Prerequisite");
 
-                    b.Navigation("ParentSubject");
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -1817,16 +1860,18 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
                 {
+                    b.Navigation("ProgramSubjects");
+
                     b.Navigation("ProgramUserProgramYearTerms");
 
                     b.Navigation("ProgramUsers");
-
-                    b.Navigation("Subjects");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Subject", b =>
                 {
                     b.Navigation("DepartmentUserSubjectYearTermPeriods");
+
+                    b.Navigation("Prerequisites");
 
                     b.Navigation("ProgramSubjects");
                 });

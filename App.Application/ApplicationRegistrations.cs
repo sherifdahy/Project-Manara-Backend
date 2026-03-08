@@ -23,5 +23,6 @@ public static class ApplicationRegistrations
         services.AddSingleton<ScopeErrors>();
         services.AddSingleton<DepartmentErrors>();
         services.AddSingleton<ProgramErrors>();
+        services.AddSingleton<SubjectErrors>();
     }
 }

@@ -15,6 +15,6 @@ public class Program
     public int DepartmentId { get; set; }
     public Department Department { get; set; } = default!;
     public ICollection<ProgramUserProgramYearTerm> ProgramUserProgramYearTerms { get; set; } = new HashSet<ProgramUserProgramYearTerm>();
-    public ICollection<Subject> Subjects { get; set; } = new HashSet<Subject>();    
+    public ICollection<ProgramSubject> ProgramSubjects { get; set; } = new HashSet<ProgramSubject>();    
     public ICollection<ProgramUser> ProgramUsers { get; set; } = new HashSet<ProgramUser>();
 }

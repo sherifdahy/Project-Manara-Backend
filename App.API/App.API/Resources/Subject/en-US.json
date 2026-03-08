@@ -1,0 +1,5 @@
+{
+  "NotFound": "Subject not found.",
+  "DuplicatedName": "This subject name already exsists in your faculty",
+  "SubjectDependItSelf": "The subject can not depend on itself"
+}
