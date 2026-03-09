@@ -1,6 +1,7 @@
 ﻿using App.Core.Entities;
 using App.Core.Entities.Identity;
 using App.Core.Entities.Interfaces;
+using App.Core.Entities.Relations;
 using App.Core.Entities.Universities;
 using Microsoft.EntityFrameworkCore.Storage;
 
@@ -27,7 +28,7 @@ public interface IUnitOfWork : IDisposable
     public IRepository<Program> Programs { get; }
     public IRepository<Subject> Subjects { get; }
     public IRepository<SubjectPrerequisite> SubjectPrerequisites { get; }
-
+    public IRepository<ProgramSubject> ProgramSubjects { get; }
 
     Task<int> SaveAsync(CancellationToken cancellationToken = default);
     Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);

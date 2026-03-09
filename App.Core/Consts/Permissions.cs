@@ -49,6 +49,12 @@ public class Permissions
     public const string UpdatePrograms = "Programs:update";
     public const string ToggleStatusPrograms = "Programs:toggleStatus";
 
+    //Program Subjects Permissions
+
+    public const string GetProgramSubjects = "programSubjects:read";
+    public const string AddProgramSubjects = "programSubjects:add";
+    public const string RemoveProgramSubjects = "programSubjects:remove";
+
     // UniversityUsers Permissions
     public const string GetUniversityUsers = "universityUsers:read";
     public const string CreateUniversityUsers = "universityUsers:create";
