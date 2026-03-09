@@ -1,8 +1,8 @@
 ﻿using App.API.Attributes;
-using App.Application.Commands.Departments;
+using App.Application.Abstractions;
 using App.Application.Commands.Subjects;
-using App.Application.Contracts.Requests.Departments;
 using App.Application.Contracts.Requests.Subjects;
+using App.Application.Queries.Subjects;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
@@ -18,6 +18,17 @@ namespace App.API.Controllers.Subjects;
 public class SubjectsController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
+
+
+    [HttpGet("/api/faculties/{facultyId:int}/subjects")]
+    [RequireFacultyAccess("facultyId")]
+    [HasPermission(Permissions.GetSubjects)]
+    public async Task<IActionResult> GetAll([FromRoute] int facultyId, [FromQuery] RequestFilters filters, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
+    {
+        var query = new GetAllSubjectsQuery() with {FacultyId=facultyId,Filters=filters,IncludeDisabled=includeDisabled };
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
 
     [HttpPost("/api/faculties/{facultyId}/subjects")]
     [RequireFacultyAccess("facultyId")]

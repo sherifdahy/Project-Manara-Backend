@@ -8,6 +8,7 @@ public record SubjectResponse
    string Name,
    string Code,
    string Description,
-   int CreditHours
+   int CreditHours,
+   bool IsDeleted
 );
 
