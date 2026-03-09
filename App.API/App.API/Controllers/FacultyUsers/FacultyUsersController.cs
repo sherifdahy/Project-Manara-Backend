@@ -8,7 +8,6 @@ using App.Infrastructure.Abstractions.Consts;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace App.API.Controllers.FacultyUsers;
 

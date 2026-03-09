@@ -2,6 +2,7 @@
 using App.Application.Abstractions;
 using App.Application.Commands.Subjects;
 using App.Application.Contracts.Requests.Subjects;
+using App.Application.Queries.FacultyUsers;
 using App.Application.Queries.Subjects;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
@@ -26,6 +27,16 @@ public class SubjectsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> GetAll([FromRoute] int facultyId, [FromQuery] RequestFilters filters, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
     {
         var query = new GetAllSubjectsQuery() with {FacultyId=facultyId,Filters=filters,IncludeDisabled=includeDisabled };
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
+    [HttpGet("{id}")]
+    [RequireSubjectAccess("id")]
+    [HasPermission(Permissions.GetSubjects)]
+    public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
+    {
+        var query = new GetSubjectQuery() with { Id = id };
         var result = await _mediator.Send(query, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }

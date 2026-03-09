@@ -36,5 +36,7 @@ public class MappingConfigurations : IRegister
         TypeAdapterConfig<ApplicationRole, RoleResponse>.NewConfig()
             .Map(dest => dest.NumberOfPermissions, src => src.RoleClaimOverrides.Count);
 
+
+
     }
 }
