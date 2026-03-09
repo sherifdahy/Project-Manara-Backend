@@ -6,15 +6,11 @@ namespace App.Application.Handlers.Commands.ProgramUsers;
 public class UpdateProgramUserCommandHandler(IUnitOfWork unitOfWork
     ,UserErrors userErrors
     ,ProgramErrors programErrors
-    , IProgramService programService
-    ,IHttpContextAccessor httpContextAccessor
     ,UserManager<ApplicationUser> userManager) : IRequestHandler<UpdateProgramUserCommand, Result>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly UserErrors _userErrors = userErrors;
     private readonly ProgramErrors _programErrors = programErrors;
-    private readonly IProgramService _programService = programService;
-    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
     private readonly UserManager<ApplicationUser> _userManager = userManager;
 
     public async Task<Result> Handle(UpdateProgramUserCommand request, CancellationToken cancellationToken)
@@ -24,10 +20,6 @@ public class UpdateProgramUserCommandHandler(IUnitOfWork unitOfWork
 
         if (programUser == null)
             return Result.Failure(_userErrors.NotFound);
-
-        if(!await _unitOfWork.Programs.IsExistAsync(x => x.Id == request.ProgramId, cancellationToken))
-            return Result.Failure(_programErrors.NotFound);
-
 
         if (_userManager.Users.Any(x => x.Email == request.Email && x.Id != request.UserId))
             return Result.Failure(_userErrors.DuplicatedEmail);

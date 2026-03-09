@@ -26,7 +26,6 @@ public class CreateProgramUserCommandHandler(IUnitOfWork unitOfWork
         if (await _userManager.FindByEmailAsync(request.Email) is not null)
             return Result.Failure<ProgramUserResponse>(_userErrors.DuplicatedEmail);
 
-
         var applicationUser = request.Adapt<ApplicationUser>();
 
         applicationUser.UserName = request.Email;

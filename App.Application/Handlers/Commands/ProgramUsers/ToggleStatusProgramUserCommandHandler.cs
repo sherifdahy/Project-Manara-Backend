@@ -6,8 +6,6 @@ namespace App.Application.Handlers.Commands.ProgramUsers;
 
 public class ToggleStatusProgramUserCommandHandler(IUnitOfWork unitOfWork
     ,UserErrors userErrors
-    ,IProgramService programService
-    ,IHttpContextAccessor httpContextAccessor
     ,UserManager<ApplicationUser> userManager) : IRequestHandler<ToggleStatusProgramUserCommand, Result>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;

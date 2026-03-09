@@ -7,6 +7,7 @@ using App.Infrastructure.Abstractions.Consts;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 
 namespace App.API.Controllers.Programs
 {
@@ -63,6 +64,33 @@ namespace App.API.Controllers.Programs
         {
             var command = new ToggleStatusProgramCommand(id);
             var result = await _mediator.Send(command, cancellationToken);
+            return result.IsSuccess ? NoContent() : result.ToProblem();
+        }
+
+        [HttpGet("{programId}/subjects")]
+        [HasPermission(Permissions.GetProgramSubjects)]
+        public IActionResult GetSubjects(int programId, CancellationToken cancellationToken = default)
+        {
+            var query = new GetProgramSubjectsQuery() with { ProgramId = programId };
+            var result = _mediator.Send(query).Result;
+            return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+        }
+
+        [HttpPost("{programId}/subjects/{subjectId}")]
+        [HasPermission(Permissions.AddProgramSubjects)]
+        public IActionResult AddSubject(int programId, int subjectId, CancellationToken cancellationToken = default)
+        {
+            var command = new AddSubjectToProgramCommand() with { ProgramId = programId, SubjectId = subjectId };
+            var result = _mediator.Send(command).Result;
+            return result.IsSuccess ? NoContent() : result.ToProblem();
+        }
+
+        [HttpDelete("{programId}/subjects/{subjectId}")]
+        [HasPermission(Permissions.RemoveProgramSubjects)]
+        public IActionResult RemoveSubject(int programId, int subjectId, CancellationToken cancellationToken = default)
+        {
+            var command = new RemoveSubjectFromProgramCommand() with { ProgramId = programId, SubjectId = subjectId };
+            var result = _mediator.Send(command).Result;
             return result.IsSuccess ? NoContent() : result.ToProblem();
         }
     }
