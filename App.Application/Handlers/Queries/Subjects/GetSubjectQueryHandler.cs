@@ -10,25 +10,6 @@ public class GetSubjectQueryHandler(IUnitOfWork unitOfWork,SubjectErrors subject
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly SubjectErrors _subjectErrors = subjectErrors;
 
-
-    //public async Task<Result<FacultyUserResponse>> Handle(GetFacultyUserQuery request, CancellationToken cancellationToken)
-    //{
-    //    var facultyUser = await _unitOfWork.FacultyUsers.FindAsync(x => x.UserId == request.Id, i => i.Include(d => d.User), cancellationToken);
-
-    //    if (facultyUser == null)
-    //        return Result.Failure<FacultyUserResponse>(_userErrors.NotFound);
-
-    //    if (!await _facultyService.IsUserHasAccessToFaculty(_httpContextAccessor.HttpContext!.User, facultyUser.FacultyId))
-    //        return Result.Failure<FacultyUserResponse>(_userErrors.Forbidden);
-
-    //    var roles = await _userManager.GetRolesAsync(facultyUser.User);
-
-    //    var response = facultyUser.User.Adapt<FacultyUserResponse>();
-
-    //    response.Roles = roles.ToList();
-
-    //    return Result.Success(response);
-    //}
     public async Task<Result<SubjectDetailResponse>> Handle(GetSubjectQuery request, CancellationToken cancellationToken)
     {
        var subject = await _unitOfWork.Subjects

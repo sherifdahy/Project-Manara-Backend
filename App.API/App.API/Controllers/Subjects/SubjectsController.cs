@@ -2,7 +2,6 @@
 using App.Application.Abstractions;
 using App.Application.Commands.Subjects;
 using App.Application.Contracts.Requests.Subjects;
-using App.Application.Queries.FacultyUsers;
 using App.Application.Queries.Subjects;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
@@ -47,9 +46,7 @@ public class SubjectsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] SubjectRequest request, CancellationToken cancellationToken = default)
     {
         var result = await _mediator.Send(request.Adapt<CreateSubjectCommand>() with { FacultyId=facultyId}, cancellationToken);
-        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
-        //TODO
-        //return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
+        return result.IsSuccess ? CreatedAtAction(nameof(Get), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 
     [HttpPut("{id}")]
