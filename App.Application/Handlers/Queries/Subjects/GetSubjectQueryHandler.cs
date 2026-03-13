@@ -25,9 +25,13 @@ public class GetSubjectQueryHandler(IUnitOfWork unitOfWork,SubjectErrors subject
             Description: subject.Description,
             CreditHours: subject.CreditHours,
             IsDeleted: subject.IsDeleted,
-            Prerequisites: subject.Prerequisites.Select(p => new SubjectPrerequisiteResponse(
+            Prerequisites: subject.Prerequisites.Select(p => new SubjectResponse(
                 Id: p.Prerequisite.Id,
-                Name: p.Prerequisite.Name
+                Name: p.Prerequisite.Name,
+                Code:p.Prerequisite.Code,
+                Description: p.Prerequisite.Description,
+                CreditHours:p.Prerequisite.CreditHours,
+                IsDeleted:p.Prerequisite.IsDeleted
             ))
         );
 
