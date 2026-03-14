@@ -93,6 +93,14 @@ public class Permissions
     public const string UpdateSubjects = "subjects:update";
     public const string ToggleStatusSubjects = "subjects:toggleStatus";
 
+    //Year Permissions
+    public const string GetYears = "years:read";
+    public const string CreateYears = "years:create";
+    public const string UpdateYears = "years:update";
+    public const string ToggleStatusYears = "years:toggleStatus";
+
+
+
     public static IList<string> GetAllPermissions()
     {
         return typeof(Permissions).GetFields().Select(x=>x.GetValue(x) as string).ToList()!;

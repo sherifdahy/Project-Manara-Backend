@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\queries\\subjects\\getsubjectqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\responses\\years\\yearresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\responses\\subjects\\subjectdetailresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\years\\createyearcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\responses\\subjects\\subjectprerequisiteresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.services\\facultyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\subjects\\subjectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\subjects\\subjectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\validations\\years\\yearrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.services\\subjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\commands\\years\\createyearcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\departments\\createdepartmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\years\\yearscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\years\\yearscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\requests\\years\\yearrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.core\\entities\\academic\\term.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,64 +50,120 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetSubjectQueryHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Subjects\\GetSubjectQueryHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Subjects\\GetSubjectQueryHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Subjects\\GetSubjectQueryHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Subjects\\GetSubjectQueryHandler.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA0AAAAEAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "YearRequest.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\Years\\YearRequest.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Requests\\Years\\YearRequest.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\Years\\YearRequest.cs",
+              "RelativeToolTip": "..\\App.Application\\Contracts\\Requests\\Years\\YearRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T18:09:12.993Z",
+              "WhenOpened": "2026-03-14T18:07:08.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "YearResponse.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Years\\YearResponse.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\Years\\YearResponse.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Years\\YearResponse.cs",
+              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Years\\YearResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T18:07:01.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateYearCommand.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Years\\CreateYearCommand.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Commands\\Years\\CreateYearCommand.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Years\\CreateYearCommand.cs",
+              "RelativeToolTip": "..\\App.Application\\Commands\\Years\\CreateYearCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T18:06:52.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "YearRequestValidator.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Validations\\Years\\YearRequestValidator.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Validations\\Years\\YearRequestValidator.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Validations\\Years\\YearRequestValidator.cs",
+              "RelativeToolTip": "..\\App.Application\\Validations\\Years\\YearRequestValidator.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAArwCIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T18:00:01.222Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SubjectPrerequisiteResponse.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Subjects\\SubjectPrerequisiteResponse.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\Subjects\\SubjectPrerequisiteResponse.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Subjects\\SubjectPrerequisiteResponse.cs",
-              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Subjects\\SubjectPrerequisiteResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
+              "Title": "FacultyService.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\FacultyService.cs",
+              "RelativeDocumentMoniker": "..\\App.Services\\FacultyService.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\FacultyService.cs",
+              "RelativeToolTip": "..\\App.Services\\FacultyService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAewBEAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T18:08:31.859Z"
+              "WhenOpened": "2026-03-14T17:55:21.75Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SubjectDetailResponse.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Subjects\\SubjectDetailResponse.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\Subjects\\SubjectDetailResponse.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Subjects\\SubjectDetailResponse.cs",
-              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Subjects\\SubjectDetailResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAeAAAAAAAAAA==",
+              "Title": "CreateYearCommandHandler.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Years\\CreateYearCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Years\\CreateYearCommandHandler.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Years\\CreateYearCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Years\\CreateYearCommandHandler.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAArwDUAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T18:08:04.59Z"
+              "WhenOpened": "2026-03-14T15:52:33.249Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SubjectService.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\SubjectService.cs",
-              "RelativeDocumentMoniker": "..\\App.Services\\SubjectService.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\SubjectService.cs",
-              "RelativeToolTip": "..\\App.Services\\SubjectService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBMAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "CreateDepartmentCommandHandler.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Departments\\CreateDepartmentCommandHandler.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T13:30:25.192Z"
+              "WhenOpened": "2026-03-14T15:52:06.351Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SubjectsController.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Subjects\\SubjectsController.cs",
-              "RelativeDocumentMoniker": "App.API\\Controllers\\Subjects\\SubjectsController.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Subjects\\SubjectsController.cs",
-              "RelativeToolTip": "App.API\\Controllers\\Subjects\\SubjectsController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABgAAAAsAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "YearsController.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Years\\YearsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Years\\YearsController.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Years\\YearsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Years\\YearsController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T13:29:54.481Z"
+              "WhenOpened": "2026-03-14T14:56:24.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Term.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Entities\\Academic\\Term.cs",
+              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Academic\\Term.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Core\\Entities\\Academic\\Term.cs",
+              "RelativeToolTip": "..\\App.Core\\Entities\\Academic\\Term.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T14:49:55.12Z",
+              "EditorCaption": ""
             }
           ]
         }

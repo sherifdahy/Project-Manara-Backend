@@ -1,0 +1,6 @@
+{
+  "NotFound": "This Year Does not Exsits",
+  "LessThanDate": "The start date must be less than the end date",
+  "GreaterThanDate": "The end date must be greater than the start date",
+  "TermNotFound": "The term does not exists"
+}
