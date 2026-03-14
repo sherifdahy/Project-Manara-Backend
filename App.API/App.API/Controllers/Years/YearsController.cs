@@ -30,7 +30,7 @@ public class YearsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    //[RequireDepartmentAccess("id")] //TODO Filter
+    [RequireYearAccess("id")] 
     [HasPermission(Permissions.UpdateYears)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] YearRequest request, CancellationToken cancellationToken = default)
     {

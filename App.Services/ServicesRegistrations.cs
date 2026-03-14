@@ -19,5 +19,6 @@ public static class ServicesRegistrations
         services.AddScoped<IDepartmentService, DepartmentService>();
         services.AddScoped<IProgramService, ProgramService>();
         services.AddScoped<ISubjectService, SubjectService>();
+        services.AddScoped<IYearService, YearService>();
     }
 }
