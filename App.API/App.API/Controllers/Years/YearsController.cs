@@ -1,4 +1,6 @@
-﻿using App.Application.Commands.Years;
+﻿using App.API.Attributes;
+using App.Application.Commands.Departments;
+using App.Application.Commands.Years;
 using App.Application.Contracts.Requests.Departments;
 using App.Application.Contracts.Requests.Years;
 using App.Core.Extensions;
@@ -25,5 +27,14 @@ public class YearsController(IMediator mediator) : ControllerBase
 
         //TODO GET
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
+    [HttpPut("{id}")]
+    //[RequireDepartmentAccess("id")] //TODO Filter
+    [HasPermission(Permissions.UpdateYears)]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] YearRequest request, CancellationToken cancellationToken = default)
+    {
+        var result = await _mediator.Send(request.Adapt<UpdateYearCommand>() with { Id = id }, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 }

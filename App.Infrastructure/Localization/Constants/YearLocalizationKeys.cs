@@ -8,6 +8,8 @@ public static class YearLocalizationKeys
 {
     public static readonly string NotFound = nameof(NotFound);
 
+    public static readonly string DuplicatedYear = nameof(DuplicatedYear);
+
     public static readonly string TermNotFound = nameof(TermNotFound);
 
     public static readonly string LessThanDate = nameof(LessThanDate);

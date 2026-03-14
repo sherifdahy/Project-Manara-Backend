@@ -33,7 +33,7 @@ public class CreateYearCommandHandler(IUnitOfWork unitOfWork
         var isYearExists = await _unitOfWork.AcademicYears.IsExistAsync(x=>x.FacultyId==request.FacultyId && x.Name==request.Name);
 
         if (isYearExists)
-            return Result.Failure<YearResponse>(_yearErrors.NotFound);
+            return Result.Failure<YearResponse>(_yearErrors.DuplicatedYear);
 
         var year = request.Adapt<AcademicYear>();
 
