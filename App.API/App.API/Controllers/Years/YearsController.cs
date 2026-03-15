@@ -48,8 +48,7 @@ public class YearsController(IMediator mediator) : ControllerBase
     {
         var result = await _mediator.Send(request.Adapt<CreateYearCommand>() with { FacultyId = facultyId }, cancellationToken);
 
-        //TODO GET
-        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+        return result.IsSuccess ? CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value) : result.ToProblem();
     }
 
     [HttpPut("{id}")]
