@@ -1,9 +1,7 @@
 ﻿using App.API.Attributes;
 using App.Application.Commands.Departments;
 using App.Application.Commands.Years;
-using App.Application.Contracts.Requests.Departments;
 using App.Application.Contracts.Requests.Years;
-using App.Application.Queries.Departments;
 using App.Application.Queries.Years;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
@@ -57,6 +55,16 @@ public class YearsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] YearRequest request, CancellationToken cancellationToken = default)
     {
         var result = await _mediator.Send(request.Adapt<UpdateYearCommand>() with { Id = id }, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
+    }
+
+    [HttpDelete("{id}/toggle-status")]
+    [RequireYearAccess("id")]
+    [HasPermission(Permissions.ToggleStatusYears)]
+    public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
+    {
+        var command = new ToggleStatusYearCommand(id);
+        var result = await _mediator.Send(command, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 }
