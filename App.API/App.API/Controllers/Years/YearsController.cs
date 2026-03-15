@@ -31,6 +31,16 @@ public class YearsController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
+    [HttpGet("{id:int}")]
+    [RequireYearAccess("id")]
+    [HasPermission(Permissions.GetYears)]
+    public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken = default)
+    {
+        var query = new GetYearQuery(id);
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
     [HttpPost("/api/faculties/{facultyId}/years")]
     [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.CreateYears)]
