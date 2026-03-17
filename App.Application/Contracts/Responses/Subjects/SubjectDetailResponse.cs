@@ -8,5 +8,5 @@ public record SubjectDetailResponse
    string Description,
    int CreditHours,
    bool IsDeleted,
-   IEnumerable<SubjectPrerequisiteResponse> Prerequisites
+   IEnumerable<SubjectResponse> Prerequisites
 );

@@ -10,4 +10,5 @@ public class AcademicYear
     public ICollection<YearTerm> YearTerms { get; set; } = new HashSet<YearTerm>();
     public int FacultyId { get; set; }
     public Faculty Faculty { get; set; } = default!;
+    public bool IsDeleted { get; set; } = false;
 }

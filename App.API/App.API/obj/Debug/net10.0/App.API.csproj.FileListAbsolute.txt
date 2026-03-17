@@ -286,3 +286,5 @@ D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\obj\Debug\net10
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\appsettings.development.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Subject\ar-EG.json
 D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Subject\en-US.json
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Year\ar-EG.json
+D:\work\GraduationProject\Project-Manara-Backend\App.API\App.API\bin\Debug\net10.0\Resources\Year\en-US.json

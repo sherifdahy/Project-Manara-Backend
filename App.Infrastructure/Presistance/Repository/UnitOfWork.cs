@@ -1,4 +1,5 @@
-﻿using App.Core.Entities.Interfaces;
+﻿using App.Core.Entities.Academic;
+using App.Core.Entities.Interfaces;
 using App.Core.Entities.Personnel;
 using App.Core.Entities.Relations;
 using App.Core.Entities.Universities;
@@ -36,6 +37,9 @@ public class UnitOfWork : IUnitOfWork
     public IRepository<Subject> Subjects => new Repository<Subject>(_context);
     public IRepository<SubjectPrerequisite> SubjectPrerequisites => new Repository<SubjectPrerequisite>(_context);
     public IRepository<ProgramSubject> ProgramSubjects => new Repository<ProgramSubject>(_context);
+    public IRepository<AcademicYear> AcademicYears => new Repository<AcademicYear>(_context);
+    public IRepository<YearTerm> YearTerms => new Repository<YearTerm>(_context);
+    public IRepository<Term> Terms => new Repository<Term>(_context);
 
     public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
     {
