@@ -1,0 +1,53 @@
+﻿using App.API.Attributes;
+using App.Application.Commands.Departments;
+using App.Application.Commands.Periods;
+using App.Application.Contracts.Requests.Departments;
+using App.Application.Contracts.Requests.Periods;
+using App.Core.Extensions;
+using App.Infrastructure.Abstractions.Consts;
+using Mapster;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace App.API.Controllers.Periods;
+
+[Route("api/[controller]")]
+[ApiController]
+[Authorize]
+public class PeriodsController(IMediator mediator) : ControllerBase
+{
+    private readonly IMediator _mediator = mediator;
+
+    [HttpPost("/api/faculties/{facultyId}/periods")]
+    [RequireFacultyAccess("facultyId")]
+    [HasPermission(Permissions.CreatePeriods)]
+    public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] PeriodRequest request, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(request.Adapt<CreatePeriodCommand>() with { FacultyId = facultyId }, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
+    [HttpPut("/api/faculties/{facultyId}/periods/{oldStartTime}/{oldEndTime}")]
+    [RequireFacultyAccess("facultyId")]
+    [HasPermission(Permissions.UpdatePeriods)]
+    public async Task<IActionResult> Update(
+        [FromRoute] int facultyId,
+        [FromRoute] string oldStartTime,      
+        [FromRoute] string oldEndTime,        
+        [FromBody] PeriodRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        var parsedOldStartTime = TimeOnly.Parse(oldStartTime);
+        var parsedOldEndTime = TimeOnly.Parse(oldEndTime);
+
+        var result = await _mediator.Send(
+            request.Adapt<UpdatePeriodCommand>() with
+            {
+                FacultyId = facultyId,
+                OldStartTime = parsedOldStartTime,
+                OldEndTime = parsedOldEndTime
+            }, cancellationToken);
+
+        return result.IsSuccess ? NoContent() : result.ToProblem();
+    }
+}

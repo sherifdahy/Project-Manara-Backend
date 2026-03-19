@@ -25,4 +25,6 @@ public static class LocalizationFolderNames
     public static readonly string Subject = nameof(Subject);
 
     public static readonly string Year = nameof(Year);
+
+    public static readonly string Period = nameof(Period);
 }

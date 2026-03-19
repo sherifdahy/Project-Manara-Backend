@@ -61,17 +61,50 @@ namespace App.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FacultyId")
-                        .HasColumnType("int");
-
-                    b.Property<DateOnly>("Value")
-                        .HasColumnType("date");
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FacultyId");
-
                     b.ToTable("Day");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Value = "Saturday"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Value = "Sunday"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Value = "Monday"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Value = "Tuesday"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Value = "Wednesday"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Value = "Thursday"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Value = "Friday"
+                        });
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
@@ -85,12 +118,23 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("DayId")
                         .HasColumnType("int");
 
-                    b.Property<TimeOnly>("Value")
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<TimeOnly>("StartTime")
                         .HasColumnType("time");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DayId");
+
+                    b.HasIndex("FacultyId");
 
                     b.ToTable("Period");
                 });
@@ -1324,6 +1368,34 @@ namespace App.Infrastructure.Migrations
                             ClaimType = "permissions",
                             ClaimValue = "years:toggleStatus",
                             RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 57,
+                            ClaimType = "permissions",
+                            ClaimValue = "periods:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 58,
+                            ClaimType = "permissions",
+                            ClaimValue = "periods:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 59,
+                            ClaimType = "permissions",
+                            ClaimValue = "periods:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 60,
+                            ClaimType = "permissions",
+                            ClaimValue = "periods:toggleStatus",
+                            RoleId = 100
                         });
                 });
 
@@ -1424,17 +1496,6 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("Faculty");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Academic.Day", b =>
-                {
-                    b.HasOne("App.Core.Entities.Universities.Faculty", "Faculty")
-                        .WithMany("Days")
-                        .HasForeignKey("FacultyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Faculty");
-                });
-
             modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
                 {
                     b.HasOne("App.Core.Entities.Academic.Day", "Day")
@@ -1443,7 +1504,15 @@ namespace App.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("App.Core.Entities.Universities.Faculty", "Faculty")
+                        .WithMany("Periods")
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Day");
+
+                    b.Navigation("Faculty");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationRole", b =>
@@ -1916,11 +1985,11 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Universities.Faculty", b =>
                 {
-                    b.Navigation("Days");
-
                     b.Navigation("Departments");
 
                     b.Navigation("FacultyUsers");
+
+                    b.Navigation("Periods");
 
                     b.Navigation("ProgramUsers");
 

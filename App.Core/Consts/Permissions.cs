@@ -99,6 +99,13 @@ public class Permissions
     public const string UpdateYears = "years:update";
     public const string ToggleStatusYears = "years:toggleStatus";
 
+    //Period Permissions
+    public const string GetPeriods = "periods:read";
+    public const string CreatePeriods = "periods:create";
+    public const string UpdatePeriods = "periods:update";
+    public const string ToggleStatusPeriods = "periods:toggleStatus";
+
+
 
 
     public static IList<string> GetAllPermissions()

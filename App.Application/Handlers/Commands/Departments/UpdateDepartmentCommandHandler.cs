@@ -1,11 +1,4 @@
 ﻿using App.Application.Commands.Departments;
-using App.Application.Commands.Faculties;
-using App.Application.Errors;
-using App.Infrastructure.Repository;
-using SA.Accountring.Core.Entities.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Application.Handlers.Commands.Departments;
 

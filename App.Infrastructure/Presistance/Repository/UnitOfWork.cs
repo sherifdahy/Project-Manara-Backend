@@ -40,6 +40,8 @@ public class UnitOfWork : IUnitOfWork
     public IRepository<AcademicYear> AcademicYears => new Repository<AcademicYear>(_context);
     public IRepository<YearTerm> YearTerms => new Repository<YearTerm>(_context);
     public IRepository<Term> Terms => new Repository<Term>(_context);
+    public IRepository<Period> Periods => new Repository<Period>(_context);
+    public IRepository<Day> Days => new Repository<Day>(_context);
 
     public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
     {
