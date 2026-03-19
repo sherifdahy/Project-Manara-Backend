@@ -50,4 +50,27 @@ public class PeriodsController(IMediator mediator) : ControllerBase
 
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
+
+
+    [HttpDelete("/api/faculties/{facultyId}/periods/{startTime}/{endTime}")]
+    [RequireFacultyAccess("facultyId")]
+    [HasPermission(Permissions.ToggleStatusPeriods)]
+    public async Task<IActionResult> ToggleStatus(
+        [FromRoute] int facultyId,
+        [FromRoute] string startTime,
+        [FromRoute] string endTime,
+    CancellationToken cancellationToken = default)
+    {
+        var parsedStartTime = TimeOnly.Parse(startTime);
+        var parsedEndTime = TimeOnly.Parse(endTime);
+
+        var result = await _mediator.Send(new ToggleStatusPeriodCommand
+        {
+            FacultyId = facultyId,
+            StartTime = parsedStartTime,
+            EndTime = parsedEndTime
+        }, cancellationToken);
+
+        return result.IsSuccess ? NoContent() : result.ToProblem();
+    }
 }

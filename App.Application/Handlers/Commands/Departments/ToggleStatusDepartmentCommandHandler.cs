@@ -1,8 +1,4 @@
 ﻿using App.Application.Commands.Departments;
-using App.Application.Commands.Faculties;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Application.Handlers.Commands.Departments;
 
