@@ -2,7 +2,7 @@
 
 namespace App.Application.Commands.Periods;
 
-public record CreatePeriodCommand : IRequest<Result<List<PeriodResponse>>>
+public record CreatePeriodCommand : IRequest<Result<PeriodResponse>>
 {
     public TimeOnly StartTime { get; set; }
     public TimeOnly EndTime { get; set; }

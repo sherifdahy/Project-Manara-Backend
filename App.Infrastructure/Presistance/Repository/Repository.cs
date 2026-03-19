@@ -114,6 +114,19 @@ public class Repository<T> : IRepository<T> where T : class
         return await query.ToListAsync(cancellationToken);
     }
 
+    public async Task<IEnumerable<TResult>> FindAllGroupedAsync<TKey, TResult>(
+        Expression<Func<T, bool>> criteria,
+        Expression<Func<T, TKey>> groupBy,
+        Expression<Func<IGrouping<TKey, T>, TResult>> select,
+            CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<T>()
+            .Where(criteria)
+            .GroupBy(groupBy)
+            .Select(select)
+            .ToListAsync(cancellationToken);
+    }
+
     // ======================== Add ========================
     public async Task<T> AddAsync(T entity, CancellationToken cancellationToken = default)
     {

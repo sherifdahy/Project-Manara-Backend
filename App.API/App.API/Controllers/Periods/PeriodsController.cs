@@ -3,6 +3,8 @@ using App.Application.Commands.Departments;
 using App.Application.Commands.Periods;
 using App.Application.Contracts.Requests.Departments;
 using App.Application.Contracts.Requests.Periods;
+using App.Application.Queries.Departments;
+using App.Application.Queries.Periods;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
@@ -17,6 +19,17 @@ namespace App.API.Controllers.Periods;
 public class PeriodsController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
+
+    [HttpGet("/api/faculties/{facultyId:int}/periods")]
+    [RequireFacultyAccess("facultyId")]
+    [HasPermission(Permissions.GetPeriods)]
+    public async Task<IActionResult> GetAll([FromRoute] int facultyId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
+    {
+        var query = new GetAllPeriodsQuery(includeDisabled, facultyId);
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
 
     [HttpPost("/api/faculties/{facultyId}/periods")]
     [RequireFacultyAccess("facultyId")]

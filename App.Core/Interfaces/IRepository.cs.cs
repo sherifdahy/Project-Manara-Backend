@@ -54,6 +54,12 @@ public interface IRepository<T> where T : class
         CancellationToken cancellationToken = default
     );
 
+    Task<IEnumerable<TResult>> FindAllGroupedAsync<TKey, TResult>(
+        Expression<Func<T, bool>> criteria,
+        Expression<Func<T, TKey>> groupBy,
+        Expression<Func<IGrouping<TKey, T>, TResult>> select,
+            CancellationToken cancellationToken = default);
+
     // Add
     Task<T> AddAsync(T entity, CancellationToken cancellationToken = default);
     Task<IEnumerable<T>> AddRangeAsync(

@@ -7,26 +7,26 @@ namespace App.Application.Handlers.Commands.Periods;
 
 public class CreatePeriodCommandHandler(IUnitOfWork unitOfWork
     ,FacultyErrors facultyErrors
-    ,PeriodErrors periodErrors) : IRequestHandler<CreatePeriodCommand, Result<List<PeriodResponse>>>
+    ,PeriodErrors periodErrors) : IRequestHandler<CreatePeriodCommand, Result<PeriodResponse>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly FacultyErrors _facultyErrors = facultyErrors;
     private readonly PeriodErrors _periodErrors = periodErrors;
 
 
-    public async Task<Result<List<PeriodResponse>>> Handle(CreatePeriodCommand request, CancellationToken cancellationToken)
+    public async Task<Result<PeriodResponse>> Handle(CreatePeriodCommand request, CancellationToken cancellationToken)
     {
         var isFacultyExists = await _unitOfWork.Fauclties.IsExistAsync(f => f.Id == request.FacultyId);
 
         if (!isFacultyExists)
-            return Result.Failure<List<PeriodResponse>>(_facultyErrors.NotFound);
+            return Result.Failure<PeriodResponse>(_facultyErrors.NotFound);
 
 
         var isPeriodExists = await _unitOfWork.Periods
             .IsExistAsync(x=> x.FacultyId==request.FacultyId  && ( x.StartTime == request.StartTime || x.EndTime==request.EndTime));
 
         if (isPeriodExists)
-            return Result.Failure<List<PeriodResponse>>(_periodErrors.DuplicatedPeriod);
+            return Result.Failure<PeriodResponse>(_periodErrors.DuplicatedPeriod);
 
         List<Period> periods = new List<Period>();
 
@@ -39,7 +39,11 @@ public class CreatePeriodCommandHandler(IUnitOfWork unitOfWork
 
         await _unitOfWork.SaveAsync();
 
-        var response = periods.Adapt<List<PeriodResponse>>();
+        var response = new PeriodResponse(
+            request.StartTime,
+            request.EndTime,
+            false
+        );
 
         return Result.Success(response);
     }
