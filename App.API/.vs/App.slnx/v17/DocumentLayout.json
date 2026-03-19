@@ -61,8 +61,7 @@
               "RelativeToolTip": "..\\App.Application\\Commands\\Periods\\UpdatePeriodCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-19T13:49:49.63Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-19T13:49:49.63Z"
             },
             {
               "$type": "Document",
@@ -72,7 +71,7 @@
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Periods\\UpdatePeriodCommandHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Periods\\UpdatePeriodCommandHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Periods\\UpdatePeriodCommandHandler.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAQwCkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-18T15:27:24.977Z",
               "EditorCaption": ""
@@ -87,8 +86,7 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Departments\\UpdateDepartmentCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAACPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T15:27:02.635Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-18T15:27:02.635Z"
             },
             {
               "$type": "Document",
@@ -100,8 +98,7 @@
               "RelativeToolTip": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAgwDoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T15:23:52.26Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-18T15:23:52.26Z"
             },
             {
               "$type": "Document",
@@ -113,8 +110,7 @@
               "RelativeToolTip": "App.API\\Controllers\\Periods\\PeriodsController.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAYwCcAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T23:10:11.803Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-17T23:10:11.803Z"
             }
           ]
         }
