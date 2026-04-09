@@ -1,6 +1,4 @@
-﻿using App.Application.Contracts.Responses.Departments;
-using App.Application.Contracts.Responses.Periods;
-using App.Application.Queries.Departments;
+﻿using App.Application.Contracts.Responses.Periods;
 using App.Application.Queries.Periods;
 
 namespace App.Application.Handlers.Queries.Period;
