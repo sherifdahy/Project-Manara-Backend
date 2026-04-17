@@ -21,7 +21,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
     public DbSet<FacultyUser> FacultyUsers { get; set; }
     public DbSet<UniversityUser> UniversityUsers { get; set; }
     public DbSet<DepartmentUser> DepartmentUsers { get; set; }
-    public DbSet<ProgramUser> ProgramUsers { get; set; }
+    public DbSet<Student> Students { get; set; }
 
 
     // bussiness logic

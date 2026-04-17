@@ -53,7 +53,7 @@ public class PeriodsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] PeriodRequest request, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(request.Adapt<CreatePeriodCommand>() with { FacultyId = facultyId }, cancellationToken);
-        return result.IsSuccess ? Ok(result.Value) : result.ToProblem(); //TODO
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
     [HttpPut("/api/faculties/{facultyId}/periods/{oldStartTime}/{oldEndTime}")]

@@ -11,6 +11,6 @@ public class YearTerm
     public AcademicYear Year { get; set; } = default!;
     public int TermId { get; set; }
     public Term Term { get; set; } = default!;
-    public ICollection<ProgramUserProgramYearTerm> ProgramUserProgramYearTerms { get; set; } = new HashSet<ProgramUserProgramYearTerm>();
+    public ICollection<StudentProgramYearTerm> ProgramUserProgramYearTerms { get; set; } = new HashSet<StudentProgramYearTerm>();
     public ICollection<DepartmentUserSubjectYearTermPeriod> DepartmentUserSubjectYearTermPeriods { get; set; } = new HashSet<DepartmentUserSubjectYearTermPeriod>();
 }

@@ -14,7 +14,7 @@ public class Faculty
     public University University { get; set; } = default!;
     public ICollection<FacultyUser> FacultyUsers { get; set; } = new HashSet<FacultyUser>();
     public ICollection<Period> Periods { get; set; } = new HashSet<Period>();
-    public ICollection<ProgramUser> ProgramUsers { get; set; } = new HashSet<ProgramUser>();
+    public ICollection<Student> ProgramUsers { get; set; } = new HashSet<Student>();
     public ICollection<Department> Departments { get; set; } = new HashSet<Department>();
     public ICollection<RoleClaimOverride> RoleClaimOverrides { get; set; } = new HashSet<RoleClaimOverride>();
 }

@@ -33,7 +33,7 @@ public class UpdatePeriodCommandHandler(IUnitOfWork unitOfWork
             .IsExistAsync(x => x.FacultyId == request.FacultyId
                             && !periodIds.Contains(x.Id)  
                             && (x.StartTime == request.StartTime
-                            || x.EndTime == request.EndTime));
+                            && x.EndTime == request.EndTime));
 
         if (isDuplicated)
             return Result.Failure(_periodErrors.DuplicatedPeriod);

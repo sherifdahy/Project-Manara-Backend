@@ -23,7 +23,7 @@ public class CreatePeriodCommandHandler(IUnitOfWork unitOfWork
 
 
         var isPeriodExists = await _unitOfWork.Periods
-            .IsExistAsync(x=> x.FacultyId==request.FacultyId  && ( x.StartTime == request.StartTime || x.EndTime==request.EndTime));
+            .IsExistAsync(x=> x.FacultyId==request.FacultyId  && ( x.StartTime == request.StartTime && x.EndTime==request.EndTime));
 
         if (isPeriodExists)
             return Result.Failure<PeriodResponse>(_periodErrors.DuplicatedPeriod);

@@ -19,8 +19,8 @@ public class GetAllProgramUsersByProgramIdQueryHandler(IUnitOfWork unitOfWork
         if (await _unitOfWork.Programs.GetByIdAsync(request.ProgramId) is null)
             return Result.Failure<PaginatedList<ProgramUserResponse>>(_programErrors.NotFound);
 
-        Expression<Func<ProgramUser, bool>> query =
-            x => x.ProgramUserProgramYearTerms.Any(x=>x.ProgramId == request.ProgramId) &&
+        Expression<Func<Student, bool>> query =
+            x => x.StudentProgramYearTerms.Any(x=>x.ProgramId == request.ProgramId) &&
                 (string.IsNullOrEmpty(request.Filters.SearchValue)
                 || x.User.Name.Contains(request.Filters.SearchValue)
                 || x.User.Email!.Contains(request.Filters.SearchValue)

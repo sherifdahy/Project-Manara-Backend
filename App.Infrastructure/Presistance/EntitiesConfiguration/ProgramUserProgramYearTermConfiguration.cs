@@ -6,10 +6,10 @@ using System.Text;
 
 namespace App.Infrastructure.Presistance.EntitiesConfiguration;
 
-public class ProgramUserProgramYearTermConfiguration : IEntityTypeConfiguration<ProgramUserProgramYearTerm>
+public class ProgramUserProgramYearTermConfiguration : IEntityTypeConfiguration<StudentProgramYearTerm>
 {
-    public void Configure(EntityTypeBuilder<ProgramUserProgramYearTerm> builder)
+    public void Configure(EntityTypeBuilder<StudentProgramYearTerm> builder)
     {
-        builder.HasKey(x=> new { x.ProgramId,x.YearTermId, x.UserId });
+        builder.HasKey(x=> new { x.ProgramId,x.YearId,x.TermId, x.UserId });
     }
 }

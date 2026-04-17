@@ -38,7 +38,7 @@ public class CreateProgramUserCommandHandler(IUnitOfWork unitOfWork
 
             if (roleAssignResult.Succeeded)
             {
-                var programUser = new ProgramUser()
+                var programUser = new Student()
                 {
                     FacultyId = request.FacultyId,
                     UserId = applicationUser.Id,

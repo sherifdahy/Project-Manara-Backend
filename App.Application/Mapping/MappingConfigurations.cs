@@ -26,12 +26,14 @@ public class MappingConfigurations : IRegister
                     .Where(f => !f.IsDeleted));
 
 
-        config.NewConfig<Faculty, FacultyResponse>()
-             .Map(dest => dest.NumberOfProgramUsers,
-                src => src.Departments
-             .SelectMany(d => d.Programs)
-             .SelectMany(p => p.ProgramUsers)
-             .Count());
+        //TODO (Make Any Thing About This )
+
+        //config.NewConfig<Faculty, FacultyResponse>()
+        //     .Map(dest => dest.NumberOfProgramUsers,
+        //        src => src.Departments
+        //     .SelectMany(d => d.Programs)
+        //     .SelectMany(p => p.ProgramUsers)
+        //     .Count());
 
         TypeAdapterConfig<ApplicationRole, RoleResponse>.NewConfig()
             .Map(dest => dest.NumberOfPermissions, src => src.RoleClaimOverrides.Count);

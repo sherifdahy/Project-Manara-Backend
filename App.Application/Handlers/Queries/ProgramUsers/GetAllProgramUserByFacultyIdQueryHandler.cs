@@ -22,7 +22,7 @@ public class GetAllProgramUserByFacultyIdQueryHandler(
         if (await _unitOfWork.Fauclties.GetByIdAsync(request.FacultyId) is null)
             return Result.Failure<PaginatedList<ProgramUserResponse>>(_facultyErrors.NotFound);
 
-        Expression<Func<ProgramUser, bool>> query =
+        Expression<Func<Student, bool>> query =
             x => x.FacultyId == request.FacultyId &&
                 (string.IsNullOrEmpty(request.Filters.SearchValue)
                 || x.User.Name.Contains(request.Filters.SearchValue)
