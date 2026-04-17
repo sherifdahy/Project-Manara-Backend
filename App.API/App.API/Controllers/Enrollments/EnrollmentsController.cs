@@ -24,4 +24,11 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
+    [HttpGet("test/test/{id}")]
+    [RequireEnrollmentAccess("id")]
+    public async Task<IActionResult> test(int id)
+    {
+        return Ok();
+    }
+
 }
