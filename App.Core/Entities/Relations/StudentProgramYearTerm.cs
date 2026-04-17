@@ -2,6 +2,8 @@
 
 public class StudentProgramYearTerm
 {
+
+    public int Id { get; set; }
     public int UserId { get; set; }
     public Student User { get; set; } = default!;
 

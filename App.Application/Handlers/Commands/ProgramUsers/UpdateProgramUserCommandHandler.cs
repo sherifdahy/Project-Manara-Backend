@@ -15,7 +15,7 @@ public class UpdateProgramUserCommandHandler(IUnitOfWork unitOfWork
 
     public async Task<Result> Handle(UpdateProgramUserCommand request, CancellationToken cancellationToken)
     {
-        var programUser = await _unitOfWork.ProgramUsers
+        var programUser = await _unitOfWork.Students
             .FindAsync(x => x.UserId == request.UserId, i => i.Include(p => p.User), cancellationToken);
 
         if (programUser == null)

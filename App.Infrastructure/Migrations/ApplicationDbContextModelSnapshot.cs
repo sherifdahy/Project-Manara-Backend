@@ -674,10 +674,13 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Relations.StudentProgramYearTerm", b =>
                 {
-                    b.Property<int>("ProgramId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("YearId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProgramId")
                         .HasColumnType("int");
 
                     b.Property<int>("TermId")
@@ -686,11 +689,17 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProgramId", "YearId", "TermId", "UserId");
+                    b.Property<int>("YearId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("UserId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProgramId");
 
                     b.HasIndex("YearId", "TermId");
+
+                    b.HasIndex("UserId", "ProgramId", "YearId", "TermId")
+                        .IsUnique();
 
                     b.ToTable("StudentProgramYearTerm");
                 });
@@ -1388,6 +1397,34 @@ namespace App.Infrastructure.Migrations
                             ClaimType = "permissions",
                             ClaimValue = "periods:toggleStatus",
                             RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 61,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 62,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 63,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 64,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:toggleStatus",
+                            RoleId = 100
                         });
                 });
 
@@ -1749,7 +1786,7 @@ namespace App.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
-                        .WithMany("ProgramUserProgramYearTerms")
+                        .WithMany("StudentProgramYearTerms")
                         .HasForeignKey("YearId", "TermId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1961,7 +1998,7 @@ namespace App.Infrastructure.Migrations
                 {
                     b.Navigation("DepartmentUserSubjectYearTermPeriods");
 
-                    b.Navigation("ProgramUserProgramYearTerms");
+                    b.Navigation("StudentProgramYearTerms");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>

@@ -16,7 +16,7 @@ public class ToggleStatusProgramUserCommandHandler(IUnitOfWork unitOfWork
     public async Task<Result> Handle(ToggleStatusProgramUserCommand request, CancellationToken cancellationToken)
     {
         var programUser = await _unitOfWork
-            .ProgramUsers.FindAsync(x => x.UserId == request.Id, i => i.Include(o => o.User), cancellationToken);
+            .Students.FindAsync(x => x.UserId == request.Id, i => i.Include(o => o.User), cancellationToken);
 
         if (programUser == null)
             return Result.Failure(_userErrors.NotFound);

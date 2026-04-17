@@ -27,9 +27,9 @@ public class GetAllProgramUsersByProgramIdQueryHandler(IUnitOfWork unitOfWork
                 || x.User.NationalId.Contains(request.Filters.SearchValue)) &&
                 (request.IncludeDisabled == true || x.User.IsDeleted == false);
 
-        var count = await _unitOfWork.ProgramUsers.CountAsync(query);
+        var count = await _unitOfWork.Students.CountAsync(query);
 
-        var programUsers = await _unitOfWork.ProgramUsers.FindAllAsync(
+        var programUsers = await _unitOfWork.Students.FindAllAsync(
             query,
             i => i.Include(d => d.User),
             (request.Filters.PageNumber - 1) * request.Filters.PageSize,

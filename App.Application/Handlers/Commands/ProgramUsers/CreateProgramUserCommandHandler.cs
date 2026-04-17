@@ -44,7 +44,7 @@ public class CreateProgramUserCommandHandler(IUnitOfWork unitOfWork
                     UserId = applicationUser.Id,
                 };
 
-                await _unitOfWork.ProgramUsers.AddAsync(programUser, cancellationToken);
+                await _unitOfWork.Students.AddAsync(programUser, cancellationToken);
                 await _unitOfWork.SaveAsync(cancellationToken);
 
                 var response = applicationUser.Adapt<ProgramUserResponse>();
