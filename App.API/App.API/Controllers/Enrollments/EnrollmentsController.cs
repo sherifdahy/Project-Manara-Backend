@@ -1,5 +1,7 @@
 ﻿using App.API.Attributes;
+using App.Application.Commands.Departments;
 using App.Application.Commands.Enrollments;
+using App.Application.Contracts.Requests.Departments;
 using App.Application.Contracts.Requests.Enrollments;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
@@ -24,11 +26,13 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
-    [HttpGet("test/test/{id}")]
+    [HttpPut("{id}")]
     [RequireEnrollmentAccess("id")]
-    public async Task<IActionResult> test(int id)
+    [HasPermission(Permissions.UpdateEnrollments)]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] EnrollmentRequest request, CancellationToken cancellationToken = default)
     {
-        return Ok();
+        var result = await _mediator.Send(request.Adapt<UpdateEnrollmentCommand>() with { Id = id }, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 
 }
