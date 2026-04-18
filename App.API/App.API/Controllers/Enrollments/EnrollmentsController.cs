@@ -35,4 +35,14 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 
+    [HttpDelete("{id}/toggle-status")]
+    [RequireEnrollmentAccess("id")]
+    [HasPermission(Permissions.ToggleStatusEnrollments)]
+    public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
+    {
+        var command = new ToggleStatusEnrollmentCommand(id);
+        var result = await _mediator.Send(command, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
+    }
+
 }

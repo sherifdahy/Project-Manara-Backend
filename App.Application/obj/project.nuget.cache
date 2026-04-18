@@ -85,6 +85,18 @@
   ],
   "logs": [
     {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "Package 'MailKit' 4.14.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-9j88-vvj5-vhgr",
+      "projectPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\App.Application.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\App.Application.csproj",
+      "libraryId": "MailKit",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
       "code": "NU1904",
       "level": "Warning",
       "message": "Package 'System.Text.Encodings.Web' 4.5.0 has a known critical severity vulnerability, https://github.com/advisories/GHSA-ghhp-997w-qr28",

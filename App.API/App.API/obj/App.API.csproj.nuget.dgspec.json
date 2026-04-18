@@ -43,6 +43,7 @@
         },
         "warningProperties": {
           "noWarn": [
+            "NU1902",
             "NU1903"
           ],
           "warnAsError": [
