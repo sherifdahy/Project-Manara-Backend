@@ -7,8 +7,9 @@ namespace App.Application.Contracts.Responses.Enrollments;
 public record EnrollmentResponse
 (
     int Id,
-    int ProgramId,
-    int YearId,
-    int TermId,
-    int UserId
+    string ProgramName,
+    string YearName,
+    string TermName,
+    int UserId,
+    bool? IsActive
 );

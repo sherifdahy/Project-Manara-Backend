@@ -1,7 +1,7 @@
 ﻿using App.Application.Commands.Enrollments;
 using App.Application.Errors;
 
-namespace App.Application.Handlers.Enrollments;
+namespace App.Application.Handlers.Commands.Enrollments;
 
 public class ToggleStatusEnrollmentCommandHandler(IUnitOfWork unitOfWork,EnrollmentErrors enrollmentErrors) : IRequestHandler<ToggleStatusEnrollmentCommand, Result>
 {

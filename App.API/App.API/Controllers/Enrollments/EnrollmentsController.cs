@@ -1,8 +1,8 @@
 ﻿using App.API.Attributes;
-using App.Application.Commands.Departments;
 using App.Application.Commands.Enrollments;
-using App.Application.Contracts.Requests.Departments;
 using App.Application.Contracts.Requests.Enrollments;
+using App.Application.Queries.Departments;
+using App.Application.Queries.Enrollments;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
@@ -16,6 +16,17 @@ namespace App.API.Controllers.Enrollments;
 public class EnrollmentsController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
+
+    [HttpGet("/api/students/{userId}/enrollments")]
+    [RequireUserAccess("userId")] 
+    [HasPermission(Permissions.GetEnrollments)]
+    public async Task<IActionResult> GetAll([FromRoute] int userId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
+    {
+        var query = new GetAllEnrollmentsQuery(includeDisabled, userId);
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
 
     [HttpPost("/api/students/{userId}/enrollments")]
     [RequireUserAccess("userId")]

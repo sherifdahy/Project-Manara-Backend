@@ -1,7 +1,7 @@
 ﻿using App.Application.Commands.Enrollments;
 using App.Application.Contracts.Responses.Enrollments;
 
-namespace App.Application.Handlers.Enrollments;
+namespace App.Application.Handlers.Commands.Enrollments;
 
 public class UpdateEnrollmentCommandHandler(IUnitOfWork unitOfWork
     ,EnrollmentErrors enrollmentErrors,YearErrors yearErrors) : IRequestHandler<UpdateEnrollmentCommand, Result>

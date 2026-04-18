@@ -33,4 +33,11 @@ public class EnrollmentErrors
             _localizer[EnrollmentLocalizationKeys.DifferentYear, LocalizationFolderNames.Enrollment],
             StatusCodes.Status404NotFound
         );
+
+    public Error DuplicatedEnrollment
+        => new Error(
+            "Enrollment.DuplicatedEnrollment",
+            _localizer[EnrollmentLocalizationKeys.DuplicatedEnrollment, LocalizationFolderNames.Enrollment],
+            StatusCodes.Status409Conflict
+        );
 }
