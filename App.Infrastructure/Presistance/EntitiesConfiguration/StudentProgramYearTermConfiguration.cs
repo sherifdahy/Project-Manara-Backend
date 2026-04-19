@@ -15,5 +15,11 @@ public class StudentProgramYearTermConfiguration : IEntityTypeConfiguration<Stud
         builder.HasOne(x => x.YearTerm)
                .WithMany(y => y.StudentProgramYearTerms)
                .HasForeignKey(x => new { x.YearId, x.TermId });
+
+        builder.HasIndex(e => new { e.UserId, e.ProgramId })
+                .IsUnique();
+
+        builder.HasIndex(e => new { e.UserId, e.YearId, e.TermId })
+                .IsUnique();
     }
 }

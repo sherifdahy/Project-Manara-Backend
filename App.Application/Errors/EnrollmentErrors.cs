@@ -40,4 +40,11 @@ public class EnrollmentErrors
             _localizer[EnrollmentLocalizationKeys.DuplicatedEnrollment, LocalizationFolderNames.Enrollment],
             StatusCodes.Status409Conflict
         );
+
+    public Error AlreadyEnrolledInThisYearTerm
+            => new Error(
+                "Enrollment.AlreadyEnrolledInThisYearTerm",
+                _localizer[EnrollmentLocalizationKeys.AlreadyEnrolledInThisYearTerm, LocalizationFolderNames.Enrollment],
+                StatusCodes.Status409Conflict
+            );
 }

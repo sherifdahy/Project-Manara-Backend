@@ -2,6 +2,7 @@
 using App.Application.Contracts.Responses.Enrollments;
 using App.Application.Queries.Departments;
 using App.Application.Queries.Enrollments;
+using App.Core.Entities.Personnel;
 
 namespace App.Application.Handlers.Queries.Enrollments;
 
@@ -20,6 +21,10 @@ public class GetAllEnrollmentsQueryHandler(IUnitOfWork unitOfWork) : IRequestHan
                       .Include(x => x.YearTerm).ThenInclude(yt => yt.Term),
                 cancellationToken);
 
+        var currentEnrollmentId = enrollments
+            .OrderByDescending(e => e.YearTerm.Year.StartDate)
+            .ThenByDescending(e => e.YearTerm.TermId)
+            .FirstOrDefault()?.Id;
 
         var response = enrollments.Select(e => new EnrollmentResponse(
                     e.Id,
@@ -27,7 +32,7 @@ public class GetAllEnrollmentsQueryHandler(IUnitOfWork unitOfWork) : IRequestHan
                     e.YearTerm.Year.Name,
                     e.YearTerm.Term.Name,
                     e.UserId,
-                    false
+                    e.Id == currentEnrollmentId 
                 )).ToList();
 
         return Result.Success(response);

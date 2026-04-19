@@ -1,8 +1,6 @@
 ﻿using App.Application.Commands.Enrollments;
-using App.Application.Contracts.Responses.Departments;
 using App.Application.Contracts.Responses.Enrollments;
 using App.Core.Entities.Relations;
-using Microsoft.AspNetCore.Identity;
 
 namespace App.Application.Handlers.Commands.Enrollments;
 
@@ -47,15 +45,21 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
             return Result.Failure<EnrollmentResponse>(_yearErrors.TermNotFound);
 
 
-        var existingEnrollment = await _unitOfWork.StudentProgramYearTerms
-            .FindAsync(x => x.UserId == request.UserId
-                         && x.ProgramId == request.ProgramId
-                         && x.YearId == request.YearId
-                         && x.TermId == request.TermId,
-                         null, cancellationToken);
+        var duplicateProgram = await _unitOfWork.StudentProgramYearTerms
+            .IsExistAsync(x => x.UserId == request.UserId
+                           && x.ProgramId == request.ProgramId);
 
-        if (existingEnrollment != null)
+        if (duplicateProgram)
             return Result.Failure<EnrollmentResponse>(_enrollmentErrors.DuplicatedEnrollment);
+
+
+        var duplicateYearTerm = await _unitOfWork.StudentProgramYearTerms
+            .IsExistAsync(x => x.UserId == request.UserId
+                           && x.YearId == request.YearId
+                           && x.TermId == request.TermId);
+
+        if (duplicateYearTerm)
+            return Result.Failure<EnrollmentResponse>(_enrollmentErrors.AlreadyEnrolledInThisYearTerm);
 
         var entity = request.Adapt<StudentProgramYearTerm>();
 

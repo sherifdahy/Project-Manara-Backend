@@ -44,7 +44,24 @@ public class UpdateEnrollmentCommandHandler(IUnitOfWork unitOfWork
             return Result.Failure<EnrollmentResponse>(_yearErrors.TermNotFound);
 
 
+        var duplicateProgram = await _unitOfWork.StudentProgramYearTerms
+            .IsExistAsync(x => x.UserId == enrollmentEntity.UserId
+                           && x.ProgramId == request.ProgramId
+                           && x.Id != request.Id);  
 
+        if (duplicateProgram)
+            return Result.Failure(_enrollmentErrors.DuplicatedEnrollment);
+
+
+        var duplicateYearTerm = await _unitOfWork.StudentProgramYearTerms
+            .IsExistAsync(x => x.UserId == enrollmentEntity.UserId
+                           && x.YearId == request.YearId
+                           && x.TermId == request.TermId
+                           && x.Id != request.Id);
+
+
+        if (duplicateYearTerm)
+            return Result.Failure(_enrollmentErrors.AlreadyEnrolledInThisYearTerm);
 
         enrollmentEntity.ProgramId=request.ProgramId;
         enrollmentEntity.YearId=request.YearId;
