@@ -3,14 +3,10 @@
   "WorkspaceRootPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\periods\\periodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\periods\\periodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\enrollments\\createenrollmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\queries\\period\\getperiodqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\periods\\togglestatusperiodcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\errors\\yearerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,7 +16,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -32,41 +28,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ToggleStatusPeriodCommandHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Periods\\ToggleStatusPeriodCommandHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Periods\\ToggleStatusPeriodCommandHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Periods\\ToggleStatusPeriodCommandHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Periods\\ToggleStatusPeriodCommandHandler.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCgAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "CreateEnrollmentCommandHandler.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAQwEUAAABsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T17:00:01.02Z",
+              "WhenOpened": "2026-04-19T17:48:08.21Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GetPeriodQueryHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Period\\GetPeriodQueryHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Period\\GetPeriodQueryHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Period\\GetPeriodQueryHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Period\\GetPeriodQueryHandler.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwB0AAAAEAAAAAAAAAA==",
+              "Title": "YearErrors.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Errors\\YearErrors.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Errors\\YearErrors.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Errors\\YearErrors.cs",
+              "RelativeToolTip": "..\\App.Application\\Errors\\YearErrors.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T16:58:11.06Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PeriodsController.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Periods\\PeriodsController.cs",
-              "RelativeDocumentMoniker": "App.API\\Controllers\\Periods\\PeriodsController.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Periods\\PeriodsController.cs",
-              "RelativeToolTip": "App.API\\Controllers\\Periods\\PeriodsController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAC0AAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T23:10:11.803Z",
+              "WhenOpened": "2026-04-19T17:46:32.127Z",
               "EditorCaption": ""
             }
           ]

@@ -591,7 +591,7 @@ namespace App.Infrastructure.Migrations
                     b.ToTable("FacultyUsers");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
+            modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
                 {
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -599,16 +599,11 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("FacultyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProgramId")
-                        .HasColumnType("int");
-
                     b.HasKey("UserId");
 
                     b.HasIndex("FacultyId");
 
-                    b.HasIndex("ProgramId");
-
-                    b.ToTable("ProgramUsers");
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.UniversityUser", b =>
@@ -704,28 +699,43 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Relations.ProgramUserProgramYearTerm", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ProgramId")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearTermId")
+                    b.Property<int>("TermId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearTermTermId")
+                    b.Property<int>("YearId")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearTermYearId")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
 
-                    b.HasKey("ProgramId", "YearTermId", "UserId");
+                    b.HasIndex("ProgramId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId", "ProgramId")
+                        .IsUnique();
 
-                    b.HasIndex("YearTermYearId", "YearTermTermId");
+                    b.HasIndex("YearId", "TermId");
 
-                    b.ToTable("ProgramUserProgramYearTerm");
+                    b.HasIndex("UserId", "YearId", "TermId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId", "ProgramId", "YearId", "TermId")
+                        .IsUnique();
+
+                    b.ToTable("StudentProgramYearTerm");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.YearTerm", b =>
@@ -1421,6 +1431,34 @@ namespace App.Infrastructure.Migrations
                             ClaimType = "permissions",
                             ClaimValue = "periods:toggleStatus",
                             RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 61,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 62,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 63,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 64,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:toggleStatus",
+                            RoleId = 100
                         });
                 });
 
@@ -1671,7 +1709,7 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
+            modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
                 {
                     b.HasOne("App.Core.Entities.Universities.Faculty", "Faculty")
                         .WithMany("ProgramUsers")
@@ -1679,13 +1717,9 @@ namespace App.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("App.Core.Entities.Universities.Program", null)
-                        .WithMany("ProgramUsers")
-                        .HasForeignKey("ProgramId");
-
                     b.HasOne("App.Core.Entities.Identity.ApplicationUser", "User")
                         .WithOne("ProgramUser")
-                        .HasForeignKey("App.Core.Entities.Personnel.ProgramUser", "UserId")
+                        .HasForeignKey("App.Core.Entities.Personnel.Student", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -1814,15 +1848,15 @@ namespace App.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("App.Core.Entities.Personnel.ProgramUser", "User")
-                        .WithMany("ProgramUserProgramYearTerms")
+                    b.HasOne("App.Core.Entities.Personnel.Student", "User")
+                        .WithMany("StudentProgramYearTerms")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
-                        .WithMany("ProgramUserProgramYearTerms")
-                        .HasForeignKey("YearTermYearId", "YearTermTermId")
+                        .WithMany("StudentProgramYearTerms")
+                        .HasForeignKey("YearId", "TermId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -2024,16 +2058,16 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("DepartmentUserSubjectYearTermPeriods");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
+            modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
                 {
-                    b.Navigation("ProgramUserProgramYearTerms");
+                    b.Navigation("StudentProgramYearTerms");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.YearTerm", b =>
                 {
                     b.Navigation("DepartmentUserSubjectYearTermPeriods");
 
-                    b.Navigation("ProgramUserProgramYearTerms");
+                    b.Navigation("StudentProgramYearTerms");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -2063,8 +2097,6 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("ProgramSubjects");
 
                     b.Navigation("ProgramUserProgramYearTerms");
-
-                    b.Navigation("ProgramUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Subject", b =>

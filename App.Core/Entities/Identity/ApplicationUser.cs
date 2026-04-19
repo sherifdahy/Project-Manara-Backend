@@ -16,5 +16,5 @@ public class ApplicationUser : IdentityUser<int>
     public FacultyUser FacultyUser { get; set; } = default!;
     public UniversityUser UniversityUser { get; set; } = default!;
     public DepartmentUser DepartmentUser { get; set; } = default!;
-    public ProgramUser ProgramUser { get; set; } = default!;
+    public Student ProgramUser { get; set; } = default!;
 }

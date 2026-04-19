@@ -105,6 +105,12 @@ public class Permissions
     public const string UpdatePeriods = "periods:update";
     public const string ToggleStatusPeriods = "periods:toggleStatus";
 
+    //Enrollments Permissions
+
+    public const string GetEnrollments = "enrollments:read";
+    public const string CreateEnrollments = "enrollments:create";
+    public const string UpdateEnrollments = "enrollments:update";
+    public const string ToggleStatusEnrollments = "enrollments:toggleStatus";
 
 
 

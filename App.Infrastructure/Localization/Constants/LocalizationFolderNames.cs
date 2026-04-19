@@ -30,4 +30,5 @@ public static class LocalizationFolderNames
 
     public static readonly string Day = nameof(Day);
 
+    public static readonly string Enrollment = nameof(Enrollment);
 }

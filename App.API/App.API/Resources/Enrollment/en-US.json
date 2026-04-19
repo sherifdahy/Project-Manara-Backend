@@ -1,0 +1,7 @@
+{
+  "NotFound": "This Enrollment Is not found",
+  "DifferentProgram": "Program Does not exsists in student faculty",
+  "DifferentYear": "Year Does not exsists in student faculty",
+  "DuplicatedEnrollment": "Thie Enrollment Is already exsists",
+  "AlreadyEnrolledInThisYearTerm": "This Student already enrolled in this term"
+}

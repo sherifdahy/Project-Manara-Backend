@@ -19,7 +19,7 @@ public class GetProgramUserQueryHandler(IUnitOfWork unitOfWork
     public async Task<Result<ProgramUserResponse>> Handle(GetProgramUserQuery request, CancellationToken cancellationToken)
     {
         var programUser = await _unitOfWork
-            .ProgramUsers.FindAsync(x => x.UserId == request.Id, i => i.Include(d => d.User), cancellationToken);
+            .Students.FindAsync(x => x.UserId == request.Id, i => i.Include(d => d.User), cancellationToken);
 
         if (programUser == null)
             return Result.Failure<ProgramUserResponse>(_userErrors.NotFound);

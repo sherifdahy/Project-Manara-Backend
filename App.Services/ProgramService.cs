@@ -43,7 +43,7 @@ public class ProgramService(UserManager<ApplicationUser> userManager,IUnitOfWork
         if(departmentUser != null)
             return await _unitOfWork.Programs.IsExistAsync(p => p.DepartmentId == departmentUser.DepartmentId && p.Id == requestProgramId);
 
-        var programUser = await _unitOfWork.ProgramUsers
+        var programUser = await _unitOfWork.Students
             .FindAsync(fu => fu.UserId == user.GetUserId());
 
         return false;

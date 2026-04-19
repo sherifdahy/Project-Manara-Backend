@@ -1,9 +1,5 @@
 ﻿using App.Infrastructure.Localization.Constants;
 using App.Infrastructure.Localization.Localizers;
-using Hangfire.Storage.Monitoring;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Application.Errors;
 

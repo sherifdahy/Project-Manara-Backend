@@ -1,0 +1,8 @@
+﻿{
+  "NotFound": "هذا التسجيل غير موجود",
+  "DifferentProgram": "برنامج غير موجود فى كلية الطالب",
+  "DifferentYear": "سنة غير موجودة فى كلية الطالب",
+  "DuplicatedEnrollment": "هذا التسجيل موجود بالفعل",
+  "AlreadyEnrolledInThisYearTerm" : "هذا الطالب بالفعل مسجل فى هذه الترم"
+
+}

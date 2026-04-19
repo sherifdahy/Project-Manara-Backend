@@ -8,5 +8,5 @@ public class SemesterExamSeatingStudent
 
     public Term Semester { get; set; } = default!;
     public ExamSeating ExamSeating { get; set; } = default!;
-    public ProgramUser Student { get; set; } = default!;
+    public Student Student { get; set; } = default!;
 }

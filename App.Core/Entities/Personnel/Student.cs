@@ -3,7 +3,7 @@ using App.Core.Entities.Relations;
 
 namespace App.Core.Entities.Personnel;
 
-public class ProgramUser
+public class Student
 {
     public int UserId { get; set; }
     public ApplicationUser User { get; set; } = default!;
@@ -11,5 +11,5 @@ public class ProgramUser
     public int FacultyId { get; set; }
     public Faculty Faculty { get; set; } = default!;
 
-    public ICollection<ProgramUserProgramYearTerm> ProgramUserProgramYearTerms { get; set; } = new HashSet<ProgramUserProgramYearTerm>();
+    public ICollection<StudentProgramYearTerm> StudentProgramYearTerms { get; set; } = new HashSet<StudentProgramYearTerm>();
 }

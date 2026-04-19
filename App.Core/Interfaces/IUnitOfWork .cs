@@ -19,7 +19,8 @@ public interface IUnitOfWork : IDisposable
     public IRepository<FacultyUser> FacultyUsers { get; }
     public IRepository<UniversityUser> UniversityUsers  { get; }
     public IRepository<DepartmentUser> DepartmentUsers { get; }
-    public IRepository<ProgramUser> ProgramUsers { get; }
+    public IRepository<Student> Students { get; }
+    public IRepository<StudentProgramYearTerm> StudentProgramYearTerms { get; }
 
     // bussiness logic
     public IRepository<University> Universities { get; }
