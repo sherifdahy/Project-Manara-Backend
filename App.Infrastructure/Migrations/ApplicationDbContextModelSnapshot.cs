@@ -677,6 +677,31 @@ namespace App.Infrastructure.Migrations
                     b.ToTable("ProgramSubject");
                 });
 
+            modelBuilder.Entity("App.Core.Entities.Relations.ProgramSubjectPeriodDay", b =>
+                {
+                    b.Property<int>("ProgramId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PeriodId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DayId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProgramId", "SubjectId", "PeriodId", "DayId");
+
+                    b.HasIndex("DayId");
+
+                    b.HasIndex("PeriodId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("ProgramSubjectPeriodDay");
+                });
+
             modelBuilder.Entity("App.Core.Entities.Relations.ProgramUserProgramYearTerm", b =>
                 {
                     b.Property<int>("ProgramId")
@@ -1746,6 +1771,41 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("App.Core.Entities.Relations.ProgramSubjectPeriodDay", b =>
+                {
+                    b.HasOne("App.Core.Entities.Academic.Day", "Day")
+                        .WithMany()
+                        .HasForeignKey("DayId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Academic.Period", "Period")
+                        .WithMany()
+                        .HasForeignKey("PeriodId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Universities.Program", "Program")
+                        .WithMany("ProgramSchedules")
+                        .HasForeignKey("ProgramId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Universities.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Day");
+
+                    b.Navigation("Period");
+
+                    b.Navigation("Program");
+
+                    b.Navigation("Subject");
+                });
+
             modelBuilder.Entity("App.Core.Entities.Relations.ProgramUserProgramYearTerm", b =>
                 {
                     b.HasOne("App.Core.Entities.Universities.Program", "Program")
@@ -1998,6 +2058,8 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
                 {
+                    b.Navigation("ProgramSchedules");
+
                     b.Navigation("ProgramSubjects");
 
                     b.Navigation("ProgramUserProgramYearTerms");

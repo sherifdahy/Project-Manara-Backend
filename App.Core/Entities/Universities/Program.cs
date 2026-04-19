@@ -17,4 +17,5 @@ public class Program
     public ICollection<ProgramUserProgramYearTerm> ProgramUserProgramYearTerms { get; set; } = new HashSet<ProgramUserProgramYearTerm>();
     public ICollection<ProgramSubject> ProgramSubjects { get; set; } = new HashSet<ProgramSubject>();    
     public ICollection<ProgramUser> ProgramUsers { get; set; } = new HashSet<ProgramUser>();
+    public ICollection<ProgramSubjectPeriodDay> ProgramSchedules { get; set; } = new HashSet<ProgramSubjectPeriodDay>();
 }

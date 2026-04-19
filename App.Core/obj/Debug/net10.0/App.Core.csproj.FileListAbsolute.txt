@@ -11,3 +11,16 @@ D:\work\GraduationProject\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.
 D:\work\GraduationProject\Project-Manara-Backend\App.Core\obj\Debug\net10.0\refint\App.Core.dll
 D:\work\GraduationProject\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.pdb
 D:\work\GraduationProject\Project-Manara-Backend\App.Core\obj\Debug\net10.0\ref\App.Core.dll
+D:\Manara-Project\Project-Manara-Backend\App.Core\bin\Debug\net10.0\App.Core.deps.json
+D:\Manara-Project\Project-Manara-Backend\App.Core\bin\Debug\net10.0\App.Core.dll
+D:\Manara-Project\Project-Manara-Backend\App.Core\bin\Debug\net10.0\App.Core.pdb
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.csproj.AssemblyReference.cache
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.AssemblyInfoInputs.cache
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.AssemblyInfo.cs
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.csproj.CoreCompileInputs.cache
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.sourcelink.json
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.dll
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\refint\App.Core.dll
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\App.Core.pdb
+D:\Manara-Project\Project-Manara-Backend\App.Core\obj\Debug\net10.0\ref\App.Core.dll

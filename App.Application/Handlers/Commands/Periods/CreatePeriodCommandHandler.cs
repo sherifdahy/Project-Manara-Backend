@@ -1,5 +1,4 @@
 ﻿using App.Application.Commands.Periods;
-using App.Application.Contracts.Responses.Departments;
 using App.Application.Contracts.Responses.Periods;
 using App.Core.Entities.Academic;
 
@@ -28,22 +27,13 @@ public class CreatePeriodCommandHandler(IUnitOfWork unitOfWork
         if (isPeriodExists)
             return Result.Failure<PeriodResponse>(_periodErrors.DuplicatedPeriod);
 
-        List<Period> periods = new List<Period>();
+        var entity = request.Adapt<Period>();
 
-        for(int i = 1; i <= 7; i++)
-        {
-            periods.Add(new Period { StartTime = request.StartTime, EndTime = request.EndTime, DayId = i ,FacultyId=request.FacultyId});
-        }
+        await _unitOfWork.Periods.AddAsync(entity,cancellationToken);
 
-        await _unitOfWork.Periods.AddRangeAsync(periods);
+        await _unitOfWork.SaveAsync(cancellationToken);
 
-        await _unitOfWork.SaveAsync();
-
-        var response = new PeriodResponse(
-            request.StartTime,
-            request.EndTime,
-            false
-        );
+        var response = entity.Adapt<PeriodResponse>();
 
         return Result.Success(response);
     }

@@ -1,6 +1,7 @@
 ﻿using App.API.Attributes;
 using App.Application.Commands.Programs;
 using App.Application.Contracts.Requests.Programs;
+using App.Application.Contracts.Requests.ProgramSchedules;
 using App.Application.Queries.Programs;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
@@ -69,28 +70,43 @@ namespace App.API.Controllers.Programs
 
         [HttpGet("{programId}/subjects")]
         [HasPermission(Permissions.GetProgramSubjects)]
-        public IActionResult GetSubjects(int programId, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetSubjects(int programId, CancellationToken cancellationToken = default)
         {
             var query = new GetProgramSubjectsQuery() with { ProgramId = programId };
-            var result = _mediator.Send(query).Result;
+            var result = await _mediator.Send(query);
             return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
         }
 
         [HttpPost("{programId}/subjects/{subjectId}")]
         [HasPermission(Permissions.AddProgramSubjects)]
-        public IActionResult AddSubject(int programId, int subjectId, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> AddSubject(int programId, int subjectId, CancellationToken cancellationToken = default)
         {
             var command = new AddSubjectToProgramCommand() with { ProgramId = programId, SubjectId = subjectId };
-            var result = _mediator.Send(command).Result;
+            var result = await _mediator.Send(command);
             return result.IsSuccess ? NoContent() : result.ToProblem();
         }
 
         [HttpDelete("{programId}/subjects/{subjectId}")]
         [HasPermission(Permissions.RemoveProgramSubjects)]
-        public IActionResult RemoveSubject(int programId, int subjectId, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> RemoveSubject(int programId, int subjectId, CancellationToken cancellationToken = default)
         {
             var command = new RemoveSubjectFromProgramCommand() with { ProgramId = programId, SubjectId = subjectId };
-            var result = _mediator.Send(command).Result;
+            var result = await _mediator.Send(command);
+            return result.IsSuccess ? NoContent() : result.ToProblem();
+        }
+
+        [HttpGet("{programId}/schedule")]
+        public async Task<IActionResult> GetSchedule(int programId,CancellationToken cancellationToken)
+        {
+            var command = new GetProgramScheduleQuery() with { ProgramId = programId };
+            var result = await _mediator.Send(command, cancellationToken);
+            return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+        }
+        [HttpPost("{programId}/schedule")]
+        public async Task<IActionResult> SaveSchdeule(int programId,CreateProgramScheduleRequest request, CancellationToken cancellationToken)
+        {
+            var command = new SaveProgramScheduleCommand() with { ProgramId = programId,Schedules = request.Schedules };
+            var result = await _mediator.Send(command, cancellationToken);
             return result.IsSuccess ? NoContent() : result.ToProblem();
         }
     }

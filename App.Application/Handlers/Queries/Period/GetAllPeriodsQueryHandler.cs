@@ -14,8 +14,9 @@ public class GetAllPeriodsQueryHandler(IUnitOfWork unitOfWork) : IRequestHandler
                 criteria: x => x.FacultyId == request.FacultyId
                             && (!x.IsDeleted || (request.IncludeDisabled.HasValue
                                               && request.IncludeDisabled.Value)),
-                groupBy: x => new { x.StartTime, x.EndTime, x.IsDeleted },
+                groupBy: x => new { x.Id, x.StartTime, x.EndTime, x.IsDeleted },
                 select: g => new PeriodResponse(
+                    g.Key.Id,
                     g.Key.StartTime,
                     g.Key.EndTime,
                     g.Key.IsDeleted

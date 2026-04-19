@@ -27,25 +27,14 @@ public class PeriodsController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
-    [HttpGet("/api/faculties/{facultyId}/periods/{startTime}/{endTime}")]
+    [HttpGet("{id}")]
     [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.GetPeriods)]
-    public async Task<IActionResult> Get(
-        [FromRoute] int facultyId,
-        [FromRoute] string startTime,
-        [FromRoute] string endTime,
-        CancellationToken cancellationToken = default)
+    public async Task<IActionResult> Get([FromRoute] int id,CancellationToken cancellationToken = default)
     {
-        var parsedStartTime = TimeOnly.Parse(startTime);
-        var parsedEndTime = TimeOnly.Parse(endTime);
-
-        var result = await _mediator.Send(
-            new GetPeriodQuery(facultyId, parsedStartTime, parsedEndTime),
-            cancellationToken);
-
+        var result = await _mediator.Send(new GetPeriodQuery() with { Id = id },cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
-
 
     [HttpPost("/api/faculties/{facultyId}/periods")]
     [RequireFacultyAccess("facultyId")]
@@ -53,7 +42,7 @@ public class PeriodsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] PeriodRequest request, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(request.Adapt<CreatePeriodCommand>() with { FacultyId = facultyId }, cancellationToken);
-        return result.IsSuccess ? Ok(result.Value) : result.ToProblem(); //TODO
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
     [HttpPut("/api/faculties/{facultyId}/periods/{oldStartTime}/{oldEndTime}")]
