@@ -35,6 +35,7 @@ public interface IUnitOfWork : IDisposable
     public IRepository<Term> Terms { get; }
     public IRepository<Period> Periods { get; }
     public IRepository<Day> Days { get; }
+    public IRepository<ProgramSubjectPeriodDay> ProgramSchedules { get; }
 
     Task<int> SaveAsync(CancellationToken cancellationToken = default);
     Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);

@@ -13,13 +13,12 @@
           "Hangfire.Core": "1.8.22",
           "Hangfire.Dashboard.Basic.Authentication": "8.0.0",
           "Hangfire.SqlServer": "1.8.22",
-          "MailKit": "4.14.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.0",
           "Microsoft.EntityFrameworkCore": "10.0.0",
           "Microsoft.EntityFrameworkCore.Design": "10.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.0",
-          "MimeKit": "4.15.1",
-          "System.Linq.Dynamic.Core": "1.7.1"
+          "System.Linq.Dynamic.Core": "1.7.1",
+          "System.Security.Cryptography.Xml": "10.0.6"
         },
         "runtime": {
           "App.Infrastructure.dll": {}
@@ -167,14 +166,15 @@
           }
         }
       },
-      "MailKit/4.14.1": {
+      "MailKit/4.16.0": {
         "dependencies": {
-          "MimeKit": "4.15.1"
+          "MimeKit": "4.16.0",
+          "System.Formats.Asn1": "10.0.2"
         },
         "runtime": {
-          "lib/net8.0/MailKit.dll": {
-            "assemblyVersion": "4.14.0.0",
-            "fileVersion": "4.14.1.0"
+          "lib/net10.0/MailKit.dll": {
+            "assemblyVersion": "4.16.0.0",
+            "fileVersion": "4.16.0.0"
           }
         }
       },
@@ -248,7 +248,9 @@
           "System.Configuration.ConfigurationManager": "9.0.4",
           "System.Formats.Nrbf": "9.0.0",
           "System.Resources.Extensions": "9.0.0",
-          "System.Security.Cryptography.ProtectedData": "9.0.4"
+          "System.Security.Cryptography.Pkcs": "10.0.6",
+          "System.Security.Cryptography.ProtectedData": "9.0.4",
+          "System.Security.Cryptography.Xml": "10.0.6"
         },
         "runtime": {
           "lib/net9.0/Microsoft.Build.Tasks.Core.dll": {
@@ -495,7 +497,9 @@
           "System.Composition": "9.0.0",
           "System.Configuration.ConfigurationManager": "9.0.4",
           "System.Resources.Extensions": "9.0.0",
+          "System.Security.Cryptography.Pkcs": "10.0.6",
           "System.Security.Cryptography.ProtectedData": "9.0.4",
+          "System.Security.Cryptography.Xml": "10.0.6",
           "System.Security.Permissions": "9.0.0",
           "System.Windows.Extensions": "9.0.0"
         },
@@ -560,7 +564,8 @@
           "Microsoft.IdentityModel.JsonWebTokens": "8.0.1",
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.1",
           "Microsoft.SqlServer.Server": "1.0.0",
-          "System.Configuration.ConfigurationManager": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.4",
+          "System.Security.Cryptography.Pkcs": "10.0.6"
         },
         "runtime": {
           "lib/net9.0/Microsoft.Data.SqlClient.dll": {
@@ -817,14 +822,15 @@
           }
         }
       },
-      "MimeKit/4.15.1": {
+      "MimeKit/4.16.0": {
         "dependencies": {
-          "BouncyCastle.Cryptography": "2.6.2"
+          "BouncyCastle.Cryptography": "2.6.2",
+          "System.Security.Cryptography.Pkcs": "10.0.6"
         },
         "runtime": {
           "lib/net10.0/MimeKit.dll": {
-            "assemblyVersion": "4.15.0.0",
-            "fileVersion": "4.15.1.0"
+            "assemblyVersion": "4.16.0.0",
+            "fileVersion": "4.16.0.0"
           }
         }
       },
@@ -937,6 +943,14 @@
           }
         }
       },
+      "System.Formats.Asn1/10.0.2": {
+        "runtime": {
+          "lib/net10.0/System.Formats.Asn1.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
       "System.Formats.Nrbf/9.0.0": {
         "runtime": {
           "lib/net9.0/System.Formats.Nrbf.dll": {
@@ -992,11 +1006,38 @@
           }
         }
       },
+      "System.Security.Cryptography.Pkcs/10.0.6": {
+        "runtime": {
+          "lib/net10.0/System.Security.Cryptography.Pkcs.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.626.17701"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net10.0/System.Security.Cryptography.Pkcs.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.626.17701"
+          }
+        }
+      },
       "System.Security.Cryptography.ProtectedData/9.0.4": {
         "runtime": {
           "lib/net9.0/System.Security.Cryptography.ProtectedData.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.425.16305"
+          }
+        }
+      },
+      "System.Security.Cryptography.Xml/10.0.6": {
+        "dependencies": {
+          "System.Security.Cryptography.Pkcs": "10.0.6"
+        },
+        "runtime": {
+          "lib/net10.0/System.Security.Cryptography.Xml.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.626.17701"
           }
         }
       },
@@ -1029,7 +1070,9 @@
       },
       "App.Core/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "10.0.0"
+          "MailKit": "4.16.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "10.0.0",
+          "MimeKit": "4.16.0"
         },
         "runtime": {
           "App.Core.dll": {
@@ -1109,12 +1152,12 @@
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
     },
-    "MailKit/4.14.1": {
+    "MailKit/4.16.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Rawu+h3lSSjKra0AxR+IUB99VQ7jWI+MvxThekqLhf+ic7VQ7a69lmPFW+LXuRYHla4ADcn3x16Gsvju3LTq9w==",
-      "path": "mailkit/4.14.1",
-      "hashPath": "mailkit.4.14.1.nupkg.sha512"
+      "sha512": "sha512-trJ82DOpAmo8i1jO1vNE+dGn4mPRyeYfy4swRcAGgMJhPoI1Kohf4OFJJf0+YIj4iUxgxPn8W+ht7e7KiYzSjg==",
+      "path": "mailkit/4.16.0",
+      "hashPath": "mailkit.4.16.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/10.0.0": {
       "type": "package",
@@ -1333,12 +1376,12 @@
       "path": "microsoft.sqlserver.server/1.0.0",
       "hashPath": "microsoft.sqlserver.server.1.0.0.nupkg.sha512"
     },
-    "MimeKit/4.15.1": {
+    "MimeKit/4.16.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cxCcQhD0zhboFoG136jJuJtQjNRDJ+BxBm3f2vWn+53bff/CRo+K1mAkWjsW4Wuyy5O22F40MdMG2nRzQu1cJw==",
-      "path": "mimekit/4.15.1",
-      "hashPath": "mimekit.4.15.1.nupkg.sha512"
+      "sha512": "sha512-X0LFxeM4gPRIhODyY/HYS9b+zRZ7y//v59rFzgS6wLxcPuZThnMtNZHtrr0fjLyRRkg3gqJBtvW36XfUzZ7Djw==",
+      "path": "mimekit/4.16.0",
+      "hashPath": "mimekit.4.16.0.nupkg.sha512"
     },
     "Mono.TextTemplating/3.0.0": {
       "type": "package",
@@ -1417,6 +1460,13 @@
       "path": "system.configuration.configurationmanager/9.0.4",
       "hashPath": "system.configuration.configurationmanager.9.0.4.nupkg.sha512"
     },
+    "System.Formats.Asn1/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9Hee6iQ74pDgdRNIL6lO8Vlx2onVWd5aDnqwk4Pvo0h5FklBd7QwcQDKgxeLuhiy0o3ibzUVO0KFQe0/hPXU+Q==",
+      "path": "system.formats.asn1/10.0.2",
+      "hashPath": "system.formats.asn1.10.0.2.nupkg.sha512"
+    },
     "System.Formats.Nrbf/9.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1459,12 +1509,26 @@
       "path": "system.resources.extensions/9.0.0",
       "hashPath": "system.resources.extensions.9.0.0.nupkg.sha512"
     },
+    "System.Security.Cryptography.Pkcs/10.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-88tquaGJ1htm4DHWS6x9jwER7sFET2SVRN7HqO1FYZwE0diDcUmz0ajhVa8ZD2HGhDJBueSPjP/gqyP3gXtT2A==",
+      "path": "system.security.cryptography.pkcs/10.0.6",
+      "hashPath": "system.security.cryptography.pkcs.10.0.6.nupkg.sha512"
+    },
     "System.Security.Cryptography.ProtectedData/9.0.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-o94k2RKuAce3GeDMlUvIXlhVa1kWpJw95E6C9LwW0KlG0nj5+SgCiIxJ2Eroqb9sLtG1mEMbFttZIBZ13EJPvQ==",
       "path": "system.security.cryptography.protecteddata/9.0.4",
       "hashPath": "system.security.cryptography.protecteddata.9.0.4.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Xml/10.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-71yFkEElPZKZ9jbZQTe1CWeHYXEtnCXwZnHnfeA8pP47tCXBUoWk+6zSIZ7RXO90nZjXgPNil6BFGWb1OBqA5w==",
+      "path": "system.security.cryptography.xml/10.0.6",
+      "hashPath": "system.security.cryptography.xml.10.0.6.nupkg.sha512"
     },
     "System.Security.Permissions/9.0.0": {
       "type": "package",

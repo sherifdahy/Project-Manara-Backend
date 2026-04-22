@@ -11,9 +11,6 @@ public class Period
     public TimeOnly StartTime { get; set; }
     public TimeOnly EndTime { get; set; }
 
-    public int DayId { get; set; }
-    public Day Day { get; set; }= default!;
-
     public int FacultyId { get; set; }
     public Faculty Faculty { get; set; } = default!;
 

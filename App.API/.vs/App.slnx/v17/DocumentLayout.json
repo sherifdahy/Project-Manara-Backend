@@ -47,8 +47,7 @@
               "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Enrollments\\ProgramEnrollmentResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T19:11:54.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-21T19:11:54.434Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsInProgramQueryHandler.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAMwDcAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T18:55:58.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-21T18:55:58.901Z"
             },
             {
               "$type": "Document",
@@ -73,8 +71,7 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\DepartmentUsers\\GetAllDepartmentUsersQueryHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T18:55:26.902Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-21T18:55:26.902Z"
             },
             {
               "$type": "Document",
@@ -84,7 +81,7 @@
               "RelativeDocumentMoniker": "App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
               "RelativeToolTip": "App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T18:49:56.539Z",
               "EditorCaption": ""

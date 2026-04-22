@@ -195,19 +195,19 @@
           }
         }
       },
-      "MailKit/4.14.1": {
+      "MailKit/4.16.0": {
         "type": "package",
         "dependencies": {
-          "MimeKit": "4.14.0",
-          "System.Formats.Asn1": "8.0.1"
+          "MimeKit": "4.16.0",
+          "System.Formats.Asn1": "10.0.2"
         },
         "compile": {
-          "lib/net8.0/MailKit.dll": {
+          "lib/net10.0/MailKit.dll": {
             "related": ".dll.config;.pdb;.xml"
           }
         },
         "runtime": {
-          "lib/net8.0/MailKit.dll": {
+          "lib/net10.0/MailKit.dll": {
             "related": ".dll.config;.pdb;.xml"
           }
         }
@@ -1731,7 +1731,7 @@
           }
         }
       },
-      "MimeKit/4.15.1": {
+      "MimeKit/4.16.0": {
         "type": "package",
         "dependencies": {
           "BouncyCastle.Cryptography": "2.6.2",
@@ -2009,20 +2009,20 @@
           }
         }
       },
-      "System.Formats.Asn1/8.0.1": {
+      "System.Formats.Asn1/10.0.2": {
         "type": "package",
         "compile": {
-          "lib/net8.0/System.Formats.Asn1.dll": {
+          "lib/net10.0/System.Formats.Asn1.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/System.Formats.Asn1.dll": {
+          "lib/net10.0/System.Formats.Asn1.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "buildTransitive/net6.0/_._": {}
+          "buildTransitive/net8.0/_._": {}
         }
       },
       "System.Formats.Nrbf/9.0.0": {
@@ -2183,7 +2183,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "System.Security.Cryptography.Pkcs/10.0.0": {
+      "System.Security.Cryptography.Pkcs/10.0.6": {
         "type": "package",
         "compile": {
           "lib/net10.0/System.Security.Cryptography.Pkcs.dll": {
@@ -2221,18 +2221,18 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Security.Cryptography.Xml/9.0.0": {
+      "System.Security.Cryptography.Xml/10.0.6": {
         "type": "package",
         "dependencies": {
-          "System.Security.Cryptography.Pkcs": "9.0.0"
+          "System.Security.Cryptography.Pkcs": "10.0.6"
         },
         "compile": {
-          "lib/net9.0/_._": {
+          "lib/net10.0/System.Security.Cryptography.Xml.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/System.Security.Cryptography.Xml.dll": {
+          "lib/net10.0/System.Security.Cryptography.Xml.dll": {
             "related": ".xml"
           }
         },
@@ -2343,7 +2343,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "10.0.0"
+          "MailKit": "4.16.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "10.0.0",
+          "MimeKit": "4.16.0"
         },
         "compile": {
           "bin/placeholder/App.Core.dll": {}
@@ -2613,10 +2615,10 @@
         "logo.png"
       ]
     },
-    "MailKit/4.14.1": {
-      "sha512": "Rawu+h3lSSjKra0AxR+IUB99VQ7jWI+MvxThekqLhf+ic7VQ7a69lmPFW+LXuRYHla4ADcn3x16Gsvju3LTq9w==",
+    "MailKit/4.16.0": {
+      "sha512": "trJ82DOpAmo8i1jO1vNE+dGn4mPRyeYfy4swRcAGgMJhPoI1Kohf4OFJJf0+YIj4iUxgxPn8W+ht7e7KiYzSjg==",
       "type": "package",
-      "path": "mailkit/4.14.1",
+      "path": "mailkit/4.16.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2625,6 +2627,10 @@
         "docs/GMailOAuth2.md",
         "docs/README.md",
         "icons/mailkit-50.png",
+        "lib/net10.0/MailKit.dll",
+        "lib/net10.0/MailKit.dll.config",
+        "lib/net10.0/MailKit.pdb",
+        "lib/net10.0/MailKit.xml",
         "lib/net462/MailKit.dll",
         "lib/net462/MailKit.dll.config",
         "lib/net462/MailKit.pdb",
@@ -2649,7 +2655,7 @@
         "lib/netstandard2.1/MailKit.dll.config",
         "lib/netstandard2.1/MailKit.pdb",
         "lib/netstandard2.1/MailKit.xml",
-        "mailkit.4.14.1.nupkg.sha512",
+        "mailkit.4.16.0.nupkg.sha512",
         "mailkit.nuspec"
       ]
     },
@@ -4866,10 +4872,10 @@
         "microsoft.sqlserver.server.nuspec"
       ]
     },
-    "MimeKit/4.15.1": {
-      "sha512": "cxCcQhD0zhboFoG136jJuJtQjNRDJ+BxBm3f2vWn+53bff/CRo+K1mAkWjsW4Wuyy5O22F40MdMG2nRzQu1cJw==",
+    "MimeKit/4.16.0": {
+      "sha512": "X0LFxeM4gPRIhODyY/HYS9b+zRZ7y//v59rFzgS6wLxcPuZThnMtNZHtrr0fjLyRRkg3gqJBtvW36XfUzZ7Djw==",
       "type": "package",
-      "path": "mimekit/4.15.1",
+      "path": "mimekit/4.16.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4901,7 +4907,7 @@
         "lib/netstandard2.1/MimeKit.dll.config",
         "lib/netstandard2.1/MimeKit.pdb",
         "lib/netstandard2.1/MimeKit.xml",
-        "mimekit.4.15.1.nupkg.sha512",
+        "mimekit.4.16.0.nupkg.sha512",
         "mimekit.nuspec"
       ]
     },
@@ -5306,31 +5312,31 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Formats.Asn1/8.0.1": {
-      "sha512": "XqKba7Mm/koKSjKMfW82olQdmfbI5yqeoLV/tidRp7fbh5rmHAQ5raDI/7SU0swTzv+jgqtUGkzmFxuUg0it1A==",
+    "System.Formats.Asn1/10.0.2": {
+      "sha512": "9Hee6iQ74pDgdRNIL6lO8Vlx2onVWd5aDnqwk4Pvo0h5FklBd7QwcQDKgxeLuhiy0o3ibzUVO0KFQe0/hPXU+Q==",
       "type": "package",
-      "path": "system.formats.asn1/8.0.1",
+      "path": "system.formats.asn1/10.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "LICENSE.TXT",
+        "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/System.Formats.Asn1.targets",
         "buildTransitive/net462/_._",
-        "buildTransitive/net6.0/_._",
+        "buildTransitive/net8.0/_._",
         "buildTransitive/netcoreapp2.0/System.Formats.Asn1.targets",
+        "lib/net10.0/System.Formats.Asn1.dll",
+        "lib/net10.0/System.Formats.Asn1.xml",
         "lib/net462/System.Formats.Asn1.dll",
         "lib/net462/System.Formats.Asn1.xml",
-        "lib/net6.0/System.Formats.Asn1.dll",
-        "lib/net6.0/System.Formats.Asn1.xml",
-        "lib/net7.0/System.Formats.Asn1.dll",
-        "lib/net7.0/System.Formats.Asn1.xml",
         "lib/net8.0/System.Formats.Asn1.dll",
         "lib/net8.0/System.Formats.Asn1.xml",
+        "lib/net9.0/System.Formats.Asn1.dll",
+        "lib/net9.0/System.Formats.Asn1.xml",
         "lib/netstandard2.0/System.Formats.Asn1.dll",
         "lib/netstandard2.0/System.Formats.Asn1.xml",
-        "system.formats.asn1.8.0.1.nupkg.sha512",
+        "system.formats.asn1.10.0.2.nupkg.sha512",
         "system.formats.asn1.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -5640,10 +5646,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Security.Cryptography.Pkcs/10.0.0": {
-      "sha512": "UPWqLSygJlFerRi9XNIuM0a1VC8gHUIufyP24xQ0sc+XimqUAEcjpOz9DhKpyDjH+5B/wO3RpC0KpkEeDj/ddg==",
+    "System.Security.Cryptography.Pkcs/10.0.6": {
+      "sha512": "88tquaGJ1htm4DHWS6x9jwER7sFET2SVRN7HqO1FYZwE0diDcUmz0ajhVa8ZD2HGhDJBueSPjP/gqyP3gXtT2A==",
       "type": "package",
-      "path": "system.security.cryptography.pkcs/10.0.0",
+      "path": "system.security.cryptography.pkcs/10.0.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5671,7 +5677,7 @@
         "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.xml",
         "runtimes/win/lib/net9.0/System.Security.Cryptography.Pkcs.dll",
         "runtimes/win/lib/net9.0/System.Security.Cryptography.Pkcs.xml",
-        "system.security.cryptography.pkcs.10.0.0.nupkg.sha512",
+        "system.security.cryptography.pkcs.10.0.6.nupkg.sha512",
         "system.security.cryptography.pkcs.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -5710,20 +5716,21 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Security.Cryptography.Xml/9.0.0": {
-      "sha512": "GQZn5wFd+pyOfwWaCbqxG7trQ5ox01oR8kYgWflgtux4HiUNihGEgG2TktRWyH+9bw7NoEju1D41H/upwQeFQw==",
+    "System.Security.Cryptography.Xml/10.0.6": {
+      "sha512": "71yFkEElPZKZ9jbZQTe1CWeHYXEtnCXwZnHnfeA8pP47tCXBUoWk+6zSIZ7RXO90nZjXgPNil6BFGWb1OBqA5w==",
       "type": "package",
-      "path": "system.security.cryptography.xml/9.0.0",
+      "path": "system.security.cryptography.xml/10.0.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/System.Security.Cryptography.Xml.targets",
         "buildTransitive/net462/_._",
         "buildTransitive/net8.0/_._",
         "buildTransitive/netcoreapp2.0/System.Security.Cryptography.Xml.targets",
+        "lib/net10.0/System.Security.Cryptography.Xml.dll",
+        "lib/net10.0/System.Security.Cryptography.Xml.xml",
         "lib/net462/System.Security.Cryptography.Xml.dll",
         "lib/net462/System.Security.Cryptography.Xml.xml",
         "lib/net8.0/System.Security.Cryptography.Xml.dll",
@@ -5732,7 +5739,7 @@
         "lib/net9.0/System.Security.Cryptography.Xml.xml",
         "lib/netstandard2.0/System.Security.Cryptography.Xml.dll",
         "lib/netstandard2.0/System.Security.Cryptography.Xml.xml",
-        "system.security.cryptography.xml.9.0.0.nupkg.sha512",
+        "system.security.cryptography.xml.10.0.6.nupkg.sha512",
         "system.security.cryptography.xml.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -5950,14 +5957,13 @@
       "Hangfire.Core >= 1.8.22",
       "Hangfire.Dashboard.Basic.Authentication >= 8.0.0",
       "Hangfire.SqlServer >= 1.8.22",
-      "MailKit >= 4.14.1",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 10.0.0",
       "Microsoft.EntityFrameworkCore >= 10.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 10.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 10.0.0",
-      "MimeKit >= 4.15.1",
-      "System.Linq.Dynamic.Core >= 1.7.1"
+      "System.Linq.Dynamic.Core >= 1.7.1",
+      "System.Security.Cryptography.Xml >= 10.0.6"
     ]
   },
   "packageFolders": {
@@ -6030,10 +6036,6 @@
             "target": "Package",
             "version": "[1.8.22, )"
           },
-          "MailKit": {
-            "target": "Package",
-            "version": "[4.14.1, )"
-          },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[10.0.0, )"
@@ -6058,13 +6060,13 @@
             "target": "Package",
             "version": "[10.0.0, )"
           },
-          "MimeKit": {
-            "target": "Package",
-            "version": "[4.15.1, )"
-          },
           "System.Linq.Dynamic.Core": {
             "target": "Package",
             "version": "[1.7.1, )"
+          },
+          "System.Security.Cryptography.Xml": {
+            "target": "Package",
+            "version": "[10.0.6, )"
           }
         },
         "imports": [
@@ -6088,36 +6090,6 @@
     }
   },
   "logs": [
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'MailKit' 4.14.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-9j88-vvj5-vhgr",
-      "libraryId": "MailKit",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-37gx-xxp4-5rgx",
-      "libraryId": "System.Security.Cryptography.Xml",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-w3x6-4m5h-cxqf",
-      "libraryId": "System.Security.Cryptography.Xml",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
     {
       "code": "NU1904",
       "level": "Warning",

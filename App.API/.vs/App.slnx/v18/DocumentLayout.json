@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\",
+  "WorkspaceRootPath": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\manara-project\\project-manara-backend\\app.application\\contracts\\requests\\programschedules\\createprogramschedulerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|f:\\graduation-project\\project-manara-backend\\app.api\\app.api\\controllers\\programs\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\programs\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\manara-project\\project-manara-backend\\app.application\\contracts\\responses\\programschedules\\programscheduleresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E48FB6E0-F0AF-0B9E-B89E-4A90945B48BB}|..\\App.Core\\App.Core.csproj|d:\\manara-project\\project-manara-backend\\app.core\\entities\\academic\\period.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB7537F0-7000-9336-644D-69BC65DDE058}|..\\App.Infrastructure\\App.Infrastructure.csproj|d:\\manara-project\\project-manara-backend\\app.infrastructure\\migrations\\20260317230019_period.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,36 +22,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
-              "RelativeDocumentMoniker": "App.API\\appsettings.json",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
-              "RelativeToolTip": "App.API\\appsettings.json",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACoAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-15T19:15:15.151Z",
+              "Title": "CreateProgramScheduleRequest.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\ProgramSchedules\\CreateProgramScheduleRequest.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Requests\\ProgramSchedules\\CreateProgramScheduleRequest.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\ProgramSchedules\\CreateProgramScheduleRequest.cs",
+              "RelativeToolTip": "..\\App.Application\\Contracts\\Requests\\ProgramSchedules\\CreateProgramScheduleRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T10:38:01.406Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ProgramsController.cs",
-              "DocumentMoniker": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramsController.cs",
-              "RelativeDocumentMoniker": "App.API\\Controllers\\Programs\\ProgramsController.cs",
-              "ToolTip": "F:\\Graduation-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramsController.cs",
-              "RelativeToolTip": "App.API\\Controllers\\Programs\\ProgramsController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAA8wEoAAAA2AAAAAAAAAA==",
+              "Title": "ProgramScheduleResponse.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",
+              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T15:56:03.621Z",
+              "WhenOpened": "2026-04-20T10:36:54.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Period.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Core\\Entities\\Academic\\Period.cs",
+              "RelativeDocumentMoniker": "..\\App.Core\\Entities\\Academic\\Period.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.Core\\Entities\\Academic\\Period.cs",
+              "RelativeToolTip": "..\\App.Core\\Entities\\Academic\\Period.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T08:01:09.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20260317230019_period.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260317230019_period.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Migrations\\20260317230019_period.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260317230019_period.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Migrations\\20260317230019_period.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T08:01:05.954Z",
               "EditorCaption": ""
             }
           ]
