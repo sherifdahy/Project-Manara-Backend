@@ -1,16 +1,13 @@
-﻿using App.Application.Contracts.Responses.Departments;
-using App.Application.Contracts.Responses.Enrollments;
-using App.Application.Queries.Departments;
+﻿using App.Application.Contracts.Responses.Enrollments;
 using App.Application.Queries.Enrollments;
-using App.Core.Entities.Personnel;
 
 namespace App.Application.Handlers.Queries.Enrollments;
 
-public class GetAllEnrollmentsQueryHandler(IUnitOfWork unitOfWork) : IRequestHandler<GetAllEnrollmentsQuery, Result<List<EnrollmentResponse>>>
+public class GetAllEnrollmentsnUserQueryHandler(IUnitOfWork unitOfWork) : IRequestHandler<GetAllEnrollmentsInUserQuery, Result<List<EnrollmentResponse>>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
-    public async Task<Result<List<EnrollmentResponse>>> Handle(GetAllEnrollmentsQuery request, CancellationToken cancellationToken)
+    public async Task<Result<List<EnrollmentResponse>>> Handle(GetAllEnrollmentsInUserQuery request, CancellationToken cancellationToken)
     {
         var enrollments = await _unitOfWork.StudentProgramYearTerms
             .FindAllAsync(

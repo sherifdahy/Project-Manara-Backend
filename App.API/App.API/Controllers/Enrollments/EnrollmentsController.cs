@@ -1,7 +1,7 @@
 ﻿using App.API.Attributes;
+using App.Application.Abstractions;
 using App.Application.Commands.Enrollments;
 using App.Application.Contracts.Requests.Enrollments;
-using App.Application.Queries.Departments;
 using App.Application.Queries.Enrollments;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
@@ -17,12 +17,24 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
 
+    [HttpGet("/api/programs/{programId}/enrollments")]
+    [RequireProgramAccess("programId")]
+    [HasPermission(Permissions.GetEnrollments)]
+    public async Task<IActionResult> GetAllInProgram 
+        (int programId,[FromQuery] bool includeDisabled, [FromQuery] RequestFilters filters, CancellationToken cancellationToken)
+    {
+        var query = new GetAllEnrollmentsInProgramQuery() with { ProgramId = programId, IncludeDisabled = includeDisabled, Filters = filters };
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
+
     [HttpGet("/api/students/{userId}/enrollments")]
     [RequireUserAccess("userId")] 
     [HasPermission(Permissions.GetEnrollments)]
-    public async Task<IActionResult> GetAll([FromRoute] int userId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetAllInUser([FromRoute] int userId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
     {
-        var query = new GetAllEnrollmentsQuery(includeDisabled, userId);
+        var query = new GetAllEnrollmentsInUserQuery(includeDisabled, userId);
         var result = await _mediator.Send(query, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
