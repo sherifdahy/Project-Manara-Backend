@@ -64,7 +64,8 @@ public class GetAllEnrollmentsInProgramQueryHandler(IUnitOfWork unitOfWork,Progr
                 || x.User.User.Name.Contains(request.Filters.SearchValue)
                 || x.YearTerm.Year.Name.Contains(request.Filters.SearchValue)
                 || x.YearTerm.Term.Name.Contains(request.Filters.SearchValue)) &&
-                (request.IncludeDisabled == true || x.User.User.IsDeleted == false);
+                (request.IncludeDisabled == true || x.User.User.IsDeleted == false) 
+                && (!x.IsDeleted || (request.IncludeDisabled.HasValue && request.IncludeDisabled.Value));
 
 
            var count = await _unitOfWork.StudentProgramYearTerms.CountAsync(query);
