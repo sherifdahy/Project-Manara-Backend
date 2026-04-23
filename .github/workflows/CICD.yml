@@ -1,67 +1,156 @@
-# ─────────────────────────────────────────────
-# STAGE 1 — Restore
-# Copy only .csproj files first so Docker can
-# cache the restore layer. Nothing re-runs here
-# unless a .csproj actually changes.
-# ─────────────────────────────────────────────
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS restore
-WORKDIR /src
-
-# Copy solution file
-COPY App.sln .
-
-# Copy every .csproj in its correct folder
-# Paths match the FLAT structure of this repo
-COPY App.Core/App.Core.csproj                   App.Core/
-COPY App.Services/App.Services.csproj           App.Services/
-COPY App.Infrastructure/App.Infrastructure.csproj App.Infrastructure/
-COPY App.Application/App.Application.csproj    App.Application/
-COPY App.API/App.API.csproj                    App.API/
-
-# Restore the whole solution (cached unless a .csproj changed)
-RUN dotnet restore App.sln
-
+name: Backend — Build, Push to ECR & Deploy to ECS
 
 # ─────────────────────────────────────────────
-# STAGE 2 — Build & Publish
-# Full source is copied here, then published
-# in Release mode to /app/publish
+# Trigger: only on push to main branch
 # ─────────────────────────────────────────────
-FROM restore AS publish
-WORKDIR /src
+on:
+  push:
+    branches:
+      - main
 
-# Copy the rest of the source code
-COPY . .
+env:
+  AWS_REGION:         eu-central-1
+  ECR_REPOSITORY:     manara/backend           # your ECR repo name
+  ECS_CLUSTER:        manara-cluster           # your ECS cluster name
+  ECS_SERVICE:        manara-backend-service   # your ECS service name
+  CONTAINER_NAME:     manara-backend           # container name inside task definition
 
-RUN dotnet publish App.API/App.API.csproj \
-    --configuration Release \
-    --no-restore \
-    --output /app/publish
+jobs:
+  build-and-deploy:
+    name: Build → Push → Deploy
+    runs-on: ubuntu-latest
+
+    # Allow OIDC token to authenticate with AWS (no static keys)
+    permissions:
+      id-token: write   # required for OIDC
+      contents: read
+
+    steps:
+
+      # ── Step 1 ──────────────────────────────
+      # Pull the full repository code
+      # ─────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
 
-# ─────────────────────────────────────────────
-# STAGE 3 — Runtime
-# Lean ASP.NET runtime image — no SDK bloat.
-# Only the published output is copied here.
-# ─────────────────────────────────────────────
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
-WORKDIR /app
+      # ── Step 2 ──────────────────────────────
+      # Authenticate to AWS via OIDC
+      # No AWS_ACCESS_KEY_ID needed — GitHub
+      # exchanges a short-lived token with AWS
+      # ─────────────────────────────────────────
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}   # IAM role ARN stored in GitHub Secrets
+          aws-region: ${{ env.AWS_REGION }}
 
-# Create a non-root user for security
-RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 
-# Copy published output from the publish stage
-COPY --from=publish /app/publish .
+      # ── Step 3 ──────────────────────────────
+      # Log Docker into your private ECR registry
+      # Returns the registry URL for later steps
+      # ─────────────────────────────────────────
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
 
-# Give ownership to the non-root user
-RUN chown -R appuser:appgroup /app
-USER appuser
 
-# Port your API listens on (matches launchSettings.json)
-EXPOSE 5001
+      # ── Step 4 ──────────────────────────────
+      # THIS IS WHERE YOUR DOCKERFILE IS USED
+      #
+      # docker build reads your Dockerfile and:
+      #   Stage 1 → restores NuGet packages
+      #   Stage 2 → builds & publishes the app
+      #   Stage 3 → creates the lean runtime image
+      #
+      # Two tags are applied to the same image:
+      #   :latest  → always points to newest image
+      #   :<sha>   → unique tag per commit (traceability)
+      # ─────────────────────────────────────────
+      - name: Build Docker image
+        env:
+          REGISTRY:   ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG:  ${{ github.sha }}
+        run: |
+          docker build \
+            --tag $REGISTRY/$ECR_REPOSITORY:latest \
+            --tag $REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            --file Dockerfile \
+            .
 
-# Set ASP.NET Core to listen on the correct port
-ENV ASPNETCORE_URLS=http://+:5001
-ENV ASPNETCORE_ENVIRONMENT=Production
 
-ENTRYPOINT ["dotnet", "App.API.dll"]
+      # ── Step 5 ──────────────────────────────
+      # Run your unit/integration tests INSIDE
+      # the already-built image — no extra build.
+      # If tests fail the pipeline stops here,
+      # nothing gets pushed to ECR.
+      # ─────────────────────────────────────────
+      - name: Run tests
+        env:
+          REGISTRY:  ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker run --rm \
+            $REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            dotnet test --no-build --verbosity normal
+
+
+      # ── Step 6 ──────────────────────────────
+      # Push both tags to ECR.
+      # ECS will pull by SHA tag → fully
+      # reproducible deployments.
+      # ─────────────────────────────────────────
+      - name: Push image to ECR
+        env:
+          REGISTRY:  ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker push $REGISTRY/$ECR_REPOSITORY:latest
+          docker push $REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+
+      # ── Step 7 ──────────────────────────────
+      # Download the current ECS task definition
+      # JSON so we can update just the image URI
+      # without touching any other settings
+      # ─────────────────────────────────────────
+      - name: Download current ECS task definition
+        run: |
+          aws ecs describe-task-definition \
+            --task-definition manara-backend-task \
+            --query taskDefinition \
+            > task-definition.json
+
+
+      # ── Step 8 ──────────────────────────────
+      # Inject the new ECR image URI (with SHA
+      # tag) into the task definition JSON.
+      # This creates a NEW task definition revision.
+      # ─────────────────────────────────────────
+      - name: Update image in task definition
+        id: update-task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition:  task-definition.json
+          container-name:   ${{ env.CONTAINER_NAME }}
+          image:            ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+
+
+      # ── Step 9 ──────────────────────────────
+      # Register the updated task definition
+      # then trigger a rolling deployment on ECS.
+      #
+      # ECS will:
+      #   1. Launch new Fargate tasks (new image)
+      #   2. Wait for health checks to pass
+      #   3. Drain & stop old tasks
+      #
+      # If health checks fail → auto-rollback
+      # ─────────────────────────────────────────
+      - name: Deploy to ECS (rolling update)
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition:          ${{ steps.update-task-def.outputs.task-definition }}
+          service:                  ${{ env.ECS_SERVICE }}
+          cluster:                  ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true   # pipeline waits until deployment is healthy
