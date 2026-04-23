@@ -6,5 +6,6 @@ public record ProgramEnrollmentResponse
     string YearName,
     string TermName,
     string StudentName,
-    int StudentId
+    int StudentId,
+    bool IsDeleted
 );
