@@ -3,11 +3,13 @@
   "WorkspaceRootPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\enrollments\\createenrollmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\commands\\enrollments\\createenrollmentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\enrollments\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\enrollments\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\queries\\enrollments\\getallenrollmentsnuserqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\enrollments\\createenrollmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\queries\\enrollments\\getallenrollmentsinprogramqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -16,10 +18,11 @@
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\responses\\enrollments\\programenrollmentresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\responses\\enrollments\\enrollmentresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\enrollments\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\enrollments\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\queries\\enrollments\\getallenrollmentsnuserqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\responses\\enrollments\\enrollmentresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\requests\\enrollments\\enrollmentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -39,8 +42,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateEnrollmentCommand.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Enrollments\\CreateEnrollmentCommand.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Commands\\Enrollments\\CreateEnrollmentCommand.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Commands\\Enrollments\\CreateEnrollmentCommand.cs",
+              "RelativeToolTip": "..\\App.Application\\Commands\\Enrollments\\CreateEnrollmentCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T14:25:20.539Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -51,7 +67,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
+              "Title": "CreateEnrollmentCommandHandler.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwGsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T14:24:51.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "EnrollmentResponse.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Enrollments\\EnrollmentResponse.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\Enrollments\\EnrollmentResponse.cs",
@@ -59,36 +88,25 @@
               "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Enrollments\\EnrollmentResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T09:53:10.198Z"
+              "WhenOpened": "2026-04-24T09:53:10.198Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ProgramEnrollmentResponse.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Enrollments\\ProgramEnrollmentResponse.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\Enrollments\\ProgramEnrollmentResponse.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\Enrollments\\ProgramEnrollmentResponse.cs",
               "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Enrollments\\ProgramEnrollmentResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T10:01:08.287Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateEnrollmentCommandHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAvwFgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T20:17:55.674Z",
+              "WhenOpened": "2026-04-24T10:01:08.287Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "EnrollmentRequestValidator.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Validations\\Enrollments\\EnrollmentRequestValidator.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Validations\\Enrollments\\EnrollmentRequestValidator.cs",
@@ -100,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "EnrollmentRequest.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Requests\\Enrollments\\EnrollmentRequest.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Requests\\Enrollments\\EnrollmentRequest.cs",
@@ -112,43 +130,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "GetAllEnrollmentsnUserQueryHandler.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsnUserQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsnUserQueryHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsnUserQueryHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsnUserQueryHandler.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwA4AAABsAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBkAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T18:34:07.068Z"
+              "WhenOpened": "2026-04-23T18:34:07.068Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "GetAllEnrollmentsInProgramQueryHandler.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsInProgramQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsInProgramQueryHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsInProgramQueryHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsInProgramQueryHandler.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAnwF0AAABTAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAArwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T18:55:58.901Z"
+              "WhenOpened": "2026-04-21T18:55:58.901Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "EnrollmentsController.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
               "RelativeToolTip": "App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAArwDMAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAjwBwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T18:49:56.539Z"
+              "WhenOpened": "2026-04-20T18:49:56.539Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "DepartmentUsersController.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",

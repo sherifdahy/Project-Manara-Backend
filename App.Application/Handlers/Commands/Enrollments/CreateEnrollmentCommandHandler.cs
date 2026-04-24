@@ -9,7 +9,7 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
     ,ProgramErrors programErrors
     ,YearErrors yearErrors
     ,EnrollmentErrors enrollmentErrors
-    ) : IRequestHandler<CreateEnrollmentCommand, Result<ProgramEnrollmentResponse>>
+    ) : IRequestHandler<CreateEnrollmentCommand, Result<List<ProgramEnrollmentResponse>>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly UserErrors _userErrors = userErrors;
@@ -17,7 +17,7 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
     private readonly YearErrors _yearErrors = yearErrors;
     private readonly EnrollmentErrors _enrollmentErrors = enrollmentErrors;
 
-    public async Task<Result<ProgramEnrollmentResponse>> Handle(CreateEnrollmentCommand request, CancellationToken cancellationToken)
+    public async Task<Result<List<ProgramEnrollmentResponse>>> Handle(CreateEnrollmentCommand request, CancellationToken cancellationToken)
     {
 
         var uniqueStudentIds = request.StudentIds.Distinct().ToList();
@@ -28,7 +28,7 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
                        cancellationToken);
 
         if (program == null)
-            return Result.Failure<ProgramEnrollmentResponse>(_programErrors.NotFound);
+            return Result.Failure<List<ProgramEnrollmentResponse>>(_programErrors.NotFound);
 
 
         var year = await _unitOfWork.AcademicYears
@@ -37,13 +37,13 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
                        null, cancellationToken);
 
         if (year == null)
-            return Result.Failure<ProgramEnrollmentResponse>(_yearErrors.NotFound);
+            return Result.Failure<List<ProgramEnrollmentResponse>>(_yearErrors.NotFound);
 
         var term = await _unitOfWork.Terms
             .FindAsync(x => x.Id == request.TermId, null, cancellationToken);
 
         if (term == null)
-            return Result.Failure<ProgramEnrollmentResponse>(_yearErrors.TermNotFound);
+            return Result.Failure<List<ProgramEnrollmentResponse>>(_yearErrors.TermNotFound);
 
 
         var students = await _unitOfWork.Students
@@ -68,17 +68,17 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
             var student = students.FirstOrDefault(s => s.UserId == studentId);
 
             if (student == null)
-                return Result.Failure<ProgramEnrollmentResponse>(_userErrors.NotFound);
+                return Result.Failure<List<ProgramEnrollmentResponse>>(_userErrors.NotFound);
 
             if (existingEnrollments.Any(e => e.UserId == studentId
                                           && e.ProgramId == request.ProgramId))
-                return Result.Failure<ProgramEnrollmentResponse>(
+                return Result.Failure<List<ProgramEnrollmentResponse>>(
                     _enrollmentErrors.DuplicatedEnrollment);
 
             if (existingEnrollments.Any(e => e.UserId == studentId
                                           && e.YearId == request.YearId
                                           && e.TermId == request.TermId))
-                return Result.Failure<ProgramEnrollmentResponse>(
+                return Result.Failure<List<ProgramEnrollmentResponse>>(
                     _enrollmentErrors.AlreadyEnrolledInThisYearTerm);
 
             entitles.Add(new StudentProgramYearTerm
@@ -95,7 +95,7 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
         await _unitOfWork.SaveAsync();
 
 
-        var enrollmentItems = entitles.Select(x => new ProgramEnrollmentItemResponse(
+        var response = entitles.Select(x => new ProgramEnrollmentResponse(
             x.Id,
             year.Name,
             term.Name,
@@ -104,11 +104,6 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
             x.IsDeleted
         )).ToList();
 
-        var response = new ProgramEnrollmentResponse(
-            request.ProgramId,
-            program.Name,
-            enrollmentItems
-        );
 
         return Result.Success(response);
 

@@ -11,50 +11,9 @@ public class GetAllEnrollmentsInProgramQueryHandler(IUnitOfWork unitOfWork,Progr
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly ProgramErrors _programErrors = programErrors;
 
-    //public async Task<Result<PaginatedList<DepartmentUserResponse>>> Handle(GetAllDepartmentUsersQuery request, CancellationToken cancellationToken)
-    //{
-    //    if (await _unitOfWork.Departments.GetByIdAsync(request.DepartmentId) is null)
-    //        return Result.Failure<PaginatedList<DepartmentUserResponse>>(_departmentErrors.NotFound);
-
-    //    Expression<Func<DepartmentUser, bool>> query =
-    //        x => x.DepartmentId == request.DepartmentId &&
-    //            (string.IsNullOrEmpty(request.Filters.SearchValue)
-    //            || x.User.Name.Contains(request.Filters.SearchValue)
-    //            || x.User.Email!.Contains(request.Filters.SearchValue)
-    //            || x.User.NationalId.Contains(request.Filters.SearchValue)) &&
-    //            (request.IncludeDisabled == true || x.User.IsDeleted == false);
-
-    //    var count = await _unitOfWork.DepartmentUsers.CountAsync(query);
-
-    //    var departmentUsers = await _unitOfWork.DepartmentUsers.FindAllAsync(
-    //        query,
-    //        i => i.Include(d => d.User),
-    //        (request.Filters.PageNumber - 1) * request.Filters.PageSize,
-    //        request.Filters.PageSize,
-    //        request.Filters.SortColumn,
-    //        request.Filters.SortDirection,
-    //        cancellationToken);
-
-    //    var response = new List<DepartmentUserResponse>();
-
-    //    foreach (var x in departmentUsers)
-    //    {
-    //        var roles = (await _userManager.GetRolesAsync(x.User)).ToList();
-
-    //        var temp = x.User.Adapt<DepartmentUserResponse>();
-
-    //        temp.Roles = roles;
-
-    //        response.Add(temp);
-    //    }
-
-    //    return Result.Success(PaginatedList<DepartmentUserResponse>.Create(response, count, request.Filters.PageNumber, request.Filters.PageSize));
-
-
-    //}
     public async Task<Result<PaginatedList<ProgramEnrollmentResponse>>> Handle(GetAllEnrollmentsInProgramQuery request, CancellationToken cancellationToken)
     {
-        if (await _unitOfWork.Programs.GetByIdAsync(request.ProgramId) is null)
+        if (await _unitOfWork.Programs.GetByIdAsync(request.ProgramId) is not { } program)
             return Result.Failure<PaginatedList<ProgramEnrollmentResponse>>(_programErrors.NotFound);
 
 
@@ -82,16 +41,18 @@ public class GetAllEnrollmentsInProgramQueryHandler(IUnitOfWork unitOfWork,Progr
             request.Filters.SortDirection,
             cancellationToken);
 
-        //var response = programEnrollments.Select(e => new ProgramEnrollmentResponse(
-        //    e.Id,
-        //    e.YearTerm.Year.Name,
-        //    e.YearTerm.Term.Name,
-        //    e.User.User.Name,
-        //    e.UserId,
-        //    e.IsDeleted
-        //)).ToList();
+        var response = programEnrollments.Select(e => new ProgramEnrollmentResponse(
+            e.Id,
+            e.YearTerm.Year.Name,
+            e.YearTerm.Term.Name,
+            e.User.User.Name,
+            e.UserId,
+            e.IsDeleted
+        )).ToList();
 
-        return Result.Success(PaginatedList<ProgramEnrollmentResponse>.Create(null!, count, request.Filters.PageNumber, request.Filters.PageSize));
+        //var response = new ProgramEnrollmentResponse(program.Id, program.Name, enrollments);
+
+        return Result.Success(PaginatedList<ProgramEnrollmentResponse>.Create(response, count, request.Filters.PageNumber, request.Filters.PageSize));
 
     }
 }

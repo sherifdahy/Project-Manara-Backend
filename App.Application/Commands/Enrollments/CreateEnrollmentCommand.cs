@@ -6,7 +6,7 @@ using System.Text;
 
 namespace App.Application.Commands.Enrollments;
 
-public record CreateEnrollmentCommand : IRequest<Result<ProgramEnrollmentResponse>>
+public record CreateEnrollmentCommand : IRequest<Result<List<ProgramEnrollmentResponse>>>
 {
     public List<int> StudentIds { get; set; } = [];
     public int ProgramId { get; set; }
