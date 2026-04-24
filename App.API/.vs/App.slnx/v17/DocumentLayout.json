@@ -59,8 +59,7 @@
               "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Enrollments\\EnrollmentResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T09:53:10.198Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-24T09:53:10.198Z"
             },
             {
               "$type": "Document",
@@ -72,8 +71,7 @@
               "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\Enrollments\\ProgramEnrollmentResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T10:01:08.287Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-24T10:01:08.287Z"
             },
             {
               "$type": "Document",
@@ -83,7 +81,7 @@
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Enrollments\\CreateEnrollmentCommandHandler.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAvwHMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAvwFgAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-23T20:17:55.674Z",
               "EditorCaption": ""
@@ -134,8 +132,7 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Enrollments\\GetAllEnrollmentsInProgramQueryHandler.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAnwF0AAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T18:55:58.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-21T18:55:58.901Z"
             },
             {
               "$type": "Document",
@@ -147,8 +144,7 @@
               "RelativeToolTip": "App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAArwDMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T18:49:56.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T18:49:56.539Z"
             },
             {
               "$type": "Document",
