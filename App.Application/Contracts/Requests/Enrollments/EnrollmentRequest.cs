@@ -6,7 +6,7 @@ namespace App.Application.Contracts.Requests.Enrollments;
 
 public record EnrollmentRequest
 {
-    public int ProgramId { get; set; }
+    public List<int> StudentIds { get; set; } = [];
     public int YearId { get; set; }
     public int TermId { get; set; }
 }

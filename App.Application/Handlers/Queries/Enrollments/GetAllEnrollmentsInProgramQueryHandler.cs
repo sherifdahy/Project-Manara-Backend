@@ -82,16 +82,16 @@ public class GetAllEnrollmentsInProgramQueryHandler(IUnitOfWork unitOfWork,Progr
             request.Filters.SortDirection,
             cancellationToken);
 
-        var response = programEnrollments.Select(e => new ProgramEnrollmentResponse(
-            e.Id,
-            e.YearTerm.Year.Name,
-            e.YearTerm.Term.Name,
-            e.User.User.Name,
-            e.UserId,
-            e.IsDeleted
-        )).ToList();
+        //var response = programEnrollments.Select(e => new ProgramEnrollmentResponse(
+        //    e.Id,
+        //    e.YearTerm.Year.Name,
+        //    e.YearTerm.Term.Name,
+        //    e.User.User.Name,
+        //    e.UserId,
+        //    e.IsDeleted
+        //)).ToList();
 
-        return Result.Success(PaginatedList<ProgramEnrollmentResponse>.Create(response, count, request.Filters.PageNumber, request.Filters.PageSize));
+        return Result.Success(PaginatedList<ProgramEnrollmentResponse>.Create(null!, count, request.Filters.PageNumber, request.Filters.PageSize));
 
     }
 }

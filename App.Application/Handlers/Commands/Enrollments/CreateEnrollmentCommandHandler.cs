@@ -9,7 +9,7 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
     ,ProgramErrors programErrors
     ,YearErrors yearErrors
     ,EnrollmentErrors enrollmentErrors
-    ) : IRequestHandler<CreateEnrollmentCommand, Result<EnrollmentResponse>>
+    ) : IRequestHandler<CreateEnrollmentCommand, Result<ProgramEnrollmentResponse>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly UserErrors _userErrors = userErrors;
@@ -17,59 +17,101 @@ public class CreateEnrollmentCommandHandler(IUnitOfWork unitOfWork
     private readonly YearErrors _yearErrors = yearErrors;
     private readonly EnrollmentErrors _enrollmentErrors = enrollmentErrors;
 
-    public async Task<Result<EnrollmentResponse>> Handle(CreateEnrollmentCommand request, CancellationToken cancellationToken)
+    public async Task<Result<ProgramEnrollmentResponse>> Handle(CreateEnrollmentCommand request, CancellationToken cancellationToken)
     {
 
-        var student = await _unitOfWork.Students.GetByIdAsync(request.UserId,cancellationToken);
-
-        if (student == null)
-            return Result.Failure<EnrollmentResponse>(_userErrors.NotFound);
-
+        var uniqueStudentIds = request.StudentIds.Distinct().ToList();
 
         var program = await _unitOfWork.Programs
-            .FindAsync(x => x.Id == request.ProgramId && x.Department.FacultyId==student.FacultyId,x=>x.Include(x=>x.Department.Faculty),cancellationToken);
+            .FindAsync(x => x.Id == request.ProgramId,
+                       x => x.Include(x => x.Department.Faculty),
+                       cancellationToken);
 
-        if(program==null)
-            return Result.Failure<EnrollmentResponse>(_programErrors.NotFound);
+        if (program == null)
+            return Result.Failure<ProgramEnrollmentResponse>(_programErrors.NotFound);
 
 
-        var year = await _unitOfWork.AcademicYears.FindAsync(x=>x.Id==request.YearId && x.FacultyId==student.FacultyId,null,cancellationToken);
+        var year = await _unitOfWork.AcademicYears
+            .FindAsync(x => x.Id == request.YearId
+                         && x.FacultyId == program.Department.FacultyId,
+                       null, cancellationToken);
 
         if (year == null)
-            return Result.Failure<EnrollmentResponse>(_yearErrors.NotFound);
+            return Result.Failure<ProgramEnrollmentResponse>(_yearErrors.NotFound);
+
+        var term = await _unitOfWork.Terms
+            .FindAsync(x => x.Id == request.TermId, null, cancellationToken);
+
+        if (term == null)
+            return Result.Failure<ProgramEnrollmentResponse>(_yearErrors.TermNotFound);
 
 
-        var term = await _unitOfWork.Terms.FindAsync(x=>x.Id==request.TermId,null,cancellationToken);
-
-        if(term==null)
-            return Result.Failure<EnrollmentResponse>(_yearErrors.TermNotFound);
-
-
-        var duplicateProgram = await _unitOfWork.StudentProgramYearTerms
-            .IsExistAsync(x => x.UserId == request.UserId
-                           && x.ProgramId == request.ProgramId);
-
-        if (duplicateProgram)
-            return Result.Failure<EnrollmentResponse>(_enrollmentErrors.DuplicatedEnrollment);
+        var students = await _unitOfWork.Students
+            .FindAllAsync(x => uniqueStudentIds.Contains(x.UserId)
+                            && x.FacultyId == program.Department.FacultyId,
+                            x=>x.Include(x=>x.User),
+                            cancellationToken);
 
 
-        var duplicateYearTerm = await _unitOfWork.StudentProgramYearTerms
-            .IsExistAsync(x => x.UserId == request.UserId
-                           && x.YearId == request.YearId
-                           && x.TermId == request.TermId);
+        var existingEnrollments = await _unitOfWork.StudentProgramYearTerms
+            .FindAllAsync(x => uniqueStudentIds.Contains(x.UserId)
+                            && (x.ProgramId == request.ProgramId
+                                || (x.YearId == request.YearId
+                                    && x.TermId == request.TermId)),
+                         cancellationToken);
 
-        if (duplicateYearTerm)
-            return Result.Failure<EnrollmentResponse>(_enrollmentErrors.AlreadyEnrolledInThisYearTerm);
 
-        var entity = request.Adapt<StudentProgramYearTerm>();
+        var entitles = new List<StudentProgramYearTerm>();
 
-        await _unitOfWork.StudentProgramYearTerms.AddAsync(entity);
+        foreach (var studentId in uniqueStudentIds)
+        {
+            var student = students.FirstOrDefault(s => s.UserId == studentId);
+
+            if (student == null)
+                return Result.Failure<ProgramEnrollmentResponse>(_userErrors.NotFound);
+
+            if (existingEnrollments.Any(e => e.UserId == studentId
+                                          && e.ProgramId == request.ProgramId))
+                return Result.Failure<ProgramEnrollmentResponse>(
+                    _enrollmentErrors.DuplicatedEnrollment);
+
+            if (existingEnrollments.Any(e => e.UserId == studentId
+                                          && e.YearId == request.YearId
+                                          && e.TermId == request.TermId))
+                return Result.Failure<ProgramEnrollmentResponse>(
+                    _enrollmentErrors.AlreadyEnrolledInThisYearTerm);
+
+            entitles.Add(new StudentProgramYearTerm
+            {
+                ProgramId = program.Id,
+                TermId = term.Id,
+                YearId = year.Id,
+                UserId = studentId
+            });
+        }
+
+
+        await _unitOfWork.StudentProgramYearTerms.AddRangeAsync(entitles);
         await _unitOfWork.SaveAsync();
 
 
-        var response = new EnrollmentResponse(entity.Id,program.Name,year.Name,term.Name,student.UserId,false);
+        var enrollmentItems = entitles.Select(x => new ProgramEnrollmentItemResponse(
+            x.Id,
+            year.Name,
+            term.Name,
+            students.First(s => s.UserId == x.UserId).User.Name,
+            x.UserId,
+            x.IsDeleted
+        )).ToList();
+
+        var response = new ProgramEnrollmentResponse(
+            request.ProgramId,
+            program.Name,
+            enrollmentItems
+        );
 
         return Result.Success(response);
+
 
     }
 }

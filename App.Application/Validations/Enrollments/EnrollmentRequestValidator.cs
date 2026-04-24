@@ -6,7 +6,7 @@ public class EnrollmentRequestValidator : AbstractValidator<EnrollmentRequest>
 {
     public EnrollmentRequestValidator()
     {
-        RuleFor(f => f.ProgramId)
+        RuleFor(f => f.StudentIds)
             .NotEmpty()
             .NotNull();
 
