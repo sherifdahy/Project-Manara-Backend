@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Application.Contracts.Requests.Enrollments;
 
-public record EnrollmentRequest
+public record CreateEnrollmentRequest
 {
     public List<int> StudentIds { get; set; } = [];
     public int YearId { get; set; }

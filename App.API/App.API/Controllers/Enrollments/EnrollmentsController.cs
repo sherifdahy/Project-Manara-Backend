@@ -29,45 +29,43 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
     }
 
 
-    //[HttpGet("/api/students/{userId}/enrollments")]
-    //[RequireUserAccess("userId")] 
-    //[HasPermission(Permissions.GetEnrollments)]
-    //public async Task<IActionResult> GetAllInUser([FromRoute] int userId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
-    //{
-    //    var query = new GetAllEnrollmentsInUserQuery(includeDisabled, userId);
-    //    var result = await _mediator.Send(query, cancellationToken);
-    //    return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
-    //}
+    [HttpGet("/api/students/{userId}/enrollments")]
+    [RequireUserAccess("userId")]
+    [HasPermission(Permissions.GetEnrollments)]
+    public async Task<IActionResult> GetAllInUser([FromRoute] int userId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
+    {
+        var query = new GetAllEnrollmentsInUserQuery(includeDisabled, userId);
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
 
-    //Edit Create And Update To Suit The Program
-    //List<UserIds> , YearId , TermId
 
     [HttpPost("/api/programs/{programId}/enrollments")]
     [RequireProgramAccess("programId")]
     [HasPermission(Permissions.CreateEnrollments)]
-    public async Task<IActionResult> Create([FromRoute] int programId, [FromBody] EnrollmentRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Create([FromRoute] int programId, [FromBody] CreateEnrollmentRequest request, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(request.Adapt<CreateEnrollmentCommand>() with { ProgramId=programId }, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
-    //[HttpPut("{id}")]
-    //[RequireEnrollmentAccess("id")]
-    //[HasPermission(Permissions.UpdateEnrollments)]
-    //public async Task<IActionResult> Update([FromRoute] int id, [FromBody] EnrollmentRequest request, CancellationToken cancellationToken = default)
-    //{
-    //    var result = await _mediator.Send(request.Adapt<UpdateEnrollmentCommand>() with { Id = id }, cancellationToken);
-    //    return result.IsSuccess ? NoContent() : result.ToProblem();
-    //}
+    [HttpPut("{id}")]
+    [RequireEnrollmentAccess("id")]
+    [HasPermission(Permissions.UpdateEnrollments)]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateEnrollmentRequest request, CancellationToken cancellationToken = default)
+    {
+        var result = await _mediator.Send(request.Adapt<UpdateEnrollmentCommand>() with { Id = id }, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
+    }
 
-    //[HttpDelete("{id}/toggle-status")]
-    //[RequireEnrollmentAccess("id")]
-    //[HasPermission(Permissions.ToggleStatusEnrollments)]
-    //public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
-    //{
-    //    var command = new ToggleStatusEnrollmentCommand(id);
-    //    var result = await _mediator.Send(command, cancellationToken);
-    //    return result.IsSuccess ? NoContent() : result.ToProblem();
-    //}
+    [HttpDelete("{id}/toggle-status")]
+    [RequireEnrollmentAccess("id")]
+    [HasPermission(Permissions.ToggleStatusEnrollments)]
+    public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
+    {
+        var command = new ToggleStatusEnrollmentCommand(id);
+        var result = await _mediator.Send(command, cancellationToken);
+        return result.IsSuccess ? NoContent() : result.ToProblem();
+    }
 
 }

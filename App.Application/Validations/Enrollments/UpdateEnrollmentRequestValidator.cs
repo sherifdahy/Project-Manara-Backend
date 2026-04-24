@@ -2,11 +2,11 @@
 
 namespace App.Application.Validations.Enrollments;
 
-public class EnrollmentRequestValidator : AbstractValidator<EnrollmentRequest>
+public class UpdateEnrollmentRequestValidator : AbstractValidator<UpdateEnrollmentRequest>
 {
-    public EnrollmentRequestValidator()
+    public UpdateEnrollmentRequestValidator()
     {
-        RuleFor(f => f.StudentIds)
+        RuleFor(f => f.ProgramId)
             .NotEmpty()
             .NotNull();
 
