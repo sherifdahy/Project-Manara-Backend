@@ -1,67 +1,42 @@
-# ─────────────────────────────────────────────
-# STAGE 1 — Restore
-# Copy only .csproj files first so Docker can
-# cache the restore layer. Nothing re-runs here
-# unless a .csproj actually changes.
-# ─────────────────────────────────────────────
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS restore
+# ============================================
+# Stage 1: Build
+# ============================================
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-# Copy solution file
+# Copy the solution file and all .csproj files first
+# This allows Docker to cache the "restore" layer
 COPY App.sln .
+COPY Domain/App.Core/App.Core.csproj                     Domain/App.Core/
+COPY Domain/App.Services/App.Services.csproj              Domain/App.Services/
+COPY Infrastructure/App.Infrastructure/App.Infrastructure.csproj  Infrastructure/App.Infrastructure/
+COPY App.Application/App.Application.csproj               App.Application/
+COPY Presentation/App.API/App.API.csproj                  Presentation/App.API/
 
-# Copy every .csproj in its correct folder
-# Paths match the FLAT structure of this repo
-COPY App.Core/App.Core.csproj                   App.Core/
-COPY App.Services/App.Services.csproj           App.Services/
-COPY App.Infrastructure/App.Infrastructure.csproj App.Infrastructure/
-COPY App.Application/App.Application.csproj    App.Application/
-COPY App.API/App.API.csproj                    App.API/
+# Restore NuGet packages (cached unless .csproj files change)
+RUN dotnet restore
 
-# Restore the whole solution (cached unless a .csproj changed)
-RUN dotnet restore App.sln
-
-
-# ─────────────────────────────────────────────
-# STAGE 2 — Build & Publish
-# Full source is copied here, then published
-# in Release mode to /app/publish
-# ─────────────────────────────────────────────
-FROM restore AS publish
-WORKDIR /src
-
-# Copy the rest of the source code
+# Copy everything else and build
 COPY . .
-
-RUN dotnet publish App.API/App.API.csproj \
+RUN dotnet publish Presentation/App.API/App.API.csproj \
     --configuration Release \
-    --no-restore \
-    --output /app/publish
+    --output /app/publish \
+    --no-restore
 
-
-# ─────────────────────────────────────────────
-# STAGE 3 — Runtime
-# Lean ASP.NET runtime image — no SDK bloat.
-# Only the published output is copied here.
-# ─────────────────────────────────────────────
+# ============================================
+# Stage 2: Runtime (smaller, no SDK)
+# ============================================
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
-# Create a non-root user for security
-RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
-
-# Copy published output from the publish stage
-COPY --from=publish /app/publish .
-
-# Give ownership to the non-root user
-RUN chown -R appuser:appgroup /app
+# Security: run as non-root user
+RUN adduser --disabled-password --gecos "" appuser
 USER appuser
 
-# Port your API listens on (matches launchSettings.json)
-EXPOSE 5001
+COPY --from=build /app/publish .
 
-# Set ASP.NET Core to listen on the correct port
-ENV ASPNETCORE_URLS=http://+:5001
-ENV ASPNETCORE_ENVIRONMENT=Production
+# ASP.NET Core listens on port 8080 by default in .NET 8+
+EXPOSE 8080
+ENV ASPNET_URLS=http://+:8080
 
 ENTRYPOINT ["dotnet", "App.API.dll"]
