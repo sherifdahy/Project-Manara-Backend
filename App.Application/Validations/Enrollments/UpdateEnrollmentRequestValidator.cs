@@ -6,9 +6,9 @@ public class UpdateEnrollmentRequestValidator : AbstractValidator<UpdateEnrollme
 {
     public UpdateEnrollmentRequestValidator()
     {
-        RuleFor(f => f.ProgramId)
-            .NotEmpty()
-            .NotNull();
+        //RuleFor(f => f.ProgramId)
+        //    .NotEmpty()
+        //    .NotNull();
 
         RuleFor(f => f.YearId)
             .NotEmpty()
