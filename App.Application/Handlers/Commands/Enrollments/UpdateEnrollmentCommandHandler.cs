@@ -21,12 +21,6 @@ public class UpdateEnrollmentCommandHandler(IUnitOfWork unitOfWork
             return Result.Failure(_enrollmentErrors.NotFound);
 
 
-        //var isProgramInSameFaculty = await _unitOfWork.Programs
-        //    .FindAsync(x => x.Id == request.ProgramId 
-        //                && x.Department.FacultyId == enrollmentEntity.User.FacultyId,x=>x.Include(x=>x.Department.Faculty),cancellationToken);
-
-        //if(isProgramInSameFaculty ==null)
-        //    return Result.Failure(_enrollmentErrors.DifferentProgram);
 
 
         var isYearInSameFaculty = await _unitOfWork.AcademicYears
@@ -63,7 +57,6 @@ public class UpdateEnrollmentCommandHandler(IUnitOfWork unitOfWork
         if (duplicateYearTerm)
             return Result.Failure(_enrollmentErrors.AlreadyEnrolledInThisYearTerm);
 
-        //enrollmentEntity.ProgramId=request.ProgramId;
         enrollmentEntity.YearId=request.YearId;
         enrollmentEntity.TermId=request.TermId;
 
