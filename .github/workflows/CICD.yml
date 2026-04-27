@@ -1,6 +1,5 @@
 # ================================================================
 # CI/CD Pipeline — .NET Backend → Docker → ECR → ECS Fargate
-# FIXED: Auto-detect real .sln / .csproj instead of hardcoded App.sln
 # ================================================================
 name: CI/CD Pipeline
 
@@ -9,25 +8,24 @@ on:
     branches: [main]
 
 env:
-  DOTNET_VERSION: "10.0.x"
+  DOTNET_VERSION: "8.0.x"          # change to 10.0.x only if you truly need it
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
 
-  AWS_REGION: ${{ secrets.AWS_REGION }}
-  ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-
-  ECS_CLUSTER: myapp-cluster
-  ECS_SERVICE: myapp-service
-  ECS_TASK_FAMILY: myapp-task
-  CONTAINER_NAME: myapp-container
+  AWS_REGION:       ${{ secrets.AWS_REGION }}
+  ECR_REPOSITORY:   ${{ secrets.ECR_REPOSITORY }}
+  ECS_CLUSTER:      myapp-cluster
+  ECS_SERVICE:      myapp-service
+  ECS_TASK_FAMILY:  myapp-task
+  CONTAINER_NAME:   myapp-container
 
 permissions:
   id-token: write
   contents: read
 
+# ================================================================
+# STAGE 1 — DETECT + RESTORE
+# ================================================================
 jobs:
-
-# ================================================================
-# STAGE 1 — DETECT PROJECT + RESTORE
-# ================================================================
   install:
     name: "📦 Stage 1 — Detect & Restore"
     runs-on: ubuntu-latest
@@ -44,36 +42,36 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: 🔎 Show repo structure
-        run: |
-          pwd
-          ls -la
-          find . -maxdepth 5 \( -name "*.sln" -o -name "*.csproj" \)
+      # Cache NuGet packages — keyed on lock files so cache busts on dependency changes
+      - name: 💾 Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
 
-      # ==========================================================
-      # AUTO FIX:
-      # 1) Prefer first .sln found
-      # 2) If no .sln found, use first .csproj
-      # ==========================================================
+      - name: 🔎 Show repo structure
+        run: find . -maxdepth 5 \( -name "*.sln" -o -name "*.csproj" \)
+
       - name: 🧠 Detect solution/project file
         id: detect
         run: |
           FILE=$(find . -maxdepth 5 -name "*.sln" | head -n 1)
-
           if [ -z "$FILE" ]; then
             FILE=$(find . -maxdepth 5 -name "*.csproj" | head -n 1)
           fi
-
           if [ -z "$FILE" ]; then
             echo "❌ No .sln or .csproj found"
             exit 1
           fi
-
           echo "✅ Using: $FILE"
           echo "solution_path=$FILE" >> $GITHUB_OUTPUT
 
       - name: 📦 Restore packages
-        run: dotnet restore "${{ steps.detect.outputs.solution_path }}"
+        run: |
+          dotnet restore "${{ steps.detect.outputs.solution_path }}" \
+            --packages "${{ env.NUGET_PACKAGES }}"
 
 # ================================================================
 # STAGE 2 — BUILD
@@ -84,103 +82,111 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-dotnet@v4
+      - name: ⚙️ Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      # Restore the same cache saved in Stage 1
+      - name: 💾 Restore NuGet cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      # FIX: must restore again on this fresh runner (cache makes it fast)
+      # --no-restore would fail because build artifacts don't carry over between jobs
       - name: 🔨 Build app
         run: |
           dotnet build "${{ needs.install.outputs.solution_path }}" \
             --configuration Release \
-            --no-restore
+            -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
 
 # ================================================================
 # STAGE 3 — TEST
 # ================================================================
   test:
     name: "🧪 Stage 3 — Test"
-    needs: build
+    needs: [install, build]
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-dotnet@v4
+      - name: ⚙️ Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: 💾 Restore NuGet cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      # FIX: must build here too — --no-build would fail on a fresh runner
       - name: 🧪 Run tests
         continue-on-error: true
         run: |
           dotnet test "${{ needs.install.outputs.solution_path }}" \
             --configuration Release \
-            --no-build \
             --verbosity normal \
-            --logger "trx;LogFileName=test-results.trx" || true
+            --logger "trx;LogFileName=test-results.trx" \
+            -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}" || true
 
 # ================================================================
-# STAGE 4 — DOCKER BUILD
+# STAGE 4 — DOCKER BUILD + PUSH TO ECR (merged — build image once)
 # ================================================================
-  docker-build:
-    name: "🐳 Stage 4 — Docker Build"
+  docker-push:
+    name: "🐳 Stage 4 — Docker Build & Push ECR"
     needs: test
-    runs-on: ubuntu-latest
-
-    outputs:
-      image_tag: ${{ steps.meta.outputs.image_tag }}
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: 🏷️ Generate tag
-        id: meta
-        run: |
-          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-          TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
-          echo "image_tag=$TAG" >> $GITHUB_OUTPUT
-
-      - name: 🐳 Build image
-        run: |
-          docker build \
-            -t myapp-backend:${{ steps.meta.outputs.image_tag }} \
-            -t myapp-backend:latest .
-
-# ================================================================
-# STAGE 5 — PUSH TO ECR
-# ================================================================
-  push-to-ecr:
-    name: "☁️ Stage 5 — Push ECR"
-    needs: docker-build
     runs-on: ubuntu-latest
 
     outputs:
       full_image_uri: ${{ steps.push.outputs.full_image_uri }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
 
-      - name: 🔐 Configure AWS
+      - name: 🏷️ Generate image tag
+        id: meta
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
+          echo "image_tag=$TAG" >> $GITHUB_OUTPUT
+
+      - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region:            ${{ env.AWS_REGION }}
 
-      - name: 🔑 Login ECR
+      - name: 🔑 Login to ECR
         id: login
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: 📤 Push image
+      # FIX: build the image exactly once and push in the same step
+      - name: 📤 Build & Push image
         id: push
         env:
           REGISTRY: ${{ steps.login.outputs.registry }}
-          TAG: ${{ needs.docker-build.outputs.image_tag }}
+          TAG:      ${{ steps.meta.outputs.image_tag }}
         run: |
           FULL_URI=$REGISTRY/${{ env.ECR_REPOSITORY }}
 
-          docker build -t $FULL_URI:$TAG -t $FULL_URI:latest .
+          docker build \
+            -t $FULL_URI:$TAG \
+            -t $FULL_URI:latest .
 
           docker push $FULL_URI:$TAG
           docker push $FULL_URI:latest
@@ -188,22 +194,22 @@ jobs:
           echo "full_image_uri=$FULL_URI:$TAG" >> $GITHUB_OUTPUT
 
 # ================================================================
-# STAGE 6 — DEPLOY TO ECS
+# STAGE 5 — DEPLOY TO ECS
 # ================================================================
   deploy:
-    name: "🚀 Stage 6 — Deploy ECS"
-    needs: push-to-ecr
+    name: "🚀 Stage 5 — Deploy ECS"
+    needs: docker-push
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔐 Configure AWS
+      - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region:            ${{ env.AWS_REGION }}
 
-      - name: 🚀 Force new deployment
+      - name: 🚀 Force new ECS deployment
         run: |
           aws ecs update-service \
             --cluster ${{ env.ECS_CLUSTER }} \
@@ -211,22 +217,22 @@ jobs:
             --force-new-deployment
 
 # ================================================================
-# STAGE 7 — VERIFY
+# STAGE 6 — VERIFY
 # ================================================================
   verify:
-    name: "✅ Stage 7 — Verify"
+    name: "✅ Stage 6 — Verify"
     needs: deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔐 Configure AWS
+      - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region:            ${{ env.AWS_REGION }}
 
-      - name: 📊 Check ECS service
+      - name: 📊 Check ECS service status
         run: |
           aws ecs describe-services \
             --cluster ${{ env.ECS_CLUSTER }} \
