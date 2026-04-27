@@ -162,7 +162,7 @@ jobs:
       - name: 🔎 Detect API project path
         id: api
         run: |
-          set -e
+          set -euo pipefail
 
           FILE=$(find . -maxdepth 6 -name "*.csproj" \
             | grep -Ei '/app\.api/|/api/' \
@@ -202,18 +202,21 @@ jobs:
           REGISTRY: ${{ steps.login.outputs.registry }}
           TAG:      ${{ steps.meta.outputs.image_tag }}
         run: |
-          FULL_URI=$REGISTRY/${{ env.ECR_REPOSITORY }}
+          set -euo pipefail
+
+          FULL_URI="${REGISTRY}/${{ env.ECR_REPOSITORY }}"
+
+          # Write output immediately — before any docker command that could fail
+          echo "full_image_uri=${FULL_URI}:${TAG}" >> "$GITHUB_OUTPUT"
 
           docker build \
             --build-arg PROJECT_PATH="${{ steps.api.outputs.api_path }}" \
             --build-arg DLL_NAME="${{ steps.api.outputs.dll_name }}" \
-            -t $FULL_URI:$TAG \
-            -t $FULL_URI:latest .
+            -t "${FULL_URI}:${TAG}" \
+            -t "${FULL_URI}:latest" .
 
-          docker push $FULL_URI:$TAG
-          docker push $FULL_URI:latest
-
-          echo "full_image_uri=$FULL_URI:$TAG" >> $GITHUB_OUTPUT
+          docker push "${FULL_URI}:${TAG}"
+          docker push "${FULL_URI}:latest"
 
 # ================================================================
 # STAGE 5 — DEPLOY TO ECS
@@ -230,6 +233,15 @@ jobs:
           aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:            ${{ env.AWS_REGION }}
+
+      - name: ✅ Validate image URI
+        run: |
+          if [ -z "${{ needs.docker-push.outputs.full_image_uri }}" ]; then
+            echo "❌ full_image_uri is empty — docker-push stage did not produce the required output."
+            echo "   Check that secrets.ECR_REPOSITORY and ECR login succeeded in Stage 4."
+            exit 1
+          fi
+          echo "✅ Image URI: ${{ needs.docker-push.outputs.full_image_uri }}"
 
       - name: 📋 Fetch current task definition
         run: |
@@ -249,9 +261,9 @@ jobs:
       - name: 🚀 Deploy new task definition to ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
-          task-definition:          ${{ steps.render.outputs.task-definition }}
-          cluster:                  ${{ env.ECS_CLUSTER }}
-          service:                  ${{ env.ECS_SERVICE }}
+          task-definition:            ${{ steps.render.outputs.task-definition }}
+          cluster:                    ${{ env.ECS_CLUSTER }}
+          service:                    ${{ env.ECS_SERVICE }}
           wait-for-service-stability: true
 
 # ================================================================
