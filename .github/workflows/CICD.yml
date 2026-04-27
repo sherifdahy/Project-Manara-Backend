@@ -13,10 +13,10 @@ env:
 
   AWS_REGION:       ${{ secrets.AWS_REGION }}
   ECR_REPOSITORY:   ${{ secrets.ECR_REPOSITORY }}
-  ECS_CLUSTER:      myapp-cluster
-  ECS_SERVICE:      myapp-service
-  ECS_TASK_FAMILY:  myapp-task
-  CONTAINER_NAME:   myapp-container
+  ECS_CLUSTER:      manaraa-cluster
+  ECS_SERVICE:      manaraa-service
+  ECS_TASK_FAMILY:  manaraa-task
+  CONTAINER_NAME:   manaraa-container
 
 permissions:
   id-token: write
