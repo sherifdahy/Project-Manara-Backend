@@ -1,6 +1,3 @@
-# ================================================================
-# CI/CD Pipeline — .NET Backend → Docker → ECR → ECS Fargate
-# ================================================================
 name: CI/CD Pipeline
 
 on:
@@ -10,22 +7,22 @@ on:
 env:
   DOTNET_VERSION: "10.0.x"
   NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
-
-  AWS_REGION:       ${{ secrets.AWS_REGION }}
-  ECR_REPOSITORY:   ${{ secrets.ECR_REPOSITORY }}
-  ECS_CLUSTER:      manaraa-cluster
-  ECS_SERVICE:      manaraa-service
-  ECS_TASK_FAMILY:  manaraa-task
-  CONTAINER_NAME:   manaraa-container
+  AWS_REGION:     ${{ secrets.AWS_REGION }}
+  ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+  ECS_CLUSTER:    manaraa-cluster
+  ECS_SERVICE:    manaraa-service
+  ECS_TASK_FAMILY: manaraa-task
+  CONTAINER_NAME: manaraa-container
 
 permissions:
   id-token: write
   contents: read
 
-# ================================================================
-# STAGE 1 — DETECT + RESTORE
-# ================================================================
 jobs:
+
+# ================================================================
+# STAGE 1 — DETECT & RESTORE
+# ================================================================
   install:
     name: "📦 Stage 1 — Detect & Restore"
     runs-on: ubuntu-latest
@@ -47,15 +44,12 @@ jobs:
         with:
           path: ${{ env.NUGET_PACKAGES }}
           key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
-          restore-keys: |
-            nuget-${{ runner.os }}-
-
-      - name: 🔎 Show repo structure
-        run: find . -maxdepth 5 \( -name "*.sln" -o -name "*.csproj" \)
+          restore-keys: nuget-${{ runner.os }}-
 
       - name: 🧠 Detect solution/project file
         id: detect
         run: |
+          set -euo pipefail
           FILE=$(find . -maxdepth 5 -name "*.sln" | head -n 1)
           if [ -z "$FILE" ]; then
             FILE=$(find . -maxdepth 5 -name "*.csproj" | head -n 1)
@@ -65,7 +59,7 @@ jobs:
             exit 1
           fi
           echo "✅ Using: $FILE"
-          echo "solution_path=$FILE" >> $GITHUB_OUTPUT
+          echo "solution_path=$FILE" >> "$GITHUB_OUTPUT"
 
       - name: 📦 Restore packages
         run: |
@@ -94,10 +88,9 @@ jobs:
         with:
           path: ${{ env.NUGET_PACKAGES }}
           key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
-          restore-keys: |
-            nuget-${{ runner.os }}-
+          restore-keys: nuget-${{ runner.os }}-
 
-      - name: 🔨 Build app
+      - name: 🔨 Build
         run: |
           dotnet build "${{ needs.install.outputs.solution_path }}" \
             --configuration Release \
@@ -125,8 +118,7 @@ jobs:
         with:
           path: ${{ env.NUGET_PACKAGES }}
           key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
-          restore-keys: |
-            nuget-${{ runner.os }}-
+          restore-keys: nuget-${{ runner.os }}-
 
       - name: 🧪 Run tests
         continue-on-error: true
@@ -156,34 +148,27 @@ jobs:
         id: meta
         run: |
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-          TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
-          echo "image_tag=$TAG" >> $GITHUB_OUTPUT
+          echo "image_tag=${SHORT_SHA}-$(date +%Y%m%d%H%M%S)" >> "$GITHUB_OUTPUT"
 
-      - name: 🔎 Detect API project path
+      - name: 🔎 Detect API project
         id: api
         run: |
-          set -e
-
+          set -euo pipefail
           FILE=$(find . -maxdepth 6 -name "*.csproj" \
             | grep -Ei '/app\.api/|/api/' \
             | grep -Eiv 'test|tests' \
             | head -n 1)
-
           if [ -z "$FILE" ]; then
-            FILE=$(find . -maxdepth 6 -name "*.csproj" | grep -Eiv 'test|tests' | head -n 1)
+            FILE=$(find . -maxdepth 6 -name "*.csproj" \
+              | grep -Eiv 'test|tests' \
+              | head -n 1)
           fi
-
           if [ -z "$FILE" ]; then
             echo "❌ Could not find a publishable .csproj"
             exit 1
           fi
-
-          echo "✅ API project: $FILE"
-          DLL="$(basename "$FILE" .csproj).dll"
-          echo "✅ DLL name: $DLL"
-
-          echo "api_path=$FILE"  >> $GITHUB_OUTPUT
-          echo "dll_name=$DLL"   >> $GITHUB_OUTPUT
+          echo "api_path=$FILE" >> "$GITHUB_OUTPUT"
+          echo "dll_name=$(basename "$FILE" .csproj).dll" >> "$GITHUB_OUTPUT"
 
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -199,24 +184,38 @@ jobs:
       - name: 📤 Build & Push image
         id: push
         env:
-          REGISTRY: ${{ steps.login.outputs.registry }}
-          TAG:      ${{ steps.meta.outputs.image_tag }}
+          REGISTRY:   ${{ steps.login.outputs.registry }}
+          REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+          TAG:        ${{ steps.meta.outputs.image_tag }}
+          API_PATH:   ${{ steps.api.outputs.api_path }}
+          DLL_NAME:   ${{ steps.api.outputs.dll_name }}
         run: |
-          FULL_URI=$REGISTRY/${{ env.ECR_REPOSITORY }}
+          set -euo pipefail
+          : "${REGISTRY:?ECR login did not return a registry}"
+          : "${REPOSITORY:?ECR_REPOSITORY secret is empty}"
+          : "${TAG:?Image tag was not generated}"
+
+          FULL_URI="${REGISTRY}/${REPOSITORY}"
 
           docker build \
-            --build-arg PROJECT_PATH="${{ steps.api.outputs.api_path }}" \
-            --build-arg DLL_NAME="${{ steps.api.outputs.dll_name }}" \
-            -t $FULL_URI:$TAG \
-            -t $FULL_URI:latest .
+            --build-arg PROJECT_PATH="${API_PATH}" \
+            --build-arg DLL_NAME="${DLL_NAME}" \
+            -t "${FULL_URI}:${TAG}" \
+            -t "${FULL_URI}:latest" .
 
-          docker push $FULL_URI:$TAG
-          docker push $FULL_URI:latest
+          docker push "${FULL_URI}:${TAG}"
+          docker push "${FULL_URI}:latest"
 
-          echo "full_image_uri=$FULL_URI:$TAG" >> $GITHUB_OUTPUT
+          echo "full_image_uri=${FULL_URI}:${TAG}" >> "$GITHUB_OUTPUT"
+
+      - name: ✅ Confirm image output
+        run: |
+          IMAGE="${{ steps.push.outputs.full_image_uri }}"
+          : "${IMAGE:?full_image_uri is empty — deploy will not proceed}"
+          echo "✅ Image ready: $IMAGE"
 
 # ================================================================
-# STAGE 5 — DEPLOY TO ECS  ✅ THIS IS WHERE THE FIX IS
+# STAGE 5 — DEPLOY TO ECS
 # ================================================================
   deploy:
     name: "🚀 Stage 5 — Deploy ECS"
@@ -224,6 +223,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: ✅ Validate image URI
+        run: |
+          IMAGE="${{ needs.docker-push.outputs.full_image_uri }}"
+          : "${IMAGE:?docker-push did not produce full_image_uri — check Stage 4 logs}"
+          echo "✅ Deploying: $IMAGE"
+
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -238,20 +243,20 @@ jobs:
             --query taskDefinition \
             > task-definition.json
 
-      - name: 🖊️ Render new task definition with updated image
+      - name: 🖊️ Render updated task definition
         id: render-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition:  task-definition.json
-          container-name:   ${{ env.CONTAINER_NAME }}
-          image:            ${{ needs.docker-push.outputs.full_image_uri }}
+          task-definition: task-definition.json
+          container-name:  ${{ env.CONTAINER_NAME }}
+          image:           ${{ needs.docker-push.outputs.full_image_uri }}
 
-      - name: 🚀 Register & deploy new task definition
+      - name: 🚀 Register & deploy
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          task-definition:          ${{ steps.render-task-def.outputs.task-definition }}
-          service:                  ${{ env.ECS_SERVICE }}
-          cluster:                  ${{ env.ECS_CLUSTER }}
+          task-definition:            ${{ steps.render-task-def.outputs.task-definition }}
+          service:                    ${{ env.ECS_SERVICE }}
+          cluster:                    ${{ env.ECS_CLUSTER }}
           wait-for-service-stability: true
 
 # ================================================================
