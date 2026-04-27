@@ -12,5 +12,4 @@ public class SemesterSubjectQuizInstructor
     public Term Semester { get; set; } = default!;
     public Subject Subject { get; set; } = default!;
     public Quiz Quiz { get; set; } = default!;
-    public Instructor Instructor { get; set; } = default!;
 }

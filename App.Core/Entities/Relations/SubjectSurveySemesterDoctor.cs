@@ -13,5 +13,4 @@ public class SubjectSurveySemesterDoctor
     public Subject Subject { get; set; } = default!;
     public Survey Survey { get; set; } = default!;
     public Term Semester { get; set; } = default!;
-    public Doctor Doctor { get; set; } = default!;
 }

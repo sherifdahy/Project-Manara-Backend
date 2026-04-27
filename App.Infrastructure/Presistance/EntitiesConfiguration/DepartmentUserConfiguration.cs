@@ -15,7 +15,6 @@ public class DepartmentUserConfiguration : IEntityTypeConfiguration<DepartmentUs
         builder.Property(fu => fu.UserId)
             .IsRequired();
 
-
         builder.Property(fu => fu.DepartmentId)
             .IsRequired();
 

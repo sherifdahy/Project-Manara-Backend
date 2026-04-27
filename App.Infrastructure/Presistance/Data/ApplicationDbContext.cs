@@ -1,6 +1,4 @@
 ﻿using App.Core.Entities.Personnel;
-using App.Core.Entities.Universities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace App.Infrastructure.Presistance.Data;
@@ -22,7 +20,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
     public DbSet<UniversityUser> UniversityUsers { get; set; }
     public DbSet<DepartmentUser> DepartmentUsers { get; set; }
     public DbSet<Student> Students { get; set; }
-
 
     // bussiness logic
     public DbSet<University> Universities { get; set; }

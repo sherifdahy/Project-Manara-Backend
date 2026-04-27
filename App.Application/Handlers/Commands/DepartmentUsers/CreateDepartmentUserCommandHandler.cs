@@ -2,6 +2,7 @@
 using App.Application.Contracts.Responses.DepartmentUsers;
 using App.Core.Consts;
 using App.Core.Entities.Personnel;
+using App.Infrastructure.Abstractions.Consts;
 
 namespace App.Application.Handlers.Commands.DepartmentUsers;
 
@@ -51,13 +52,11 @@ public class CreateDepartmentUserCommandHandler(IUnitOfWork unitOfWork
 
             if (roleAssignResult.Succeeded)
             {
-                var departmentUser = new DepartmentUser()
+                var deptUser = new DepartmentUser()
                 {
-                    DepartmentId = request.DepartmentId,
                     UserId = applicationUser.Id,
                 };
-
-                await _unitOfWork.DepartmentUsers.AddAsync(departmentUser, cancellationToken);
+                await _unitOfWork.DepartmentUsers.AddAsync(deptUser, cancellationToken);
                 await _unitOfWork.SaveAsync(cancellationToken);
 
                 var response = applicationUser.Adapt<DepartmentUserResponse>();

@@ -13,5 +13,4 @@ public class SubjectTaskSemesterInstructor
     public Subject Subject { get; set; } = default!;
     public App.Core.Entities.Assessment.Task Task { get; set; } = default!;
     public Term Semester { get; set; } = default!;
-    public Instructor Instructor { get; set; } = default!;
 }
