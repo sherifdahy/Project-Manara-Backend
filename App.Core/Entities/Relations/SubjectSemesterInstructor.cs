@@ -10,5 +10,4 @@ public class SubjectSemesterInstructor
 
     public Subject Subject { get; set; } = default!;
     public Term Semester { get; set; } = default!;
-    public Instructor Instructor { get; set; } = default!;
 }

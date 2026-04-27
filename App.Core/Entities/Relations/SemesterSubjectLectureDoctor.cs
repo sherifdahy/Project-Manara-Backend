@@ -13,5 +13,4 @@ public class SemesterSubjectLectureDoctor
     public Term Semester { get; set; } = default!;
     public Subject Subject { get; set; } = default!;
     public Lecture Lecture { get; set; } = default!;
-    public Doctor Doctor { get; set; } = default!;
 }

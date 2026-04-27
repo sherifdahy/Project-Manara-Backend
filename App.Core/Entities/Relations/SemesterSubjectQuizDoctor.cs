@@ -13,5 +13,4 @@ public class SemesterSubjectQuizDoctor
     public Term Semester { get; set; } = default!;
     public Subject Subject { get; set; } = default!;
     public Quiz Quiz { get; set; } = default!;
-    public Doctor Doctor { get; set; } = default!;
 }
