@@ -1,8 +1,0 @@
-﻿{
-  "InvalidPermissions": "بعض الصلاحيات التي قمت بإرسالها غير معروفة في النظام.",
-  "InvalidType": "النوع  الذى ادخلته غير صحيح",
-  "DuplicatedPermissionForUser": "هذه الصلاحية بالفعل موجودة لهذا المستخدم",
-  "UserAlreadyHasPermission": "هذا المستخدم لديه بالفعل هذة الصلاحية",
-  "OverridePermissionNotFound": "هذه الصلاحية المراد تعديلها غير موجودة",
-  "DuplicatedPermissionForRole": "هذه الصلاحية هى موجودة بالفعل فى هذا الدور"
-}

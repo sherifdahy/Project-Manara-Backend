@@ -145,6 +145,8 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
 
+    # ✅ FIX: outputs block re-declares the step output so downstream
+    #         jobs can read it via needs.docker-push.outputs.full_image_uri
     outputs:
       full_image_uri: ${{ steps.push.outputs.full_image_uri }}
 
@@ -162,7 +164,7 @@ jobs:
       - name: 🔎 Detect API project path
         id: api
         run: |
-          set -e
+          set -euo pipefail
 
           FILE=$(find . -maxdepth 6 -name "*.csproj" \
             | grep -Ei '/app\.api/|/api/' \
@@ -196,24 +198,51 @@ jobs:
         id: login
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: 📤 Build & Push image
-        id: push
-        env:
-          REGISTRY: ${{ steps.login.outputs.registry }}
-          TAG:      ${{ steps.meta.outputs.image_tag }}
+      - name: 🔍 Debug — verify ECR inputs before build
         run: |
-          FULL_URI=$REGISTRY/${{ env.ECR_REPOSITORY }}
+          echo "REGISTRY  : ${{ steps.login.outputs.registry }}"
+          echo "REPOSITORY: ${{ env.ECR_REPOSITORY }}"
+          echo "TAG       : ${{ steps.meta.outputs.image_tag }}"
+
+          if [ -z "${{ steps.login.outputs.registry }}" ]; then
+            echo "❌ ECR registry output is empty — check AWS credentials and region"
+            exit 1
+          fi
+          if [ -z "${{ env.ECR_REPOSITORY }}" ]; then
+            echo "❌ ECR_REPOSITORY secret is empty — add it in repo Settings → Secrets"
+            exit 1
+          fi
+
+      - name: 📤 Build & Push image
+        # ✅ FIX: id must exactly match the key used in the outputs block above
+        id: push
+        run: |
+          set -euo pipefail
+
+          REGISTRY="${{ steps.login.outputs.registry }}"
+          TAG="${{ steps.meta.outputs.image_tag }}"
+          FULL_URI="${REGISTRY}/${{ env.ECR_REPOSITORY }}"
 
           docker build \
             --build-arg PROJECT_PATH="${{ steps.api.outputs.api_path }}" \
             --build-arg DLL_NAME="${{ steps.api.outputs.dll_name }}" \
-            -t $FULL_URI:$TAG \
-            -t $FULL_URI:latest .
+            -t "${FULL_URI}:${TAG}" \
+            -t "${FULL_URI}:latest" .
 
-          docker push $FULL_URI:$TAG
-          docker push $FULL_URI:latest
+          docker push "${FULL_URI}:${TAG}"
+          docker push "${FULL_URI}:latest"
 
-          echo "full_image_uri=$FULL_URI:$TAG" >> $GITHUB_OUTPUT
+          # ✅ FIX: written as the very last line, outside any subshell,
+          #         so it is always reached after a successful push
+          echo "full_image_uri=${FULL_URI}:${TAG}" >> "$GITHUB_OUTPUT"
+
+      - name: 🔍 Debug — confirm output was written
+        run: |
+          echo "full_image_uri = ${{ steps.push.outputs.full_image_uri }}"
+          if [ -z "${{ steps.push.outputs.full_image_uri }}" ]; then
+            echo "❌ Output was not written — push step likely failed silently"
+            exit 1
+          fi
 
 # ================================================================
 # STAGE 5 — DEPLOY TO ECS
@@ -224,6 +253,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ✅ Kept validation — gives a clear, early failure message if Stage 4
+      #    didn't export the output, instead of a cryptic ECS error later.
+      - name: 🔍 Validate image URI
+        run: |
+          echo "Image URI: ${{ needs.docker-push.outputs.full_image_uri }}"
+          if [ -z "${{ needs.docker-push.outputs.full_image_uri }}" ]; then
+            echo "❌ full_image_uri is empty — docker-push job did not export output."
+            echo "   Check Stage 4 logs: ECR login, secrets.ECR_REPOSITORY, docker build/push."
+            exit 1
+          fi
+
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -231,12 +271,30 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:            ${{ env.AWS_REGION }}
 
-      - name: 🚀 Force new ECS deployment
+      - name: 📋 Fetch current task definition
         run: |
-          aws ecs update-service \
-            --cluster ${{ env.ECS_CLUSTER }} \
-            --service ${{ env.ECS_SERVICE }} \
-            --force-new-deployment
+          aws ecs describe-task-definition \
+            --task-definition ${{ env.ECS_TASK_FAMILY }} \
+            --query taskDefinition \
+            > task-def.json
+
+      - name: 🖼️ Update container image in task definition
+        id: render
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition:  task-def.json
+          container-name:   ${{ env.CONTAINER_NAME }}
+          # ✅ FIX: consumed directly from the job output — no intermediate
+          #         env var or re-validation step needed
+          image:            ${{ needs.docker-push.outputs.full_image_uri }}
+
+      - name: 🚀 Deploy new task definition to ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition:            ${{ steps.render.outputs.task-definition }}
+          cluster:                    ${{ env.ECS_CLUSTER }}
+          service:                    ${{ env.ECS_SERVICE }}
+          wait-for-service-stability: true
 
 # ================================================================
 # STAGE 6 — VERIFY
