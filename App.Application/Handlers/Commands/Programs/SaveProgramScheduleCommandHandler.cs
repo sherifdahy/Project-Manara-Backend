@@ -1,15 +1,13 @@
 ﻿using App.Application.Commands.Programs;
 using App.Core.Entities.Relations;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Application.Handlers.Commands.Programs;
 
-public class SaveProgramScheduleCommandHandler(IUnitOfWork unitOfWork, ProgramErrors programErrors, SubjectErrors subjectErrors, PeriodErrors periodErrors, DayErrors dayErrors) : IRequestHandler<SaveProgramScheduleCommand, Result>
+public class SaveProgramScheduleCommandHandler(IUnitOfWork unitOfWork, ProgramErrors programErrors,UserErrors userErrors, SubjectErrors subjectErrors, PeriodErrors periodErrors, DayErrors dayErrors) : IRequestHandler<SaveProgramScheduleCommand, Result>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly ProgramErrors _programErrors = programErrors;
+    private readonly UserErrors _userErrors = userErrors;
     private readonly SubjectErrors _subjectErrors = subjectErrors;
     private readonly PeriodErrors _periodErrors = periodErrors;
     private readonly DayErrors _dayErrors = dayErrors;
@@ -18,6 +16,21 @@ public class SaveProgramScheduleCommandHandler(IUnitOfWork unitOfWork, ProgramEr
         #region Check Program
         if (await _unitOfWork.Programs.GetByIdAsync(request.ProgramId) is null)
             return Result.Failure(_programErrors.NotFound);
+        #endregion
+
+        #region Check Doctors and Instructors
+        var inputDepartmentUsersIds = request.Schedules
+            .SelectMany(x => new int?[] { x.InstructorId, x.DoctorId })
+            .Where(x => x.HasValue)
+            .Select(x => x.Value)
+            .Distinct();
+
+        var existsDepartmentUsersIds = (await _unitOfWork.DepartmentUsers.FindAllAsync(x => inputDepartmentUsersIds.Contains(x.UserId), cancellationToken)).Select(x => x.UserId);
+
+        var notFoundDepartmentUsersIds = inputDepartmentUsersIds.Except(existsDepartmentUsersIds);
+
+        if (notFoundDepartmentUsersIds.Any())
+            return Result.Failure(_userErrors.NotFound);
         #endregion
 
         #region Check Subjects
@@ -63,10 +76,14 @@ public class SaveProgramScheduleCommandHandler(IUnitOfWork unitOfWork, ProgramEr
         if (request.Schedules.Any())
         {
             var newSchedules = request.Schedules.Select(x =>
+            new ProgramSubjectPeriodDay
             {
-                var schedule = x.Adapt<ProgramSubjectPeriodDay>();
-                schedule.ProgramId = request.ProgramId;
-                return schedule;
+                SubjectId = x.SubjectId,
+                PeriodId = x.PeriodId,
+                DayId = x.DayId,
+                DoctorId = x.DoctorId,
+                InstructorId = x.InstructorId,
+                ProgramId = request.ProgramId,
             }).ToList();
 
             await _unitOfWork.ProgramSchedules.AddRangeAsync(newSchedules, cancellationToken);

@@ -14,4 +14,8 @@ public class ProgramSubjectPeriodDay
     public Period Period { get; set; } = default!;
     public int DayId { get; set; }
     public Day Day { get; set; } = default!;
+    public int? DoctorId { get; set; } = default!;
+    public DepartmentUser Doctor { get; set; } = default!;
+    public int? InstructorId { get; set; } = default!;
+    public DepartmentUser Instructor { get; set; } = default!;
 }

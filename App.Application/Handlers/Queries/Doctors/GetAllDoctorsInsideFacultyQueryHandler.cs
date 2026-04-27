@@ -21,6 +21,7 @@ public class GetAllDoctorsInsideFacultyQueryHandler : IRequestHandler<GetAllDoct
         if (!await _dbContext.Faculties.AnyAsync(x => x.Id == request.FacultyId))
             return Result.Failure<PaginatedList<DepartmentUserResponse>>(_userErrors.NotFound);
 
+
         var query =
             from du in _dbContext.DepartmentUsers
             join ur in _dbContext.UserRoles on du.UserId equals ur.UserId
