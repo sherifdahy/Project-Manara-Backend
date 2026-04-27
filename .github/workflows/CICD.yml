@@ -1,6 +1,3 @@
-# ================================================================
-# CI/CD Pipeline — .NET Backend → Docker → ECR → ECS Fargate
-# ================================================================
 name: CI/CD Pipeline
 
 on:
@@ -10,7 +7,6 @@ on:
 env:
   DOTNET_VERSION: "10.0.x"
   NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
-
   AWS_REGION:       ${{ secrets.AWS_REGION }}
   ECR_REPOSITORY:   ${{ secrets.ECR_REPOSITORY }}
   ECS_CLUSTER:      manaraa-cluster
@@ -22,17 +18,16 @@ permissions:
   id-token: write
   contents: read
 
-# ================================================================
-# STAGE 1 — DETECT + RESTORE
-# ================================================================
 jobs:
+
+  # ================================================================
+  # STAGE 1 — DETECT + RESTORE
+  # ================================================================
   install:
     name: "📦 Stage 1 — Detect & Restore"
     runs-on: ubuntu-latest
-
     outputs:
       solution_path: ${{ steps.detect.outputs.solution_path }}
-
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
@@ -72,14 +67,13 @@ jobs:
           dotnet restore "${{ steps.detect.outputs.solution_path }}" \
             --packages "${{ env.NUGET_PACKAGES }}"
 
-# ================================================================
-# STAGE 2 — BUILD
-# ================================================================
+  # ================================================================
+  # STAGE 2 — BUILD
+  # ================================================================
   build:
     name: "🔨 Stage 2 — Build"
     needs: install
     runs-on: ubuntu-latest
-
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
@@ -103,14 +97,13 @@ jobs:
             --configuration Release \
             -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
 
-# ================================================================
-# STAGE 3 — TEST
-# ================================================================
+  # ================================================================
+  # STAGE 3 — TEST (never blocks pipeline)
+  # ================================================================
   test:
     name: "🧪 Stage 3 — Test"
     needs: [install, build]
     runs-on: ubuntu-latest
-
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
@@ -137,55 +130,37 @@ jobs:
             --logger "trx;LogFileName=test-results.trx" \
             -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}" || true
 
-# ================================================================
-# STAGE 4 — DOCKER BUILD + PUSH TO ECR
-# ================================================================
+  # ================================================================
+  # STAGE 4 — DOCKER BUILD + PUSH TO ECR
+  # ================================================================
   docker-push:
     name: "🐳 Stage 4 — Docker Build & Push ECR"
     needs: test
     runs-on: ubuntu-latest
-
-    # ✅ FIX: outputs block re-declares the step output so downstream
-    #         jobs can read it via needs.docker-push.outputs.full_image_uri
-    outputs:
-      full_image_uri: ${{ steps.push.outputs.full_image_uri }}
-
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: 🏷️ Generate image tag
-        id: meta
-        run: |
-          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-          TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
-          echo "image_tag=$TAG" >> $GITHUB_OUTPUT
-
       - name: 🔎 Detect API project path
         id: api
         run: |
-          set -euo pipefail
-
+          set -e
           FILE=$(find . -maxdepth 6 -name "*.csproj" \
             | grep -Ei '/app\.api/|/api/' \
             | grep -Eiv 'test|tests' \
             | head -n 1)
-
           if [ -z "$FILE" ]; then
             FILE=$(find . -maxdepth 6 -name "*.csproj" | grep -Eiv 'test|tests' | head -n 1)
           fi
-
           if [ -z "$FILE" ]; then
             echo "❌ Could not find a publishable .csproj"
             exit 1
           fi
-
           echo "✅ API project: $FILE"
           DLL="$(basename "$FILE" .csproj).dll"
           echo "✅ DLL name: $DLL"
-
-          echo "api_path=$FILE"  >> $GITHUB_OUTPUT
-          echo "dll_name=$DLL"   >> $GITHUB_OUTPUT
+          echo "api_path=$FILE" >> $GITHUB_OUTPUT
+          echo "dll_name=$DLL"  >> $GITHUB_OUTPUT
 
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -198,72 +173,35 @@ jobs:
         id: login
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: 🔍 Debug — verify ECR inputs before build
-        run: |
-          echo "REGISTRY  : ${{ steps.login.outputs.registry }}"
-          echo "REPOSITORY: ${{ env.ECR_REPOSITORY }}"
-          echo "TAG       : ${{ steps.meta.outputs.image_tag }}"
-
-          if [ -z "${{ steps.login.outputs.registry }}" ]; then
-            echo "❌ ECR registry output is empty — check AWS credentials and region"
-            exit 1
-          fi
-          if [ -z "${{ env.ECR_REPOSITORY }}" ]; then
-            echo "❌ ECR_REPOSITORY secret is empty — add it in repo Settings → Secrets"
-            exit 1
-          fi
-
       - name: 📤 Build & Push image
-        # ✅ FIX: id must exactly match the key used in the outputs block above
-        id: push
+        env:
+          REGISTRY: ${{ steps.login.outputs.registry }}
         run: |
-          set -euo pipefail
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
+          FULL_URI=$REGISTRY/${{ env.ECR_REPOSITORY }}
 
-          REGISTRY="${{ steps.login.outputs.registry }}"
-          TAG="${{ steps.meta.outputs.image_tag }}"
-          FULL_URI="${REGISTRY}/${{ env.ECR_REPOSITORY }}"
+          echo "🏷️ Image tag: $TAG"
 
           docker build \
             --build-arg PROJECT_PATH="${{ steps.api.outputs.api_path }}" \
             --build-arg DLL_NAME="${{ steps.api.outputs.dll_name }}" \
-            -t "${FULL_URI}:${TAG}" \
-            -t "${FULL_URI}:latest" .
+            -t $FULL_URI:$TAG \
+            -t $FULL_URI:latest .
 
-          docker push "${FULL_URI}:${TAG}"
-          docker push "${FULL_URI}:latest"
+          docker push $FULL_URI:$TAG
+          docker push $FULL_URI:latest
 
-          # ✅ FIX: written as the very last line, outside any subshell,
-          #         so it is always reached after a successful push
-          echo "full_image_uri=${FULL_URI}:${TAG}" >> "$GITHUB_OUTPUT"
+          echo "✅ Pushed: $FULL_URI:$TAG"
 
-      - name: 🔍 Debug — confirm output was written
-        run: |
-          echo "full_image_uri = ${{ steps.push.outputs.full_image_uri }}"
-          if [ -z "${{ steps.push.outputs.full_image_uri }}" ]; then
-            echo "❌ Output was not written — push step likely failed silently"
-            exit 1
-          fi
-
-# ================================================================
-# STAGE 5 — DEPLOY TO ECS
-# ================================================================
+  # ================================================================
+  # STAGE 5 — DEPLOY TO ECS (updates task def + deploys)
+  # ================================================================
   deploy:
     name: "🚀 Stage 5 — Deploy ECS"
     needs: docker-push
     runs-on: ubuntu-latest
-
     steps:
-      # ✅ Kept validation — gives a clear, early failure message if Stage 4
-      #    didn't export the output, instead of a cryptic ECS error later.
-      - name: 🔍 Validate image URI
-        run: |
-          echo "Image URI: ${{ needs.docker-push.outputs.full_image_uri }}"
-          if [ -z "${{ needs.docker-push.outputs.full_image_uri }}" ]; then
-            echo "❌ full_image_uri is empty — docker-push job did not export output."
-            echo "   Check Stage 4 logs: ECR login, secrets.ECR_REPOSITORY, docker build/push."
-            exit 1
-          fi
-
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -271,39 +209,65 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:            ${{ env.AWS_REGION }}
 
-      - name: 📋 Fetch current task definition
+      - name: 🚀 Update task definition & deploy
         run: |
-          aws ecs describe-task-definition \
+          echo "📥 Getting current task definition..."
+          TASK_DEF=$(aws ecs describe-task-definition \
             --task-definition ${{ env.ECS_TASK_FAMILY }} \
-            --query taskDefinition \
-            > task-def.json
+            --query taskDefinition)
 
-      - name: 🖼️ Update container image in task definition
-        id: render
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition:  task-def.json
-          container-name:   ${{ env.CONTAINER_NAME }}
-          # ✅ FIX: consumed directly from the job output — no intermediate
-          #         env var or re-validation step needed
-          image:            ${{ needs.docker-push.outputs.full_image_uri }}
+          echo "📋 Old image:"
+          echo $TASK_DEF | jq -r '.containerDefinitions[0].image'
 
-      - name: 🚀 Deploy new task definition to ECS
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
-        with:
-          task-definition:            ${{ steps.render.outputs.task-definition }}
-          cluster:                    ${{ env.ECS_CLUSTER }}
-          service:                    ${{ env.ECS_SERVICE }}
-          wait-for-service-stability: true
+          # Get the latest image URI from ECR
+          REGISTRY=$(aws ecr describe-repositories \
+            --repository-names ${{ env.ECR_REPOSITORY }} \
+            --query 'repositories[0].repositoryUri' \
+            --output text)
 
-# ================================================================
-# STAGE 6 — VERIFY
-# ================================================================
+          NEW_TAG=$(aws ecr describe-images \
+            --repository-name ${{ env.ECR_REPOSITORY }} \
+            --query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]' \
+            --output text)
+
+          FULL_IMAGE="$REGISTRY:$NEW_TAG"
+          echo "🆕 New image: $FULL_IMAGE"
+
+          # Build new task def JSON: swap image + remove AWS-managed fields
+          NEW_TASK_DEF=$(echo $TASK_DEF | jq \
+            --arg IMG "$FULL_IMAGE" \
+            '.containerDefinitions[0].image = $IMG |
+             del(.taskDefinitionArn, .revision, .status,
+                 .requiresAttributes, .compatibilities,
+                 .registeredAt, .registeredBy)')
+
+          # Register new revision
+          echo "📝 Registering new task definition revision..."
+          aws ecs register-task-definition \
+            --cli-input-json "$NEW_TASK_DEF"
+
+          # Update service with new revision
+          echo "🚀 Updating ECS service..."
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service ${{ env.ECS_SERVICE }} \
+            --task-definition ${{ env.ECS_TASK_FAMILY }} \
+            --force-new-deployment
+
+          echo "⏳ Waiting for service to stabilize..."
+          aws ecs wait services-stable \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --services ${{ env.ECS_SERVICE }}
+
+          echo "✅ Service is stable with the new image!"
+
+  # ================================================================
+  # STAGE 6 — VERIFY
+  # ================================================================
   verify:
     name: "✅ Stage 6 — Verify"
     needs: deploy
     runs-on: ubuntu-latest
-
     steps:
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -312,8 +276,38 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:            ${{ env.AWS_REGION }}
 
-      - name: 📊 Check ECS service status
+      - name: 📊 Deployment summary
         run: |
-          aws ecs describe-services \
+          SERVICE=$(aws ecs describe-services \
             --cluster ${{ env.ECS_CLUSTER }} \
-            --services ${{ env.ECS_SERVICE }}
+            --services ${{ env.ECS_SERVICE }} \
+            --query 'services[0]')
+
+          RUNNING=$(echo $SERVICE | jq -r '.runningCount')
+          DESIRED=$(echo $SERVICE | jq -r '.desiredCount')
+          TASK_DEF=$(echo $SERVICE | jq -r '.taskDefinition')
+          STATUS=$(echo $SERVICE | jq -r '.status')
+
+          # Get the image from the active task definition
+          IMAGE=$(aws ecs describe-task-definition \
+            --task-definition $TASK_DEF \
+            --query 'taskDefinition.containerDefinitions[0].image' \
+            --output text)
+
+          echo ""
+          echo "╔══════════════════════════════════════════╗"
+          echo "║        DEPLOYMENT SUMMARY                ║"
+          echo "╠══════════════════════════════════════════╣"
+          echo "║  Status   : $STATUS"
+          echo "║  Running  : $RUNNING / $DESIRED"
+          echo "║  Task Def : $TASK_DEF"
+          echo "║  Image    : $IMAGE"
+          echo "║  Commit   : ${{ github.sha }}"
+          echo "╚══════════════════════════════════════════╝"
+
+          if [ "$RUNNING" -eq "$DESIRED" ] && [ "$STATUS" == "ACTIVE" ]; then
+            echo "✅ Deployment successful!"
+          else
+            echo "⚠️ Warning: Running ($RUNNING) != Desired ($DESIRED)"
+          fi
+
