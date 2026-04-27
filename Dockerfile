@@ -1,13 +1,11 @@
 # ============================================
 # Stage 1: Build
 # ============================================
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-# Copy everything — avoids path issues when folders/projects are renamed
 COPY . .
 
-# CI MUST pass this (path to the API .csproj inside the repo)
 ARG PROJECT_PATH
 RUN test -n "$PROJECT_PATH" || (echo "PROJECT_PATH build-arg is required" && exit 1)
 
@@ -21,7 +19,7 @@ RUN dotnet publish "$PROJECT_PATH" \
 # ============================================
 # Stage 2: Runtime
 # ============================================
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
 RUN adduser --disabled-password --gecos "" appuser
@@ -32,7 +30,6 @@ COPY --from=build /app/publish .
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
 
-# CI passes the dll name derived from the csproj name
 ARG DLL_NAME
 ENV APP_DLL="$DLL_NAME"
 RUN test -n "$APP_DLL" || (echo "DLL_NAME build-arg is required" && exit 1)
