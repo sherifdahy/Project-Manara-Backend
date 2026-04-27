@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 env:
-  DOTNET_VERSION: "8.0.x"
+  DOTNET_VERSION: "10.0.x"
   NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
 
   AWS_REGION:       ${{ secrets.AWS_REGION }}
@@ -164,13 +164,11 @@ jobs:
         run: |
           set -e
 
-          # Prefer csproj in an API folder; exclude test projects
           FILE=$(find . -maxdepth 6 -name "*.csproj" \
             | grep -Ei '/app\.api/|/api/' \
             | grep -Eiv 'test|tests' \
             | head -n 1)
 
-          # Fallback: first non-test csproj
           if [ -z "$FILE" ]; then
             FILE=$(find . -maxdepth 6 -name "*.csproj" | grep -Eiv 'test|tests' | head -n 1)
           fi
