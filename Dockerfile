@@ -1,67 +1,47 @@
-# ─────────────────────────────────────────────
-# STAGE 1 — Restore
-# Copy only .csproj files first so Docker can
-# cache the restore layer. Nothing re-runs here
-# unless a .csproj actually changes.
-# ─────────────────────────────────────────────
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS restore
+# ============================================================
+# Stage 1: Build
+# ============================================================
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-# Copy solution file
-COPY App.sln .
-
-# Copy every .csproj in its correct folder
-# Paths match the FLAT structure of this repo
-COPY App.Core/App.Core.csproj                   App.Core/
-COPY App.Services/App.Services.csproj           App.Services/
-COPY App.Infrastructure/App.Infrastructure.csproj App.Infrastructure/
-COPY App.Application/App.Application.csproj    App.Application/
-COPY App.API/App.API.csproj                    App.API/
-
-# Restore the whole solution (cached unless a .csproj changed)
-RUN dotnet restore App.sln
-
-
-# ─────────────────────────────────────────────
-# STAGE 2 — Build & Publish
-# Full source is copied here, then published
-# in Release mode to /app/publish
-# ─────────────────────────────────────────────
-FROM restore AS publish
-WORKDIR /src
-
-# Copy the rest of the source code
+# Copy entire solution
 COPY . .
 
-RUN dotnet publish App.API/App.API.csproj \
+# Build arg — resolved by CI/CD to e.g. Presentation/App.API/App.API.csproj
+ARG PROJECT_PATH
+RUN test -n "$PROJECT_PATH" || (echo "❌ PROJECT_PATH build-arg is required" && exit 1)
+
+# Restore only the API project (faster than full solution restore)
+RUN dotnet restore "$PROJECT_PATH"
+
+# Publish to /app/publish
+RUN dotnet publish "$PROJECT_PATH" \
     --configuration Release \
-    --no-restore \
-    --output /app/publish
+    --output /app/publish \
+    --no-restore
 
-
-# ─────────────────────────────────────────────
-# STAGE 3 — Runtime
-# Lean ASP.NET runtime image — no SDK bloat.
-# Only the published output is copied here.
-# ─────────────────────────────────────────────
+# ============================================================
+# Stage 2: Runtime
+# ============================================================
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
-# Create a non-root user for security
-RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+# Non-root user for security
+RUN useradd --no-create-home --shell /bin/false appuser
 
-# Copy published output from the publish stage
-COPY --from=publish /app/publish .
+# Copy published output from build stage
+COPY --from=build /app/publish .
 
-# Give ownership to the non-root user
-RUN chown -R appuser:appgroup /app
-USER appuser
+# Build arg — resolved by CI/CD to e.g. App.API.dll
+ARG DLL_NAME
+RUN test -n "$DLL_NAME" || (echo "❌ DLL_NAME build-arg is required" && exit 1)
+ENV APP_DLL="$DLL_NAME"
 
-# Port your API listens on (matches launchSettings.json)
+# Port 5001 — matches backend team's launchSettings & AWS config
 EXPOSE 5001
-
-# Set ASP.NET Core to listen on the correct port
 ENV ASPNETCORE_URLS=http://+:5001
 ENV ASPNETCORE_ENVIRONMENT=Production
 
-ENTRYPOINT ["dotnet", "App.API.dll"]
+USER appuser
+
+ENTRYPOINT ["sh", "-c", "dotnet \"$APP_DLL\""]

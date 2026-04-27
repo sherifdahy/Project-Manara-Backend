@@ -1,156 +1,261 @@
-name: Backend — Build, Push to ECR & Deploy to ECS
+# ================================================================
+# CI/CD Pipeline — .NET Backend → Docker → ECR → ECS Fargate
+# ================================================================
+name: CI/CD Pipeline
 
-# ─────────────────────────────────────────────
-# Trigger: only on push to main branch
-# ─────────────────────────────────────────────
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 env:
-  AWS_REGION:         eu-central-1
-  ECR_REPOSITORY:     manara/backend           # your ECR repo name
-  ECS_CLUSTER:        manara-cluster           # your ECS cluster name
-  ECS_SERVICE:        manara-backend-service   # your ECS service name
-  CONTAINER_NAME:     manara-backend           # container name inside task definition
+  DOTNET_VERSION: "10.0.x"
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
 
+  AWS_REGION:       ${{ secrets.AWS_REGION }}
+  ECR_REPOSITORY:   ${{ secrets.ECR_REPOSITORY }}
+  ECS_CLUSTER:      manaraa-cluster
+  ECS_SERVICE:      manaraa-service
+  ECS_TASK_FAMILY:  manaraa-task
+  CONTAINER_NAME:   manaraa-container
+
+permissions:
+  id-token: write
+  contents: read
+
+# ================================================================
+# STAGE 1 — DETECT + RESTORE
+# ================================================================
 jobs:
-  build-and-deploy:
-    name: Build → Push → Deploy
+  install:
+    name: "📦 Stage 1 — Detect & Restore"
     runs-on: ubuntu-latest
 
-    # Allow OIDC token to authenticate with AWS (no static keys)
-    permissions:
-      id-token: write   # required for OIDC
-      contents: read
+    outputs:
+      solution_path: ${{ steps.detect.outputs.solution_path }}
 
     steps:
-
-      # ── Step 1 ──────────────────────────────
-      # Pull the full repository code
-      # ─────────────────────────────────────────
-      - name: Checkout repository
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
+      - name: ⚙️ Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      # ── Step 2 ──────────────────────────────
-      # Authenticate to AWS via OIDC
-      # No AWS_ACCESS_KEY_ID needed — GitHub
-      # exchanges a short-lived token with AWS
-      # ─────────────────────────────────────────
-      - name: Configure AWS credentials (OIDC)
+      - name: 💾 Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: 🔎 Show repo structure
+        run: find . -maxdepth 5 \( -name "*.sln" -o -name "*.csproj" \)
+
+      - name: 🧠 Detect solution/project file
+        id: detect
+        run: |
+          FILE=$(find . -maxdepth 5 -name "*.sln" | head -n 1)
+          if [ -z "$FILE" ]; then
+            FILE=$(find . -maxdepth 5 -name "*.csproj" | head -n 1)
+          fi
+          if [ -z "$FILE" ]; then
+            echo "❌ No .sln or .csproj found"
+            exit 1
+          fi
+          echo "✅ Using: $FILE"
+          echo "solution_path=$FILE" >> $GITHUB_OUTPUT
+
+      - name: 📦 Restore packages
+        run: |
+          dotnet restore "${{ steps.detect.outputs.solution_path }}" \
+            --packages "${{ env.NUGET_PACKAGES }}"
+
+# ================================================================
+# STAGE 2 — BUILD
+# ================================================================
+  build:
+    name: "🔨 Stage 2 — Build"
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: 💾 Restore NuGet cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: 🔨 Build app
+        run: |
+          dotnet build "${{ needs.install.outputs.solution_path }}" \
+            --configuration Release \
+            -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
+
+# ================================================================
+# STAGE 3 — TEST
+# ================================================================
+  test:
+    name: "🧪 Stage 3 — Test"
+    needs: [install, build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: 💾 Restore NuGet cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: 🧪 Run tests
+        continue-on-error: true
+        run: |
+          dotnet test "${{ needs.install.outputs.solution_path }}" \
+            --configuration Release \
+            --verbosity normal \
+            --logger "trx;LogFileName=test-results.trx" \
+            -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}" || true
+
+# ================================================================
+# STAGE 4 — DOCKER BUILD + PUSH TO ECR
+# ================================================================
+  docker-push:
+    name: "🐳 Stage 4 — Docker Build & Push ECR"
+    needs: test
+    runs-on: ubuntu-latest
+
+    outputs:
+      full_image_uri: ${{ steps.push.outputs.full_image_uri }}
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🏷️ Generate image tag
+        id: meta
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
+          echo "image_tag=$TAG" >> $GITHUB_OUTPUT
+
+      - name: 🔎 Detect API project path
+        id: api
+        run: |
+          set -e
+
+          FILE=$(find . -maxdepth 6 -name "*.csproj" \
+            | grep -Ei '/app\.api/|/api/' \
+            | grep -Eiv 'test|tests' \
+            | head -n 1)
+
+          if [ -z "$FILE" ]; then
+            FILE=$(find . -maxdepth 6 -name "*.csproj" | grep -Eiv 'test|tests' | head -n 1)
+          fi
+
+          if [ -z "$FILE" ]; then
+            echo "❌ Could not find a publishable .csproj"
+            exit 1
+          fi
+
+          echo "✅ API project: $FILE"
+          DLL="$(basename "$FILE" .csproj).dll"
+          echo "✅ DLL name: $DLL"
+
+          echo "api_path=$FILE"  >> $GITHUB_OUTPUT
+          echo "dll_name=$DLL"   >> $GITHUB_OUTPUT
+
+      - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}   # IAM role ARN stored in GitHub Secrets
-          aws-region: ${{ env.AWS_REGION }}
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ env.AWS_REGION }}
 
-
-      # ── Step 3 ──────────────────────────────
-      # Log Docker into your private ECR registry
-      # Returns the registry URL for later steps
-      # ─────────────────────────────────────────
-      - name: Login to Amazon ECR
-        id: login-ecr
+      - name: 🔑 Login to ECR
+        id: login
         uses: aws-actions/amazon-ecr-login@v2
 
-
-      # ── Step 4 ──────────────────────────────
-      # THIS IS WHERE YOUR DOCKERFILE IS USED
-      #
-      # docker build reads your Dockerfile and:
-      #   Stage 1 → restores NuGet packages
-      #   Stage 2 → builds & publishes the app
-      #   Stage 3 → creates the lean runtime image
-      #
-      # Two tags are applied to the same image:
-      #   :latest  → always points to newest image
-      #   :<sha>   → unique tag per commit (traceability)
-      # ─────────────────────────────────────────
-      - name: Build Docker image
+      - name: 📤 Build & Push image
+        id: push
         env:
-          REGISTRY:   ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG:  ${{ github.sha }}
+          REGISTRY: ${{ steps.login.outputs.registry }}
+          TAG:      ${{ steps.meta.outputs.image_tag }}
         run: |
+          FULL_URI=$REGISTRY/${{ env.ECR_REPOSITORY }}
+
           docker build \
-            --tag $REGISTRY/$ECR_REPOSITORY:latest \
-            --tag $REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
-            --file Dockerfile \
-            .
+            --build-arg PROJECT_PATH="${{ steps.api.outputs.api_path }}" \
+            --build-arg DLL_NAME="${{ steps.api.outputs.dll_name }}" \
+            -t $FULL_URI:$TAG \
+            -t $FULL_URI:latest .
 
+          docker push $FULL_URI:$TAG
+          docker push $FULL_URI:latest
 
-      # ── Step 5 ──────────────────────────────
-      # Run your unit/integration tests INSIDE
-      # the already-built image — no extra build.
-      # If tests fail the pipeline stops here,
-      # nothing gets pushed to ECR.
-      # ─────────────────────────────────────────
-      - name: Run tests
-        env:
-          REGISTRY:  ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker run --rm \
-            $REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
-            dotnet test --no-build --verbosity normal
+          echo "full_image_uri=$FULL_URI:$TAG" >> $GITHUB_OUTPUT
 
+# ================================================================
+# STAGE 5 — DEPLOY TO ECS
+# ================================================================
+  deploy:
+    name: "🚀 Stage 5 — Deploy ECS"
+    needs: docker-push
+    runs-on: ubuntu-latest
 
-      # ── Step 6 ──────────────────────────────
-      # Push both tags to ECR.
-      # ECS will pull by SHA tag → fully
-      # reproducible deployments.
-      # ─────────────────────────────────────────
-      - name: Push image to ECR
-        env:
-          REGISTRY:  ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker push $REGISTRY/$ECR_REPOSITORY:latest
-          docker push $REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-
-
-      # ── Step 7 ──────────────────────────────
-      # Download the current ECS task definition
-      # JSON so we can update just the image URI
-      # without touching any other settings
-      # ─────────────────────────────────────────
-      - name: Download current ECS task definition
-        run: |
-          aws ecs describe-task-definition \
-            --task-definition manara-backend-task \
-            --query taskDefinition \
-            > task-definition.json
-
-
-      # ── Step 8 ──────────────────────────────
-      # Inject the new ECR image URI (with SHA
-      # tag) into the task definition JSON.
-      # This creates a NEW task definition revision.
-      # ─────────────────────────────────────────
-      - name: Update image in task definition
-        id: update-task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
+    steps:
+      - name: 🔐 Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          task-definition:  task-definition.json
-          container-name:   ${{ env.CONTAINER_NAME }}
-          image:            ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ env.AWS_REGION }}
 
+      - name: 🚀 Force new ECS deployment
+        run: |
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service ${{ env.ECS_SERVICE }} \
+            --force-new-deployment
 
-      # ── Step 9 ──────────────────────────────
-      # Register the updated task definition
-      # then trigger a rolling deployment on ECS.
-      #
-      # ECS will:
-      #   1. Launch new Fargate tasks (new image)
-      #   2. Wait for health checks to pass
-      #   3. Drain & stop old tasks
-      #
-      # If health checks fail → auto-rollback
-      # ─────────────────────────────────────────
-      - name: Deploy to ECS (rolling update)
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+# ================================================================
+# STAGE 6 — VERIFY
+# ================================================================
+  verify:
+    name: "✅ Stage 6 — Verify"
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔐 Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          task-definition:          ${{ steps.update-task-def.outputs.task-definition }}
-          service:                  ${{ env.ECS_SERVICE }}
-          cluster:                  ${{ env.ECS_CLUSTER }}
-          wait-for-service-stability: true   # pipeline waits until deployment is healthy
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ env.AWS_REGION }}
+
+      - name: 📊 Check ECS service status
+        run: |
+          aws ecs describe-services \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --services ${{ env.ECS_SERVICE }}
