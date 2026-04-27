@@ -146,7 +146,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      full_image_uri: ${{ steps.export_uri.outputs.full_image_uri }}
+      full_image_uri: ${{ steps.push.outputs.full_image_uri }}
 
     steps:
       - name: 📥 Checkout
@@ -157,7 +157,7 @@ jobs:
         run: |
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
-          echo "image_tag=$TAG" >> $GITHUB_OUTPUT
+          echo "image_tag=$TAG" >> "$GITHUB_OUTPUT"
 
       - name: 🔎 Detect API project path
         id: api
@@ -182,8 +182,8 @@ jobs:
           DLL="$(basename "$FILE" .csproj).dll"
           echo "✅ DLL name: $DLL"
 
-          echo "api_path=$FILE"  >> $GITHUB_OUTPUT
-          echo "dll_name=$DLL"   >> $GITHUB_OUTPUT
+          echo "api_path=$FILE" >> "$GITHUB_OUTPUT"
+          echo "dll_name=$DLL"  >> "$GITHUB_OUTPUT"
 
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -211,41 +211,49 @@ jobs:
             exit 1
           fi
 
-      # ── FIX: push uses $GITHUB_ENV to pass the URI to the next step ──
+      # ── ROOT FIX: inject all dynamic values via `env:` block so they are
+      #    available as real shell variables. Never use ${{ }} expressions to
+      #    read back a value that was set in the same step — they are evaluated
+      #    BEFORE the step runs and will always be empty.
       - name: 📤 Build & Push image
         id: push
+        env:
+          REGISTRY: ${{ steps.login.outputs.registry }}
+          TAG:      ${{ steps.meta.outputs.image_tag }}
+          REPO:     ${{ env.ECR_REPOSITORY }}
+          API_PATH: ${{ steps.api.outputs.api_path }}
+          DLL_NAME: ${{ steps.api.outputs.dll_name }}
         run: |
           set -euo pipefail
 
-          REGISTRY="${{ steps.login.outputs.registry }}"
-          TAG="${{ steps.meta.outputs.image_tag }}"
-          FULL_URI="${REGISTRY}/${{ env.ECR_REPOSITORY }}"
+          FULL_URI="${REGISTRY}/${REPO}"
+
+          echo "🔨 Building image: ${FULL_URI}:${TAG}"
 
           docker build \
-            --build-arg PROJECT_PATH="${{ steps.api.outputs.api_path }}" \
-            --build-arg DLL_NAME="${{ steps.api.outputs.dll_name }}" \
+            --build-arg PROJECT_PATH="${API_PATH}" \
+            --build-arg DLL_NAME="${DLL_NAME}" \
             -t "${FULL_URI}:${TAG}" \
             -t "${FULL_URI}:latest" .
 
+          echo "📤 Pushing ${FULL_URI}:${TAG}"
           docker push "${FULL_URI}:${TAG}"
+
+          echo "📤 Pushing ${FULL_URI}:latest"
           docker push "${FULL_URI}:latest"
 
-          # Write to GITHUB_ENV so the value survives across steps
-          echo "FULL_IMAGE_URI=${FULL_URI}:${TAG}" >> "$GITHUB_ENV"
-
-      # ── FIX: dedicated step writes GITHUB_OUTPUT — avoids subshell scoping ──
-      - name: 🏷️ Export image URI as job output
-        id: export_uri
-        run: |
-          echo "full_image_uri=${{ env.FULL_IMAGE_URI }}" >> "$GITHUB_OUTPUT"
+          # Write output — pure shell var, guaranteed non-empty if we got here
+          echo "full_image_uri=${FULL_URI}:${TAG}" >> "$GITHUB_OUTPUT"
 
       - name: 🔍 Debug — confirm output was written
         run: |
-          echo "full_image_uri = ${{ steps.export_uri.outputs.full_image_uri }}"
-          if [ -z "${{ steps.export_uri.outputs.full_image_uri }}" ]; then
+          URI="${{ steps.push.outputs.full_image_uri }}"
+          echo "full_image_uri = $URI"
+          if [ -z "$URI" ]; then
             echo "❌ Output was not written — push step likely failed silently"
             exit 1
           fi
+          echo "✅ Image URI confirmed"
 
 # ================================================================
 # STAGE 5 — DEPLOY TO ECS
@@ -258,12 +266,14 @@ jobs:
     steps:
       - name: 🔍 Validate image URI
         run: |
-          if [ -z "${{ needs.docker-push.outputs.full_image_uri }}" ]; then
+          URI="${{ needs.docker-push.outputs.full_image_uri }}"
+          echo "Received image URI: $URI"
+          if [ -z "$URI" ]; then
             echo "❌ full_image_uri is empty — docker-push stage did not produce the required output."
             echo "Check that secrets.ECR_REPOSITORY and ECR login succeeded in Stage 4."
             exit 1
           fi
-          echo "✅ Image URI: ${{ needs.docker-push.outputs.full_image_uri }}"
+          echo "✅ Image URI validated: $URI"
 
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
