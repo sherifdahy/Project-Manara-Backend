@@ -2,7 +2,9 @@
 using App.Application.Abstractions;
 using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Requests.FacultyUsers;
+using App.Application.Queries.Doctors;
 using App.Application.Queries.FacultyUsers;
+using App.Application.Queries.Instructors;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
@@ -77,6 +79,20 @@ public class FacultyUsersController(IMediator mediator,IRoleService roleService)
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 
+    [HttpGet("/api/faculties/{facultyId}/doctors")]
+    public async Task<IActionResult> GetFacultyDoctors([FromRoute] int facultyId, [FromQuery] RequestFilters filters, CancellationToken cancellationToken = default)
+    {
+        var query = new GetAllDoctorsInsideFacultyQuery(facultyId, filters);
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
 
+    [HttpGet("/api/faculties/{facultyId}/instructors")]
+    public async Task<IActionResult> GetFacultyInstructors([FromRoute] int facultyId, [FromQuery] RequestFilters filters, CancellationToken cancellationToken = default)
+    {
+        var query = new GetAllInstructorsInsideFacultyQuery(facultyId, filters);
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
 
 }

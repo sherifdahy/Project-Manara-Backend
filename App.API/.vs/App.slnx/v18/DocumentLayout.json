@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\doctors\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\doctors\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\departmentusers\\departmentuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\departmentusers\\departmentuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\manara-project\\project-manara-backend\\app.application\\handlers\\queries\\programs\\getprogramschedulequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -31,19 +35,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DoctorsController.cs",
-              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Doctors\\DoctorsController.cs",
-              "RelativeDocumentMoniker": "App.API\\Controllers\\Doctors\\DoctorsController.cs",
-              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Doctors\\DoctorsController.cs",
-              "RelativeToolTip": "App.API\\Controllers\\Doctors\\DoctorsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAHAAAAAAAAAA==",
+              "Title": "FacultyUsersController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAiwEsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T18:10:58.324Z",
+              "WhenOpened": "2026-04-27T18:28:05.358Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DepartmentUsersController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAArwEYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T18:23:14.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "GetProgramScheduleQueryHandler.cs",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Programs\\GetProgramScheduleQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Programs\\GetProgramScheduleQueryHandler.cs",
@@ -51,12 +67,11 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Programs\\GetProgramScheduleQueryHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T17:56:06.911Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-27T17:56:06.911Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
               "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
@@ -66,7 +81,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Microsoft.PackageDependencyResolution.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
               "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
@@ -76,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ProgramScheduleResponse.cs",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",

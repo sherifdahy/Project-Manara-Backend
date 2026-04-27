@@ -3,6 +3,8 @@ using App.Application.Abstractions;
 using App.Application.Commands.DepartmentUsers;
 using App.Application.Contracts.Requests.DepartmentUsers;
 using App.Application.Queries.DepartmentUsers;
+using App.Application.Queries.Doctors;
+using App.Application.Queries.Instructors;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using Mapster;
