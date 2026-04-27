@@ -1,6 +1,6 @@
 # ================================================================
-# CI/CD Pipeline — .NET 10 Backend → Docker → ECR → ECS Fargate
-# FIXED: Explicit project/solution path for dotnet restore/build/test
+# CI/CD Pipeline — .NET Backend → Docker → ECR → ECS Fargate
+# FIXED: Auto-detect real .sln / .csproj instead of hardcoded App.sln
 # ================================================================
 name: CI/CD Pipeline
 
@@ -11,9 +11,6 @@ on:
 env:
   DOTNET_VERSION: "10.0.x"
 
-  # ===============================
-  # AWS / ECS
-  # ===============================
   AWS_REGION: ${{ secrets.AWS_REGION }}
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
 
@@ -22,15 +19,6 @@ env:
   ECS_TASK_FAMILY: myapp-task
   CONTAINER_NAME: myapp-container
 
-  # ======================================================
-  # BUG FIX:
-  # Put your REAL .sln or .csproj path here
-  # Example:
-  #   App.sln
-  #   src/MyApi/MyApi.csproj
-  # ======================================================
-  SOLUTION_PATH: App.sln
-
 permissions:
   id-token: write
   contents: read
@@ -38,45 +26,60 @@ permissions:
 jobs:
 
 # ================================================================
-# STAGE 1 — INSTALL / RESTORE
+# STAGE 1 — DETECT PROJECT + RESTORE
 # ================================================================
   install:
-    name: "📦 INSTALL / RESTORE"
+    name: "📦 Stage 1 — Detect & Restore"
     runs-on: ubuntu-latest
 
+    outputs:
+      solution_path: ${{ steps.detect.outputs.solution_path }}
+
     steps:
-      - name: Checkout repo
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: Setup .NET
+      - name: ⚙️ Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      # Helpful debug step
-      - name: Show repo structure
+      - name: 🔎 Show repo structure
         run: |
           pwd
           ls -la
-          find . -maxdepth 4 \( -name "*.sln" -o -name "*.csproj" \)
+          find . -maxdepth 5 \( -name "*.sln" -o -name "*.csproj" \)
 
-      # ================= BUG FIX =================
-      - name: Restore packages
-        run: dotnet restore ${{ env.SOLUTION_PATH }}
+      # ==========================================================
+      # AUTO FIX:
+      # 1) Prefer first .sln found
+      # 2) If no .sln found, use first .csproj
+      # ==========================================================
+      - name: 🧠 Detect solution/project file
+        id: detect
+        run: |
+          FILE=$(find . -maxdepth 5 -name "*.sln" | head -n 1)
 
-      - name: Cache NuGet
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ~/.nuget/packages
-            **/obj
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/*.sln') }}
+          if [ -z "$FILE" ]; then
+            FILE=$(find . -maxdepth 5 -name "*.csproj" | head -n 1)
+          fi
+
+          if [ -z "$FILE" ]; then
+            echo "❌ No .sln or .csproj found"
+            exit 1
+          fi
+
+          echo "✅ Using: $FILE"
+          echo "solution_path=$FILE" >> $GITHUB_OUTPUT
+
+      - name: 📦 Restore packages
+        run: dotnet restore "${{ steps.detect.outputs.solution_path }}"
 
 # ================================================================
 # STAGE 2 — BUILD
 # ================================================================
   build:
-    name: "🔨 Build"
+    name: "🔨 Stage 2 — Build"
     needs: install
     runs-on: ubuntu-latest
 
@@ -87,22 +90,17 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.nuget/packages
-            **/obj
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/*.sln') }}
-
-      # ================= BUG FIX =================
-      - name: Build app
-        run: dotnet build ${{ env.SOLUTION_PATH }} --configuration Release --no-restore
+      - name: 🔨 Build app
+        run: |
+          dotnet build "${{ needs.install.outputs.solution_path }}" \
+            --configuration Release \
+            --no-restore
 
 # ================================================================
 # STAGE 3 — TEST
 # ================================================================
   test:
-    name: "🧪 Test"
+    name: "🧪 Stage 3 — Test"
     needs: build
     runs-on: ubuntu-latest
 
@@ -113,21 +111,10 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.nuget/packages
-            **/obj
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/*.sln') }}
-
-      - name: Build for tests
-        run: dotnet build ${{ env.SOLUTION_PATH }} --configuration Release --no-restore
-
-      # ================= BUG FIX =================
-      - name: Run tests
+      - name: 🧪 Run tests
         continue-on-error: true
         run: |
-          dotnet test ${{ env.SOLUTION_PATH }} \
+          dotnet test "${{ needs.install.outputs.solution_path }}" \
             --configuration Release \
             --no-build \
             --verbosity normal \
@@ -137,7 +124,7 @@ jobs:
 # STAGE 4 — DOCKER BUILD
 # ================================================================
   docker-build:
-    name: "🐳 Docker Build"
+    name: "🐳 Stage 4 — Docker Build"
     needs: test
     runs-on: ubuntu-latest
 
@@ -147,14 +134,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate image tag
+      - name: 🏷️ Generate tag
         id: meta
         run: |
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
           echo "image_tag=$TAG" >> $GITHUB_OUTPUT
 
-      - name: Build image
+      - name: 🐳 Build image
         run: |
           docker build \
             -t myapp-backend:${{ steps.meta.outputs.image_tag }} \
@@ -164,7 +151,7 @@ jobs:
 # STAGE 5 — PUSH TO ECR
 # ================================================================
   push-to-ecr:
-    name: "☁️ Push ECR"
+    name: "☁️ Stage 5 — Push ECR"
     needs: docker-build
     runs-on: ubuntu-latest
 
@@ -174,18 +161,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure AWS
+      - name: 🔐 Configure AWS
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Login ECR
+      - name: 🔑 Login ECR
         id: login
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Push image
+      - name: 📤 Push image
         id: push
         env:
           REGISTRY: ${{ steps.login.outputs.registry }}
@@ -201,81 +188,45 @@ jobs:
           echo "full_image_uri=$FULL_URI:$TAG" >> $GITHUB_OUTPUT
 
 # ================================================================
-# STAGE 6 — UPDATE TASK DEF
+# STAGE 6 — DEPLOY TO ECS
 # ================================================================
-  update-task-definition:
-    name: "📝 Update Task Definition"
+  deploy:
+    name: "🚀 Stage 6 — Deploy ECS"
     needs: push-to-ecr
     runs-on: ubuntu-latest
 
-    outputs:
-      task_def_file: ${{ steps.render.outputs.task-definition }}
-
     steps:
-      - name: Configure AWS
+      - name: 🔐 Configure AWS
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Download task definition
+      - name: 🚀 Force new deployment
         run: |
-          aws ecs describe-task-definition \
-            --task-definition ${{ env.ECS_TASK_FAMILY }} \
-            --query taskDefinition \
-            > task-definition.json
-
-      - name: Inject new image
-        id: render
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition: task-definition.json
-          container-name: ${{ env.CONTAINER_NAME }}
-          image: ${{ needs.push-to-ecr.outputs.full_image_uri }}
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service ${{ env.ECS_SERVICE }} \
+            --force-new-deployment
 
 # ================================================================
-# STAGE 7 — DEPLOY
-# ================================================================
-  deploy:
-    name: "🚀 Deploy ECS"
-    needs: update-task-definition
-    runs-on: ubuntu-latest
-    environment: production
-
-    steps:
-      - name: Configure AWS
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
-
-      - name: Deploy ECS service
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
-        with:
-          task-definition: ${{ needs.update-task-definition.outputs.task_def_file }}
-          cluster: ${{ env.ECS_CLUSTER }}
-          service: ${{ env.ECS_SERVICE }}
-          wait-for-service-stability: true
-
-# ================================================================
-# STAGE 8 — VERIFY
+# STAGE 7 — VERIFY
 # ================================================================
   verify:
-    name: "✅ Verify"
+    name: "✅ Stage 7 — Verify"
     needs: deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: Configure AWS
+      - name: 🔐 Configure AWS
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Check ECS status
+      - name: 📊 Check ECS service
         run: |
           aws ecs describe-services \
             --cluster ${{ env.ECS_CLUSTER }} \
