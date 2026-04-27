@@ -3,11 +3,11 @@
 ############################
 
 ## Build output
-bin/
-obj/
-out/
-Debug/
-Release/
+**/bin/
+**/obj/
+**/out/
+**/Debug/
+**/Release/
 
 ## VS user-specific files
 .vs/
