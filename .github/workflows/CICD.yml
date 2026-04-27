@@ -138,7 +138,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      full_image_uri: ${{ steps.push.outputs.full_image_uri }}
+      full_image_uri: ${{ steps.export.outputs.full_image_uri }}
 
     steps:
       - name: 📥 Checkout
@@ -147,6 +147,7 @@ jobs:
       - name: 🏷️ Generate image tag
         id: meta
         run: |
+          set -euo pipefail
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           echo "image_tag=${SHORT_SHA}-$(date +%Y%m%d%H%M%S)" >> "$GITHUB_OUTPUT"
 
@@ -182,7 +183,6 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: 📤 Build & Push image
-        id: push
         env:
           REGISTRY:   ${{ steps.login.outputs.registry }}
           REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
@@ -194,25 +194,31 @@ jobs:
           : "${REGISTRY:?ECR login did not return a registry}"
           : "${REPOSITORY:?ECR_REPOSITORY secret is empty}"
           : "${TAG:?Image tag was not generated}"
+          : "${API_PATH:?API project not detected}"
+          : "${DLL_NAME:?DLL name not detected}"
 
           FULL_URI="${REGISTRY}/${REPOSITORY}"
+          IMAGE_URI="${FULL_URI}:${TAG}"
 
           docker build \
             --build-arg PROJECT_PATH="${API_PATH}" \
             --build-arg DLL_NAME="${DLL_NAME}" \
-            -t "${FULL_URI}:${TAG}" \
+            -t "${IMAGE_URI}" \
             -t "${FULL_URI}:latest" .
 
-          docker push "${FULL_URI}:${TAG}"
+          docker push "${IMAGE_URI}"
           docker push "${FULL_URI}:latest"
 
-          echo "full_image_uri=${FULL_URI}:${TAG}" >> "$GITHUB_OUTPUT"
+          # persist for later steps in this job
+          echo "IMAGE_URI=${IMAGE_URI}" >> "$GITHUB_ENV"
 
-      - name: ✅ Confirm image output
+      - name: ✅ Export image URI as job output
+        id: export
         run: |
-          IMAGE="${{ steps.push.outputs.full_image_uri }}"
-          : "${IMAGE:?full_image_uri is empty — deploy will not proceed}"
-          echo "✅ Image ready: $IMAGE"
+          set -euo pipefail
+          : "${IMAGE_URI:?IMAGE_URI is empty after push (Stage 4)}"
+          echo "full_image_uri=${IMAGE_URI}" >> "$GITHUB_OUTPUT"
+          echo "✅ Image ready: ${IMAGE_URI}"
 
 # ================================================================
 # STAGE 5 — DEPLOY TO ECS
@@ -225,6 +231,7 @@ jobs:
     steps:
       - name: ✅ Validate image URI
         run: |
+          set -euo pipefail
           IMAGE="${{ needs.docker-push.outputs.full_image_uri }}"
           : "${IMAGE:?docker-push did not produce full_image_uri — check Stage 4 logs}"
           echo "✅ Deploying: $IMAGE"
@@ -238,6 +245,7 @@ jobs:
 
       - name: 📋 Download current task definition
         run: |
+          set -euo pipefail
           aws ecs describe-task-definition \
             --task-definition ${{ env.ECS_TASK_FAMILY }} \
             --query taskDefinition \
@@ -277,6 +285,7 @@ jobs:
 
       - name: 📊 Check ECS service status
         run: |
+          set -euo pipefail
           aws ecs describe-services \
             --cluster ${{ env.ECS_CLUSTER }} \
             --services ${{ env.ECS_SERVICE }} \
