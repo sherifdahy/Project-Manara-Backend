@@ -146,7 +146,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      full_image_uri: ${{ steps.push.outputs.full_image_uri }}
+      full_image_uri: ${{ steps.export_uri.outputs.full_image_uri }}
 
     steps:
       - name: 📥 Checkout
@@ -196,18 +196,30 @@ jobs:
         id: login
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: 🔍 Debug — verify ECR inputs before build
+        run: |
+          echo "REGISTRY  : ${{ steps.login.outputs.registry }}"
+          echo "REPOSITORY: ${{ env.ECR_REPOSITORY }}"
+          echo "TAG       : ${{ steps.meta.outputs.image_tag }}"
+
+          if [ -z "${{ steps.login.outputs.registry }}" ]; then
+            echo "❌ ECR registry output is empty — check AWS credentials and region"
+            exit 1
+          fi
+          if [ -z "${{ env.ECR_REPOSITORY }}" ]; then
+            echo "❌ ECR_REPOSITORY secret is empty — add it in repo Settings → Secrets"
+            exit 1
+          fi
+
+      # ── FIX: push uses $GITHUB_ENV to pass the URI to the next step ──
       - name: 📤 Build & Push image
         id: push
-        env:
-          REGISTRY: ${{ steps.login.outputs.registry }}
-          TAG:      ${{ steps.meta.outputs.image_tag }}
         run: |
           set -euo pipefail
 
+          REGISTRY="${{ steps.login.outputs.registry }}"
+          TAG="${{ steps.meta.outputs.image_tag }}"
           FULL_URI="${REGISTRY}/${{ env.ECR_REPOSITORY }}"
-
-          # Write output immediately — before any docker command that could fail
-          echo "full_image_uri=${FULL_URI}:${TAG}" >> "$GITHUB_OUTPUT"
 
           docker build \
             --build-arg PROJECT_PATH="${{ steps.api.outputs.api_path }}" \
@@ -218,6 +230,23 @@ jobs:
           docker push "${FULL_URI}:${TAG}"
           docker push "${FULL_URI}:latest"
 
+          # Write to GITHUB_ENV so the value survives across steps
+          echo "FULL_IMAGE_URI=${FULL_URI}:${TAG}" >> "$GITHUB_ENV"
+
+      # ── FIX: dedicated step writes GITHUB_OUTPUT — avoids subshell scoping ──
+      - name: 🏷️ Export image URI as job output
+        id: export_uri
+        run: |
+          echo "full_image_uri=${{ env.FULL_IMAGE_URI }}" >> "$GITHUB_OUTPUT"
+
+      - name: 🔍 Debug — confirm output was written
+        run: |
+          echo "full_image_uri = ${{ steps.export_uri.outputs.full_image_uri }}"
+          if [ -z "${{ steps.export_uri.outputs.full_image_uri }}" ]; then
+            echo "❌ Output was not written — push step likely failed silently"
+            exit 1
+          fi
+
 # ================================================================
 # STAGE 5 — DEPLOY TO ECS
 # ================================================================
@@ -227,21 +256,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: 🔍 Validate image URI
+        run: |
+          if [ -z "${{ needs.docker-push.outputs.full_image_uri }}" ]; then
+            echo "❌ full_image_uri is empty — docker-push stage did not produce the required output."
+            echo "Check that secrets.ECR_REPOSITORY and ECR login succeeded in Stage 4."
+            exit 1
+          fi
+          echo "✅ Image URI: ${{ needs.docker-push.outputs.full_image_uri }}"
+
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:            ${{ env.AWS_REGION }}
-
-      - name: ✅ Validate image URI
-        run: |
-          if [ -z "${{ needs.docker-push.outputs.full_image_uri }}" ]; then
-            echo "❌ full_image_uri is empty — docker-push stage did not produce the required output."
-            echo "   Check that secrets.ECR_REPOSITORY and ECR login succeeded in Stage 4."
-            exit 1
-          fi
-          echo "✅ Image URI: ${{ needs.docker-push.outputs.full_image_uri }}"
 
       - name: 📋 Fetch current task definition
         run: |
