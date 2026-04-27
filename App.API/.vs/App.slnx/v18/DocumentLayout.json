@@ -3,13 +3,16 @@
   "WorkspaceRootPath": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\manara-project\\project-manara-backend\\app.application\\handlers\\queries\\programs\\getprogramschedulequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\manara-project\\project-manara-backend\\app.application\\contracts\\responses\\programschedules\\programscheduleresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\manara-project\\project-manara-backend\\app.application\\contracts\\responses\\programschedules\\programscheduleresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,34 +27,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
-              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
-              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
-              "ViewState": "AgIAAJIBAAAAAAAAAAAmwKsBAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-04-27T17:33:19.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Microsoft.PackageDependencyResolution.targets",
-              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ViewState": "AgIAAPAAAAAAAAAAAAAmwAkBAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-04-27T17:33:11.106Z",
+              "Title": "GetProgramScheduleQueryHandler.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Programs\\GetProgramScheduleQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Programs\\GetProgramScheduleQueryHandler.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Programs\\GetProgramScheduleQueryHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Programs\\GetProgramScheduleQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T17:56:06.911Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
+              "ViewState": "AgIAAJIBAAAAAAAAAAAmwKsBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-04-27T17:33:19.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Microsoft.PackageDependencyResolution.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.202\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ViewState": "AgIAAPAAAAAAAAAAAAAmwAkBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-04-27T17:33:11.106Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ProgramScheduleResponse.cs",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",
               "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",
               "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\ProgramSchedules\\ProgramScheduleResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-27T17:32:00.808Z",
               "EditorCaption": ""

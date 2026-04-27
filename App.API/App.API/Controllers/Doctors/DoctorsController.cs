@@ -10,13 +10,13 @@ namespace App.API.Controllers.Doctors;
 [ApiController]
 public class DoctorsController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator = mediator;
+    //private readonly IMediator _mediator = mediator;
 
-    [HttpGet("{facultyId}")]
-    public async Task<IActionResult> GetAll([FromRoute]int facultyId,[FromQuery] RequestFilters filters,CancellationToken cancellationToken = default)
-    {
-        var query = new GetAllDoctorsInsideFacultyQuery(facultyId, filters);
-        var result = await _mediator.Send(query, cancellationToken);
-        return result.IsSuccess ? Ok(result) : result.ToProblem();
-    }
+    //[HttpGet("{facultyId}")]
+    //public async Task<IActionResult> GetAll([FromRoute]int facultyId,[FromQuery] RequestFilters filters,CancellationToken cancellationToken = default)
+    //{
+    //    var query = new GetAllDoctorsInsideFacultyQuery(facultyId, filters);
+    //    var result = await _mediator.Send(query, cancellationToken);
+    //    return result.IsSuccess ? Ok(result) : result.ToProblem();
+    //}
 }
