@@ -216,7 +216,7 @@ jobs:
           echo "full_image_uri=$FULL_URI:$TAG" >> $GITHUB_OUTPUT
 
 # ================================================================
-# STAGE 5 — DEPLOY TO ECS
+# STAGE 5 — DEPLOY TO ECS  ✅ THIS IS WHERE THE FIX IS
 # ================================================================
   deploy:
     name: "🚀 Stage 5 — Deploy ECS"
@@ -231,12 +231,28 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region:            ${{ env.AWS_REGION }}
 
-      - name: 🚀 Force new ECS deployment
+      - name: 📋 Download current task definition
         run: |
-          aws ecs update-service \
-            --cluster ${{ env.ECS_CLUSTER }} \
-            --service ${{ env.ECS_SERVICE }} \
-            --force-new-deployment
+          aws ecs describe-task-definition \
+            --task-definition ${{ env.ECS_TASK_FAMILY }} \
+            --query taskDefinition \
+            > task-definition.json
+
+      - name: 🖊️ Render new task definition with updated image
+        id: render-task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition:  task-definition.json
+          container-name:   ${{ env.CONTAINER_NAME }}
+          image:            ${{ needs.docker-push.outputs.full_image_uri }}
+
+      - name: 🚀 Register & deploy new task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition:          ${{ steps.render-task-def.outputs.task-definition }}
+          service:                  ${{ env.ECS_SERVICE }}
+          cluster:                  ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
 
 # ================================================================
 # STAGE 6 — VERIFY
@@ -258,4 +274,6 @@ jobs:
         run: |
           aws ecs describe-services \
             --cluster ${{ env.ECS_CLUSTER }} \
-            --services ${{ env.ECS_SERVICE }}
+            --services ${{ env.ECS_SERVICE }} \
+            --query 'services[0].{Status:status,Running:runningCount,Desired:desiredCount,TaskDef:taskDefinition}' \
+            --output table
