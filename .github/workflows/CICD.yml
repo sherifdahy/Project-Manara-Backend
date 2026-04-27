@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 env:
-  DOTNET_VERSION: "8.0.x"          # change to 10.0.x only if you truly need it
+  DOTNET_VERSION: "8.0.x"
   NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
 
   AWS_REGION:       ${{ secrets.AWS_REGION }}
@@ -42,7 +42,6 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      # Cache NuGet packages — keyed on lock files so cache busts on dependency changes
       - name: 💾 Cache NuGet packages
         uses: actions/cache@v4
         with:
@@ -90,7 +89,6 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      # Restore the same cache saved in Stage 1
       - name: 💾 Restore NuGet cache
         uses: actions/cache@v4
         with:
@@ -99,8 +97,6 @@ jobs:
           restore-keys: |
             nuget-${{ runner.os }}-
 
-      # FIX: must restore again on this fresh runner (cache makes it fast)
-      # --no-restore would fail because build artifacts don't carry over between jobs
       - name: 🔨 Build app
         run: |
           dotnet build "${{ needs.install.outputs.solution_path }}" \
@@ -132,7 +128,6 @@ jobs:
           restore-keys: |
             nuget-${{ runner.os }}-
 
-      # FIX: must build here too — --no-build would fail on a fresh runner
       - name: 🧪 Run tests
         continue-on-error: true
         run: |
@@ -143,7 +138,7 @@ jobs:
             -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}" || true
 
 # ================================================================
-# STAGE 4 — DOCKER BUILD + PUSH TO ECR (merged — build image once)
+# STAGE 4 — DOCKER BUILD + PUSH TO ECR
 # ================================================================
   docker-push:
     name: "🐳 Stage 4 — Docker Build & Push ECR"
@@ -164,6 +159,34 @@ jobs:
           TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
           echo "image_tag=$TAG" >> $GITHUB_OUTPUT
 
+      - name: 🔎 Detect API project path
+        id: api
+        run: |
+          set -e
+
+          # Prefer csproj in an API folder; exclude test projects
+          FILE=$(find . -maxdepth 6 -name "*.csproj" \
+            | grep -Ei '/app\.api/|/api/' \
+            | grep -Eiv 'test|tests' \
+            | head -n 1)
+
+          # Fallback: first non-test csproj
+          if [ -z "$FILE" ]; then
+            FILE=$(find . -maxdepth 6 -name "*.csproj" | grep -Eiv 'test|tests' | head -n 1)
+          fi
+
+          if [ -z "$FILE" ]; then
+            echo "❌ Could not find a publishable .csproj"
+            exit 1
+          fi
+
+          echo "✅ API project: $FILE"
+          DLL="$(basename "$FILE" .csproj).dll"
+          echo "✅ DLL name: $DLL"
+
+          echo "api_path=$FILE"  >> $GITHUB_OUTPUT
+          echo "dll_name=$DLL"   >> $GITHUB_OUTPUT
+
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -175,7 +198,6 @@ jobs:
         id: login
         uses: aws-actions/amazon-ecr-login@v2
 
-      # FIX: build the image exactly once and push in the same step
       - name: 📤 Build & Push image
         id: push
         env:
@@ -185,6 +207,8 @@ jobs:
           FULL_URI=$REGISTRY/${{ env.ECR_REPOSITORY }}
 
           docker build \
+            --build-arg PROJECT_PATH="${{ steps.api.outputs.api_path }}" \
+            --build-arg DLL_NAME="${{ steps.api.outputs.dll_name }}" \
             -t $FULL_URI:$TAG \
             -t $FULL_URI:latest .
 
