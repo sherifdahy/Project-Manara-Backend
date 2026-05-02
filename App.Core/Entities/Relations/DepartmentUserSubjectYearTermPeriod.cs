@@ -14,8 +14,8 @@ public class DepartmentUserSubjectYearTermPeriod
 
 
     public int YearTermId { get; set; }
-    public YearTerm YearTerm { get; set; }= default!;
+    public YearTerm YearTerm { get; set; } = default!;
 
     public int PeriodId { get; set; }
-    public Period Period { get; set; }= default!;
+    public Period Period { get; set; } = default!;
 }

@@ -15,5 +15,5 @@ public class Program
     public Department Department { get; set; } = default!;
     public ICollection<StudentProgramYearTerm> ProgramUserProgramYearTerms { get; set; } = new HashSet<StudentProgramYearTerm>();
     public ICollection<ProgramSubject> ProgramSubjects { get; set; } = new HashSet<ProgramSubject>();    
-    public ICollection<ProgramSubjectPeriodDay> ProgramSchedules { get; set; } = new HashSet<ProgramSubjectPeriodDay>();
+    public ICollection<LectureSchedule> ProgramSchedules { get; set; } = new HashSet<LectureSchedule>();
 }

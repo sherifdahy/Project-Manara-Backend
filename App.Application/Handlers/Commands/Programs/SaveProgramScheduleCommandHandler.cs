@@ -1,4 +1,5 @@
 ﻿using App.Application.Commands.Programs;
+using App.Core.Entities.Academic;
 using App.Core.Entities.Relations;
 
 namespace App.Application.Handlers.Commands.Programs;
@@ -76,13 +77,12 @@ public class SaveProgramScheduleCommandHandler(IUnitOfWork unitOfWork, ProgramEr
         if (request.Schedules.Any())
         {
             var newSchedules = request.Schedules.Select(x =>
-            new ProgramSubjectPeriodDay
+            new LectureSchedule
             {
                 SubjectId = x.SubjectId,
                 PeriodId = x.PeriodId,
                 DayId = x.DayId,
                 DoctorId = x.DoctorId,
-                InstructorId = x.InstructorId,
                 ProgramId = request.ProgramId,
             }).ToList();
 

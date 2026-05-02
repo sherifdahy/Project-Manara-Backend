@@ -9,6 +9,6 @@ public class ScheduleItemRequest
     public int SubjectId { get; set; }
     public int PeriodId { get; set; }
     public int DayId { get; set; }
-    public int? DoctorId  { get; set; }
-    public int? InstructorId { get; set; }
+    public int DoctorId  { get; set; }
+    public int InstructorId { get; set; }
 }

@@ -11,5 +11,7 @@ public class Student
     public int FacultyId { get; set; }
     public Faculty Faculty { get; set; } = default!;
 
+    public ICollection<LectureRegistration> LectureRegistrations { get; set; } = new HashSet<LectureRegistration>();
+    public ICollection<SectionRegistration> SectionRegistrations { get; set; } = new HashSet<SectionRegistration>();
     public ICollection<StudentProgramYearTerm> StudentProgramYearTerms { get; set; } = new HashSet<StudentProgramYearTerm>();
 }
