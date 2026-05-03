@@ -1,18 +1,18 @@
-﻿using App.Application.Contracts.Requests.ProgramSchedules;
+﻿using App.Application.Contracts.Requests.LectureSchedules;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace App.Application.Validations.ProgramSchedules;
 
-public class CreateProgramScheduleRequestValidator : AbstractValidator<CreateProgramScheduleRequest>
+public class SaveLectureSchedulesRequestValidator : AbstractValidator<SaveLectureSchedulesRequest>
 {
-    public CreateProgramScheduleRequestValidator()
+    public SaveLectureSchedulesRequestValidator()
     {
         RuleFor(x => x.Schedules)
          .NotNull();
 
-        RuleForEach(x => x.Schedules).SetValidator(new ScheduleItemRequestValidator());
+        RuleForEach(x => x.Schedules).SetValidator(new LectureScheduleItemRequestValidator());
 
         RuleFor(x => x.Schedules)
             .Must(x => x.Select(a => (a.PeriodId, a.SubjectId, a.DayId)).Distinct().Count() == x.Count)
@@ -21,7 +21,7 @@ public class CreateProgramScheduleRequestValidator : AbstractValidator<CreatePro
 
     }
 
-    private static string BuildDuplicateMessage(List<ScheduleItemRequest> Schedules)
+    private static string BuildDuplicateMessage(List<LectureScheduleItemRequest> Schedules)
     {
         if (Schedules is null || Schedules.Count == 0)
             return "Schedules list is empty.";

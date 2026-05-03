@@ -4,6 +4,7 @@ using App.Infrastructure.Presistance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260503125429_update_lecture_and_section_schedule")]
+    partial class update_lecture_and_section_schedule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1318,285 +1321,257 @@ namespace App.Infrastructure.Migrations
                         {
                             Id = 28,
                             ClaimType = "permissions",
-                            ClaimValue = "programLecturesSchedule:read",
+                            ClaimValue = "universityUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 29,
                             ClaimType = "permissions",
-                            ClaimValue = "programLecturesSchedule:save",
+                            ClaimValue = "universityUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 30,
                             ClaimType = "permissions",
-                            ClaimValue = "programSectionschedule:read",
+                            ClaimValue = "universityUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 31,
                             ClaimType = "permissions",
-                            ClaimValue = "programSectionsSchedule:save",
+                            ClaimValue = "universityUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 32,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:read",
+                            ClaimValue = "facultyUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 33,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:create",
+                            ClaimValue = "facultyUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 34,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:update",
+                            ClaimValue = "facultyUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 35,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:toggleStatus",
+                            ClaimValue = "facultyUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 36,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:read",
+                            ClaimValue = "departmentUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 37,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:create",
+                            ClaimValue = "departmentUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 38,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:update",
+                            ClaimValue = "departmentUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 39,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:toggleStatus",
+                            ClaimValue = "departmentUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 40,
                             ClaimType = "permissions",
-                            ClaimValue = "departmentUsers:read",
+                            ClaimValue = "programUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 41,
                             ClaimType = "permissions",
-                            ClaimValue = "departmentUsers:create",
+                            ClaimValue = "programUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 42,
                             ClaimType = "permissions",
-                            ClaimValue = "departmentUsers:update",
+                            ClaimValue = "programUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 43,
                             ClaimType = "permissions",
-                            ClaimValue = "departmentUsers:toggleStatus",
+                            ClaimValue = "programUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 44,
                             ClaimType = "permissions",
-                            ClaimValue = "programUsers:read",
+                            ClaimValue = "scopes:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 45,
                             ClaimType = "permissions",
-                            ClaimValue = "programUsers:create",
+                            ClaimValue = "scopes:readDetail",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 46,
                             ClaimType = "permissions",
-                            ClaimValue = "programUsers:update",
+                            ClaimValue = "scopes:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 47,
                             ClaimType = "permissions",
-                            ClaimValue = "programUsers:toggleStatus",
+                            ClaimValue = "scopes:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 48,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:read",
+                            ClaimValue = "scopes:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 49,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:readDetail",
+                            ClaimValue = "subjects:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 50,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:create",
+                            ClaimValue = "subjects:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 51,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:update",
+                            ClaimValue = "subjects:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 52,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:toggleStatus",
+                            ClaimValue = "subjects:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 53,
                             ClaimType = "permissions",
-                            ClaimValue = "subjects:read",
+                            ClaimValue = "years:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 54,
                             ClaimType = "permissions",
-                            ClaimValue = "subjects:create",
+                            ClaimValue = "years:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 55,
                             ClaimType = "permissions",
-                            ClaimValue = "subjects:update",
+                            ClaimValue = "years:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 56,
                             ClaimType = "permissions",
-                            ClaimValue = "subjects:toggleStatus",
+                            ClaimValue = "years:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 57,
                             ClaimType = "permissions",
-                            ClaimValue = "years:read",
+                            ClaimValue = "periods:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 58,
                             ClaimType = "permissions",
-                            ClaimValue = "years:create",
+                            ClaimValue = "periods:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 59,
                             ClaimType = "permissions",
-                            ClaimValue = "years:update",
+                            ClaimValue = "periods:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 60,
                             ClaimType = "permissions",
-                            ClaimValue = "years:toggleStatus",
+                            ClaimValue = "periods:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 61,
                             ClaimType = "permissions",
-                            ClaimValue = "periods:read",
+                            ClaimValue = "enrollments:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 62,
                             ClaimType = "permissions",
-                            ClaimValue = "periods:create",
+                            ClaimValue = "enrollments:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 63,
                             ClaimType = "permissions",
-                            ClaimValue = "periods:update",
-                            RoleId = 100
-                        },
-                        new
-                        {
-                            Id = 64,
-                            ClaimType = "permissions",
-                            ClaimValue = "periods:toggleStatus",
-                            RoleId = 100
-                        },
-                        new
-                        {
-                            Id = 65,
-                            ClaimType = "permissions",
-                            ClaimValue = "enrollments:read",
-                            RoleId = 100
-                        },
-                        new
-                        {
-                            Id = 66,
-                            ClaimType = "permissions",
-                            ClaimValue = "enrollments:create",
-                            RoleId = 100
-                        },
-                        new
-                        {
-                            Id = 67,
-                            ClaimType = "permissions",
                             ClaimValue = "enrollments:update",
                             RoleId = 100
                         },
                         new
                         {
-                            Id = 68,
+                            Id = 64,
                             ClaimType = "permissions",
                             ClaimValue = "enrollments:toggleStatus",
                             RoleId = 100

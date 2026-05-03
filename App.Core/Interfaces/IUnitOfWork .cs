@@ -3,6 +3,7 @@ using App.Core.Entities.Identity;
 using App.Core.Entities.Interfaces;
 using App.Core.Entities.Relations;
 using App.Core.Entities.Universities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace SA.Accountring.Core.Entities.Interfaces;
@@ -35,7 +36,10 @@ public interface IUnitOfWork : IDisposable
     public IRepository<Term> Terms { get; }
     public IRepository<Period> Periods { get; }
     public IRepository<Day> Days { get; }
-    public IRepository<LectureSchedule> ProgramSchedules { get; }
+    public IRepository<LectureSchedule> LectureSchedules { get; }
+    public IRepository<SectionSchedule> SectionSchedules { get; }
+    public IRepository<SectionRegistration> SectionRegistrations { get; }
+    public IRepository<LectureRegistration> LectureRegistrations { get; }
 
     Task<int> SaveAsync(CancellationToken cancellationToken = default);
     Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);

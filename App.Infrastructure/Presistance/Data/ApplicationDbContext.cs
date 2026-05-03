@@ -1,4 +1,6 @@
-﻿using App.Core.Entities.Personnel;
+﻿using App.Core.Entities.Academic;
+using App.Core.Entities.Personnel;
+using App.Core.Entities.Relations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace App.Infrastructure.Presistance.Data;
@@ -28,7 +30,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser,Applicatio
     public DbSet<Program> Programs { get; set; }
     public DbSet<Subject> Subjects { get; set; }
     public DbSet<SubjectPrerequisite> SubjectPrerequisites { get; set; }
-
+    public DbSet<LectureRegistration> LectureRegistrations { get; set; }
+    public DbSet<SectionRegistration> SectionRegistrations { get; set; }
+    public DbSet<LectureSchedule> LectureSchedules { get; set; }
+    public DbSet<SectionSchedule> SectionSchedules { get; set; }
     #endregion
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

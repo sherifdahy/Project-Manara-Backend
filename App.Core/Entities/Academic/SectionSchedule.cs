@@ -12,7 +12,8 @@ public class SectionSchedule
     public int SubjectId { get; set; }
     public int PeriodId { get; set; }
     public int DayId { get; set; }
-    public int YearTermId { get; set; }
+    public int YearId { get; set; }
+    public int TermId { get; set; }
     public int InstructorId { get; set; }
     public int MaxSlots { get; set; }
 

@@ -43,7 +43,10 @@ public class UnitOfWork : IUnitOfWork
     public IRepository<Term> Terms => new Repository<Term>(_context);
     public IRepository<Period> Periods => new Repository<Period>(_context);
     public IRepository<Day> Days => new Repository<Day>(_context);
-    public IRepository<LectureSchedule> ProgramSchedules => new Repository<LectureSchedule>(_context);
+    public IRepository<LectureSchedule> LectureSchedules => new Repository<LectureSchedule>(_context);
+    public IRepository<SectionSchedule> SectionSchedules => new Repository<SectionSchedule>(_context);
+    public IRepository<SectionRegistration> SectionRegistrations => new Repository<SectionRegistration>(_context);
+    public IRepository<LectureRegistration> LectureRegistrations => new Repository<LectureRegistration>(_context);
 
     public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
     {

@@ -18,4 +18,7 @@ public class YearErrors
     => new Error("Year.DuplicatedYear", _localizer[YearLocalizationKeys.DuplicatedYear, LocalizationFolderNames.Year], StatusCodes.Status404NotFound);
     public Error TermNotFound
       => new Error("TermNotFound.NotFound", _localizer[YearLocalizationKeys.TermNotFound, LocalizationFolderNames.Year], StatusCodes.Status404NotFound);
+
+    public Error NoActiveYearTerm
+      => new Error("TermNotFound.NoActive", _localizer[YearLocalizationKeys.NoActiveYearTerm, LocalizationFolderNames.Year], StatusCodes.Status404NotFound);
 }

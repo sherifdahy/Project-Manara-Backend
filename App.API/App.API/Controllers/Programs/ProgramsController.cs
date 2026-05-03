@@ -1,7 +1,8 @@
 ﻿using App.API.Attributes;
 using App.Application.Commands.Programs;
+using App.Application.Contracts.Requests.LectureSchedules;
 using App.Application.Contracts.Requests.Programs;
-using App.Application.Contracts.Requests.ProgramSchedules;
+using App.Application.Contracts.Requests.SectionSchedules;
 using App.Application.Queries.Programs;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
@@ -95,17 +96,42 @@ namespace App.API.Controllers.Programs
             return result.IsSuccess ? NoContent() : result.ToProblem();
         }
 
-        [HttpGet("{programId}/schedule")]
-        public async Task<IActionResult> GetSchedule(int programId,CancellationToken cancellationToken)
+        [HttpGet("{programId}/lectures-schedule")]
+        [RequireProgramAccess("programId")]
+        [HasPermission(Permissions.GetProgramLecturesSchedule)]
+        public async Task<IActionResult> GetLectureSchedule(int programId,CancellationToken cancellationToken)
         {
-            var command = new GetProgramScheduleQuery() with { ProgramId = programId };
+            var command = new GetLectureSchedulesQuery(programId);
             var result = await _mediator.Send(command, cancellationToken);
             return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
         }
-        [HttpPost("{programId}/schedule")]
-        public async Task<IActionResult> SaveSchdeule(int programId,CreateProgramScheduleRequest request, CancellationToken cancellationToken)
+
+        [HttpGet("{programId}/sections-schedule")]
+        [RequireProgramAccess("programId")]
+        [HasPermission(Permissions.GetProgramSectionsSchedule)]
+        public async Task<IActionResult> GetSectionSchedule(int programId, CancellationToken cancellationToken)
         {
-            var command = new SaveProgramScheduleCommand() with { ProgramId = programId,Schedules = request.Schedules };
+            var command = new GetSectionSchedulesQuery(programId);
+            var result = await _mediator.Send(command, cancellationToken);
+            return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+        }
+
+        [HttpPost("{programId}/lectures-schedule")]
+        [RequireProgramAccess("programId")]
+        [HasPermission(Permissions.SaveProgramLecturesSchedule)]
+        public async Task<IActionResult> SaveLecturesSchdeule(int programId,SaveLectureSchedulesRequest request, CancellationToken cancellationToken)
+        {
+            var command = new SaveLectureSchedulesCommand(programId,request.Schedules);
+            var result = await _mediator.Send(command, cancellationToken);
+            return result.IsSuccess ? NoContent() : result.ToProblem();
+        }
+
+        [HttpPost("{programId}/sections-schedule")]
+        [RequireProgramAccess("programId")]
+        [HasPermission(Permissions.SaveProgramSectionsSchedule)]
+        public async Task<IActionResult> SaveSectionsSchdeule(int programId, SaveSectionSchedulesRequest request, CancellationToken cancellationToken)
+        {
+            var command = new SaveSectionSchedulesCommand(programId, request.Schedules);
             var result = await _mediator.Send(command, cancellationToken);
             return result.IsSuccess ? NoContent() : result.ToProblem();
         }

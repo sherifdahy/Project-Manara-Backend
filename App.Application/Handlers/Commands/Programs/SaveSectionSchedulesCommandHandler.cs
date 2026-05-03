@@ -1,10 +1,18 @@
 ﻿using App.Application.Commands.Programs;
+using App.Application.Contracts.Responses.Programs;
 using App.Core.Entities.Academic;
 using App.Core.Entities.Relations;
 
 namespace App.Application.Handlers.Commands.Programs;
 
-public class SaveProgramScheduleCommandHandler(IUnitOfWork unitOfWork, ProgramErrors programErrors,UserErrors userErrors, SubjectErrors subjectErrors, PeriodErrors periodErrors, DayErrors dayErrors) : IRequestHandler<SaveProgramScheduleCommand, Result>
+public class SaveSectionSchedulesCommandHandler(
+    IUnitOfWork unitOfWork,
+    ProgramErrors programErrors,
+    UserErrors userErrors,
+    SubjectErrors subjectErrors,
+    PeriodErrors periodErrors,
+    YearErrors yearErrors,
+    DayErrors dayErrors) : IRequestHandler<SaveSectionSchedulesCommand, Result>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly ProgramErrors _programErrors = programErrors;
@@ -12,18 +20,12 @@ public class SaveProgramScheduleCommandHandler(IUnitOfWork unitOfWork, ProgramEr
     private readonly SubjectErrors _subjectErrors = subjectErrors;
     private readonly PeriodErrors _periodErrors = periodErrors;
     private readonly DayErrors _dayErrors = dayErrors;
-    public async Task<Result> Handle(SaveProgramScheduleCommand request, CancellationToken cancellationToken)
+    private readonly YearErrors _yearErrors = yearErrors;
+    public async Task<Result> Handle(SaveSectionSchedulesCommand request, CancellationToken cancellationToken)
     {
-        #region Check Program
-        if (await _unitOfWork.Programs.GetByIdAsync(request.ProgramId) is null)
-            return Result.Failure(_programErrors.NotFound);
-        #endregion
-
-        #region Check Doctors and Instructors
+        #region Check Instructors
         var inputDepartmentUsersIds = request.Schedules
-            .SelectMany(x => new int?[] { x.InstructorId, x.DoctorId })
-            .Where(x => x.HasValue)
-            .Select(x => x.Value)
+            .Select(x => x.InstructorId)
             .Distinct();
 
         var existsDepartmentUsersIds = (await _unitOfWork.DepartmentUsers.FindAllAsync(x => inputDepartmentUsersIds.Contains(x.UserId), cancellationToken)).Select(x => x.UserId);
@@ -41,7 +43,6 @@ public class SaveProgramScheduleCommandHandler(IUnitOfWork unitOfWork, ProgramEr
 
         if (notFoundSubjectIds.Any())
             return Result.Failure(_subjectErrors.NotFound);
-
         #endregion
 
         #region Check Days 
@@ -66,27 +67,37 @@ public class SaveProgramScheduleCommandHandler(IUnitOfWork unitOfWork, ProgramEr
             return Result.Failure(_periodErrors.NotFound);
         #endregion
 
+        #region Get Active Year Term
+        var currentFaculty = await _unitOfWork.Fauclties.FindAsync(x => x.Departments.Any(x => x.Programs.Any(x => x.Id == request.ProgramId)));
+
+        var yearTerm = await _unitOfWork.YearTerms.FindAsync(x => x.Year.FacultyId == currentFaculty!.Id);
+
+        if (yearTerm == null)
+            return Result.Failure<List<SectionScheduleItemResponse>>(_yearErrors.NoActiveYearTerm);
+        #endregion
+
         #region Delete Schedules
-        var existingSchedules = await _unitOfWork.ProgramSchedules.FindAllAsync(x => x.ProgramId == request.ProgramId, cancellationToken);
+        var existingSchedules = await _unitOfWork.SectionSchedules.FindAllAsync(x => x.ProgramId == request.ProgramId && x.YearId == yearTerm.YearId && x.TermId == yearTerm.TermId, cancellationToken);
 
         if (existingSchedules.Any())
-            _unitOfWork.ProgramSchedules.DeleteRange(existingSchedules);
+            _unitOfWork.SectionSchedules.DeleteRange(existingSchedules);
         #endregion
 
         #region Creation of Schedules
         if (request.Schedules.Any())
         {
             var newSchedules = request.Schedules.Select(x =>
-            new LectureSchedule
             {
-                SubjectId = x.SubjectId,
-                PeriodId = x.PeriodId,
-                DayId = x.DayId,
-                DoctorId = x.DoctorId,
-                ProgramId = request.ProgramId,
+                var sectionSchedule = x.Adapt<SectionSchedule>() ;
+
+                sectionSchedule.ProgramId = request.ProgramId;
+                sectionSchedule.YearId = yearTerm.YearId;
+                sectionSchedule.TermId = yearTerm.TermId;
+
+                return sectionSchedule;
             }).ToList();
 
-            await _unitOfWork.ProgramSchedules.AddRangeAsync(newSchedules, cancellationToken);
+            await _unitOfWork.SectionSchedules.AddRangeAsync(newSchedules, cancellationToken);
         }
         #endregion
 

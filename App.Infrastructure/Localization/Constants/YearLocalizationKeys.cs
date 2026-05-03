@@ -15,4 +15,6 @@ public static class YearLocalizationKeys
     public static readonly string LessThanDate = nameof(LessThanDate);
 
     public static readonly string GreaterThanDate = nameof(GreaterThanDate);
+    
+    public static readonly string NoActiveYearTerm = nameof(NoActiveYearTerm);
 }

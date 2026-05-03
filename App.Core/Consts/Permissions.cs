@@ -55,6 +55,14 @@ public class Permissions
     public const string AddProgramSubjects = "programSubjects:add";
     public const string RemoveProgramSubjects = "programSubjects:remove";
 
+    //Program Schedules Permissions
+
+    public const string GetProgramLecturesSchedule = "programLecturesSchedule:read";
+    public const string SaveProgramLecturesSchedule = "programLecturesSchedule:save";
+    public const string GetProgramSectionsSchedule = "programSectionschedule:read";
+    public const string SaveProgramSectionsSchedule = "programSectionsSchedule:save";
+
+
     // UniversityUsers Permissions
     public const string GetUniversityUsers = "universityUsers:read";
     public const string CreateUniversityUsers = "universityUsers:create";

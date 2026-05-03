@@ -12,8 +12,9 @@ public class LectureSchedule
     public int SubjectId { get; set; }
     public int PeriodId { get; set; }
     public int DayId { get; set; }
-    public int YearTermId { get; set; }
     public int DoctorId { get; set; }
+    public int YearId { get; set; }
+    public int TermId { get; set; }
     public int MaxSlots { get; set; }
 
 
@@ -23,6 +24,5 @@ public class LectureSchedule
     public Subject Subject { get; set; } = default!;
     public Period Period { get; set; } = default!;
     public Day Day { get; set; } = default!;
-
     public ICollection<LectureRegistration> LectureRegistrations { get; set; } = new HashSet<LectureRegistration>();
 }
