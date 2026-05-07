@@ -35,6 +35,28 @@ public class CreateYearCommandHandler(IUnitOfWork unitOfWork
         if (isYearExists)
             return Result.Failure<YearResponse>(_yearErrors.DuplicatedYear);
 
+
+        //Finding Other Years And De active Them
+
+        var otherYearsInFacultyIds = await _unitOfWork.AcademicYears
+            .FindAllGroupedAsync(
+                criteria: x => x.FacultyId == request.FacultyId,
+                groupBy: x => x.FacultyId,
+                select: g => g.Select(x => x.Id).ToList(),
+                cancellationToken: cancellationToken);
+
+
+        var flattenedIds = otherYearsInFacultyIds.SelectMany(x => x).ToList();
+
+
+        var otherYearTermsInFaculty = await _unitOfWork.YearTerms
+            .FindAllAsync(x => flattenedIds.Contains(x.YearId), null, cancellationToken);
+
+        foreach (var yearTerm in otherYearTermsInFaculty)
+        {
+            yearTerm.IsActive = false;
+        }
+
         var year = request.Adapt<AcademicYear>();
 
         var terms = await _unitOfWork.Terms.GetAllAsync();
@@ -46,6 +68,8 @@ public class CreateYearCommandHandler(IUnitOfWork unitOfWork
             else
                 year.YearTerms.Add(new YearTerm() { TermId = term.Id, IsActive = false });
         }
+
+        _unitOfWork.YearTerms.UpdateRange(otherYearTermsInFaculty);
 
         await _unitOfWork.AcademicYears.AddAsync(year);
 
