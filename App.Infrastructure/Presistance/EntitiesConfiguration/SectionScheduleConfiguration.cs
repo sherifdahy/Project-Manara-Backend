@@ -10,5 +10,9 @@ public class SectionScheduleConfiguration : IEntityTypeConfiguration<SectionSche
 {
     public void Configure(EntityTypeBuilder<SectionSchedule> builder)
     {
+        builder.HasOne(x => x.YearTerm)
+            .WithMany(x => x.SectionSchedules)
+            .HasForeignKey(x => new { x.YearId, x.TermId })
+            .HasPrincipalKey(x => new { x.YearId, x.TermId });
     }
 }

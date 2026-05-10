@@ -11,5 +11,6 @@ public class DepartmentUser
     public int DepartmentId { get; set; }
     public Department Department { get; set; } = default!;
     public ApplicationUser User { get; set; } = default!;
-    public ICollection<DepartmentUserSubjectYearTermPeriod> DepartmentUserSubjectYearTermPeriods { get; set; } = new HashSet<DepartmentUserSubjectYearTermPeriod>();
+    public ICollection<LectureSchedule> LectureSchedules { get; set; } = new HashSet<LectureSchedule>();
+    public ICollection<SectionSchedule> SectionSchedules { get; set; } = new HashSet<SectionSchedule>();
 }

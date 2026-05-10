@@ -14,6 +14,7 @@ public class Subject
     public Faculty Faculty { get; set; } = default!;
     public ICollection<SubjectPrerequisite> Prerequisites { get; set; } = new HashSet<SubjectPrerequisite>();
     public ICollection<ProgramSubject> ProgramSubjects { get; set; } = new HashSet<ProgramSubject>();
-    public ICollection<DepartmentUserSubjectYearTermPeriod> DepartmentUserSubjectYearTermPeriods { get; set; } = new HashSet<DepartmentUserSubjectYearTermPeriod>();
+    public ICollection<LectureSchedule> LectureSchedules { get; set; } = new HashSet<LectureSchedule>();
+    public ICollection<SectionSchedule> SectionSchedules { get; set; } = new HashSet<SectionSchedule>();
 }
 

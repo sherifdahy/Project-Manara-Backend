@@ -4,6 +4,7 @@ using App.Infrastructure.Presistance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260510143631_delete_table_departmentUser_subject_period_term_year")]
+    partial class delete_table_departmentUser_subject_period_term_year
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,6 +142,12 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("YearId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("YearTermTermId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("YearTermYearId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DayId");
@@ -151,7 +160,11 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.HasIndex("YearId", "TermId");
+                    b.HasIndex("TermId");
+
+                    b.HasIndex("YearId");
+
+                    b.HasIndex("YearTermYearId", "YearTermTermId");
 
                     b.ToTable("LectureSchedules");
                 });
@@ -215,6 +228,12 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("YearId")
                         .HasColumnType("int");
 
+                    b.Property<int>("YearTermTermId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YearTermYearId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DayId");
@@ -227,7 +246,9 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.HasIndex("YearId", "TermId");
+                    b.HasIndex("TermId");
+
+                    b.HasIndex("YearTermYearId", "YearTermTermId");
 
                     b.ToTable("SectionSchedules");
                 });
@@ -1684,11 +1705,21 @@ namespace App.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
+                    b.HasOne("App.Core.Entities.Academic.Term", "Term")
                         .WithMany("LectureSchedules")
-                        .HasForeignKey("YearId", "TermId")
+                        .HasForeignKey("TermId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Academic.AcademicYear", "Year")
+                        .WithMany()
+                        .HasForeignKey("YearId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Relations.YearTerm", null)
+                        .WithMany("LectureSchedules")
+                        .HasForeignKey("YearTermYearId", "YearTermTermId");
 
                     b.Navigation("Day");
 
@@ -1700,7 +1731,9 @@ namespace App.Infrastructure.Migrations
 
                     b.Navigation("Subject");
 
-                    b.Navigation("YearTerm");
+                    b.Navigation("Term");
+
+                    b.Navigation("Year");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
@@ -1746,9 +1779,15 @@ namespace App.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("App.Core.Entities.Academic.Term", null)
+                        .WithMany("SectionSchedules")
+                        .HasForeignKey("TermId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
                         .WithMany("SectionSchedules")
-                        .HasForeignKey("YearId", "TermId")
+                        .HasForeignKey("YearTermYearId", "YearTermTermId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -2175,6 +2214,10 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Academic.Term", b =>
                 {
+                    b.Navigation("LectureSchedules");
+
+                    b.Navigation("SectionSchedules");
+
                     b.Navigation("YearTerms");
                 });
 

@@ -19,11 +19,10 @@ public class SectionSchedule
 
 
     public Program Program { get; set; } = default!;
-    public DepartmentUser Instructor { get; set; } = default!;
-    public YearTerm YearTerm { get; set; } = default!;
     public Subject Subject { get; set; } = default!;
     public Period Period { get; set; } = default!;
     public Day Day { get; set; } = default!;
-
+    public DepartmentUser Instructor { get; set; } = default!;
+    public YearTerm YearTerm { get; set; } = default!;
     public ICollection<SectionRegistration> SectionRegistrations { get; set; } = new HashSet<SectionRegistration>();
 }

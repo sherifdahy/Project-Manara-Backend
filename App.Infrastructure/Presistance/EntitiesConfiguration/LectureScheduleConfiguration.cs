@@ -10,6 +10,9 @@ public class LectureScheduleConfiguration : IEntityTypeConfiguration<LectureSche
 {
     public void Configure(EntityTypeBuilder<LectureSchedule> builder)
     {
-        
+        builder.HasOne(x => x.YearTerm)
+            .WithMany(x => x.LectureSchedules)
+            .HasForeignKey(x => new { x.YearId, x.TermId })
+            .HasPrincipalKey(x => new { x.YearId, x.TermId });
     }
 }

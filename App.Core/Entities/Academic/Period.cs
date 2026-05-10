@@ -16,5 +16,6 @@ public class Period
 
     public bool IsDeleted { get; set; }
 
-    public ICollection<DepartmentUserSubjectYearTermPeriod> DepartmentUserSubjectYearTermPeriods { get; set; } = new HashSet<DepartmentUserSubjectYearTermPeriod>();
+    public ICollection<LectureSchedule> LectureSchedules { get; set; } = new HashSet<LectureSchedule>();
+    public ICollection<SectionSchedule> SectionSchedules { get; set; } = new HashSet<SectionSchedule>();
 }
