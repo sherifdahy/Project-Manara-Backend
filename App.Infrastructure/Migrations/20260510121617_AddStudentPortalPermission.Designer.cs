@@ -4,6 +4,7 @@ using App.Infrastructure.Presistance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260510121617_AddStudentPortalPermission")]
+    partial class AddStudentPortalPermission
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,6 +142,12 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("YearId")
                         .HasColumnType("int");
 
+                    b.Property<int>("YearTermTermId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YearTermYearId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DayId");
@@ -151,7 +160,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.HasIndex("YearId", "TermId");
+                    b.HasIndex("YearTermYearId", "YearTermTermId");
 
                     b.ToTable("LectureSchedules");
                 });
@@ -215,6 +224,12 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("YearId")
                         .HasColumnType("int");
 
+                    b.Property<int>("YearTermTermId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YearTermYearId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DayId");
@@ -227,7 +242,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.HasIndex("YearId", "TermId");
+                    b.HasIndex("YearTermYearId", "YearTermTermId");
 
                     b.ToTable("SectionSchedules");
                 });
@@ -712,6 +727,42 @@ namespace App.Infrastructure.Migrations
                     b.HasIndex("UniversityId");
 
                     b.ToTable("UniversityUsers");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Relations.DepartmentUserSubjectYearTermPeriod", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YearTermId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PeriodId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TermId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YearTermTermId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YearTermYearId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "SubjectId", "YearTermId", "PeriodId");
+
+                    b.HasIndex("PeriodId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.HasIndex("TermId");
+
+                    b.HasIndex("YearTermYearId", "YearTermTermId");
+
+                    b.ToTable("DepartmentUserSubjectYearTermPeriod");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.LectureRegistration", b =>
@@ -1689,13 +1740,13 @@ namespace App.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Personnel.DepartmentUser", "Doctor")
-                        .WithMany("LectureSchedules")
+                        .WithMany()
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Academic.Period", "Period")
-                        .WithMany("LectureSchedules")
+                        .WithMany()
                         .HasForeignKey("PeriodId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1707,14 +1758,14 @@ namespace App.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Universities.Subject", "Subject")
-                        .WithMany("LectureSchedules")
+                        .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
-                        .WithMany("LectureSchedules")
-                        .HasForeignKey("YearId", "TermId")
+                        .WithMany()
+                        .HasForeignKey("YearTermYearId", "YearTermTermId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -1751,13 +1802,13 @@ namespace App.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Personnel.DepartmentUser", "Instructor")
-                        .WithMany("SectionSchedules")
+                        .WithMany()
                         .HasForeignKey("InstructorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Academic.Period", "Period")
-                        .WithMany("SectionSchedules")
+                        .WithMany()
                         .HasForeignKey("PeriodId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1769,14 +1820,14 @@ namespace App.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Universities.Subject", "Subject")
-                        .WithMany("SectionSchedules")
+                        .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
-                        .WithMany("SectionSchedules")
-                        .HasForeignKey("YearId", "TermId")
+                        .WithMany()
+                        .HasForeignKey("YearTermYearId", "YearTermTermId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -1960,6 +2011,45 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("University");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Relations.DepartmentUserSubjectYearTermPeriod", b =>
+                {
+                    b.HasOne("App.Core.Entities.Academic.Period", "Period")
+                        .WithMany("DepartmentUserSubjectYearTermPeriods")
+                        .HasForeignKey("PeriodId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Universities.Subject", "Subject")
+                        .WithMany("DepartmentUserSubjectYearTermPeriods")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Academic.Term", null)
+                        .WithMany("DepartmentUserSubjectYearTermPeriods")
+                        .HasForeignKey("TermId");
+
+                    b.HasOne("App.Core.Entities.Personnel.DepartmentUser", "User")
+                        .WithMany("DepartmentUserSubjectYearTermPeriods")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
+                        .WithMany("DepartmentUserSubjectYearTermPeriods")
+                        .HasForeignKey("YearTermYearId", "YearTermTermId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Period");
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("User");
+
+                    b.Navigation("YearTerm");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.LectureRegistration", b =>
@@ -2191,9 +2281,7 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
                 {
-                    b.Navigation("LectureSchedules");
-
-                    b.Navigation("SectionSchedules");
+                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.SectionSchedule", b =>
@@ -2203,6 +2291,8 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Academic.Term", b =>
                 {
+                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
+
                     b.Navigation("YearTerms");
                 });
 
@@ -2239,9 +2329,7 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Personnel.DepartmentUser", b =>
                 {
-                    b.Navigation("LectureSchedules");
-
-                    b.Navigation("SectionSchedules");
+                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
@@ -2255,9 +2343,7 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Relations.YearTerm", b =>
                 {
-                    b.Navigation("LectureSchedules");
-
-                    b.Navigation("SectionSchedules");
+                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
 
                     b.Navigation("StudentProgramYearTerms");
                 });
@@ -2293,13 +2379,11 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Universities.Subject", b =>
                 {
-                    b.Navigation("LectureSchedules");
+                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
 
                     b.Navigation("Prerequisites");
 
                     b.Navigation("ProgramSubjects");
-
-                    b.Navigation("SectionSchedules");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.University", b =>
