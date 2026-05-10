@@ -70,7 +70,7 @@ public class SaveSectionSchedulesCommandHandler(
         #region Get Active Year Term
         var currentFaculty = await _unitOfWork.Fauclties.FindAsync(x => x.Departments.Any(x => x.Programs.Any(x => x.Id == request.ProgramId)));
 
-        var yearTerm = await _unitOfWork.YearTerms.FindAsync(x => x.Year.FacultyId == currentFaculty!.Id);
+        var yearTerm = await _unitOfWork.YearTerms.FindAsync(x => x.Year.FacultyId == currentFaculty!.Id && x.IsActive);
 
         if (yearTerm == null)
             return Result.Failure<List<SectionScheduleItemResponse>>(_yearErrors.NoActiveYearTerm);

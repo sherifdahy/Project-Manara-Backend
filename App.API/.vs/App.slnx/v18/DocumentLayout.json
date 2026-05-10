@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\programs\\programschedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\programs\\programschedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProgramSchedulesController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAUwBMAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T16:23:09.842Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

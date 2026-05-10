@@ -3,7 +3,7 @@ using App.Application.Queries.Programs;
 
 namespace App.Application.Handlers.Queries.Programs;
 
-public class GetLectureSchedulesQueryHandler(IUnitOfWork unitOfWork, ProgramErrors programErrors,YearErrors yearErrors) : IRequestHandler<GetLectureSchedulesQuery, Result<List<LectureScheduleItemResponse>>>
+public class GetLectureSchedulesQueryHandler(IUnitOfWork unitOfWork, YearErrors yearErrors) : IRequestHandler<GetLectureSchedulesQuery, Result<List<LectureScheduleItemResponse>>>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly YearErrors _yearErrors = yearErrors;
@@ -24,7 +24,7 @@ public class GetLectureSchedulesQueryHandler(IUnitOfWork unitOfWork, ProgramErro
                             x.ProgramId == request.ProgramId && 
                             (x.YearId == yearTerm.YearId && x.TermId == yearTerm.TermId) 
                             && x.Subject.IsDeleted != true 
-                            && x.Period.IsDeleted != true, x => x.Include(d => d.Subject), cancellationToken);
+                            && x.Period.IsDeleted != true, x => x.Include(d => d.Subject).Include(x=>x.Doctor).ThenInclude(x=>x.User), cancellationToken);
 
         var response = existingSchedules.Adapt<List<LectureScheduleItemResponse>>();
 

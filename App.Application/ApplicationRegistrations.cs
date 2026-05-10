@@ -1,5 +1,6 @@
 ﻿using App.Application.Mapping;
 using App.Core.Entities.Personnel;
+using App.Infrastructure;
 
 namespace App.Application;
 
@@ -7,6 +8,8 @@ public static class ApplicationRegistrations
 {
     public static void AddApplicationRegistrations(this IServiceCollection services)
     {
+
+        services.AddMapsterConfig();
         services.AddMediatR(o => o.RegisterServicesFromAssembly(typeof(ApplicationRegistrations).Assembly));
         services
             .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly())
@@ -28,5 +31,12 @@ public static class ApplicationRegistrations
         services.AddSingleton<PeriodErrors>();
         services.AddSingleton<DayErrors>();
         services.AddSingleton<EnrollmentErrors>();
+    }
+
+    public static IServiceCollection AddMapsterConfig(this IServiceCollection services)
+    {
+        TypeAdapterConfig.GlobalSettings.Scan(typeof(ApplicationRegistrations).Assembly);
+
+        return services;
     }
 }

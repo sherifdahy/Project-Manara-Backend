@@ -1,7 +1,7 @@
 ﻿using App.Infrastructure.Email;
 using App.Infrastructure.Repository;
+using Mapster;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using SA.Accountring.Core.Entities.Interfaces;
 
 namespace App.Infrastructure;
@@ -12,11 +12,13 @@ public static class InfrastructureRegistrations
     {
         services.AddIdentityConfig();
 
+
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddScoped<IEmailSender, EmailSender>();
     }
 
+ 
     private static void AddIdentityConfig(this IServiceCollection services)
     {
         services.AddIdentity<ApplicationUser, ApplicationRole>()
