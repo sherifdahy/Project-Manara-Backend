@@ -3,6 +3,7 @@ using App.Application.Abstractions;
 using App.Application.Commands.DepartmentUsers;
 using App.Application.Commands.ProgramUsers;
 using App.Application.Contracts.Requests.ProgramUsers;
+using App.Application.Queries.Departments;
 using App.Application.Queries.ProgramUsers;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
@@ -37,6 +38,9 @@ public class ProgramUsersController(IMediator mediator) : ControllerBase
         var result = await _mediator.Send(query, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
+
+
+
 
     [HttpGet("{id}")]
     [RequireUserAccess("id")]
