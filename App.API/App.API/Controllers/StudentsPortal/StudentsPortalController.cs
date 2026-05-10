@@ -15,12 +15,12 @@ public class StudentsPortalController : ControllerBase
     //
 
 
-    [HttpGet("my/subjects")]
-    [HasPermission(Permissions.GetStudentsPortal)]
-    public async Task<IActionResult> My(CancellationToken cancellationToken = default)
-    {
-        //var query = new GetMyDepartmentQuery();
-        //var result = await _mediator.Send(query, cancellationToken);
-        //return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
-    }
+    //[HttpGet("my/subjects")]
+    //[HasPermission(Permissions.GetStudentsPortal)]
+    //public async Task<IActionResult> My(CancellationToken cancellationToken = default)
+    //{
+    //    //var query = new GetMyDepartmentQuery();
+    //    //var result = await _mediator.Send(query, cancellationToken);
+    //    //return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    //}
 }

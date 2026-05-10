@@ -19,10 +19,11 @@ public class LectureSchedule
 
 
     public Program Program { get; set; } = default!;
-    public DepartmentUser Doctor { get; set; } = default!;
-    public YearTerm YearTerm { get; set; } = default!;
     public Subject Subject { get; set; } = default!;
     public Period Period { get; set; } = default!;
     public Day Day { get; set; } = default!;
+    public DepartmentUser Doctor { get; set; } = default!;
+    public AcademicYear Year { get; set; } = default!;
+    public Term Term { get; set; } = default!;
     public ICollection<LectureRegistration> LectureRegistrations { get; set; } = new HashSet<LectureRegistration>();
 }

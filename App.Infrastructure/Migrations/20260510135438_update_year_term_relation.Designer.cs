@@ -4,6 +4,7 @@ using App.Infrastructure.Presistance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260510135438_update_year_term_relation")]
+    partial class update_year_term_relation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1595,34 +1598,6 @@ namespace App.Infrastructure.Migrations
                             Id = 68,
                             ClaimType = "permissions",
                             ClaimValue = "enrollments:toggleStatus",
-                            RoleId = 100
-                        },
-                        new
-                        {
-                            Id = 69,
-                            ClaimType = "permissions",
-                            ClaimValue = "studentsPortal:read",
-                            RoleId = 100
-                        },
-                        new
-                        {
-                            Id = 70,
-                            ClaimType = "permissions",
-                            ClaimValue = "studentsPortal:create",
-                            RoleId = 100
-                        },
-                        new
-                        {
-                            Id = 71,
-                            ClaimType = "permissions",
-                            ClaimValue = "studentsPortal:update",
-                            RoleId = 100
-                        },
-                        new
-                        {
-                            Id = 72,
-                            ClaimType = "permissions",
-                            ClaimValue = "studentsPortal:toggleStatus",
                             RoleId = 100
                         });
                 });
