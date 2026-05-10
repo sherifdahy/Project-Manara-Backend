@@ -12,8 +12,7 @@ public class Subject
     public bool IsDeleted { get; set; } = false;
     public int FacultyId { get; set; }
     public Faculty Faculty { get; set; } = default!;
-    public ICollection<SubjectPrerequisite> Prerequisites { get; set; }
-            = new HashSet<SubjectPrerequisite>();
+    public ICollection<SubjectPrerequisite> Prerequisites { get; set; } = new HashSet<SubjectPrerequisite>();
     public ICollection<ProgramSubject> ProgramSubjects { get; set; } = new HashSet<ProgramSubject>();
     public ICollection<DepartmentUserSubjectYearTermPeriod> DepartmentUserSubjectYearTermPeriods { get; set; } = new HashSet<DepartmentUserSubjectYearTermPeriod>();
 }
