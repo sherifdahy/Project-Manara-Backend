@@ -59,7 +59,7 @@ public class Permissions
 
     public const string GetProgramLecturesSchedule = "programLecturesSchedule:read";
     public const string SaveProgramLecturesSchedule = "programLecturesSchedule:save";
-    public const string GetProgramSectionsSchedule = "programSectionschedule:read";
+    public const string GetProgramSectionsSchedule = "programSectionsSchedule:read";
     public const string SaveProgramSectionsSchedule = "programSectionsSchedule:save";
 
 
