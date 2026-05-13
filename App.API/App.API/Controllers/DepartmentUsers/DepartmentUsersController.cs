@@ -69,4 +69,16 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
         var result = await _mediator.Send(command, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem();
     }
+
+    [HttpGet("{departmentId}/doctors")]
+    public async Task<IActionResult> GetDoctors(int departmentId,CancellationToken cancellationToken = default)
+    {
+        return Ok();
+    }
+
+    [HttpGet("{departmentId}/instructors")]
+    public async Task<IActionResult> GetInstructors(int departmentId, CancellationToken cancellationToken = default)
+    {
+        return Ok();
+    }
 }
