@@ -71,14 +71,22 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{departmentId}/doctors")]
-    public async Task<IActionResult> GetDoctors(int departmentId,CancellationToken cancellationToken = default)
+    [RequireDepartmentAccess("departmentId")]
+    [HasPermission(Permissions.GetDepartmentUsers)]
+    public async Task<IActionResult> GetDoctors(int departmentId, [FromQuery] RequestFilters filters,CancellationToken cancellationToken = default)
     {
-        return Ok();
+        var query = new GetDoctorsQuery(departmentId,filters);
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
     [HttpGet("{departmentId}/instructors")]
-    public async Task<IActionResult> GetInstructors(int departmentId, CancellationToken cancellationToken = default)
+    [RequireDepartmentAccess("departmentId")]
+    [HasPermission(Permissions.GetDepartmentUsers)]
+    public async Task<IActionResult> GetInstructors(int departmentId,[FromQuery] RequestFilters filters, CancellationToken cancellationToken = default)
     {
-        return Ok();
+        var query = new GetInstructorsQuery(departmentId, filters);
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 }
