@@ -1,4 +1,6 @@
 ﻿{
   "InvalidBirthDate": "العمر يجب ان يكون اكبر من 16",
-  "InvalidEnrollmentDate": "التاريخ يجب ان يكون بعد تاريخ الميلاد"
+  "InvalidEnrollmentDate": "التاريخ يجب ان يكون بعد تاريخ الميلاد",
+  "NotFound": "هذا المستخدم غير موجود",
+  "HasNoProgram": "لا يوجد اى برنامج مسجل"
 }

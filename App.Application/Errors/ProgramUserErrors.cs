@@ -14,6 +14,12 @@ public class ProgramUserErrors
 
     public Error InvalidBirthDate
        => new Error("ProgramUser.InvalidBirthDate", _localizer[ProgramUserLocalizationKeys.InvalidBirthDate, LocalizationFolderNames.ProgramUser], StatusCodes.Status400BadRequest);
+
+    public Error NotFound
+      => new Error("ProgramUser.NotFound", _localizer[ProgramUserLocalizationKeys.NotFound, LocalizationFolderNames.ProgramUser], StatusCodes.Status400BadRequest);
+
+    public Error HasNoProgram
+      => new Error("ProgramUser.HasNoProgram", _localizer[ProgramUserLocalizationKeys.HasNoProgram, LocalizationFolderNames.ProgramUser], StatusCodes.Status400BadRequest);
     public Error InvalidEnrollmentDate
     => new Error("ProgramUser.InvalidEnrollmentDate", _localizer[ProgramUserLocalizationKeys.InvalidEnrollmentDate, LocalizationFolderNames.ProgramUser], StatusCodes.Status400BadRequest);
 

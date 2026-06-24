@@ -3,4 +3,5 @@ using App.Application.Contracts.Responses.StudentsPortal;
 
 namespace App.Application.Queries.StudentsPortal;
 
-public record GetMySubjectsQuery : IRequest<Result<StudentsPortalDetailResponse>> { }
+public record GetMyLecturesQuery(int UserId)
+    : IRequest<Result<List<StudentPortalDetailResponse>>>;

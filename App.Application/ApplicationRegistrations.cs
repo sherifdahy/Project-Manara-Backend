@@ -28,6 +28,7 @@ public static class ApplicationRegistrations
         services.AddSingleton<ProgramErrors>();
         services.AddSingleton<SubjectErrors>();
         services.AddSingleton<YearErrors>();
+        services.AddSingleton<ProgramUserErrors>();
         services.AddSingleton<PeriodErrors>();
         services.AddSingleton<DayErrors>();
         services.AddSingleton<EnrollmentErrors>();

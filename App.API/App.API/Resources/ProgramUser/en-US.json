@@ -1,4 +1,6 @@
 {
   "InvalidBirthDate": "The Age Must Be Greater Than 16",
-  "InvalidEnrollmentDate": "Enrollment date must be after birth date."
+  "InvalidEnrollmentDate": "Enrollment date must be after birth date.",
+  "NotFound": "This User Is Not Found",
+  "HasNoProgram" : "There is no programEnrolled before"
 }
