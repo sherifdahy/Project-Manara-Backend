@@ -32,6 +32,7 @@ public static class ApplicationRegistrations
         services.AddSingleton<PeriodErrors>();
         services.AddSingleton<DayErrors>();
         services.AddSingleton<EnrollmentErrors>();
+        services.AddSingleton<RegistrationErrors>();
     }
 
     public static IServiceCollection AddMapsterConfig(this IServiceCollection services)

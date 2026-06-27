@@ -86,6 +86,7 @@
   <ItemGroup>
     <Folder Include="Resources\Faculty\" />
     <Folder Include="Resources\Department\" />
+    <Folder Include="Resources\Registration\" />
     <Folder Include="Resources\Period\" />
     <Folder Include="Resources\Year\" />
     <Folder Include="Resources\Subject\" />

@@ -1,0 +1,9 @@
+{
+  "DuplicatedRegistration": "This Registeration already exsits",
+  "lectureScheduleNotFound": "This lecture Schedule is Not Found",
+  "MaxSlotFinish": "The maxSlot has been finished",
+  "WrongProgram": "Wrong Program",
+  "WrongTermOrYear": "Wrong Term Or Year",
+  "InvalidSubject": "This subject does not belong to your program",
+  "InvalidRegistration": "can not register this subject for you"
+}

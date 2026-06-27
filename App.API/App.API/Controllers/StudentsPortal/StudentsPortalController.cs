@@ -1,7 +1,11 @@
-﻿using App.Application.Queries.Departments;
+﻿using App.Application.Commands.Departments;
+using App.Application.Commands.StudentPortals;
+using App.Application.Contracts.Requests.StudentPortals;
+using App.Application.Queries.Departments;
 using App.Application.Queries.StudentsPortal;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +17,6 @@ namespace App.API.Controllers.StudentsPortal;
 [Authorize]
 public class StudentsPortalController(IMediator _mediator) : ControllerBase
 {
-    //TODO
-    //1.0 Think about pagination
-
 
     [HttpGet("my/lectures")]
     [HasPermission(Permissions.GetStudentsPortal)]
@@ -25,4 +26,14 @@ public class StudentsPortalController(IMediator _mediator) : ControllerBase
         var result = await _mediator.Send(query, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
+
+
+    [HttpPost("my/lectures")]
+    [HasPermission(Permissions.CreateStudentsPortal)]
+    public async Task<IActionResult> My([FromBody] RegisterLectureRequest request, CancellationToken cancellationToken = default)
+    {
+        var result = await _mediator.Send(request.Adapt<CreateRegisterLectureCommand>() with {UserId=User.GetUserId() }, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
 }

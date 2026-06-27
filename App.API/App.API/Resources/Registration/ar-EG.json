@@ -1,0 +1,9 @@
+﻿{
+  "DuplicatedRegistration": "هذا التسجيل بالفعل موجود",
+  "lectureScheduleNotFound": "هذا التسجيل غير موجود",
+  "MaxSlotFinish": "عدد التسجيل قد انتهى",
+  "WrongProgram": "برنامج خاطئ",
+  "WrongTermOrYear": "سنة او ترم غير صحيح",
+  "InvalidSubject": "هذه المادة لا تنتمى الى برنامجك",
+  "InvalidRegistration" : "هذه المادة لا يمكن تسجيلها لك "
+}

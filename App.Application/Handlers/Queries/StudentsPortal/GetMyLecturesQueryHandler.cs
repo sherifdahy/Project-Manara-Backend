@@ -122,7 +122,7 @@ public class GetMyLecturesQueryHandler(UserManager<ApplicationUser> userManager
                 // Student took this subject before and failed
                 studentRegistrations.Any(sr =>
                     sr.LectureSchedule.SubjectId == ls.SubjectId &&
-                    sr.GPA < 2)
+                    sr.GPA < 2 && sr.GPA >0)
 
                 ||
 
@@ -192,6 +192,7 @@ public class GetMyLecturesQueryHandler(UserManager<ApplicationUser> userManager
 
  */
         #endregion
+
 
         #region Map And Return
         //Return
