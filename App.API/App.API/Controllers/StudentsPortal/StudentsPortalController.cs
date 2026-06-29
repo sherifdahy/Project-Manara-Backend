@@ -32,8 +32,20 @@ public class StudentsPortalController(IMediator _mediator) : ControllerBase
     [HasPermission(Permissions.CreateStudentsPortal)]
     public async Task<IActionResult> My([FromBody] RegisterLectureRequest request, CancellationToken cancellationToken = default)
     {
-        var result = await _mediator.Send(request.Adapt<CreateRegisterLectureCommand>() with {UserId=User.GetUserId() }, cancellationToken);
+        var result = await _mediator.Send(request.Adapt<CreateRegisterLectureCommand>() with { UserId = User.GetUserId() }, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
+    [HttpPut("lecture-registrations/{lectureRegistrationId}/gpa")]
+    [HasPermission(Permissions.UpdateStudentsPortal)]
+
+    public async Task<IActionResult> UpdateGrade(int lectureRegistrationId,[FromBody] UpdateStudentGradeRequest request,CancellationToken cancellationToken = default)
+    {
+        var command = request.Adapt<UpdateStudentGradeCommand>() with { LectureScheduleId=lectureRegistrationId ,UserId=User.GetUserId()};
+
+        var result = await _mediator.Send(command, cancellationToken);
+
+        return result.IsSuccess ? NoContent() : result.ToProblem();
     }
 
 }

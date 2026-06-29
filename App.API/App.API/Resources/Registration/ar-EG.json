@@ -5,5 +5,7 @@
   "WrongProgram": "برنامج خاطئ",
   "WrongTermOrYear": "سنة او ترم غير صحيح",
   "InvalidSubject": "هذه المادة لا تنتمى الى برنامجك",
-  "InvalidRegistration" : "هذه المادة لا يمكن تسجيلها لك "
+  "InvalidRegistration": "هذه المادة لا يمكن تسجيلها لك ",
+  "lectureRegistrationNotFound": "تسجيل المادة غير موجود",
+  "InvalidFaculty": "هذه ليست كليتك"
 }

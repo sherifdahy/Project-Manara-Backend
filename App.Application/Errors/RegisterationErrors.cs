@@ -29,6 +29,13 @@ public class RegistrationErrors
         StatusCodes.Status409Conflict
     );
 
+    public Error lectureRegistrationNotFound
+        => new Error(
+            "Registration.lectureRegistrationNotFound",
+            _localizer[RegistrationLocalizationKeys.lectureRegistrationNotFound, LocalizationFolderNames.Registration],
+            StatusCodes.Status409Conflict
+        );
+
     public Error MaxSlotFinish
         => new Error(
             "Registration.MaxSlotFinish",
@@ -66,4 +73,10 @@ public class RegistrationErrors
             StatusCodes.Status409Conflict
         );
 
+    public Error InvalidFaculty
+    => new Error(
+        "Registration.InvalidFaculty",
+        _localizer[RegistrationLocalizationKeys.InvalidFaculty, LocalizationFolderNames.Registration],
+        StatusCodes.Status409Conflict
+    );
 }
