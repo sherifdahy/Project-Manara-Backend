@@ -125,6 +125,7 @@ public class Permissions
     public const string GetStudentsPortal = "studentsPortal:read";
     public const string CreateStudentsPortal = "studentsPortal:create";
     public const string UpdateStudentsPortal = "studentsPortal:update";
+    public const string UpdateStudentsGrade = "studentsPortal:updateGrade";
     public const string ToggleStudentsPortal = "studentsPortal:toggleStatus";
 
     public static IList<string> GetAllPermissions()

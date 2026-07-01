@@ -6,23 +6,23 @@ using System.Security.Claims;
 
 namespace App.Application.Handlers.Queries.StudentsPortal;
 
-public class GetMyLecturesQueryHandler(UserManager<ApplicationUser> userManager
+public class GetStudentAvailableLecturesQueryHandler(UserManager<ApplicationUser> userManager
     ,IUnitOfWork unitOfWork,ProgramUserErrors programUserErrors,YearErrors yearErrors) 
-    : IRequestHandler<GetMyLecturesQuery, Result<List<StudentPortalDetailResponse>>>
+    : IRequestHandler<GetStudentAvailableLecturesQuery, Result<List<StudentPortalDetailResponse>>>
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly ProgramUserErrors _programUserErrors = programUserErrors;
     private readonly YearErrors _yearErrors = yearErrors;
 
-    public async Task<Result<List<StudentPortalDetailResponse>>> Handle(GetMyLecturesQuery request, CancellationToken cancellationToken)
+    public async Task<Result<List<StudentPortalDetailResponse>>> Handle(GetStudentAvailableLecturesQuery request, CancellationToken cancellationToken)
     {
 
 
         #region Checking
         //First Get The UserId And Check That this user Is student and if not a student return error Then Get the facultyId Of this users
         var programUser = await _unitOfWork.Students
-            .FindAsync(fu => fu.UserId == request.UserId);
+            .FindAsync(fu => fu.UserId == request.StudentId);
 
         if (programUser == null)
             return Result.Failure<List<StudentPortalDetailResponse>>(_programUserErrors.NotFound);
@@ -45,7 +45,7 @@ public class GetMyLecturesQueryHandler(UserManager<ApplicationUser> userManager
         //Get The Current Program That is assign to this student
         var studentPrograms = await _unitOfWork.StudentProgramYearTerms
         .FindAllAsync(
-            x => x.UserId == request.UserId
+            x => x.UserId == request.StudentId
                 && (!x.IsDeleted),
             q => q.Include(x => x.Program)
                   .Include(x => x.YearTerm).ThenInclude(yt => yt.Year)
@@ -100,7 +100,7 @@ public class GetMyLecturesQueryHandler(UserManager<ApplicationUser> userManager
 
         var studentRegistrations = await _unitOfWork.LectureRegistrations
             .FindAllAsync(
-                x => x.StudentId == request.UserId,
+                x => x.StudentId == request.StudentId,
                 q => q
                     .Include(x => x.LectureSchedule)
                         .ThenInclude(ls => ls.Subject),

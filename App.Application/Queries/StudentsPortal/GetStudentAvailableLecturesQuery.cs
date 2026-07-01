@@ -3,5 +3,5 @@ using App.Application.Contracts.Responses.StudentsPortal;
 
 namespace App.Application.Queries.StudentsPortal;
 
-public record GetMyLecturesQuery(int UserId)
+public record GetStudentAvailableLecturesQuery(int StudentId)
     : IRequest<Result<List<StudentPortalDetailResponse>>>;

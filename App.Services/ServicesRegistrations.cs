@@ -21,5 +21,6 @@ public static class ServicesRegistrations
         services.AddScoped<ISubjectService, SubjectService>();
         services.AddScoped<IYearService, YearService>();
         services.AddScoped<IEnrollmentService, EnrollmentService>();
+        services.AddScoped<IStudentService, StudentService>();
     }
 }

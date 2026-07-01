@@ -29,7 +29,7 @@ public class CreateRegisterLectureCommandHandler(IUnitOfWork unitOfWork,YearErro
 
         #region UserExisting
         var programUser = await _unitOfWork.Students
-            .FindAsync(fu => fu.UserId == request.UserId);
+            .FindAsync(fu => fu.UserId == request.StudentId);
 
         if (programUser == null)
             return Result.Failure<RegisterLectureResponse>(_programUserErrors.NotFound);
@@ -38,7 +38,7 @@ public class CreateRegisterLectureCommandHandler(IUnitOfWork unitOfWork,YearErro
         #region Program
         var studentPrograms = await _unitOfWork.StudentProgramYearTerms
         .FindAllAsync(
-            x => x.UserId == request.UserId
+            x => x.UserId == request.StudentId
                 && (!x.IsDeleted),
             q => q.Include(x => x.Program)
                   .Include(x => x.YearTerm).ThenInclude(yt => yt.Year)
@@ -93,7 +93,7 @@ public class CreateRegisterLectureCommandHandler(IUnitOfWork unitOfWork,YearErro
         #region Filter02
         var studentRegistrations = await _unitOfWork.LectureRegistrations
             .FindAllAsync(
-                x => x.StudentId == request.UserId,
+                x => x.StudentId == request.StudentId,
                 q => q
                     .Include(x => x.LectureSchedule)
                         .ThenInclude(ls => ls.Subject),
@@ -152,7 +152,7 @@ public class CreateRegisterLectureCommandHandler(IUnitOfWork unitOfWork,YearErro
 
         #region Duplicated
         var isLectureRegistrationExists = await _unitOfWork.LectureRegistrations
-            .IsExistAsync(x => x.LectureScheduleId == request.LectureScheduleId && x.StudentId == request.UserId);
+            .IsExistAsync(x => x.LectureScheduleId == request.LectureScheduleId && x.StudentId == request.StudentId);
 
         if (isLectureRegistrationExists)
             return Result.Failure<RegisterLectureResponse>(_registrationErrors.DuplicatedRegistration);
@@ -172,7 +172,7 @@ public class CreateRegisterLectureCommandHandler(IUnitOfWork unitOfWork,YearErro
         var lectureRegistration = new LectureRegistration()
         {
             LectureScheduleId = request.LectureScheduleId,
-            StudentId = request.UserId,
+            StudentId = request.StudentId,
             GPA = 0
         };
 

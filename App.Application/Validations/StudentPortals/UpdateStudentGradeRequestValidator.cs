@@ -9,7 +9,7 @@ public class UpdateStudentGradeRequestValidator : AbstractValidator<UpdateStuden
 {
     public UpdateStudentGradeRequestValidator()
     {
-        RuleFor(f => f.StudentId)
+        RuleFor(f => f.LectureScheduleId)
             .NotEmpty()
             .NotNull()
             .GreaterThan(0);

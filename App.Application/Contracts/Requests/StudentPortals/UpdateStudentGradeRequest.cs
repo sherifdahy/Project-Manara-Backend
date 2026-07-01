@@ -6,6 +6,6 @@ namespace App.Application.Contracts.Requests.StudentPortals;
 
 public class UpdateStudentGradeRequest
 {
-    public int StudentId { get; set; }
+    public int LectureScheduleId { get; set; }
     public decimal GPA { get; set; }
 }

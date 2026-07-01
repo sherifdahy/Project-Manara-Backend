@@ -26,41 +26,41 @@ public class UpdateStudentGradeCommandHandler(IUnitOfWork unitOfWork,UserManager
         #endregion
 
         #region Check The User 
-        //2.0 Get The Facuklut And Check the user by it  
-        var userEntity = await _userManager.FindByIdAsync(request.UserId.ToString());
-        var userRoles = await _userManager.GetRolesAsync(userEntity!);
+        ////2.0 Get The Facuklut And Check the user by it  
+        //var userEntity = await _userManager.FindByIdAsync(request.UserId.ToString());
+        //var userRoles = await _userManager.GetRolesAsync(userEntity!);
 
-        bool userSameFaculty = false;
-
-
-        if (userRoles.Contains(RolesConstants.SystemAdmin))
-            userSameFaculty = true;
-
-        var universityUser = await _unitOfWork.UniversityUsers
-            .FindAsync(fu => fu.UserId == request.UserId);
-
-        if (universityUser != null)
-        {
-            userSameFaculty = await _unitOfWork.Fauclties
-                .IsExistAsync(f => f.UniversityId == universityUser.UniversityId && f.Id == lectureRegistration.Student.FacultyId);
-        }
+        //bool userSameFaculty = false;
 
 
-        var facultyUser = await _unitOfWork.FacultyUsers
-            .FindAsync(fu => fu.UserId == request.UserId);
+        //if (userRoles.Contains(RolesConstants.SystemAdmin))
+        //    userSameFaculty = true;
 
-        if (facultyUser != null)
-            userSameFaculty = lectureRegistration.Student.FacultyId == facultyUser.FacultyId;
+        //var universityUser = await _unitOfWork.UniversityUsers
+        //    .FindAsync(fu => fu.UserId == request.UserId);
+
+        //if (universityUser != null)
+        //{
+        //    userSameFaculty = await _unitOfWork.Fauclties
+        //        .IsExistAsync(f => f.UniversityId == universityUser.UniversityId && f.Id == lectureRegistration.Student.FacultyId);
+        //}
 
 
-        var departmentUser = await _unitOfWork.DepartmentUsers
-            .FindAsync(fu => fu.UserId == request.UserId,q=>q.Include(x=>x.Department),cancellationToken);
+        //var facultyUser = await _unitOfWork.FacultyUsers
+        //    .FindAsync(fu => fu.UserId == request.UserId);
 
-        if (departmentUser != null)
-            userSameFaculty = lectureRegistration.Student.FacultyId == departmentUser.Department.FacultyId;
+        //if (facultyUser != null)
+        //    userSameFaculty = lectureRegistration.Student.FacultyId == facultyUser.FacultyId;
 
-        if(!userSameFaculty)
-            return Result.Failure<RegisterLectureResponse>(_registrationErrors.InvalidFaculty);
+
+        //var departmentUser = await _unitOfWork.DepartmentUsers
+        //    .FindAsync(fu => fu.UserId == request.UserId,q=>q.Include(x=>x.Department),cancellationToken);
+
+        //if (departmentUser != null)
+        //    userSameFaculty = lectureRegistration.Student.FacultyId == departmentUser.Department.FacultyId;
+
+        //if(!userSameFaculty)
+        //    return Result.Failure<RegisterLectureResponse>(_registrationErrors.InvalidFaculty);
 
         #endregion
 

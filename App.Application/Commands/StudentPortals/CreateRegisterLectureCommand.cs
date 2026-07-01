@@ -6,6 +6,6 @@ namespace App.Application.Commands.StudentPortals;
 public record CreateRegisterLectureCommand : IRequest<Result<RegisterLectureResponse>>
 {
     public int LectureScheduleId { get; set; } 
-    public int UserId { get; set; } 
+    public int StudentId { get; set; } 
 
 }
