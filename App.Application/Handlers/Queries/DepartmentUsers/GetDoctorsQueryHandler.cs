@@ -26,7 +26,7 @@ public class GetDoctorsQueryHandler(ApplicationDbContext context,DepartmentError
                 on departmentUser.UserId equals userRole.UserId
                 where userRole.RoleId == DefaultRoles.DoctorRoleId
                 && departmentUser.DepartmentId == request.DepartmentId
-            //&& (string.IsNullOrEmpty(request.filters.SearchValue) ? true : departmentUser.User.Name.Contains(request.filters.SearchValue!) || departmentUser.User.NationalId.Contains(request.filters.SearchValue!))
+            && (string.IsNullOrEmpty(request.filters.SearchValue) ? true : departmentUser.User.Name.Contains(request.filters.SearchValue!) || departmentUser.User.NationalId.Contains(request.filters.SearchValue!))
             select departmentUser;
 
         var count = await query.CountAsync(cancellationToken);
