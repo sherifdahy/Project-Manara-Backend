@@ -55,6 +55,7 @@ public class CreateDepartmentUserCommandHandler(IUnitOfWork unitOfWork
                 var deptUser = new DepartmentUser()
                 {
                     UserId = applicationUser.Id,
+                    DepartmentId = request.DepartmentId
                 };
                 await _unitOfWork.DepartmentUsers.AddAsync(deptUser, cancellationToken);
                 await _unitOfWork.SaveAsync(cancellationToken);
