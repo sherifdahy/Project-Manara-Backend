@@ -3,7 +3,7 @@
 public record StudentPortalDetailResponse
 (
     int LectureSchedulesId,
-    int NumberOfStudents,
+    int RemainingSlots,
     SubjectResponse Subject,
     DepartmentUserResponse Doctor,
     PeriodResponse Period,

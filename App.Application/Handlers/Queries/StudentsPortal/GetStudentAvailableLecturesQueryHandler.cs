@@ -207,27 +207,36 @@ public class GetStudentAvailableLecturesQueryHandler(UserManager<ApplicationUser
                 g => g.Count());
 
         var result = lectureSchendels
-            .Select(x => new StudentPortalDetailResponse(
-                x.Id,
-                studentsCount.TryGetValue(x.Id, out var count) ? count : 0,
-                new SubjectResponse(
-                    x.Subject.Id,
-                    x.Subject.Name
-                ),
-                new DepartmentUserResponse(
-                    x.Doctor.UserId,
-                    x.Doctor.User.Name
-                ),
-                new PeriodResponse(
-                    x.Period.Id,
-                    x.Period.StartTime,
-                    x.Period.EndTime
-                ),
-                new DayResponse(
-                    x.Day.Id,
-                    x.Day.Value
-                )
-            ))
+            .Select(x =>
+            {
+                var numberOfStudents = studentsCount.TryGetValue(x.Id, out var count)
+                    ? count
+                    : 0;
+
+                var availableSlots = x.MaxSlots - numberOfStudents;
+
+                return new StudentPortalDetailResponse(
+                    x.Id,
+                    availableSlots,
+                    new SubjectResponse(
+                        x.Subject.Id,
+                        x.Subject.Name
+                    ),
+                    new DepartmentUserResponse(
+                        x.Doctor.UserId,
+                        x.Doctor.User.Name
+                    ),
+                    new PeriodResponse(
+                        x.Period.Id,
+                        x.Period.StartTime,
+                        x.Period.EndTime
+                    ),
+                    new DayResponse(
+                        x.Day.Id,
+                        x.Day.Value
+                    )
+                );
+            })
             .ToList();
 
         return Result.Success(result); 
