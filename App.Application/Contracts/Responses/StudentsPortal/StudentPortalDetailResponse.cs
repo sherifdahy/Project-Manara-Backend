@@ -4,6 +4,7 @@ public record StudentPortalDetailResponse
 (
     int LectureSchedulesId,
     int RemainingSlots,
+    bool IsCurrentEnrolled,
     SubjectResponse Subject,
     DepartmentUserResponse Doctor,
     PeriodResponse Period,

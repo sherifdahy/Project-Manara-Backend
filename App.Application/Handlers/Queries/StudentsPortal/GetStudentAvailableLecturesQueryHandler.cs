@@ -122,7 +122,7 @@ public class GetStudentAvailableLecturesQueryHandler(UserManager<ApplicationUser
                 // Student took this subject before and failed
                 studentRegistrations.Any(sr =>
                     sr.LectureSchedule.SubjectId == ls.SubjectId &&
-                    sr.GPA < 2 && sr.GPA >0)
+                    sr.GPA < 2 && sr.GPA >=0)
 
                 ||
 
@@ -206,6 +206,7 @@ public class GetStudentAvailableLecturesQueryHandler(UserManager<ApplicationUser
                 g => g.Key,
                 g => g.Count());
 
+
         var result = lectureSchendels
             .Select(x =>
             {
@@ -213,11 +214,16 @@ public class GetStudentAvailableLecturesQueryHandler(UserManager<ApplicationUser
                     ? count
                     : 0;
 
-                var availableSlots = x.MaxSlots - numberOfStudents;
+                var remainingSlots = x.MaxSlots - numberOfStudents;
+
+                var isCurrentEnrolled = studentRegistrations.Any(sr =>
+                    sr.LectureScheduleId == x.Id &&
+                    sr.GPA == 0);
 
                 return new StudentPortalDetailResponse(
                     x.Id,
-                    availableSlots,
+                    remainingSlots,
+                    isCurrentEnrolled,
                     new SubjectResponse(
                         x.Subject.Id,
                         x.Subject.Name
