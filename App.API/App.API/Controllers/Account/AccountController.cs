@@ -23,6 +23,14 @@ public class AccountController(IMediator mediator) : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
     }
 
+    [HttpGet("student")]
+    public async Task<IActionResult> GetStudentProfile(CancellationToken cancellationToken = default)
+    {
+        var query = new GetStudentProfileQuery();
+        var result = await _mediator.Send(query, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
+    }
+
     [HttpPut("info")]
     public async Task<IActionResult> UpdateProfile(UpdateProfileRequest request, CancellationToken cancellationToken = default)
     {
