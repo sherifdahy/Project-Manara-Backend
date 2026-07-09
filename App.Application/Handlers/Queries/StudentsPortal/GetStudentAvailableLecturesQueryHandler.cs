@@ -196,28 +196,39 @@ public class GetStudentAvailableLecturesQueryHandler(UserManager<ApplicationUser
 
         #region Map And Return
         //Return
+
+        var lectureRegistrations = await _unitOfWork.LectureRegistrations
+                .GetAllAsync(cancellationToken: cancellationToken);
+
+        var studentsCount = lectureRegistrations
+            .GroupBy(x => x.LectureScheduleId)
+            .ToDictionary(
+                g => g.Key,
+                g => g.Count());
+
         var result = lectureSchendels
-        .Select(x => new StudentPortalDetailResponse(
-            x.Id,
-            new SubjectResponse(
-                x.Subject.Id,
-                x.Subject.Name
-            ),
-            new DepartmentUserResponse(
-                x.Doctor.UserId,
-                x.Doctor.User.Name
-            ),
-            new PeriodResponse(
-                x.Period.Id,
-                x.Period.StartTime,
-                x.Period.EndTime
-            ),
-            new DayResponse(
-                x.Day.Id,
-                x.Day.Value
-            )
-        ))
-        .ToList();
+            .Select(x => new StudentPortalDetailResponse(
+                x.Id,
+                studentsCount.TryGetValue(x.Id, out var count) ? count : 0,
+                new SubjectResponse(
+                    x.Subject.Id,
+                    x.Subject.Name
+                ),
+                new DepartmentUserResponse(
+                    x.Doctor.UserId,
+                    x.Doctor.User.Name
+                ),
+                new PeriodResponse(
+                    x.Period.Id,
+                    x.Period.StartTime,
+                    x.Period.EndTime
+                ),
+                new DayResponse(
+                    x.Day.Id,
+                    x.Day.Value
+                )
+            ))
+            .ToList();
 
         return Result.Success(result); 
         #endregion

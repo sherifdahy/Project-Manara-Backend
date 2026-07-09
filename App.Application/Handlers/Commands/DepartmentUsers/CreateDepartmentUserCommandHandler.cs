@@ -52,9 +52,10 @@ public class CreateDepartmentUserCommandHandler(IUnitOfWork unitOfWork
 
             if (roleAssignResult.Succeeded)
             {
-                var deptUser = new DepartmentUser()
+                var deptUser = new DepartmentUser
                 {
                     UserId = applicationUser.Id,
+                    DepartmentId = request.DepartmentId
                 };
                 await _unitOfWork.DepartmentUsers.AddAsync(deptUser, cancellationToken);
                 await _unitOfWork.SaveAsync(cancellationToken);

@@ -3,23 +3,18 @@
   "WorkspaceRootPath": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\queries\\studentsportal\\getstudentlecturesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C5D165A-AD93-408A-6359-43CAE3AD506C}|..\\App.Services\\App.Services.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\queries\\studentsportal\\getstudentavailablelecturesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\studentportals\\createregisterlecturecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\handlers\\commands\\studentportals\\updatestudentgradecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.application\\contracts\\responses\\studentsportal\\studentportaldetailresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\studentsportal\\studentsportalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\studentsportal\\studentsportalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\graduationproject\\project-manara-backend\\app.api\\app.api\\controllers\\days\\dayscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\days\\dayscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,8 +24,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StudentPortalDetailResponse.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\StudentsPortal\\StudentPortalDetailResponse.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Contracts\\Responses\\StudentsPortal\\StudentPortalDetailResponse.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Contracts\\Responses\\StudentsPortal\\StudentPortalDetailResponse.cs",
+              "RelativeToolTip": "..\\App.Application\\Contracts\\Responses\\StudentsPortal\\StudentPortalDetailResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T18:35:58.103Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -41,80 +49,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UpdateStudentGradeCommandHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\StudentPortals\\UpdateStudentGradeCommandHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\StudentPortals\\UpdateStudentGradeCommandHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\StudentPortals\\UpdateStudentGradeCommandHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\StudentPortals\\UpdateStudentGradeCommandHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-01T10:52:53.124Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "StudentService.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\StudentService.cs",
-              "RelativeDocumentMoniker": "..\\App.Services\\StudentService.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Services\\StudentService.cs",
-              "RelativeToolTip": "..\\App.Services\\StudentService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAWwBUAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-30T16:07:50.072Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CreateRegisterLectureCommandHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\StudentPortals\\CreateRegisterLectureCommandHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\StudentPortals\\CreateRegisterLectureCommandHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\StudentPortals\\CreateRegisterLectureCommandHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\StudentPortals\\CreateRegisterLectureCommandHandler.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAWwBMAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-30T14:58:05.671Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GetStudentLecturesQueryHandler.cs",
-              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\StudentsPortal\\GetStudentLecturesQueryHandler.cs",
-              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\StudentsPortal\\GetStudentLecturesQueryHandler.cs",
-              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\StudentsPortal\\GetStudentLecturesQueryHandler.cs",
-              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\StudentsPortal\\GetStudentLecturesQueryHandler.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAIA/wBUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-30T14:09:12.45Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "GetStudentAvailableLecturesQueryHandler.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\StudentsPortal\\GetStudentAvailableLecturesQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\StudentsPortal\\GetStudentAvailableLecturesQueryHandler.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\StudentsPortal\\GetStudentAvailableLecturesQueryHandler.cs",
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\StudentsPortal\\GetStudentAvailableLecturesQueryHandler.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAWwBIAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAMsAAAAAAAAAAAAYwNkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-30T14:08:51.8Z",
+              "WhenOpened": "2026-07-09T18:35:53.133Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "StudentsPortalController.cs",
               "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
               "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
               "RelativeToolTip": "App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAWwBwAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACYAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-29T12:48:10.785Z",
+              "WhenOpened": "2026-07-09T18:35:45.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DaysController.cs",
+              "DocumentMoniker": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Days\\DaysController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Days\\DaysController.cs",
+              "ToolTip": "D:\\work\\GraduationProject\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Days\\DaysController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Days\\DaysController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T18:34:40.402Z",
               "EditorCaption": ""
             }
           ]
