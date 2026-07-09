@@ -1,12 +1,107 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\departmentusers\\departmentuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\departmentusers\\departmentuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\manara-project\\project-manara-backend\\app.application\\handlers\\commands\\programs\\savelectureschedulescommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\manara-project\\project-manara-backend\\app.application\\handlers\\queries\\departmentusers\\getdoctorsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\studentsportal\\studentsportalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\studentsportal\\studentsportalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetDoctorsQueryHandler.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\DepartmentUsers\\GetDoctorsQueryHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\DepartmentUsers\\GetDoctorsQueryHandler.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\DepartmentUsers\\GetDoctorsQueryHandler.cs*",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\DepartmentUsers\\GetDoctorsQueryHandler.cs*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T10:04:28.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SaveLectureSchedulesCommandHandler.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Programs\\SaveLectureSchedulesCommandHandler.cs",
+              "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Programs\\SaveLectureSchedulesCommandHandler.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Programs\\SaveLectureSchedulesCommandHandler.cs",
+              "RelativeToolTip": "..\\App.Application\\Handlers\\Commands\\Programs\\SaveLectureSchedulesCommandHandler.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAqwGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T09:40:21.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
+              "RelativeDocumentMoniker": "App.API\\appsettings.json",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
+              "RelativeToolTip": "App.API\\appsettings.json",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-06T09:44:39.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DepartmentUsersController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAUwE0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T09:36:03.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StudentsPortalController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T09:03:44.082Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

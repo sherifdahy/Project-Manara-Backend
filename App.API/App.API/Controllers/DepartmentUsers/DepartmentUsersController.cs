@@ -71,7 +71,7 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{departmentId}/doctors")]
-    [RequireDepartmentAccess("departmentId")]
+    //[RequireDepartmentAccess("departmentId")]
     [HasPermission(Permissions.GetDepartmentUsers)]
     public async Task<IActionResult> GetDoctors(int departmentId, [FromQuery] RequestFilters filters,CancellationToken cancellationToken = default)
     {
@@ -81,7 +81,7 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{departmentId}/instructors")]
-    [RequireDepartmentAccess("departmentId")]
+    //[RequireDepartmentAccess("departmentId")]
     [HasPermission(Permissions.GetDepartmentUsers)]
     public async Task<IActionResult> GetInstructors(int departmentId,[FromQuery] RequestFilters filters, CancellationToken cancellationToken = default)
     {
