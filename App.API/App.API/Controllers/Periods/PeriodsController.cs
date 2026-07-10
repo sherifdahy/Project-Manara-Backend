@@ -17,7 +17,6 @@ public class PeriodsController(IMediator mediator) : ControllerBase
     private readonly IMediator _mediator = mediator;
 
     [HttpGet("/api/faculties/{facultyId:int}/periods")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.GetPeriods)]
     public async Task<IActionResult> GetAll
         ([FromRoute] int facultyId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
@@ -28,7 +27,6 @@ public class PeriodsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.GetPeriods)]
     public async Task<IActionResult> Get([FromRoute] int id,CancellationToken cancellationToken = default)
     {
@@ -37,7 +35,6 @@ public class PeriodsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("/api/faculties/{facultyId}/periods")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.CreatePeriods)]
     public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] PeriodRequest request, CancellationToken cancellationToken)
     {
@@ -46,7 +43,6 @@ public class PeriodsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("/api/faculties/{facultyId}/periods/{oldStartTime}/{oldEndTime}")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.UpdatePeriods)]
     public async Task<IActionResult> Update(
         [FromRoute] int facultyId,
@@ -71,7 +67,6 @@ public class PeriodsController(IMediator mediator) : ControllerBase
 
 
     [HttpDelete("/api/faculties/{facultyId}/periods/{startTime}/{endTime}")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.ToggleStatusPeriods)]
     public async Task<IActionResult> ToggleStatus(
         [FromRoute] int facultyId,
