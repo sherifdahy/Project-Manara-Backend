@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Commands.Roles;
+﻿using App.Application.Commands.Roles;
 using App.Application.Contracts.Requests.Roles;
 using App.Application.Queries.Permissions;
 using App.Core.Extensions;
@@ -25,7 +24,6 @@ namespace App.API.Controllers.Roles
         }
 
         [HttpGet("/api/users/{userId:int}/permissions")]
-        [RequireUserAccess("userId")]
         [HasPermission(Permissions.GetPermissions)]
         public async Task<IActionResult> GetPermissionsInUser([FromRoute] int userId, CancellationToken cancellationToken)
         {
@@ -36,7 +34,6 @@ namespace App.API.Controllers.Roles
 
 
         [HttpPut("/api/users/{userId:int}/permissions")]
-        [RequireUserAccess("userId")]
         [HasPermission(Permissions.UpdatePermissions)]
         public async Task<IActionResult> AssignPermissionsToUser([FromRoute] int userId, [FromBody] AssignPermissionRequest request, CancellationToken cancellationToken)
         {
@@ -45,8 +42,6 @@ namespace App.API.Controllers.Roles
         }
 
         [HttpPut("/api/roles/{roleId}/faculties/{facultyId}/permissions")]
-        [RequireRoleAccess("roleId")]
-        [RequireFacultyAccess("facultyId")]
         [HasPermission(Permissions.UpdatePermissions)]
         public async Task<IActionResult> AssignPermissionsToRoleFaculty([FromRoute] int roleId, [FromRoute] int facultyId, [FromBody] AssignPermissionRequest request, CancellationToken cancellationToken)
         {

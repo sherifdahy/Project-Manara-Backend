@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Abstractions;
+﻿using App.Application.Abstractions;
 using App.Application.Commands.Enrollments;
 using App.Application.Contracts.Requests.Enrollments;
 using App.Application.Queries.Departments;
@@ -19,7 +18,6 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
     private readonly IMediator _mediator = mediator;
 
     [HttpGet("/api/programs/{programId}/enrollments")]
-    [RequireProgramAccess("programId")]
     [HasPermission(Permissions.GetEnrollments)]
     public async Task<IActionResult> GetAllInProgram 
         (int programId,[FromQuery] bool includeDisabled, [FromQuery] RequestFilters filters, CancellationToken cancellationToken)
@@ -31,7 +29,6 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
 
 
     [HttpGet("/api/students/{userId}/enrollments")]
-    [RequireUserAccess("userId")]
     [HasPermission(Permissions.GetEnrollments)]
     public async Task<IActionResult> GetAllInUser([FromRoute] int userId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
     {
@@ -41,7 +38,6 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [RequireEnrollmentAccess("id")]
     [HasPermission(Permissions.GetEnrollments)]
     public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken = default)
     {
@@ -52,7 +48,6 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
 
 
     [HttpPost("/api/programs/{programId}/enrollments")]
-    [RequireProgramAccess("programId")]
     [HasPermission(Permissions.CreateEnrollments)]
     public async Task<IActionResult> Create([FromRoute] int programId, [FromBody] CreateEnrollmentRequest request, CancellationToken cancellationToken)
     {
@@ -61,7 +56,6 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    [RequireEnrollmentAccess("id")]
     [HasPermission(Permissions.UpdateEnrollments)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateEnrollmentRequest request, CancellationToken cancellationToken = default)
     {
@@ -70,7 +64,6 @@ public class EnrollmentsController(IMediator mediator) : ControllerBase
     }
 
     [HttpDelete("{id}/toggle-status")]
-    [RequireEnrollmentAccess("id")]
     [HasPermission(Permissions.ToggleStatusEnrollments)]
     public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
     {

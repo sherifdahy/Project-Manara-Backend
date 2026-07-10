@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Commands.Departments;
+﻿using App.Application.Commands.Departments;
 using App.Application.Contracts.Requests.Departments;
 using App.Application.Queries.Departments;
 using App.Core.Extensions;
@@ -18,7 +17,6 @@ namespace App.API.Controllers.Departments
         private readonly IMediator _mediator = mediator;
 
         [HttpGet("/api/faculties/{facultyId:int}/departments")]
-        [RequireFacultyAccess("facultyId")]
         [HasPermission(Permissions.GetDepartments)]
         public async Task<IActionResult> GetAll([FromRoute] int facultyId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
         {
@@ -28,7 +26,6 @@ namespace App.API.Controllers.Departments
         }
 
         [HttpGet("{id:int}")]
-        [RequireDepartmentAccess("id")]
         [HasPermission(Permissions.GetDepartments)]
         public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken = default)
         {
@@ -47,7 +44,6 @@ namespace App.API.Controllers.Departments
         }
 
         [HttpPost("/api/faculties/{facultyId}/departments")]
-        [RequireFacultyAccess("facultyId")]
         [HasPermission(Permissions.CreateDepartments)]
         public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] DepartmentRequest request,CancellationToken cancellationToken)
         {
@@ -57,7 +53,6 @@ namespace App.API.Controllers.Departments
 
 
         [HttpPut("{id}")]
-        [RequireDepartmentAccess("id")] 
         [HasPermission(Permissions.UpdateDepartments)]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] DepartmentRequest request, CancellationToken cancellationToken = default)
         {
@@ -66,7 +61,6 @@ namespace App.API.Controllers.Departments
         }
 
         [HttpDelete("{id}/toggle-status")]
-        [RequireDepartmentAccess("id")]
         [HasPermission(Permissions.ToggleStatusDepartments)]
         public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
         {

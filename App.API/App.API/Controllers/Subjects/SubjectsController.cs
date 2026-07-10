@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Abstractions;
+﻿using App.Application.Abstractions;
 using App.Application.Commands.Subjects;
 using App.Application.Contracts.Requests.Subjects;
 using App.Application.Queries.Subjects;
@@ -21,7 +20,6 @@ public class SubjectsController(IMediator mediator) : ControllerBase
 
 
     [HttpGet("/api/faculties/{facultyId:int}/subjects")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.GetSubjects)]
     public async Task<IActionResult> GetAll([FromRoute] int facultyId, [FromQuery] RequestFilters filters, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
     {
@@ -31,7 +29,6 @@ public class SubjectsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [RequireSubjectAccess("id")]
     [HasPermission(Permissions.GetSubjects)]
     public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
     {
@@ -41,7 +38,6 @@ public class SubjectsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("/api/faculties/{facultyId}/subjects")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.CreateSubjects)]
     public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] SubjectRequest request, CancellationToken cancellationToken = default)
     {
@@ -50,7 +46,6 @@ public class SubjectsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    [RequireSubjectAccess("id")]
     [HasPermission(Permissions.UpdateSubjects)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] SubjectRequest request, CancellationToken cancellationToken = default)
     {
@@ -59,7 +54,6 @@ public class SubjectsController(IMediator mediator) : ControllerBase
     }
 
     [HttpDelete("{id}/toggle-status")]
-    [RequireSubjectAccess("id")]
     [HasPermission(Permissions.ToggleStatusSubjects)]
     public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
     {

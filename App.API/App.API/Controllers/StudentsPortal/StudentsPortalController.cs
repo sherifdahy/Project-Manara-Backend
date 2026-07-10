@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Commands.Departments;
+﻿using App.Application.Commands.Departments;
 using App.Application.Commands.StudentPortals;
 using App.Application.Contracts.Requests.StudentPortals;
 using App.Application.Queries.Departments;
@@ -20,7 +19,6 @@ public class StudentsPortalController(IMediator _mediator) : ControllerBase
 {
 
     [HttpGet("students/{studentId:int}/lectures")]
-    [RequireStudentAccess("studentId")]
     [HasPermission(Permissions.GetStudentsPortal)]
     public async Task<IActionResult> GetStudentLectures(int studentId, CancellationToken cancellationToken = default)
     {
@@ -31,7 +29,6 @@ public class StudentsPortalController(IMediator _mediator) : ControllerBase
 
 
     [HttpGet("students/{studentId:int}/available-lectures")]
-    [RequireStudentAccess("studentId")]
     [HasPermission(Permissions.GetStudentsPortal)]
     public async Task<IActionResult> GetStudentAvailableLectures(int studentId, CancellationToken cancellationToken = default)
     {
@@ -43,7 +40,6 @@ public class StudentsPortalController(IMediator _mediator) : ControllerBase
 
 
     [HttpPost("students/{studentId:int}/available-lectures")]
-    [RequireStudentAccess("studentId")]
     [HasPermission(Permissions.CreateStudentsPortal)]
     public async Task<IActionResult> RegisterStudentLecture(int studentId, [FromBody] RegisterLectureRequest request, CancellationToken cancellationToken = default)
     {
@@ -52,7 +48,6 @@ public class StudentsPortalController(IMediator _mediator) : ControllerBase
     }
 
     [HttpPut("students/{studentId:int}/gpa")]
-    [RequireStudentAccess("studentId")]
     [HasPermission(Permissions.UpdateStudentsGrade)]
 
     public async Task<IActionResult> UpdateGrade(int studentId, [FromBody] UpdateStudentGradeRequest request,CancellationToken cancellationToken = default)

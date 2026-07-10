@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Queries.Scopes;
+﻿using App.Application.Queries.Scopes;
 using App.Core.Extensions;
 using App.Infrastructure.Abstractions.Consts;
 using MediatR;
@@ -24,7 +23,6 @@ public class ScopesController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{scopeName}")]
-    [RequireScopeAccess("scopeName")]
     [HasPermission(Permissions.GetScopeDetail)]
     public async Task<IActionResult> Get([FromRoute] string scopeName,CancellationToken cancellationToken = default)
     {

@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Abstractions;
+﻿using App.Application.Abstractions;
 using App.Application.Commands.FacultyUsers;
 using App.Application.Contracts.Requests.FacultyUsers;
 using App.Application.Queries.Doctors;
@@ -30,7 +29,6 @@ public class FacultyUsersController(IMediator mediator,IRoleService roleService)
     }
 
     [HttpGet("/api/faculties/{facultyId}/[controller]")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.GetFacultyUsers)]
     public async Task<IActionResult> GetAll([FromQuery] bool includeDisabled,[FromQuery] RequestFilters filters,[FromRoute] int facultyId, CancellationToken cancellationToken)
     {
@@ -40,7 +38,6 @@ public class FacultyUsersController(IMediator mediator,IRoleService roleService)
     }
 
     [HttpGet("{id}")]
-    [RequireUserAccessAttribute("id")]
     [HasPermission(Permissions.GetFacultyUsers)]
     public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
     {
@@ -50,7 +47,6 @@ public class FacultyUsersController(IMediator mediator,IRoleService roleService)
     }
 
     [HttpPost("/api/faculties/{facultyId}/[controller]")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.CreateFacultyUsers)]
     public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] FacultyUserRequest request, CancellationToken cancellationToken)
     {
@@ -60,7 +56,6 @@ public class FacultyUsersController(IMediator mediator,IRoleService roleService)
     }
 
     [HttpPut("{id}")]
-    [RequireUserAccess("id")]
     [HasPermission(Permissions.UpdateFacultyUsers)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateFacultyUserRequest request,CancellationToken cancellationToken)
     {
@@ -70,7 +65,6 @@ public class FacultyUsersController(IMediator mediator,IRoleService roleService)
     }
 
     [HttpDelete("{id}")]
-    [RequireUserAccess("id")]
     [HasPermission(Permissions.ToggleStatusFacultyUsers)]
     public async Task<IActionResult> ToggleStatus([FromRoute] int id, CancellationToken cancellationToken)
     {

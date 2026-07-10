@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Commands.Roles;
+﻿using App.Application.Commands.Roles;
 using App.Application.Contracts.Requests.Roles;
 using App.Application.Queries.Permissions;
 using App.Application.Queries.Roles;
@@ -26,7 +25,6 @@ public class RolesController(IMediator _mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [RequireRoleAccess("id")]
     [HasPermission(Permissions.GetRoles)]
     public async Task<IActionResult> GetById([FromRoute] int id, CancellationToken cancellationToken)
     {
@@ -35,8 +33,6 @@ public class RolesController(IMediator _mediator) : ControllerBase
     }
 
     [HttpGet("/api/faculties/{facultyId}/roles/{roleId}")]
-    [RequireFacultyAccess("facultyId")]
-    [RequireRoleAccess("roleId")]
     [HasPermission(Permissions.GetRoles)]
     public async Task<IActionResult> GetPermissionsInFacultyRole([FromRoute] int facultyId, [FromRoute] int roleId, CancellationToken cancellationToken)
     {
@@ -54,7 +50,6 @@ public class RolesController(IMediator _mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    [RequireRoleAccess("id")]
     [HasPermission(Permissions.UpdateRoles)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateRoleRequest request, CancellationToken cancellationToken)
     {
@@ -63,7 +58,6 @@ public class RolesController(IMediator _mediator) : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    [RequireRoleAccess("id")]
     [HasPermission(Permissions.ToggleStatusRoles)]
     public async Task<IActionResult> ToggleStatus([FromRoute] int id, CancellationToken cancellationToken)
     {

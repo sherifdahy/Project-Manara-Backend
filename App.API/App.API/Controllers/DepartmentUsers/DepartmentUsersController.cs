@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Abstractions;
+﻿using App.Application.Abstractions;
 using App.Application.Commands.DepartmentUsers;
 using App.Application.Contracts.Requests.DepartmentUsers;
 using App.Application.Queries.DepartmentUsers;
@@ -21,7 +20,6 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     private readonly IMediator _mediator = mediator;
 
     [HttpGet("/api/departments/{departmentId}/[controller]")]
-    [RequireDepartmentAccess("departmentId")]
     [HasPermission(Permissions.GetDepartmentUsers)]
     public async Task<IActionResult> GetAll([FromQuery] bool includeDisabled, [FromQuery] RequestFilters filters, [FromRoute] int departmentId, CancellationToken cancellationToken)
     {
@@ -31,7 +29,6 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [RequireUserAccessAttribute("id")]
     [HasPermission(Permissions.GetDepartmentUsers)]
     public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
     {
@@ -41,7 +38,6 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("/api/departments/{departmentId}/[controller]")]
-    [RequireDepartmentAccess("departmentId")]
     [HasPermission(Permissions.CreateDepartmentUsers)]
     public async Task<IActionResult> Create([FromRoute] int departmentId, [FromBody] DepartmentUserRequest request, CancellationToken cancellationToken)
     {
@@ -51,7 +47,6 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    [RequireUserAccess("id")]
     [HasPermission(Permissions.UpdateDepartmentUsers)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateDepartmentUserRequest request, CancellationToken cancellationToken)
     {
@@ -61,7 +56,6 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    [RequireUserAccess("id")]
     [HasPermission(Permissions.ToggleStatusDepartmentUsers)]
     public async Task<IActionResult> ToggleStatus([FromRoute] int id, CancellationToken cancellationToken)
     {
@@ -71,7 +65,6 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{departmentId}/doctors")]
-    //[RequireDepartmentAccess("departmentId")]
     [HasPermission(Permissions.GetDepartmentUsers)]
     public async Task<IActionResult> GetDoctors(int departmentId, [FromQuery] RequestFilters filters,CancellationToken cancellationToken = default)
     {
@@ -81,7 +74,6 @@ public class DepartmentUsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{departmentId}/instructors")]
-    //[RequireDepartmentAccess("departmentId")]
     [HasPermission(Permissions.GetDepartmentUsers)]
     public async Task<IActionResult> GetInstructors(int departmentId,[FromQuery] RequestFilters filters, CancellationToken cancellationToken = default)
     {

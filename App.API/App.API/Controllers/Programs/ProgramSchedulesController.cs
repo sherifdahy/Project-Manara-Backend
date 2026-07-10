@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Commands.Programs;
+﻿using App.Application.Commands.Programs;
 using App.Application.Contracts.Requests.LectureSchedules;
 using App.Application.Contracts.Requests.SectionSchedules;
 using App.Application.Queries.Programs;
@@ -17,7 +16,6 @@ public class ProgramSchedulesController(IMediator mediator) : ControllerBase
     private readonly IMediator _mediator = mediator;
 
     [HttpGet("lectures-schedule")]
-    [RequireProgramAccess("programId")]
     [HasPermission(Permissions.GetProgramLecturesSchedule)]
     public async Task<IActionResult> GetLectureSchedule(int programId, CancellationToken cancellationToken)
     {
@@ -27,7 +25,6 @@ public class ProgramSchedulesController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("sections-schedule")]
-    [RequireProgramAccess("programId")]
     [HasPermission(Permissions.GetProgramSectionsSchedule)]
     public async Task<IActionResult> GetSectionSchedule(int programId, CancellationToken cancellationToken)
     {
@@ -37,7 +34,6 @@ public class ProgramSchedulesController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("lectures-schedule")]
-    [RequireProgramAccess("programId")]
     [HasPermission(Permissions.SaveProgramLecturesSchedule)]
     public async Task<IActionResult> SaveLecturesSchdeule(int programId, SaveLectureSchedulesRequest request, CancellationToken cancellationToken)
     {
@@ -47,7 +43,6 @@ public class ProgramSchedulesController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("sections-schedule")]
-    [RequireProgramAccess("programId")]
     [HasPermission(Permissions.SaveProgramSectionsSchedule)]
     public async Task<IActionResult> SaveSectionsSchdeule(int programId, SaveSectionSchedulesRequest request, CancellationToken cancellationToken)
     {

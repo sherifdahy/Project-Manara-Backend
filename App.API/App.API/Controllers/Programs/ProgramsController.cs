@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Commands.Programs;
+﻿using App.Application.Commands.Programs;
 using App.Application.Contracts.Requests.LectureSchedules;
 using App.Application.Contracts.Requests.Programs;
 using App.Application.Contracts.Requests.SectionSchedules;
@@ -22,7 +21,6 @@ namespace App.API.Controllers.Programs
 
 
         [HttpGet("/api/departments/{departmentId:int}/programs")]
-        [RequireDepartmentAccess("departmentId")]
         [HasPermission(Permissions.GetPrograms)]
         public async Task<IActionResult> GetAll([FromRoute] int departmentId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
         {
@@ -32,7 +30,6 @@ namespace App.API.Controllers.Programs
         }
 
         [HttpGet("{id:int}")]
-        [RequireProgramAccess("id")]
         [HasPermission(Permissions.GetPrograms)]
         public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken = default)
         {
@@ -42,7 +39,6 @@ namespace App.API.Controllers.Programs
         }
 
         [HttpPost("/api/departments/{departmentId}/programs")]
-        [RequireDepartmentAccess("departmentId")]
         [HasPermission(Permissions.CreatePrograms)]
         public async Task<IActionResult> Create([FromRoute] int departmentId, [FromBody] ProgramRequest request, CancellationToken cancellationToken)
         {
@@ -51,7 +47,6 @@ namespace App.API.Controllers.Programs
         }
 
         [HttpPut("{id}")]
-        [RequireProgramAccess("id")]
         [HasPermission(Permissions.UpdatePrograms)]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] ProgramRequest request, CancellationToken cancellationToken = default)
         {
@@ -60,7 +55,6 @@ namespace App.API.Controllers.Programs
         }
 
         [HttpDelete("{id}/toggle-status")]
-        [RequireProgramAccess("id")]
         [HasPermission(Permissions.ToggleStatusPrograms)]
         public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
         {

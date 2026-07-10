@@ -3,12 +3,72 @@
   "WorkspaceRootPath": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\periods\\periodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\periods\\periodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\scopes\\scopescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\scopes\\scopescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\programs\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\programs\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\programs\\programschedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\programs\\programschedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\roles\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\roles\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\subjects\\subjectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\subjects\\subjectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\studentsportal\\studentsportalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\studentsportal\\studentsportalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\universityusers\\universityuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\universityusers\\universityuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\universities\\universitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\universities\\universitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\faculties\\facultiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\faculties\\facultiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\programusers\\programuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\programusers\\programuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\roles\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\roles\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\facultyusers\\facultyuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\enrollments\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\enrollments\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\departmentusers\\departmentuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\departmentusers\\departmentuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\years\\yearscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\years\\yearscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\departments\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\departments\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\periods\\periodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\periods\\periodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -19,10 +79,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{4077635C-A363-CAF2-0B33-903C61BE1796}|..\\App.Application\\App.Application.csproj|d:\\manara-project\\project-manara-backend\\app.application\\handlers\\queries\\departmentusers\\getdoctorsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\manara-project\\project-manara-backend\\app.api\\app.api\\controllers\\studentsportal\\studentsportalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\studentsportal\\studentsportalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,19 +93,201 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ScopesController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Scopes\\ScopesController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Scopes\\ScopesController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Scopes\\ScopesController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Scopes\\ScopesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:11:18.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProgramsController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Programs\\ProgramsController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Programs\\ProgramsController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowDkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:11:07.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProgramSchedulesController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwC0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:10:58.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\RolesController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Roles\\RolesController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\RolesController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Roles\\RolesController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAwwDwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:10:47.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SubjectsController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Subjects\\SubjectsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Subjects\\SubjectsController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Subjects\\SubjectsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Subjects\\SubjectsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:10:34.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UniversityUsersController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowD0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:10:12.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UniversitiesController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Universities\\UniversitiesController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Universities\\UniversitiesController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Universities\\UniversitiesController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Universities\\UniversitiesController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwD0AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:10:02.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FacultiesController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Faculties\\FacultiesController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Faculties\\FacultiesController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Faculties\\FacultiesController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Faculties\\FacultiesController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAwwEAAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:09:51.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProgramUsersController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\ProgramUsers\\ProgramUsersController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\ProgramUsers\\ProgramUsersController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\ProgramUsers\\ProgramUsersController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\ProgramUsers\\ProgramUsersController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwEUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:09:36.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PermissionsController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Roles\\PermissionsController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwCwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:09:26.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FacultyUsersController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAcwEMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:09:16.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EnrollmentsController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAwwEIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:09:05.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "YearsController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Years\\YearsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Years\\YearsController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Years\\YearsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Years\\YearsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:08:41.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DepartmentsController.cs",
+              "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Departments\\DepartmentsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
+              "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Departments\\DepartmentsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowD8AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T20:07:29.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "PeriodsController.cs",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Periods\\PeriodsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Periods\\PeriodsController.cs",
               "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Periods\\PeriodsController.cs",
               "RelativeToolTip": "App.API\\Controllers\\Periods\\PeriodsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-10T17:47:39.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 19,
               "Title": "GetDoctorsQueryHandler.cs",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\DepartmentUsers\\GetDoctorsQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\DepartmentUsers\\GetDoctorsQueryHandler.cs",
@@ -61,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 18,
               "Title": "SaveLectureSchedulesCommandHandler.cs",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Programs\\SaveLectureSchedulesCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Commands\\Programs\\SaveLectureSchedulesCommandHandler.cs",
@@ -74,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 17,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
               "RelativeDocumentMoniker": "App.API\\appsettings.json",
@@ -86,15 +324,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 13,
               "Title": "DepartmentUsersController.cs",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
               "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
               "RelativeToolTip": "App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAUwE0AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwEwAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T09:36:03.052Z"
+              "WhenOpened": "2026-07-06T09:36:03.052Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -104,9 +343,10 @@
               "RelativeDocumentMoniker": "App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
               "ToolTip": "D:\\Manara-Project\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
               "RelativeToolTip": "App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAgwDIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T09:03:44.082Z"
+              "WhenOpened": "2026-07-06T09:03:44.082Z",
+              "EditorCaption": ""
             }
           ]
         }

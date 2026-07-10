@@ -1,5 +1,4 @@
-﻿using App.API.Attributes;
-using App.Application.Commands.Departments;
+﻿using App.Application.Commands.Departments;
 using App.Application.Commands.Years;
 using App.Application.Contracts.Requests.Years;
 using App.Application.Queries.Years;
@@ -30,7 +29,6 @@ public class YearsController(IMediator mediator) : ControllerBase
 
 
     [HttpGet("/api/faculties/{facultyId:int}/years")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.GetYears)]
     public async Task<IActionResult> GetAll([FromRoute] int facultyId, [FromQuery] bool includeDisabled = false, CancellationToken cancellationToken = default)
     {
@@ -40,7 +38,6 @@ public class YearsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    [RequireYearAccess("id")]
     [HasPermission(Permissions.GetYears)]
     public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken = default)
     {
@@ -50,7 +47,6 @@ public class YearsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("/api/faculties/{facultyId}/years")]
-    [RequireFacultyAccess("facultyId")]
     [HasPermission(Permissions.CreateYears)]
     public async Task<IActionResult> Create([FromRoute] int facultyId, [FromBody] YearRequest request, CancellationToken cancellationToken)
     {
@@ -60,7 +56,6 @@ public class YearsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    [RequireYearAccess("id")] 
     [HasPermission(Permissions.UpdateYears)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] YearRequest request, CancellationToken cancellationToken = default)
     {
@@ -69,7 +64,6 @@ public class YearsController(IMediator mediator) : ControllerBase
     }
 
     [HttpDelete("{id}/toggle-status")]
-    [RequireYearAccess("id")]
     [HasPermission(Permissions.ToggleStatusYears)]
     public async Task<IActionResult> ToggleStatus(int id, CancellationToken cancellationToken = default)
     {
