@@ -135,7 +135,7 @@ jobs:
   #  • Depends ONLY on `install` — runs alongside build/test/docker-push
   #  • continue-on-error at job level — can NEVER fail the workflow
   #  • Uses .NET-specific scanner (required for C#/VB.NET analysis)
-  #  • Builds ALL projects in a single solution so the scanner
+  #  • Builds ALL projects in a single temporary solution so the scanner
   #    instruments every project in one MSBuild graph
   #  • .NET 8 SDK is installed alongside .NET 10 because the
   #    sonarscanner tool itself targets net8
@@ -184,7 +184,8 @@ jobs:
           rm -rf ./.sonar
           mkdir -p ./.sonar/scanner
           dotnet tool install dotnet-sonarscanner --tool-path ./.sonar/scanner
-          ./.sonar/scanner/dotnet-sonarscanner --version
+          echo "✅ Installed dotnet-sonarscanner:"
+          dotnet tool list --tool-path ./.sonar/scanner
 
       - name: 🧠 Create temporary solution containing every project
         run: |
