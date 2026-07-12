@@ -30,10 +30,10 @@ jobs:
       solution_path: ${{ steps.detect.outputs.solution_path }}
     steps:
       - name: 📥 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: ⚙️ Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
@@ -76,10 +76,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: ⚙️ Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
@@ -106,10 +106,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: ⚙️ Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
@@ -131,20 +131,14 @@ jobs:
             -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}" || true
 
   # ================================================================
-  # STAGE 3b — SONARQUBE ANALYSIS (added stage, fully parallel/isolated)
-  #  • Depends ONLY on `install` — runs alongside build/test/docker-push,
-  #    never gates or delays them
-  #  • Nothing above this line was changed from the working pipeline
-  #  • continue-on-error at job + step level — can NEVER fail the workflow
-  #  • MUST use dotnet-sonarscanner (.NET-specific scanner) — confirmed via
-  #    server log that the generic CLI scanner CANNOT analyze C#/VB.NET at
-  #    all (hard product limitation, not a config issue):
-  #    "Your project contains C# files which cannot be analyzed with the
-  #     scanner you are using. To analyze C# or VB.NET, you must use the
-  #     SonarScanner for .NET 5.x or higher"
-  #  • Previous crash (exit 134, ArgumentNullException on /api/settings/values)
-  #    may be caused by a project-scoped token lacking permission to read
-  #    GLOBAL settings — use a User Token, not a Project Analysis Token.
+  # STAGE 3b — SONARQUBE ANALYSIS (report-only, fully parallel/isolated)
+  #  • Depends ONLY on `install` — runs alongside build/test/docker-push
+  #  • continue-on-error at job level — can NEVER fail the workflow
+  #  • Uses .NET-specific scanner (required for C#/VB.NET analysis)
+  #  • Builds ALL projects in a single solution so the scanner
+  #    instruments every project in one MSBuild graph
+  #  • .NET 8 SDK is installed alongside .NET 10 because the
+  #    sonarscanner tool itself targets net8
   # ================================================================
   sonarqube:
     name: "🔍 Stage 3b — SonarQube Analysis (report-only)"
@@ -153,17 +147,19 @@ jobs:
     continue-on-error: true
     steps:
       - name: 📥 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      - name: ⚙️ Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: ⚙️ Setup .NET (8 for scanner tool + 10 for build)
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-version: |
+            8.0.x
+            ${{ env.DOTNET_VERSION }}
 
       - name: ☕ Setup Java (required by the Sonar scanner engine)
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '21'
@@ -176,61 +172,58 @@ jobs:
           restore-keys: |
             nuget-${{ runner.os }}-
 
-      - name: 🧠 Discover all projects for full analysis
-        # No .sln in this repo, so restore/build every .csproj individually —
-        # the scanner instruments any dotnet build/restore between begin/end.
-        run: |
-          FOUND=$(find . -maxdepth 5 -name "*.csproj")
-          echo "Projects found for full analysis:"
-          echo "$FOUND"
-          echo "$FOUND" > /tmp/all_projects.txt
-
-      - name: 📦 Install dotnet-sonarscanner
+      - name: 🌐 Verify SonarQube server reachability
         continue-on-error: true
+        run: |
+          echo "Pinging https://sonar.manaraa.tech ..."
+          curl -sSf -o /dev/null -w "HTTP %{http_code}\n" https://sonar.manaraa.tech || \
+            echo "⚠️ Sonar server not reachable from runner"
+
+      - name: 📦 Install latest dotnet-sonarscanner
         run: |
           rm -rf ./.sonar
           mkdir -p ./.sonar/scanner
-          dotnet tool install dotnet-sonarscanner --version 9.0.2 --tool-path ./.sonar/scanner
+          dotnet tool install dotnet-sonarscanner --tool-path ./.sonar/scanner
           ./.sonar/scanner/dotnet-sonarscanner --version
 
-      - name: 📦 Restore packages (all projects)
-        continue-on-error: true
+      - name: 🧠 Create temporary solution containing every project
         run: |
-          while IFS= read -r proj; do
-            [ -z "$proj" ] && continue
-            echo "Restoring $proj"
-            dotnet restore "$proj" --packages "${{ env.NUGET_PACKAGES }}"
-          done < /tmp/all_projects.txt
+          dotnet new sln -n Manara
+          find . -maxdepth 5 -name "*.csproj" -print0 | \
+            xargs -0 -I{} dotnet sln Manara.sln add "{}"
+          echo "Projects in solution:"
+          dotnet sln Manara.sln list
+
+      - name: 📦 Restore packages (whole solution)
+        run: |
+          dotnet restore Manara.sln --packages "${{ env.NUGET_PACKAGES }}"
 
       - name: 🔍 Begin SonarQube analysis
-        continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           if [ -z "$SONAR_TOKEN" ]; then
-            echo "❌ SONAR_TOKEN secret is missing/empty in this repo."
+            echo "❌ SONAR_TOKEN secret is missing/empty."
             exit 0
           fi
           ./.sonar/scanner/dotnet-sonarscanner begin \
             /k:"manaraa-backend" \
+            /n:"Manara Backend" \
+            /v:"${{ github.sha }}" \
             /d:sonar.host.url="https://sonar.manaraa.tech" \
             /d:sonar.token="$SONAR_TOKEN" \
-            /d:sonar.exclusions="**/bin/**,**/obj/**" \
-            /d:sonar.qualitygate.wait=false
+            /d:sonar.exclusions="**/bin/**,**/obj/**,**/Migrations/**,**/*.Designer.cs" \
+            /d:sonar.qualitygate.wait=false \
+            /d:sonar.scanner.scanAll=false
 
-      - name: 🔨 Build for analysis (all projects — scanner instruments each build)
-        continue-on-error: true
+      - name: 🔨 Build for analysis (single solution build)
         run: |
-          while IFS= read -r proj; do
-            [ -z "$proj" ] && continue
-            echo "Building $proj"
-            dotnet build "$proj" \
-              --configuration Release \
-              -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
-          done < /tmp/all_projects.txt
+          dotnet build Manara.sln \
+            --configuration Release \
+            --no-restore \
+            -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
 
       - name: ✅ End SonarQube analysis (uploads results)
-        continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
@@ -243,7 +236,6 @@ jobs:
 
   # ================================================================
   # STAGE 4 — DOCKER BUILD + PUSH TO ECR
-  #  Unchanged: still depends on `test` only, exactly as before
   # ================================================================
   docker-push:
     name: "🐳 Stage 4 — Docker Build & Push ECR"
@@ -251,7 +243,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 🔎 Detect API project path
         id: api
@@ -275,7 +267,7 @@ jobs:
           echo "dll_name=$DLL"  >> $GITHUB_OUTPUT
 
       - name: 🔐 Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -292,23 +284,18 @@ jobs:
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           TAG="${SHORT_SHA}-$(date +%Y%m%d%H%M%S)"
           FULL_URI=$REGISTRY/${{ env.ECR_REPOSITORY }}
-
           echo "🏷️ Image tag: $TAG"
-
           docker build \
             --build-arg PROJECT_PATH="${{ steps.api.outputs.api_path }}" \
             --build-arg DLL_NAME="${{ steps.api.outputs.dll_name }}" \
             -t $FULL_URI:$TAG \
             -t $FULL_URI:latest .
-
           docker push $FULL_URI:$TAG
           docker push $FULL_URI:latest
-
           echo "✅ Pushed: $FULL_URI:$TAG"
 
   # ================================================================
-  # STAGE 5 — DEPLOY TO ECS (updates task def + deploys)
-  #  Unchanged
+  # STAGE 5 — DEPLOY TO ECS
   # ================================================================
   deploy:
     name: "🚀 Stage 5 — Deploy ECS"
@@ -316,7 +303,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔐 Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -328,7 +315,6 @@ jobs:
           TASK_DEF=$(aws ecs describe-task-definition \
             --task-definition ${{ env.ECS_TASK_FAMILY }} \
             --query taskDefinition)
-
           echo "📋 Old image:"
           echo $TASK_DEF | jq -r '.containerDefinitions[0].image'
 
@@ -337,12 +323,10 @@ jobs:
             --repository-names ${{ env.ECR_REPOSITORY }} \
             --query 'repositories[0].repositoryUri' \
             --output text)
-
           NEW_TAG=$(aws ecr describe-images \
             --repository-name ${{ env.ECR_REPOSITORY }} \
             --query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]' \
             --output text)
-
           FULL_IMAGE="$REGISTRY:$NEW_TAG"
           echo "🆕 New image: $FULL_IMAGE"
 
@@ -376,7 +360,6 @@ jobs:
 
   # ================================================================
   # STAGE 6 — VERIFY
-  #  Unchanged
   # ================================================================
   verify:
     name: "✅ Stage 6 — Verify"
@@ -384,7 +367,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔐 Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -396,7 +379,6 @@ jobs:
             --cluster ${{ env.ECS_CLUSTER }} \
             --services ${{ env.ECS_SERVICE }} \
             --query 'services[0]')
-
           RUNNING=$(echo $SERVICE | jq -r '.runningCount')
           DESIRED=$(echo $SERVICE | jq -r '.desiredCount')
           TASK_DEF=$(echo $SERVICE | jq -r '.taskDefinition')
