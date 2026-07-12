@@ -132,11 +132,11 @@ jobs:
 
   # ================================================================
   # STAGE 3b — SONARQUBE ANALYSIS (report-only, fully parallel/isolated)
-  #  • Depends ONLY on `install` — runs alongside build/test/docker-push
-  #  • continue-on-error at job level — can NEVER fail the workflow
   #  • Uses .NET-specific scanner (required for C#/VB.NET analysis)
-  #  • Builds ALL projects in a single temporary solution so the scanner
+  #  • Builds ALL projects in a single temporary .sln so the scanner
   #    instruments every project in one MSBuild graph
+  #  • Forces legacy .sln format (--format sln) because .NET 10 SDK
+  #    defaults to .slnx which some tooling paths still choke on
   #  • .NET 8 SDK is installed alongside .NET 10 because the
   #    sonarscanner tool itself targets net8
   # ================================================================
@@ -187,13 +187,32 @@ jobs:
           echo "✅ Installed dotnet-sonarscanner:"
           dotnet tool list --tool-path ./.sonar/scanner
 
-      - name: 🧠 Create temporary solution containing every project
+      - name: 🧠 Create temporary .sln containing every project
         run: |
-          dotnet new sln -n Manara
-          find . -maxdepth 5 -name "*.csproj" -print0 | \
-            xargs -0 -I{} dotnet sln Manara.sln add "{}"
-          echo "Projects in solution:"
-          dotnet sln Manara.sln list
+          set -e
+          # ⚠️ .NET 10 SDK defaults to .slnx — force legacy .sln
+          dotnet new sln -n Manara --format sln
+          echo "📄 Solution files present:"
+          ls -la Manara.sln* 2>/dev/null || true
+
+          # Verify Manara.sln exists
+          if [ ! -f Manara.sln ]; then
+            echo "❌ Manara.sln was not created!"
+            ls -la
+            exit 1
+          fi
+
+          SLN_PATH="$(pwd)/Manara.sln"
+          echo "Using solution: $SLN_PATH"
+
+          # Add every .csproj (skip the temp scanner folder just in case)
+          while IFS= read -r -d '' proj; do
+            echo "➕ Adding: $proj"
+            dotnet sln "$SLN_PATH" add "$proj" || echo "⚠️ Failed to add $proj"
+          done < <(find . -maxdepth 5 -name "*.csproj" -not -path "./.sonar/*" -print0)
+
+          echo "📋 Projects in solution:"
+          dotnet sln "$SLN_PATH" list
 
       - name: 📦 Restore packages (whole solution)
         run: |
