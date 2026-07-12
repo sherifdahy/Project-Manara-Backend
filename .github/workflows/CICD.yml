@@ -169,16 +169,16 @@ jobs:
           restore-keys: |
             nuget-${{ runner.os }}-
 
-      # NOTE: intentionally NOT caching the scanner tool itself.
-      # A corrupted/partial cached binary from a prior failed run was the
-      # most likely cause of the exit-134 (SIGABRT) crash — always doing
-      # a clean install here trades ~10s of extra time for reliability.
-      - name: 📦 Install dotnet-sonarscanner (clean install, no cache)
+      # NOTE: dotnet-sonarscanner 11.x has a known crash (ArgumentNullException /
+      # SIGABRT) when the server's /api/settings/values returns 404 on a fresh
+      # SonarQube Community install with no global settings saved yet.
+      # Pinning to 9.0.2 avoids this — it tolerates the empty/404 response.
+      - name: 📦 Install dotnet-sonarscanner (pinned stable version, no cache)
         continue-on-error: true
         run: |
           rm -rf ./.sonar
           mkdir -p ./.sonar/scanner
-          dotnet tool install dotnet-sonarscanner --tool-path ./.sonar/scanner
+          dotnet tool install dotnet-sonarscanner --version 9.0.2 --tool-path ./.sonar/scanner
           ./.sonar/scanner/dotnet-sonarscanner --version
 
       - name: 📦 Restore packages
@@ -191,20 +191,18 @@ jobs:
         continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
-          if [ -z "$SONAR_TOKEN" ] || [ -z "$SONAR_HOST_URL" ]; then
-            echo "❌ SONAR_TOKEN or SONAR_HOST_URL secret is missing/empty in this repo."
-            echo "   Add both under Settings → Secrets and variables → Actions."
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "❌ SONAR_TOKEN secret is missing/empty in this repo."
+            echo "   Add it under Settings → Secrets and variables → Actions."
             exit 0
           fi
           ./.sonar/scanner/dotnet-sonarscanner begin \
             /k:"manaraa-backend" \
-            /d:sonar.host.url="$SONAR_HOST_URL" \
+            /d:sonar.host.url="https://sonar.manaraa.tech" \
             /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.exclusions="**/bin/**,**/obj/**,**/*.Designer.cs" \
-            /d:sonar.qualitygate.wait=false \
-            /d:sonar.verbose=true
+            /d:sonar.qualitygate.wait=false
 
       - name: 🔨 Build for analysis (scanner instruments the build)
         continue-on-error: true
@@ -217,7 +215,6 @@ jobs:
         continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
           if [ -z "$SONAR_TOKEN" ]; then
             echo "❌ Skipping end step — SONAR_TOKEN missing."
@@ -407,4 +404,4 @@ jobs:
             echo "✅ Deployment successful!"
           else
             echo "⚠️ Warning: Running ($RUNNING) != Desired ($DESIRED)"
-          fi
+          fi0.
