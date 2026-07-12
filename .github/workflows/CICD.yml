@@ -170,22 +170,21 @@ jobs:
           restore-keys: |
             nuget-${{ runner.os }}-
 
-      - name: 🧠 Build a temporary solution covering ALL projects
+      - name: 🧠 Discover all projects for full analysis
         # The main pipeline's `install` job only detects a single .csproj
         # (no .sln exists in this repo), so build/test only ever touch
         # App.Services + App.Core. That's fine for deploy, but SonarQube
-        # needs full coverage — so this job creates its own throwaway .sln
-        # with every .csproj in the repo, without touching the main pipeline.
-        id: fullsln
+        # needs full coverage — so this job restores/builds every .csproj
+        # individually (no .sln needed; the scanner instruments any
+        # dotnet build/restore call between begin/end regardless of
+        # whether it targets a solution or individual projects).
+        id: projects
         run: |
-          dotnet new sln -n manaraa-backend-full -o . --force
           FOUND=$(find . -maxdepth 5 -name "*.csproj")
           echo "Projects found for full analysis:"
           echo "$FOUND"
-          for proj in $FOUND; do
-            dotnet sln manaraa-backend-full.sln add "$proj"
-          done
-          echo "sln_path=manaraa-backend-full.sln" >> $GITHUB_OUTPUT
+          # Save as a newline-delimited file since GITHUB_OUTPUT can't hold multiline lists cleanly
+          echo "$FOUND" > /tmp/all_projects.txt
 
       - name: 📦 Install dotnet-sonarscanner (pinned stable version)
         continue-on-error: true
@@ -195,11 +194,14 @@ jobs:
           dotnet tool install dotnet-sonarscanner --version 9.0.2 --tool-path ./.sonar/scanner
           ./.sonar/scanner/dotnet-sonarscanner --version
 
-      - name: 📦 Restore packages (full solution)
+      - name: 📦 Restore packages (all projects)
         continue-on-error: true
         run: |
-          dotnet restore "${{ steps.fullsln.outputs.sln_path }}" \
-            --packages "${{ env.NUGET_PACKAGES }}"
+          while IFS= read -r proj; do
+            [ -z "$proj" ] && continue
+            echo "Restoring $proj"
+            dotnet restore "$proj" --packages "${{ env.NUGET_PACKAGES }}"
+          done < /tmp/all_projects.txt
 
       - name: 🔍 Begin SonarQube analysis
         continue-on-error: true
@@ -218,12 +220,17 @@ jobs:
             /d:sonar.exclusions="**/bin/**,**/obj/**,**/*.Designer.cs" \
             /d:sonar.qualitygate.wait=false
 
-      - name: 🔨 Build for analysis (full solution — scanner instruments the build)
+      - name: 🔨 Build for analysis (all projects — scanner instruments each build)
         continue-on-error: true
         run: |
-          dotnet build "${{ steps.fullsln.outputs.sln_path }}" \
-            --configuration Release \
-            -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
+          while IFS= read -r proj; do
+            [ -z "$proj" ] && continue
+            echo "Building $proj"
+            dotnet build "$proj" \
+              --configuration Release \
+              -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
+          done < /tmp/all_projects.txt
+
 
       - name: ✅ End SonarQube analysis (uploads results)
         continue-on-error: true
