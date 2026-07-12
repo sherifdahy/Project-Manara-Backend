@@ -99,6 +99,22 @@ public class GetStudentLecturesQueryHandler(IUnitOfWork unitOfWork,ProgramUserEr
         #endregion
 
 
+        var lectureScheduleIds = lectureSchendels
+        .Select(x => x.Id)
+        .ToList();
+
+            var allLectureRegistrations = await _unitOfWork.LectureRegistrations
+                .FindAllAsync(
+                    x => lectureScheduleIds.Contains(x.LectureScheduleId),
+                    cancellationToken: cancellationToken);
+
+            var lectureRegistrationsCount = allLectureRegistrations
+                .GroupBy(x => x.LectureScheduleId)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Count());
+
+
         #region Code And Return
         var programSubjects = await _unitOfWork.ProgramSubjects
             .FindAllAsync(
@@ -151,8 +167,27 @@ public class GetStudentLecturesQueryHandler(IUnitOfWork unitOfWork,ProgramUserEr
 
             if (isSubjectAvailable)
             {
-                response.Add(CreateResponse(
+                var registeredCount = lectureRegistrationsCount.TryGetValue(
                     lectureSchedule!.Id,
+                    out var count)
+                        ? count
+                        : 0;
+
+                var availableSlots = lectureSchedule.MaxSlots - registeredCount;
+
+                if (availableSlots <= 0)
+                {
+                    response.Add(CreateResponse(
+                        lectureSchedule.Id,
+                        lectureSchedule.Subject,
+                        null,
+                        "Full"));
+
+                    continue;
+                }
+
+                response.Add(CreateResponse(
+                    lectureSchedule.Id,
                     lectureSchedule.Subject,
                     null,
                     "Available"));

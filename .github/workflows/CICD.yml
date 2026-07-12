@@ -131,7 +131,98 @@ jobs:
             -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}" || true
 
   # ================================================================
+  # STAGE 3b — SONARQUBE ANALYSIS (added stage, fully parallel/isolated)
+  #  • Depends ONLY on `install` — runs alongside build/test/docker-push,
+  #    never gates or delays them
+  #  • Nothing above this line was changed from the working pipeline
+  #  • continue-on-error at job + step level — can NEVER fail the workflow
+  #  • Pinned scanner version 9.0.2 (avoids a known crash in 11.x against
+  #    fresh SonarQube Community servers with no global settings saved)
+  #  • Host URL hardcoded — only needs SONAR_TOKEN as a secret
+  # ================================================================
+  sonarqube:
+    name: "🔍 Stage 3b — SonarQube Analysis (report-only)"
+    needs: install
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ⚙️ Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: ☕ Setup Java (required by the Sonar scanner engine)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: 💾 Restore NuGet cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: 📦 Install dotnet-sonarscanner (pinned stable version)
+        continue-on-error: true
+        run: |
+          rm -rf ./.sonar
+          mkdir -p ./.sonar/scanner
+          dotnet tool install dotnet-sonarscanner --version 9.0.2 --tool-path ./.sonar/scanner
+          ./.sonar/scanner/dotnet-sonarscanner --version
+
+      - name: 📦 Restore packages
+        continue-on-error: true
+        run: |
+          dotnet restore "${{ needs.install.outputs.solution_path }}" \
+            --packages "${{ env.NUGET_PACKAGES }}"
+
+      - name: 🔍 Begin SonarQube analysis
+        continue-on-error: true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "❌ SONAR_TOKEN secret is missing/empty in this repo."
+            echo "   Add it under Settings → Secrets and variables → Actions."
+            exit 0
+          fi
+          ./.sonar/scanner/dotnet-sonarscanner begin \
+            /k:"manaraa-backend" \
+            /d:sonar.host.url="https://sonar.manaraa.tech" \
+            /d:sonar.token="$SONAR_TOKEN" \
+            /d:sonar.exclusions="**/bin/**,**/obj/**,**/*.Designer.cs" \
+            /d:sonar.qualitygate.wait=false
+
+      - name: 🔨 Build for analysis (scanner instruments the build)
+        continue-on-error: true
+        run: |
+          dotnet build "${{ needs.install.outputs.solution_path }}" \
+            --configuration Release \
+            -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
+
+      - name: ✅ End SonarQube analysis (uploads results)
+        continue-on-error: true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "❌ Skipping end step — SONAR_TOKEN missing."
+            exit 0
+          fi
+          ./.sonar/scanner/dotnet-sonarscanner end \
+            /d:sonar.token="$SONAR_TOKEN"
+
+  # ================================================================
   # STAGE 4 — DOCKER BUILD + PUSH TO ECR
+  #  Unchanged: still depends on `test` only, exactly as before
   # ================================================================
   docker-push:
     name: "🐳 Stage 4 — Docker Build & Push ECR"
@@ -196,6 +287,7 @@ jobs:
 
   # ================================================================
   # STAGE 5 — DEPLOY TO ECS (updates task def + deploys)
+  #  Unchanged
   # ================================================================
   deploy:
     name: "🚀 Stage 5 — Deploy ECS"
@@ -263,6 +355,7 @@ jobs:
 
   # ================================================================
   # STAGE 6 — VERIFY
+  #  Unchanged
   # ================================================================
   verify:
     name: "✅ Stage 6 — Verify"
@@ -310,4 +403,3 @@ jobs:
           else
             echo "⚠️ Warning: Running ($RUNNING) != Desired ($DESIRED)"
           fi
-
