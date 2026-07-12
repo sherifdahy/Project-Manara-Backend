@@ -136,14 +136,15 @@ jobs:
   #    never gates or delays them
   #  • Nothing above this line was changed from the working pipeline
   #  • continue-on-error at job + step level — can NEVER fail the workflow
-  #  • Uses the GENERIC scanner CLI (same action as the frontend repo),
-  #    NOT dotnet-sonarscanner — the .NET-specific wrapper's legacy
-  #    pre-processor calls a settings API endpoint that crashes against
-  #    this SonarQube version regardless of scanner version or server
-  #    config. The generic scanner doesn't hit that code path and is
-  #    proven working (it's what the frontend repo already uses).
-  #    Trade-off: no Roslyn build-correlation, but full static analysis
-  #    (bugs, code smells, security hotspots, duplication) still runs.
+  #  • MUST use dotnet-sonarscanner (.NET-specific scanner) — confirmed via
+  #    server log that the generic CLI scanner CANNOT analyze C#/VB.NET at
+  #    all (hard product limitation, not a config issue):
+  #    "Your project contains C# files which cannot be analyzed with the
+  #     scanner you are using. To analyze C# or VB.NET, you must use the
+  #     SonarScanner for .NET 5.x or higher"
+  #  • Previous crash (exit 134, ArgumentNullException on /api/settings/values)
+  #    may be caused by a project-scoped token lacking permission to read
+  #    GLOBAL settings — use a User Token, not a Project Analysis Token.
   # ================================================================
   sonarqube:
     name: "🔍 Stage 3b — SonarQube Analysis (report-only)"
@@ -156,18 +157,89 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🔍 SonarQube Scan (entire repo, nothing excluded except build artifacts)
-        uses: SonarSource/sonarqube-scan-action@v4
+      - name: ⚙️ Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: ☕ Setup Java (required by the Sonar scanner engine)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: 💾 Restore NuGet cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: 🧠 Discover all projects for full analysis
+        # No .sln in this repo, so restore/build every .csproj individually —
+        # the scanner instruments any dotnet build/restore between begin/end.
+        run: |
+          FOUND=$(find . -maxdepth 5 -name "*.csproj")
+          echo "Projects found for full analysis:"
+          echo "$FOUND"
+          echo "$FOUND" > /tmp/all_projects.txt
+
+      - name: 📦 Install dotnet-sonarscanner
+        continue-on-error: true
+        run: |
+          rm -rf ./.sonar
+          mkdir -p ./.sonar/scanner
+          dotnet tool install dotnet-sonarscanner --version 9.0.2 --tool-path ./.sonar/scanner
+          ./.sonar/scanner/dotnet-sonarscanner --version
+
+      - name: 📦 Restore packages (all projects)
+        continue-on-error: true
+        run: |
+          while IFS= read -r proj; do
+            [ -z "$proj" ] && continue
+            echo "Restoring $proj"
+            dotnet restore "$proj" --packages "${{ env.NUGET_PACKAGES }}"
+          done < /tmp/all_projects.txt
+
+      - name: 🔍 Begin SonarQube analysis
         continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=manaraa-backend
-            -Dsonar.host.url=https://sonar.manaraa.tech
-            -Dsonar.sources=.
-            -Dsonar.exclusions=**/bin/**,**/obj/**
-            -Dsonar.qualitygate.wait=false
+        run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "❌ SONAR_TOKEN secret is missing/empty in this repo."
+            exit 0
+          fi
+          ./.sonar/scanner/dotnet-sonarscanner begin \
+            /k:"manaraa-backend" \
+            /d:sonar.host.url="https://sonar.manaraa.tech" \
+            /d:sonar.token="$SONAR_TOKEN" \
+            /d:sonar.exclusions="**/bin/**,**/obj/**" \
+            /d:sonar.qualitygate.wait=false
+
+      - name: 🔨 Build for analysis (all projects — scanner instruments each build)
+        continue-on-error: true
+        run: |
+          while IFS= read -r proj; do
+            [ -z "$proj" ] && continue
+            echo "Building $proj"
+            dotnet build "$proj" \
+              --configuration Release \
+              -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
+          done < /tmp/all_projects.txt
+
+      - name: ✅ End SonarQube analysis (uploads results)
+        continue-on-error: true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "❌ Skipping end step — SONAR_TOKEN missing."
+            exit 0
+          fi
+          ./.sonar/scanner/dotnet-sonarscanner end \
+            /d:sonar.token="$SONAR_TOKEN"
 
   # ================================================================
   # STAGE 4 — DOCKER BUILD + PUSH TO ECR
