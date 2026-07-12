@@ -159,7 +159,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: 💾 Restore NuGet cache
         uses: actions/cache@v4
@@ -169,18 +169,17 @@ jobs:
           restore-keys: |
             nuget-${{ runner.os }}-
 
-      - name: 💾 Cache SonarQube scanner tool
-        uses: actions/cache@v4
-        with:
-          path: ./.sonar/scanner
-          key: sonar-scanner-${{ runner.os }}
-
-      - name: 📦 Install dotnet-sonarscanner (local tool)
+      # NOTE: intentionally NOT caching the scanner tool itself.
+      # A corrupted/partial cached binary from a prior failed run was the
+      # most likely cause of the exit-134 (SIGABRT) crash — always doing
+      # a clean install here trades ~10s of extra time for reliability.
+      - name: 📦 Install dotnet-sonarscanner (clean install, no cache)
         continue-on-error: true
         run: |
+          rm -rf ./.sonar
           mkdir -p ./.sonar/scanner
-          dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner || \
           dotnet tool install dotnet-sonarscanner --tool-path ./.sonar/scanner
+          ./.sonar/scanner/dotnet-sonarscanner --version
 
       - name: 📦 Restore packages
         continue-on-error: true
@@ -194,12 +193,18 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
+          if [ -z "$SONAR_TOKEN" ] || [ -z "$SONAR_HOST_URL" ]; then
+            echo "❌ SONAR_TOKEN or SONAR_HOST_URL secret is missing/empty in this repo."
+            echo "   Add both under Settings → Secrets and variables → Actions."
+            exit 0
+          fi
           ./.sonar/scanner/dotnet-sonarscanner begin \
             /k:"manaraa-backend" \
-            /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
-            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.host.url="$SONAR_HOST_URL" \
+            /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.exclusions="**/bin/**,**/obj/**,**/*.Designer.cs" \
-            /d:sonar.qualitygate.wait=false
+            /d:sonar.qualitygate.wait=false \
+            /d:sonar.verbose=true
 
       - name: 🔨 Build for analysis (scanner instruments the build)
         continue-on-error: true
@@ -214,8 +219,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "❌ Skipping end step — SONAR_TOKEN missing."
+            exit 0
+          fi
           ./.sonar/scanner/dotnet-sonarscanner end \
-            /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+            /d:sonar.token="$SONAR_TOKEN"
 
   # ================================================================
   # STAGE 4 — DOCKER BUILD + PUSH TO ECR
