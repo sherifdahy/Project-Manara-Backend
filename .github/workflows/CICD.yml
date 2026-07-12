@@ -156,7 +156,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🔍 SonarQube Scan (full repo, all C# projects)
+      - name: 🔍 SonarQube Scan (entire repo, nothing excluded except build artifacts)
         uses: SonarSource/sonarqube-scan-action@v4
         continue-on-error: true
         env:
@@ -166,7 +166,7 @@ jobs:
             -Dsonar.projectKey=manaraa-backend
             -Dsonar.host.url=https://sonar.manaraa.tech
             -Dsonar.sources=.
-            -Dsonar.exclusions=**/bin/**,**/obj/**,**/*.Designer.cs,**/Migrations/**
+            -Dsonar.exclusions=**/bin/**,**/obj/**
             -Dsonar.qualitygate.wait=false
 
   # ================================================================
