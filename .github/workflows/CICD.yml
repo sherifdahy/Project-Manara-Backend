@@ -131,7 +131,96 @@ jobs:
             -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}" || true
 
   # ================================================================
+  # STAGE 3b — SONARQUBE ANALYSIS (standalone, non-blocking)
+  #  • Runs in parallel with docker-push/deploy — needs only `install`
+  #  • .NET scanning is different from JS: the scanner wraps the BUILD
+  #    itself (begin → build → end), so this job does its own restore
+  #    + build rather than reusing Stage 2's artifacts
+  #  • continue-on-error at every level — can NEVER fail the workflow
+  #  • No quality gate check step — findings live only on the dashboard
+  # ================================================================
+  sonarqube:
+    name: "🔍 Stage 3b — SonarQube Analysis (report-only)"
+    needs: install
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history for blame/new-code analysis
+
+      - name: ⚙️ Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: ☕ Setup Java (required by the Sonar scanner engine)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: 💾 Restore NuGet cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: 💾 Cache SonarQube scanner tool
+        uses: actions/cache@v4
+        with:
+          path: ./.sonar/scanner
+          key: sonar-scanner-${{ runner.os }}
+
+      - name: 📦 Install dotnet-sonarscanner (local tool)
+        continue-on-error: true
+        run: |
+          mkdir -p ./.sonar/scanner
+          dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner || \
+          dotnet tool install dotnet-sonarscanner --tool-path ./.sonar/scanner
+
+      - name: 📦 Restore packages
+        continue-on-error: true
+        run: |
+          dotnet restore "${{ needs.install.outputs.solution_path }}" \
+            --packages "${{ env.NUGET_PACKAGES }}"
+
+      - name: 🔍 Begin SonarQube analysis
+        continue-on-error: true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          ./.sonar/scanner/dotnet-sonarscanner begin \
+            /k:"manaraa-backend" \
+            /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.exclusions="**/bin/**,**/obj/**,**/*.Designer.cs" \
+            /d:sonar.qualitygate.wait=false
+
+      - name: 🔨 Build for analysis (scanner instruments the build)
+        continue-on-error: true
+        run: |
+          dotnet build "${{ needs.install.outputs.solution_path }}" \
+            --configuration Release \
+            -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
+
+      - name: ✅ End SonarQube analysis (uploads results)
+        continue-on-error: true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          ./.sonar/scanner/dotnet-sonarscanner end \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+  # ================================================================
   # STAGE 4 — DOCKER BUILD + PUSH TO ECR
+  #  Depends on `test` only — sonarqube runs in its own parallel branch
+  #  and can never delay or block this stage
   # ================================================================
   docker-push:
     name: "🐳 Stage 4 — Docker Build & Push ECR"
@@ -310,4 +399,3 @@ jobs:
           else
             echo "⚠️ Warning: Running ($RUNNING) != Desired ($DESIRED)"
           fi
-
