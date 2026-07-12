@@ -170,6 +170,23 @@ jobs:
           restore-keys: |
             nuget-${{ runner.os }}-
 
+      - name: 🧠 Build a temporary solution covering ALL projects
+        # The main pipeline's `install` job only detects a single .csproj
+        # (no .sln exists in this repo), so build/test only ever touch
+        # App.Services + App.Core. That's fine for deploy, but SonarQube
+        # needs full coverage — so this job creates its own throwaway .sln
+        # with every .csproj in the repo, without touching the main pipeline.
+        id: fullsln
+        run: |
+          dotnet new sln -n manaraa-backend-full -o . --force
+          FOUND=$(find . -maxdepth 5 -name "*.csproj")
+          echo "Projects found for full analysis:"
+          echo "$FOUND"
+          for proj in $FOUND; do
+            dotnet sln manaraa-backend-full.sln add "$proj"
+          done
+          echo "sln_path=manaraa-backend-full.sln" >> $GITHUB_OUTPUT
+
       - name: 📦 Install dotnet-sonarscanner (pinned stable version)
         continue-on-error: true
         run: |
@@ -178,10 +195,10 @@ jobs:
           dotnet tool install dotnet-sonarscanner --version 9.0.2 --tool-path ./.sonar/scanner
           ./.sonar/scanner/dotnet-sonarscanner --version
 
-      - name: 📦 Restore packages
+      - name: 📦 Restore packages (full solution)
         continue-on-error: true
         run: |
-          dotnet restore "${{ needs.install.outputs.solution_path }}" \
+          dotnet restore "${{ steps.fullsln.outputs.sln_path }}" \
             --packages "${{ env.NUGET_PACKAGES }}"
 
       - name: 🔍 Begin SonarQube analysis
@@ -201,10 +218,10 @@ jobs:
             /d:sonar.exclusions="**/bin/**,**/obj/**,**/*.Designer.cs" \
             /d:sonar.qualitygate.wait=false
 
-      - name: 🔨 Build for analysis (scanner instruments the build)
+      - name: 🔨 Build for analysis (full solution — scanner instruments the build)
         continue-on-error: true
         run: |
-          dotnet build "${{ needs.install.outputs.solution_path }}" \
+          dotnet build "${{ steps.fullsln.outputs.sln_path }}" \
             --configuration Release \
             -p:RestorePackagesPath="${{ env.NUGET_PACKAGES }}"
 
