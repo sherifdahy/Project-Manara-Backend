@@ -50,7 +50,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("AcademicYear", (string)null);
+                    b.ToTable("AcademicYear");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.Day", b =>
@@ -67,7 +67,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Day", (string)null);
+                    b.ToTable("Day");
 
                     b.HasData(
                         new
@@ -153,7 +153,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("YearId", "TermId");
 
-                    b.ToTable("LectureSchedules", (string)null);
+                    b.ToTable("LectureSchedules");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
@@ -180,7 +180,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Period", (string)null);
+                    b.ToTable("Period");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.SectionSchedule", b =>
@@ -229,7 +229,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("YearId", "TermId");
 
-                    b.ToTable("SectionSchedules", (string)null);
+                    b.ToTable("SectionSchedules");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.Term", b =>
@@ -246,7 +246,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Term", (string)null);
+                    b.ToTable("Term");
 
                     b.HasData(
                         new
@@ -576,7 +576,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("RoleClaimOverrides", (string)null);
+                    b.ToTable("RoleClaimOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.Scope", b =>
@@ -601,7 +601,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("ParentScopeId");
 
-                    b.ToTable("Scopes", (string)null);
+                    b.ToTable("Scopes");
 
                     b.HasData(
                         new
@@ -651,7 +651,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasKey("ApplicationUserId", "ClaimValue");
 
-                    b.ToTable("UserClaimOverrides", (string)null);
+                    b.ToTable("UserClaimOverrides");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.DepartmentUser", b =>
@@ -666,7 +666,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("DepartmentUsers", (string)null);
+                    b.ToTable("DepartmentUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.FacultyUser", b =>
@@ -681,7 +681,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("FacultyUsers", (string)null);
+                    b.ToTable("FacultyUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
@@ -696,7 +696,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.UniversityUser", b =>
@@ -711,7 +711,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("UniversityUsers", (string)null);
+                    b.ToTable("UniversityUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.LectureRegistration", b =>
@@ -729,7 +729,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("LectureScheduleId");
 
-                    b.ToTable("LectureRegistrations", (string)null);
+                    b.ToTable("LectureRegistrations");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.ProgramSubject", b =>
@@ -744,7 +744,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("ProgramSubject", (string)null);
+                    b.ToTable("ProgramSubject");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.SectionRegistration", b =>
@@ -759,7 +759,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("SectionScheduleId");
 
-                    b.ToTable("SectionRegistrations", (string)null);
+                    b.ToTable("SectionRegistrations");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.StudentProgramYearTerm", b =>
@@ -800,7 +800,7 @@ namespace App.Infrastructure.Migrations
                     b.HasIndex("UserId", "ProgramId", "YearId", "TermId")
                         .IsUnique();
 
-                    b.ToTable("StudentProgramYearTerm", (string)null);
+                    b.ToTable("StudentProgramYearTerm");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.YearTerm", b =>
@@ -818,7 +818,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("TermId");
 
-                    b.ToTable("YearTerm", (string)null);
+                    b.ToTable("YearTerm");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -864,7 +864,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Faculty", b =>
@@ -910,7 +910,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("Faculties", (string)null);
+                    b.ToTable("Faculties");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
@@ -949,7 +949,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Programs", (string)null);
+                    b.ToTable("Programs");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Subject", b =>
@@ -985,7 +985,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Subjects", (string)null);
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.SubjectPrerequisite", b =>
@@ -1000,7 +1000,7 @@ namespace App.Infrastructure.Migrations
 
                     b.HasIndex("PrerequisiteId");
 
-                    b.ToTable("SubjectPrerequisites", (string)null);
+                    b.ToTable("SubjectPrerequisites");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.University", b =>
@@ -1047,7 +1047,7 @@ namespace App.Infrastructure.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Universities", null, t =>
+                    b.ToTable("Universities", t =>
                         {
                             t.HasCheckConstraint("CK_University_YearOfEstablishment", "[YearOfEstablishment] >= 1800 AND [YearOfEstablishment] <= YEAR(GETDATE())");
                         });
@@ -1284,7 +1284,7 @@ namespace App.Infrastructure.Migrations
                         {
                             Id = 30,
                             ClaimType = "permissions",
-                            ClaimValue = "programSectionschedule:read",
+                            ClaimValue = "programSectionsSchedule:read",
                             RoleId = 100
                         },
                         new
@@ -1551,6 +1551,41 @@ namespace App.Infrastructure.Migrations
                             Id = 68,
                             ClaimType = "permissions",
                             ClaimValue = "enrollments:toggleStatus",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 69,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 70,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 71,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 72,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:updateGrade",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 73,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:toggleStatus",
                             RoleId = 100
                         });
                 });

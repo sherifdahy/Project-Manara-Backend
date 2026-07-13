@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260308194630_add isdeleted to subject")]
-    partial class addisdeletedtosubject
+    [Migration("20260713072125_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,9 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("FacultyId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -61,20 +64,53 @@ namespace App.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FacultyId")
-                        .HasColumnType("int");
-
-                    b.Property<DateOnly>("Value")
-                        .HasColumnType("date");
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FacultyId");
-
                     b.ToTable("Day");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Value = "Saturday"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Value = "Sunday"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Value = "Monday"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Value = "Tuesday"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Value = "Wednesday"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Value = "Thursday"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Value = "Friday"
+                        });
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
+            modelBuilder.Entity("App.Core.Entities.Academic.LectureSchedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,14 +121,118 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("DayId")
                         .HasColumnType("int");
 
-                    b.Property<TimeOnly>("Value")
-                        .HasColumnType("time");
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxSlots")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PeriodId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProgramId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TermId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YearId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DayId");
 
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PeriodId");
+
+                    b.HasIndex("ProgramId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.HasIndex("YearId", "TermId");
+
+                    b.ToTable("LectureSchedules");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacultyId");
+
                     b.ToTable("Period");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Academic.SectionSchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DayId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InstructorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxSlots")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PeriodId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProgramId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TermId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YearId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DayId");
+
+                    b.HasIndex("InstructorId");
+
+                    b.HasIndex("PeriodId");
+
+                    b.HasIndex("ProgramId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.HasIndex("YearId", "TermId");
+
+                    b.ToTable("SectionSchedules");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.Term", b =>
@@ -110,6 +250,23 @@ namespace App.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Term");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "First Term"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Second Term"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Summer Term"
+                        });
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationRole", b =>
@@ -530,7 +687,7 @@ namespace App.Infrastructure.Migrations
                     b.ToTable("FacultyUsers");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
+            modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
                 {
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -538,16 +695,11 @@ namespace App.Infrastructure.Migrations
                     b.Property<int>("FacultyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProgramId")
-                        .HasColumnType("int");
-
                     b.HasKey("UserId");
 
                     b.HasIndex("FacultyId");
 
-                    b.HasIndex("ProgramId");
-
-                    b.ToTable("ProgramUsers");
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Personnel.UniversityUser", b =>
@@ -565,40 +717,22 @@ namespace App.Infrastructure.Migrations
                     b.ToTable("UniversityUsers");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Relations.DepartmentUserSubjectYearTermPeriod", b =>
+            modelBuilder.Entity("App.Core.Entities.Relations.LectureRegistration", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("StudentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SubjectId")
+                    b.Property<int>("LectureScheduleId")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearTermId")
-                        .HasColumnType("int");
+                    b.Property<decimal>("GPA")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("PeriodId")
-                        .HasColumnType("int");
+                    b.HasKey("StudentId", "LectureScheduleId");
 
-                    b.Property<int?>("TermId")
-                        .HasColumnType("int");
+                    b.HasIndex("LectureScheduleId");
 
-                    b.Property<int>("YearTermTermId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YearTermYearId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId", "SubjectId", "YearTermId", "PeriodId");
-
-                    b.HasIndex("PeriodId");
-
-                    b.HasIndex("SubjectId");
-
-                    b.HasIndex("TermId");
-
-                    b.HasIndex("YearTermYearId", "YearTermTermId");
-
-                    b.ToTable("DepartmentUserSubjectYearTermPeriod");
+                    b.ToTable("LectureRegistrations");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.ProgramSubject", b =>
@@ -616,30 +750,60 @@ namespace App.Infrastructure.Migrations
                     b.ToTable("ProgramSubject");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Relations.ProgramUserProgramYearTerm", b =>
+            modelBuilder.Entity("App.Core.Entities.Relations.SectionRegistration", b =>
                 {
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SectionScheduleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("StudentId", "SectionScheduleId");
+
+                    b.HasIndex("SectionScheduleId");
+
+                    b.ToTable("SectionRegistrations");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Relations.StudentProgramYearTerm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ProgramId")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearTermId")
+                    b.Property<int>("TermId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearTermTermId")
+                    b.Property<int>("YearId")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearTermYearId")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
 
-                    b.HasKey("ProgramId", "YearTermId", "UserId");
+                    b.HasIndex("ProgramId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId", "ProgramId")
+                        .IsUnique();
 
-                    b.HasIndex("YearTermYearId", "YearTermTermId");
+                    b.HasIndex("YearId", "TermId");
 
-                    b.ToTable("ProgramUserProgramYearTerm");
+                    b.HasIndex("UserId", "YearId", "TermId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId", "ProgramId", "YearId", "TermId")
+                        .IsUnique();
+
+                    b.ToTable("StudentProgramYearTerm");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.YearTerm", b =>
@@ -1088,175 +1252,343 @@ namespace App.Infrastructure.Migrations
                         {
                             Id = 25,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:read",
+                            ClaimValue = "programSubjects:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 26,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:create",
+                            ClaimValue = "programSubjects:add",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 27,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:update",
+                            ClaimValue = "programSubjects:remove",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 28,
                             ClaimType = "permissions",
-                            ClaimValue = "universityUsers:toggleStatus",
+                            ClaimValue = "programLecturesSchedule:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 29,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:read",
+                            ClaimValue = "programLecturesSchedule:save",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 30,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:create",
+                            ClaimValue = "programSectionsSchedule:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 31,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:update",
+                            ClaimValue = "programSectionsSchedule:save",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 32,
                             ClaimType = "permissions",
-                            ClaimValue = "facultyUsers:toggleStatus",
+                            ClaimValue = "universityUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 33,
                             ClaimType = "permissions",
-                            ClaimValue = "departmentUsers:read",
+                            ClaimValue = "universityUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 34,
                             ClaimType = "permissions",
-                            ClaimValue = "departmentUsers:create",
+                            ClaimValue = "universityUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 35,
                             ClaimType = "permissions",
-                            ClaimValue = "departmentUsers:update",
+                            ClaimValue = "universityUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 36,
                             ClaimType = "permissions",
-                            ClaimValue = "departmentUsers:toggleStatus",
+                            ClaimValue = "facultyUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 37,
                             ClaimType = "permissions",
-                            ClaimValue = "programUsers:read",
+                            ClaimValue = "facultyUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 38,
                             ClaimType = "permissions",
-                            ClaimValue = "programUsers:create",
+                            ClaimValue = "facultyUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 39,
                             ClaimType = "permissions",
-                            ClaimValue = "programUsers:update",
+                            ClaimValue = "facultyUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 40,
                             ClaimType = "permissions",
-                            ClaimValue = "programUsers:toggleStatus",
+                            ClaimValue = "departmentUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 41,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:read",
+                            ClaimValue = "departmentUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 42,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:readDetail",
+                            ClaimValue = "departmentUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 43,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:create",
+                            ClaimValue = "departmentUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 44,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:update",
+                            ClaimValue = "programUsers:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 45,
                             ClaimType = "permissions",
-                            ClaimValue = "scopes:toggleStatus",
+                            ClaimValue = "programUsers:create",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 46,
                             ClaimType = "permissions",
-                            ClaimValue = "subjects:read",
+                            ClaimValue = "programUsers:update",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 47,
                             ClaimType = "permissions",
-                            ClaimValue = "subjects:create",
+                            ClaimValue = "programUsers:toggleStatus",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 48,
                             ClaimType = "permissions",
-                            ClaimValue = "subjects:update",
+                            ClaimValue = "scopes:read",
                             RoleId = 100
                         },
                         new
                         {
                             Id = 49,
                             ClaimType = "permissions",
+                            ClaimValue = "scopes:readDetail",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 50,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 51,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 52,
+                            ClaimType = "permissions",
+                            ClaimValue = "scopes:toggleStatus",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 53,
+                            ClaimType = "permissions",
+                            ClaimValue = "subjects:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 54,
+                            ClaimType = "permissions",
+                            ClaimValue = "subjects:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 55,
+                            ClaimType = "permissions",
+                            ClaimValue = "subjects:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 56,
+                            ClaimType = "permissions",
                             ClaimValue = "subjects:toggleStatus",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 57,
+                            ClaimType = "permissions",
+                            ClaimValue = "years:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 58,
+                            ClaimType = "permissions",
+                            ClaimValue = "years:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 59,
+                            ClaimType = "permissions",
+                            ClaimValue = "years:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 60,
+                            ClaimType = "permissions",
+                            ClaimValue = "years:toggleStatus",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 61,
+                            ClaimType = "permissions",
+                            ClaimValue = "periods:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 62,
+                            ClaimType = "permissions",
+                            ClaimValue = "periods:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 63,
+                            ClaimType = "permissions",
+                            ClaimValue = "periods:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 64,
+                            ClaimType = "permissions",
+                            ClaimValue = "periods:toggleStatus",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 65,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 66,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 67,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 68,
+                            ClaimType = "permissions",
+                            ClaimValue = "enrollments:toggleStatus",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 69,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:read",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 70,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:create",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 71,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:update",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 72,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:updateGrade",
+                            RoleId = 100
+                        },
+                        new
+                        {
+                            Id = 73,
+                            ClaimType = "permissions",
+                            ClaimValue = "studentsPortal:toggleStatus",
                             RoleId = 100
                         });
                 });
@@ -1358,10 +1690,61 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("Faculty");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Academic.Day", b =>
+            modelBuilder.Entity("App.Core.Entities.Academic.LectureSchedule", b =>
+                {
+                    b.HasOne("App.Core.Entities.Academic.Day", "Day")
+                        .WithMany()
+                        .HasForeignKey("DayId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Personnel.DepartmentUser", "Doctor")
+                        .WithMany("LectureSchedules")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Academic.Period", "Period")
+                        .WithMany("LectureSchedules")
+                        .HasForeignKey("PeriodId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Universities.Program", "Program")
+                        .WithMany("ProgramSchedules")
+                        .HasForeignKey("ProgramId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Universities.Subject", "Subject")
+                        .WithMany("LectureSchedules")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
+                        .WithMany("LectureSchedules")
+                        .HasForeignKey("YearId", "TermId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Day");
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Period");
+
+                    b.Navigation("Program");
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("YearTerm");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
                 {
                     b.HasOne("App.Core.Entities.Universities.Faculty", "Faculty")
-                        .WithMany("Days")
+                        .WithMany("Periods")
                         .HasForeignKey("FacultyId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1369,15 +1752,55 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("Faculty");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
+            modelBuilder.Entity("App.Core.Entities.Academic.SectionSchedule", b =>
                 {
                     b.HasOne("App.Core.Entities.Academic.Day", "Day")
-                        .WithMany("Periods")
+                        .WithMany()
                         .HasForeignKey("DayId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("App.Core.Entities.Personnel.DepartmentUser", "Instructor")
+                        .WithMany("SectionSchedules")
+                        .HasForeignKey("InstructorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Academic.Period", "Period")
+                        .WithMany("SectionSchedules")
+                        .HasForeignKey("PeriodId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Universities.Program", "Program")
+                        .WithMany()
+                        .HasForeignKey("ProgramId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Universities.Subject", "Subject")
+                        .WithMany("SectionSchedules")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
+                        .WithMany("SectionSchedules")
+                        .HasForeignKey("YearId", "TermId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Day");
+
+                    b.Navigation("Instructor");
+
+                    b.Navigation("Period");
+
+                    b.Navigation("Program");
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("YearTerm");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Identity.ApplicationRole", b =>
@@ -1511,7 +1934,7 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
+            modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
                 {
                     b.HasOne("App.Core.Entities.Universities.Faculty", "Faculty")
                         .WithMany("ProgramUsers")
@@ -1519,13 +1942,9 @@ namespace App.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("App.Core.Entities.Universities.Program", null)
-                        .WithMany("ProgramUsers")
-                        .HasForeignKey("ProgramId");
-
                     b.HasOne("App.Core.Entities.Identity.ApplicationUser", "User")
                         .WithOne("ProgramUser")
-                        .HasForeignKey("App.Core.Entities.Personnel.ProgramUser", "UserId")
+                        .HasForeignKey("App.Core.Entities.Personnel.Student", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -1553,43 +1972,23 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Relations.DepartmentUserSubjectYearTermPeriod", b =>
+            modelBuilder.Entity("App.Core.Entities.Relations.LectureRegistration", b =>
                 {
-                    b.HasOne("App.Core.Entities.Academic.Period", "Period")
-                        .WithMany("DepartmentUserSubjectYearTermPeriods")
-                        .HasForeignKey("PeriodId")
+                    b.HasOne("App.Core.Entities.Academic.LectureSchedule", "LectureSchedule")
+                        .WithMany("LectureRegistrations")
+                        .HasForeignKey("LectureScheduleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("App.Core.Entities.Universities.Subject", "Subject")
-                        .WithMany("DepartmentUserSubjectYearTermPeriods")
-                        .HasForeignKey("SubjectId")
+                    b.HasOne("App.Core.Entities.Personnel.Student", "Student")
+                        .WithMany("LectureRegistrations")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("App.Core.Entities.Academic.Term", null)
-                        .WithMany("DepartmentUserSubjectYearTermPeriods")
-                        .HasForeignKey("TermId");
+                    b.Navigation("LectureSchedule");
 
-                    b.HasOne("App.Core.Entities.Personnel.DepartmentUser", "User")
-                        .WithMany("DepartmentUserSubjectYearTermPeriods")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
-                        .WithMany("DepartmentUserSubjectYearTermPeriods")
-                        .HasForeignKey("YearTermYearId", "YearTermTermId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Period");
-
-                    b.Navigation("Subject");
-
-                    b.Navigation("User");
-
-                    b.Navigation("YearTerm");
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.ProgramSubject", b =>
@@ -1611,7 +2010,26 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Relations.ProgramUserProgramYearTerm", b =>
+            modelBuilder.Entity("App.Core.Entities.Relations.SectionRegistration", b =>
+                {
+                    b.HasOne("App.Core.Entities.Academic.SectionSchedule", "SectionSchedule")
+                        .WithMany("SectionRegistrations")
+                        .HasForeignKey("SectionScheduleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.Personnel.Student", "Student")
+                        .WithMany("SectionRegistrations")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("SectionSchedule");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Relations.StudentProgramYearTerm", b =>
                 {
                     b.HasOne("App.Core.Entities.Universities.Program", "Program")
                         .WithMany("ProgramUserProgramYearTerms")
@@ -1619,15 +2037,15 @@ namespace App.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("App.Core.Entities.Personnel.ProgramUser", "User")
-                        .WithMany("ProgramUserProgramYearTerms")
+                    b.HasOne("App.Core.Entities.Personnel.Student", "User")
+                        .WithMany("StudentProgramYearTerms")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("App.Core.Entities.Relations.YearTerm", "YearTerm")
-                        .WithMany("ProgramUserProgramYearTerms")
-                        .HasForeignKey("YearTermYearId", "YearTermTermId")
+                        .WithMany("StudentProgramYearTerms")
+                        .HasForeignKey("YearId", "TermId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -1776,20 +2194,25 @@ namespace App.Infrastructure.Migrations
                     b.Navigation("YearTerms");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Academic.Day", b =>
+            modelBuilder.Entity("App.Core.Entities.Academic.LectureSchedule", b =>
                 {
-                    b.Navigation("Periods");
+                    b.Navigation("LectureRegistrations");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.Period", b =>
                 {
-                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
+                    b.Navigation("LectureSchedules");
+
+                    b.Navigation("SectionSchedules");
+                });
+
+            modelBuilder.Entity("App.Core.Entities.Academic.SectionSchedule", b =>
+                {
+                    b.Navigation("SectionRegistrations");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Academic.Term", b =>
                 {
-                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
-
                     b.Navigation("YearTerms");
                 });
 
@@ -1826,19 +2249,27 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Personnel.DepartmentUser", b =>
                 {
-                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
+                    b.Navigation("LectureSchedules");
+
+                    b.Navigation("SectionSchedules");
                 });
 
-            modelBuilder.Entity("App.Core.Entities.Personnel.ProgramUser", b =>
+            modelBuilder.Entity("App.Core.Entities.Personnel.Student", b =>
                 {
-                    b.Navigation("ProgramUserProgramYearTerms");
+                    b.Navigation("LectureRegistrations");
+
+                    b.Navigation("SectionRegistrations");
+
+                    b.Navigation("StudentProgramYearTerms");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Relations.YearTerm", b =>
                 {
-                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
+                    b.Navigation("LectureSchedules");
 
-                    b.Navigation("ProgramUserProgramYearTerms");
+                    b.Navigation("SectionSchedules");
+
+                    b.Navigation("StudentProgramYearTerms");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Department", b =>
@@ -1850,11 +2281,11 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Universities.Faculty", b =>
                 {
-                    b.Navigation("Days");
-
                     b.Navigation("Departments");
 
                     b.Navigation("FacultyUsers");
+
+                    b.Navigation("Periods");
 
                     b.Navigation("ProgramUsers");
 
@@ -1863,20 +2294,22 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Core.Entities.Universities.Program", b =>
                 {
+                    b.Navigation("ProgramSchedules");
+
                     b.Navigation("ProgramSubjects");
 
                     b.Navigation("ProgramUserProgramYearTerms");
-
-                    b.Navigation("ProgramUsers");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.Subject", b =>
                 {
-                    b.Navigation("DepartmentUserSubjectYearTermPeriods");
+                    b.Navigation("LectureSchedules");
 
                     b.Navigation("Prerequisites");
 
                     b.Navigation("ProgramSubjects");
+
+                    b.Navigation("SectionSchedules");
                 });
 
             modelBuilder.Entity("App.Core.Entities.Universities.University", b =>
