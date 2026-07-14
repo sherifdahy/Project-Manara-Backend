@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\manaraa\\project-manara-backend\\app.api\\app.api\\controllers\\authentications\\authenticationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\authentications\\authenticationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|d:\\work\\manaraa\\project-manara-backend\\app.api\\app.api\\controllers\\roles\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9DA71A78-A28F-8F84-EF7E-17686113D26D}|App.API\\App.API.csproj|solutionrelative:app.api\\controllers\\roles\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -94,23 +98,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "20260713072125_init.cs",
-              "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260713072125_init.cs",
-              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Migrations\\20260713072125_init.cs",
-              "ToolTip": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260713072125_init.cs",
-              "RelativeToolTip": "..\\App.Infrastructure\\Migrations\\20260713072125_init.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAlAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AuthenticationsController.cs",
+              "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Authentications\\AuthenticationsController.cs",
+              "RelativeDocumentMoniker": "App.API\\Controllers\\Authentications\\AuthenticationsController.cs",
+              "ToolTip": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Authentications\\AuthenticationsController.cs",
+              "RelativeToolTip": "App.API\\Controllers\\Authentications\\AuthenticationsController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAQwA8AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T07:21:25.302Z"
+              "WhenOpened": "2026-07-14T07:42:23.579Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "GetPeriodQueryHandler.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\Period\\GetPeriodQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\App.Application\\Handlers\\Queries\\Period\\GetPeriodQueryHandler.cs",
@@ -118,11 +123,12 @@
               "RelativeToolTip": "..\\App.Application\\Handlers\\Queries\\Period\\GetPeriodQueryHandler.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T13:50:02.426Z"
+              "WhenOpened": "2026-07-12T13:50:02.426Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ProgramSchedulesController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Programs\\ProgramSchedulesController.cs",
@@ -134,7 +140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "RolesController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\RolesController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Roles\\RolesController.cs",
@@ -142,11 +148,37 @@
               "RelativeToolTip": "App.API\\Controllers\\Roles\\RolesController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAYwBMAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-10T20:10:47.276Z"
+              "WhenOpened": "2026-07-10T20:10:47.276Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
+              "RelativeDocumentMoniker": "App.API\\appsettings.json",
+              "ToolTip": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
+              "RelativeToolTip": "App.API\\appsettings.json",
+              "ViewState": "AgIAACQAAAAAAAAAAAAUwC4AAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-06T09:44:39.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20260713072125_init.cs",
+              "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260713072125_init.cs",
+              "RelativeDocumentMoniker": "..\\App.Infrastructure\\Migrations\\20260713072125_init.cs",
+              "ToolTip": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.Infrastructure\\Migrations\\20260713072125_init.cs",
+              "RelativeToolTip": "..\\App.Infrastructure\\Migrations\\20260713072125_init.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T07:21:25.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "SubjectsController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Subjects\\SubjectsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Subjects\\SubjectsController.cs",
@@ -158,20 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
-              "RelativeDocumentMoniker": "App.API\\appsettings.json",
-              "ToolTip": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\appsettings.json",
-              "RelativeToolTip": "App.API\\appsettings.json",
-              "ViewState": "AgIAACQAAAAAAAAAAAAUwC4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-06T09:44:39.233Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ScopesController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Scopes\\ScopesController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Scopes\\ScopesController.cs",
@@ -183,7 +202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "UniversityUsersController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\UniversityUsers\\UniversityUsersController.cs",
@@ -195,7 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "PeriodsController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Periods\\PeriodsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Periods\\PeriodsController.cs",
@@ -207,7 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ProgramsController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Programs\\ProgramsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Programs\\ProgramsController.cs",
@@ -219,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "UniversitiesController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Universities\\UniversitiesController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Universities\\UniversitiesController.cs",
@@ -231,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "FacultiesController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Faculties\\FacultiesController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Faculties\\FacultiesController.cs",
@@ -243,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ProgramUsersController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\ProgramUsers\\ProgramUsersController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\ProgramUsers\\ProgramUsersController.cs",
@@ -255,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "PermissionsController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Roles\\PermissionsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Roles\\PermissionsController.cs",
@@ -267,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "FacultyUsersController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\FacultyUsers\\FacultyUsersController.cs",
@@ -279,7 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "EnrollmentsController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Enrollments\\EnrollmentsController.cs",
@@ -291,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "YearsController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Years\\YearsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Years\\YearsController.cs",
@@ -303,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "DepartmentsController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\Departments\\DepartmentsController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\Departments\\DepartmentsController.cs",
@@ -315,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "GetDoctorsQueryHandler.cs",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\DepartmentUsers\\GetDoctorsQueryHandler.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Queries\\DepartmentUsers\\GetDoctorsQueryHandler.cs",
@@ -327,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "SaveLectureSchedulesCommandHandler.cs",
               "DocumentMoniker": "D:\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Programs\\SaveLectureSchedulesCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Manara-Project\\Project-Manara-Backend\\App.Application\\Handlers\\Commands\\Programs\\SaveLectureSchedulesCommandHandler.cs",
@@ -338,7 +357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "DepartmentUsersController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\DepartmentUsers\\DepartmentUsersController.cs",
@@ -350,7 +369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "StudentsPortalController.cs",
               "DocumentMoniker": "D:\\Work\\Manaraa\\Project-Manara-Backend\\App.API\\App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
               "RelativeDocumentMoniker": "App.API\\Controllers\\StudentsPortal\\StudentsPortalController.cs",
