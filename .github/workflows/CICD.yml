@@ -179,11 +179,11 @@ jobs:
           curl -sSf -o /dev/null -w "HTTP %{http_code}\n" https://sonar.manaraa.tech || \
             echo "⚠️ Sonar server not reachable from runner"
 
-      - name: 📦 Install latest dotnet-sonarscanner
+      - name: 📦 Install dotnet-sonarscanner (pinned stable version)
         run: |
           rm -rf ./.sonar
           mkdir -p ./.sonar/scanner
-          dotnet tool install dotnet-sonarscanner --tool-path ./.sonar/scanner
+          dotnet tool install dotnet-sonarscanner --version 9.0.2 --tool-path ./.sonar/scanner
           echo "✅ Installed dotnet-sonarscanner:"
           dotnet tool list --tool-path ./.sonar/scanner
 
